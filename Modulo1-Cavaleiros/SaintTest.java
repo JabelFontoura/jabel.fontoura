@@ -9,7 +9,7 @@ public class SaintTest {
     public void vestirArmaduraDeixaTrue() {
         //AAA
         //1. Arrange - Montagem dos dados de teste
-        Armadura escorpiao = new Armadura("Escorpião");
+        Armadura escorpiao = new Armadura("Escorpião", Categoria.OURO);
         Saint milo = new Saint("Milo", escorpiao);
         
         //2. Act - Invocar a ação a ser testada
@@ -22,7 +22,13 @@ public class SaintTest {
     
     @Test
     public void naoVestirArmaduraDeixaFalse() {
-        Saint hyoga = new Saint("Hyoga", new Armadura("Cisne"));
+        Saint hyoga = new Saint("Hyoga", new Armadura("Cisne", Categoria.BRONZE));
         assertEquals(false, hyoga.isArmaduraVestida());
+    }
+    
+    @Test
+    public void aoCriarSaintGeneroENaoInformado() {
+        Saint shaka = new Saint("Shaka", new Armadura("Vigem", Categoria.OURO));
+        
     }
 }
