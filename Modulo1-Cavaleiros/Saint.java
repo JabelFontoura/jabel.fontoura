@@ -13,4 +13,8 @@ public class Saint {
     public void vestirArmadura() {
         this.armaduraVestida = true;
     }
+    
+    public boolean isArmaduraVestida() {
+        return this.armaduraVestida;
+    }
 }
