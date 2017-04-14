@@ -20,6 +20,8 @@ public class Saint {
     
     public void perderVida(double dano) {
         this.vida -= dano;
+        
+        this.status = atualizaStatus();
     }
     
     public Status atualizaStatus() {
@@ -56,7 +58,7 @@ public class Saint {
         this.status = status;
     }
     
-    public double getvida() {
+    public double getVida() {
         return this.vida;
     }
     
