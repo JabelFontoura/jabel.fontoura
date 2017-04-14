@@ -38,6 +38,13 @@ public class SaintTest {
         assertEquals(Status.VIVO, hyoga.getStatus());
     }
     
-
-
+  @Test
+  public void perderVidaDiminuiVidaInicial() {
+      Saint hyoga = new Saint("Hyoga", new Armadura ("Cisne",Categoria.BRONZE));
+      double vidaInicial = hyoga.getVida();
+      
+      hyoga.perderVida(10);
+      
+      assertTrue(vidaInicial > hyoga.getVida());
+    }  
 }
