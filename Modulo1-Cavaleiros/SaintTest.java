@@ -33,9 +33,11 @@ public class SaintTest {
     }
     
    @Test
-    public void VerificarSeSaintNasceVivo(){
+    public void verificarSeSaintNasceVivo(){
         Saint hyoga = new Saint("Hyoga", new Armadura ("Cisne",Categoria.BRONZE));
         assertEquals(Status.VIVO, hyoga.getStatus());
     }
+    
+
 
 }
