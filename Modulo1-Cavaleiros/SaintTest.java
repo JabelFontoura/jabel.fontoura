@@ -27,8 +27,10 @@ public class SaintTest {
     }
     
     @Test
-    public void aoCriarSaintGeneroENaoInformado() {
+    public void aoCriarSaintGeneroDeveSerNaoInformado() {
         Saint shaka = new Saint("Shaka", new Armadura("Vigem", Categoria.OURO));
-        
+        assertEquals(Genero.NAO_INFORMADO, shaka.getGenero());
     }
+    
+
 }
