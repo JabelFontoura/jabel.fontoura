@@ -32,5 +32,10 @@ public class SaintTest {
         assertEquals(Genero.NAO_INFORMADO, shaka.getGenero());
     }
     
+   @Test
+    public void VerificarSeSaintNasceVivo(){
+        Saint hyoga = new Saint("Hyoga", new Armadura ("Cisne",Categoria.BRONZE));
+        assertEquals(Status.VIVO, hyoga.getStatus());
+    }
 
 }
