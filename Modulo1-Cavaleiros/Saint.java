@@ -35,7 +35,7 @@ public class Saint {
     }
     
     public int getValorCategoria() {
-        return this.armadura.getCategoria().getValor();
+        return this.armadura.getValorCategoria();
     }
     
     public boolean isArmaduraVestida() {
