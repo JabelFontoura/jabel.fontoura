@@ -6,7 +6,7 @@ import org.junit.Test;
 public class SaintTest {
 
     @Test
-    public void vestirArmaduraDeixaTrue() {
+    public void vestirArmaduraDeixaTrue() throws Exception {
         //AAA
         //1. Arrange - Montagem dos dados de teste
         Armadura escorpiao = new Armadura("Escorpião", Categoria.OURO);
@@ -21,19 +21,19 @@ public class SaintTest {
     }
 
     @Test
-    public void naoVestirArmaduraDeixaFalse() {
+    public void naoVestirArmaduraDeixaFalse() throws Exception {
         Saint hyoga = new Saint("Hyoga", new Armadura("Cisne", Categoria.BRONZE));
         assertEquals(false, hyoga.isArmaduraVestida());
     }
 
     @Test
-    public void aoCriarSaintGeneroDeveSerNaoInformado() {
+    public void aoCriarSaintGeneroDeveSerNaoInformado() throws Exception {
         Saint shaka = new Saint("Shaka", new Armadura("Vigem", Categoria.OURO));
         assertEquals(Genero.NAO_INFORMADO, shaka.getGenero());
     }
 
     @Test
-    public void deveSerPossivelAlterarGenero() {
+    public void deveSerPossivelAlterarGenero() throws Exception {
         Saint jabu = new Saint("Jabu", new Armadura("Unicórnio", Categoria.BRONZE));
 
         jabu.setGenero(Genero.MASCULINO);
@@ -44,19 +44,19 @@ public class SaintTest {
     }
 
     @Test
-    public void verificarSeSaintNasceVivo(){
+    public void verificarSeSaintNasceVivo() throws Exception{
         Saint hyoga = new Saint("Hyoga", new Armadura ("Cisne",Categoria.BRONZE));
         assertEquals(Status.VIVO, hyoga.getStatus());
     }
 
     @Test
-    public void vidaInicialDeveSer100() {
+    public void vidaInicialDeveSer100() throws Exception {
         Saint hyoga = new Saint("Hyoga", new Armadura ("Cisne",Categoria.BRONZE));
         assertEquals(100.0, hyoga.getVida(), 0.01);
     }
 
     @Test
-    public void perderVidaDiminuiVidaInicial() {
+    public void perderVidaDiminuiVidaInicial() throws Exception {
         Saint hyoga = new Saint("Hyoga", new Armadura ("Cisne",Categoria.BRONZE));
         double vidaInicial = hyoga.getVida();
 
@@ -66,7 +66,7 @@ public class SaintTest {
     }  
 
     @Test
-    public void perderVidaComDano10() {
+    public void perderVidaComDano10() throws Exception {
         Saint hyoga = new Saint("Hyoga", new Armadura ("Cisne",Categoria.BRONZE));
         
         hyoga.perderVida(10);
@@ -75,7 +75,7 @@ public class SaintTest {
     }
     
     @Test
-    public void perderVidaComDano100() {
+    public void perderVidaComDano100() throws Exception {
         Saint hyoga = new Saint("Hyoga", new Armadura ("Cisne",Categoria.BRONZE));
         
         hyoga.perderVida(100);
@@ -84,7 +84,7 @@ public class SaintTest {
     }
     
     @Test
-    public void perderVidaComDanoMenos1000() {
+    public void perderVidaComDanoMenos1000() throws Exception {
         Saint hyoga = new Saint("Hyoga", new Armadura ("Cisne",Categoria.BRONZE));
         
         hyoga.perderVida(-1000);
@@ -93,26 +93,29 @@ public class SaintTest {
     }
     
     @Test
-    public void saintIniciaCom5SentidosDespertados() {
+    public void saintIniciaCom5SentidosDespertados() throws Exception {
         Saint hyoga = new Saint("Hyoga", new Armadura ("Cisne",Categoria.BRONZE));
         
         assertEquals(5, hyoga.getqtdSentidosDespertados());
     }
     
     @Test
-    public void saintPrataIniciaCom6Sentidos() {
+    public void saintPrataIniciaCom6Sentidos() throws Exception {
         Saint hyoga = new Saint("Hyoga", new Armadura ("Cisne",Categoria.PRATA));
         
         assertEquals(6, hyoga.getqtdSentidosDespertados());
     }
     
     @Test
-    public void sainOuroIniciaCom7Sentidos() {
+    public void sainOuroIniciaCom7Sentidos() throws Exception {
         Saint hyoga = new Saint("Hyoga", new Armadura ("Cisne",Categoria.OURO));
         
         assertEquals(7, hyoga.getqtdSentidosDespertados());
     }
     
-    
+    @Test(expected=Exception.class)
+    public void constelacaoInvalidadeDeOuroDeveLancarErro() throws Exception {
+        new Saint("Jabel", new Armadura("Test", Categoria.OURO));
+    }
     
 }

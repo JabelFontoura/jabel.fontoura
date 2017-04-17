@@ -6,7 +6,7 @@ import org.junit.Test;
 public class BatalhaTest {
 
     @Test
-    public void categoriaOponenteMaiorQueDesafiador() {
+    public void categoriaOponenteMaiorQueDesafiador() throws Exception {
         Saint shaina = new Saint("Shaina", new Armadura("Serpente", Categoria.PRATA));
         Saint hyoga = new Saint("Hyoga", new Armadura("Serpente", Categoria.BRONZE));
 
@@ -19,7 +19,7 @@ public class BatalhaTest {
     }
 
     @Test
-    public void categoriasIguaisDesafiadorDevePerderVida() {
+    public void categoriasIguaisDesafiadorDevePerderVida() throws Exception {
         Saint aldebaram = new Saint("Aldebaram", new Armadura("Aldebaram", Categoria.OURO));
         Saint mascaraMorte = new Saint("Mascara da Morte", new Armadura("Cancer", Categoria.OURO));
 
@@ -32,7 +32,7 @@ public class BatalhaTest {
     }
     
       @Test
-     public void categoriaDesafiadorMaiorOponentePerdeVida() {
+     public void categoriaDesafiadorMaiorOponentePerdeVida() throws Exception {
          // Arrange
          Saint ikki = new Saint("Ikki", new Armadura("Fênix", Categoria.BRONZE));
          Saint mascaraMorte = new Saint("Máscara da Morte", new Armadura("Câncer", Categoria.OURO));

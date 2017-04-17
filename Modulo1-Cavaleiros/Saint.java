@@ -9,15 +9,20 @@ public class Saint {
     private double vida = 100.0;
     private int qtdSentidosDespertados = 5;
     
-    public Saint(String nome, Armadura armadura) {
+    public Saint(String nome, Armadura armadura) throws Exception {
         this.nome = nome;
         this.armadura = armadura;
         this.genero = genero;
+        
+       // this.qtdSentidosDespertados += getValorCategoria();
         
         if(this.armadura.getCategoria() == Categoria.PRATA) {
             this.qtdSentidosDespertados = 6;
         } else if(this.armadura.getCategoria() == Categoria.OURO) {
             this.qtdSentidosDespertados = 7;
+            if(false) {
+                throw new Exception("Constelação inválida");
+            }
         } else {
             this.qtdSentidosDespertados = 5;
         }
