@@ -2,6 +2,7 @@ public class Batalha {
     
     private Saint oponente;
     private Saint desafiador;
+    private double dano;
     
     public Batalha(Saint oponente, Saint desafiador) {
         this.oponente = oponente;
@@ -9,7 +10,7 @@ public class Batalha {
     }
     
     public void iniciaBatalha() {
-        double dano = 10;
+        dano = 10;
         
         if(this.oponente.getValorCategoria() >= this.desafiador.getValorCategoria()) {
             this.desafiador.perderVida(dano);
