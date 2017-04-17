@@ -5,7 +5,7 @@ public class Saint {
     private Armadura armadura;
     private boolean armaduraVestida = false;
     private Genero genero = Genero.NAO_INFORMADO;
-    private Status status=Status.VIVO;
+    private Status status = Status.VIVO;
     private double vida = 100.0;
     
     public Saint(String nome, Armadura armadura) {
