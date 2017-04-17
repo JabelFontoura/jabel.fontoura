@@ -83,13 +83,20 @@ public class SaintTest {
         assertEquals(0, hyoga.getVida(), 0.01);
     }
     
-        @Test
+    @Test
     public void perderVidaComDanoMenos1000() {
         Saint hyoga = new Saint("Hyoga", new Armadura ("Cisne",Categoria.BRONZE));
         
         hyoga.perderVida(-1000);
         
         assertEquals(1100, hyoga.getVida(), 0.01);
+    }
+    
+    @Test
+    public void saintIniciaCom5SentidosDespertados() {
+        Saint hyoga = new Saint("Hyoga", new Armadura ("Cisne",Categoria.BRONZE));
+        
+        assertEquals(5, hyoga.getqtsSentidosDespertados());
     }
     
     
