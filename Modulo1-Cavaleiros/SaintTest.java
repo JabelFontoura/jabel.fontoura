@@ -101,21 +101,21 @@ public class SaintTest {
     
     @Test
     public void saintPrataIniciaCom6Sentidos() throws Exception {
-        Saint hyoga = new Saint("Hyoga", new Armadura ("Cisne",Categoria.PRATA));
+        SilverSaint hyoga = new SilverSaint("Hyoga", new Armadura ("Cisne",Categoria.PRATA));
         
         assertEquals(6, hyoga.getqtdSentidosDespertados());
     }
     
     @Test
     public void sainOuroIniciaCom7Sentidos() throws Exception {
-        Saint hyoga = new Saint("Hyoga", new Armadura ("Cisne",Categoria.OURO));
+        GoldSaint hyoga = new GoldSaint("Hyoga", new Armadura ("Virgem",Categoria.OURO));
         
         assertEquals(7, hyoga.getqtdSentidosDespertados());
     }
     
     @Test(expected=Exception.class)
     public void constelacaoInvalidadeDeOuroDeveLancarErro() throws Exception {
-        new Saint("Jabel", new Armadura("Test", Categoria.OURO));
+        new GoldSaint("Jabel", new Armadura("Test", Categoria.OURO));
     }
     
 }

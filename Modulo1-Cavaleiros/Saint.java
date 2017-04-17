@@ -15,15 +15,6 @@ public class Saint {
         this.genero = genero;
         
        // this.qtdSentidosDespertados += getValorCategoria();
-        
-        if(this.armadura.getCategoria() == Categoria.PRATA) {
-            this.qtdSentidosDespertados = 6;
-        } else if(this.armadura.getCategoria() == Categoria.OURO) {
-            this.qtdSentidosDespertados = 7;
-            if(false) {
-                throw new Exception("Constelação inválida");
-            }
-        }
     }
     
     public void vestirArmadura() {
