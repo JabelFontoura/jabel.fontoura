@@ -54,10 +54,6 @@ public class Saint {
         return this.status;
     }
     
-    public void setStatus(Status status){
-        this.status = status;
-    }
-    
     public double getVida() {
         return this.vida;
     }
