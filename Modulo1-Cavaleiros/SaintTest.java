@@ -94,7 +94,7 @@ public class SaintTest {
     
     @Test
     public void saintIniciaCom5SentidosDespertados() throws Exception {
-        Saint hyoga = new Saint("Hyoga", new Armadura ("Cisne",Categoria.BRONZE));
+        BronzeSaint hyoga = new BronzeSaint("Hyoga", new Armadura ("Cisne",Categoria.BRONZE));
         
         assertEquals(5, hyoga.getqtdSentidosDespertados());
     }
