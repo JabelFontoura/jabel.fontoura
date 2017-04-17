@@ -96,8 +96,23 @@ public class SaintTest {
     public void saintIniciaCom5SentidosDespertados() {
         Saint hyoga = new Saint("Hyoga", new Armadura ("Cisne",Categoria.BRONZE));
         
-        assertEquals(5, hyoga.getqtsSentidosDespertados());
+        assertEquals(5, hyoga.getqtdSentidosDespertados());
     }
+    
+    @Test
+    public void saintPrataIniciaCom6Sentidos() {
+        Saint hyoga = new Saint("Hyoga", new Armadura ("Cisne",Categoria.PRATA));
+        
+        assertEquals(6, hyoga.getqtdSentidosDespertados());
+    }
+    
+    @Test
+    public void sainOuroIniciaCom7Sentidos() {
+        Saint hyoga = new Saint("Hyoga", new Armadura ("Cisne",Categoria.OURO));
+        
+        assertEquals(7, hyoga.getqtdSentidosDespertados());
+    }
+    
     
     
 }
