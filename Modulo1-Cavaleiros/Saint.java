@@ -68,6 +68,10 @@ public class Saint {
     public int getValorCategoria() {
         return this.armadura.getValorCategoria();
     }
+    
+    public String getNome() {
+        return this.nome;
+    }
 
     public boolean isArmaduraVestida() {
         return this.armaduraVestida;

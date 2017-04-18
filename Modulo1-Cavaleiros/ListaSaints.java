@@ -1,0 +1,37 @@
+import java.util.List;
+import java.util.ArrayList;
+
+public class ListaSaints {
+    
+    private List<Saint> lista = new ArrayList<Saint>();
+    
+    public ListaSaints() {
+        
+    }
+    
+    public void adicionar(Saint saint) {
+        lista.add(saint);
+    }
+    
+    public Saint get(int i) {
+        return lista.get(i);
+    }
+    
+    public List<Saint> todos() {
+        return lista;
+    }
+    
+    public void remover(Saint saint) {
+        lista.remove(saint);
+    }
+    
+    public Saint buscarPorNome(String nome) {
+        for(int i = 0; i < lista.size(); i++) {
+            if(nome.equals(lista.get(i).getNome())) {
+                return lista.get(i);
+            }
+        }
+        return null;
+    }
+    
+}
