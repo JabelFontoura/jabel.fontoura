@@ -18,4 +18,8 @@ public class Constelacao {
     public List<Golpe> getGolpes() {
         return this.golpes;
     }
+    
+    public String getNome() {
+        return this.nome;
+    }
 }
