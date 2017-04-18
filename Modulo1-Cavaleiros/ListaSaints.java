@@ -35,8 +35,19 @@ public class ListaSaints {
     }
     
     public Saint buscarPorCategoria(Categoria categoria) {
+        List<Saint> listaCategoria = new ArrayList<Saint>();
+        
         for(int i = 0; i < lista.size(); i++) {
             if(categoria.getValor() == lista.get(i).getValorCategoria()) {
+                return lista.get(i);
+            }
+        }
+        return null;
+    }
+    
+    public Saint buscarPorStatus(Status status) {
+        for(int i = 0; i < lista.size(); i++) {
+            if(status == lista.get(i).getStatus()) {
                 return lista.get(i);
             }
         }
