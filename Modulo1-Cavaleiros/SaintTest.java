@@ -84,6 +84,15 @@ public class SaintTest {
         assertEquals(0, hyoga.getVida(), 0.01);
     }
     
+    @Test
+    public void perderVidaComDano1000() throws Exception {
+        Saint hyoga = new Saint("Hyoga", new Armadura(new Constelacao("Cisne"),Categoria.BRONZE));
+        
+        hyoga.perderVida(100);
+        
+        assertEquals(0, hyoga.getVida(), 0.01);
+    }
+    
     @Test(expected=InvalidParameterException.class)
     public void perderVidaComDanoNegativoDeveLançarErro() throws Exception {
         Saint hyoga = new Saint("Hyoga", new Armadura(new Constelacao("Cisne"),Categoria.BRONZE));

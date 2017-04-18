@@ -29,10 +29,15 @@ public class Saint {
             throw new InvalidParameterException("O valor do dano não pode ser menor que 0.");
         }
 
-        if(status != Status.MORTO) {  
+        if(status != Status.MORTO) {
             this.vida -= dano;
-            this.status = atualizaStatus();
+            
+            if(dano > this.vida) {
+                this.vida = 0;
+            }
         }
+        
+        this.status = atualizaStatus();
     }
 
     private Status atualizaStatus() {

@@ -4,11 +4,10 @@ import java.util.List;
 public class Constelacao {
     
     private String nome;
-    private List<Golpe> golpes; 
+    private List<Golpe> golpes = new ArrayList<Golpe>(); 
     
     public Constelacao(String nome) {
-        this.nome = nome;        
-        this.golpes = new ArrayList<Golpe>();
+        this.nome = nome;
     }
     
     public void adicionarGolpe(Golpe golpe) {
