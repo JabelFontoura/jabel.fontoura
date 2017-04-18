@@ -34,4 +34,13 @@ public class ListaSaints {
         return null;
     }
     
+    public Saint buscarPorCategoria(Categoria categoria) {
+        for(int i = 0; i < lista.size(); i++) {
+            if(categoria.getValor() == lista.get(i).getValorCategoria()) {
+                return lista.get(i);
+            }
+        }
+        return null;
+    }
+    
 }
