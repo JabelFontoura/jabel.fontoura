@@ -50,8 +50,11 @@ public class ListaSaints {
     }
 
     public Saint getSaintMaiorVida() throws Exception {
-        Saint saintComMaiorVida = new Saint("Seiya", new Armadura(new Constelacao("Pegaso"), Categoria.BRONZE));
-        saintComMaiorVida.perderVida(99);
+        if(lista.isEmpty()) {
+            return null;
+        }
+        
+        Saint saintComMaiorVida = lista.get(0);
 
         for(Saint saint : lista) {
             if(saint.getVida() > saintComMaiorVida.getVida()) {
