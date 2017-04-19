@@ -39,21 +39,21 @@ public class ListaSaints {
 
     public List<Saint> buscarPorCategoria(Categoria categoria) {
         return lista.stream()
-                .filter(s -> s.getValorCategoria() == (categoria.getValor()))
-                .collect(Collectors.toList());
+        .filter(s -> s.getValorCategoria() == (categoria.getValor()))
+        .collect(Collectors.toList());
     }
 
     public List<Saint > buscarPorStatus(Status status) {
         return lista.stream()
-                .filter(s -> s.getStatus().equals(status))
-                .collect(Collectors.toList());
+        .filter(s -> s.getStatus().equals(status))
+        .collect(Collectors.toList());
     }
 
     public Saint getSaintMaiorVida() throws Exception {
         if(lista.isEmpty()) {
             return null;
         }
-        
+
         Saint saintComMaiorVida = lista.get(0);
 
         for(Saint saint : lista) {
@@ -69,26 +69,42 @@ public class ListaSaints {
         if(lista.isEmpty()) {
             return null;
         }
-        
+
         ordenar();
         return lista.get(0);
     }
 
     public void ordenar() {    
-        // Collections.sort(lista, (saint1, saint2) -> Double.compare(saint1.getVida(), saint2.getVida()));
-       
-       int j;
-       Saint aux;
-       
-       for (int i = 1; i < lista.size(); i++) {    
-          aux = lista.get(i);
-          
-          for (j = i - 1; (j >= 0) && (lista.get(j).getVida() > aux.getVida()); j--) {
-              lista.set(j + 1, lista.get(j));
-          }
-          lista.set(j + 1, aux);
+        int j;
+        Saint aux;
+
+        for (int i = 1; i < lista.size(); i++) {    
+            aux = lista.get(i);
+
+            for (j = i - 1; (j >= 0) && (lista.get(j).getVida() > aux.getVida()); j--) {
+                lista.set(j + 1, lista.get(j));
+            }
+            lista.set(j + 1, aux);
+        }     
+    }
+
+    public void ordenar(TipoOrdenacao tipoOrdenacao) {
+        int j;
+        Saint aux;
+
+        if(tipoOrdenacao.equals(TipoOrdenacao.DESCENDENTE)) {
+            for (int i = 1; i < lista.size(); i++) {    
+                aux = lista.get(i);
+
+                for (j = i - 1; (j >= 0) && (lista.get(j).getVida() < aux.getVida()); j--) {
+                    lista.set(j + 1, lista.get(j));
+                }
+                lista.set(j + 1, aux);
+            } 
+
+        } else {
+            ordenar();
         }
-       
-   }
+    }
 
 }
