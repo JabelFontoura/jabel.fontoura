@@ -90,7 +90,22 @@ public class ListaSaintsTest {
     }
     
     @Test
-    public void buscarSaintPorStatusVivoDeveRetornarListaDeSaintsCerto() throws Exception {
+    public void buscarPorCategoriaComMaisDeUmExistenteNaCategoria() throws Exception {
+        ListaSaints listaSaints = new ListaSaints();
+        Saint june = new Saint("June", new Armadura(new Constelacao("Camaleão"), Categoria.BRONZE));
+        Saint misty = new SilverSaint("Misty", new Armadura(new Constelacao("Lagarto"), Categoria.PRATA));
+        Saint shun = new Saint("June", new Armadura(new Constelacao("Andrômeda"), Categoria.BRONZE));
+        listaSaints.adicionar(shun);
+        listaSaints.adicionar(misty);
+        listaSaints.adicionar(june);
+        List<Saint> resultadoBusca = listaSaints.buscarPorCategoria(Categoria.BRONZE);
+        assertEquals(shun, resultadoBusca.get(0));
+        assertEquals(june, resultadoBusca.get(1));
+        assertEquals(2, resultadoBusca.size());
+    }
+    
+    @Test
+    public void buscarSaintPorStatusDeveRetornarListaDeSaintsCerto() throws Exception {
         Saint seiya = new Saint("Seiya", new Armadura(new Constelacao("Pegaso"), Categoria.BRONZE));
         ListaSaints lista = new ListaSaints();
         Saint marin = new Saint("Marin", new Armadura(new Constelacao("Aguia"), Categoria.PRATA));
@@ -107,7 +122,23 @@ public class ListaSaintsTest {
     }
     
     @Test
-    public void buscarPorCategoriaComMaisDeUmExistenteNaCategoria() throws Exception {
+    public void buscarPorStatusListaVazia() {
+        ListaSaints listaSaints = new ListaSaints();
+        List<Saint> resultadoBusca = listaSaints.buscarPorStatus(Status.VIVO);
+        assertEquals(new ArrayList<Saint>(), resultadoBusca);
+    }
+
+    @Test
+    public void buscarPorStatusInexistente() throws Exception {
+        ListaSaints listaSaints = new ListaSaints();
+        Saint june = new Saint("June", new Armadura(new Constelacao("Camaleão"), Categoria.BRONZE));
+        listaSaints.adicionar(june);
+        List<Saint> resultadoBusca = listaSaints.buscarPorStatus(Status.MORTO);
+        assertEquals(new ArrayList<Saint>(), resultadoBusca);
+    }
+    
+    @Test
+    public void buscarPorStatusComMaisDeUmExistenteNaCategoria() throws Exception {
         ListaSaints listaSaints = new ListaSaints();
         Saint june = new Saint("June", new Armadura(new Constelacao("Camaleão"), Categoria.BRONZE));
         Saint misty = new SilverSaint("Misty", new Armadura(new Constelacao("Lagarto"), Categoria.PRATA));
@@ -115,7 +146,9 @@ public class ListaSaintsTest {
         listaSaints.adicionar(shun);
         listaSaints.adicionar(misty);
         listaSaints.adicionar(june);
-        List<Saint> resultadoBusca = listaSaints.buscarPorCategoria(Categoria.BRONZE);
+        shun.perderVida(100);
+        june.perderVida(100);
+        List<Saint> resultadoBusca = listaSaints.buscarPorStatus(Status.MORTO);
         assertEquals(shun, resultadoBusca.get(0));
         assertEquals(june, resultadoBusca.get(1));
         assertEquals(2, resultadoBusca.size());
@@ -144,7 +177,18 @@ public class ListaSaintsTest {
     }
     
     @Test
-    public void getSaintMaiorVidaDeFatoRetornaOPrimeiroComMenorVida() throws Exception {
+    public void getSaintMaiorVidaComApenasUm() throws Exception {
+        ListaSaints lista = new ListaSaints();
+        Saint seiya = new Saint("Seiya", new Armadura(new Constelacao("Pegaso"), Categoria.BRONZE));
+        
+        lista.adicionar(seiya);
+        
+        assertEquals(seiya, lista.getSaintMaiorVida());
+    }
+    
+    
+    @Test
+    public void getSaintMaiorVidaDeFatoRetornaOPrimeiroComMaiorVida() throws Exception {
         ListaSaints lista = new ListaSaints();
         Saint seiya = new Saint("Seiya", new Armadura(new Constelacao("Pegaso"), Categoria.BRONZE));
         Saint marin = new Saint("Marin", new Armadura(new Constelacao("Aguia"), Categoria.PRATA));
@@ -163,6 +207,11 @@ public class ListaSaintsTest {
         lista.adicionar(saint3);
         
         assertEquals(seiya, lista.getSaintMaiorVida());       
+    }
+    
+    @Test
+    public void getSaintMaiorVidaComListaVazia() throws Exception {
+        assertNull(new ListaSaints().getSaintMaiorVida());
     }
     
     @Test
