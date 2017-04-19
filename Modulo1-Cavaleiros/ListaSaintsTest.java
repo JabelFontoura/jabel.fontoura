@@ -87,8 +87,7 @@ public class ListaSaintsTest {
         
         lista.ordenar();
         
-        for(int i = 0; i < lista.todos().size() - 1; i++) {
-            System.out.println(lista.get(i).getVida());
+        for(int i = 0; i < lista.todos().size() - 1; i++) { 
             assertTrue(lista.get(i).getVida() <= lista.get(i + 1).getVida()); 
         }
     }

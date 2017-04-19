@@ -154,7 +154,6 @@ public class SaintTest {
          
          hyoga.aprenderGolpe(soco);             
          assertEquals(soco, hyoga.getProximoGolpe());
-         System.out.println(soco.getFatorDano());
          hyoga.aprenderGolpe(chute);
          assertEquals(chute, hyoga.getProximoGolpe());
          

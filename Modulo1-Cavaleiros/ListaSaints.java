@@ -77,7 +77,7 @@ public class ListaSaints {
     }
 
     public void ordenar() {    
-        //Collections.sort(lista, (saint1, saint2) -> Double.compare(saint1.getVida(), saint2.getVida()));
+        // Collections.sort(lista, (saint1, saint2) -> Double.compare(saint1.getVida(), saint2.getVida()));
        
        int j;
        Saint aux;
