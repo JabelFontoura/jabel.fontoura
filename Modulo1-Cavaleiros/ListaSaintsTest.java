@@ -28,7 +28,36 @@ public class ListaSaintsTest {
     }
     
     @Test
-    public void buscarSaintPorCategoriaBronzeDeveRetornarListaDeSaintsCerto() throws Exception {
+    public void buscarNomeExistenteComRepeticao() throws Exception {
+        Saint seiya = new Saint("Seiya", new Armadura(new Constelacao("Pegaso"), Categoria.BRONZE));
+        Saint seiya2 = new Saint("Seiya", new Armadura(new Constelacao("Pegaso"), Categoria.BRONZE));
+        ListaSaints lista = new ListaSaints();
+        
+        lista.adicionar(seiya);
+        lista.adicionar(seiya2);
+        
+        assertEquals(seiya, lista.buscarPorNome("Seiya"));
+    }
+    
+    @Test
+    public void buscarNomeInexistente() throws Exception {
+        Saint seiya = new Saint("Seiya", new Armadura(new Constelacao("Pegaso"), Categoria.BRONZE));
+        Saint seiya2 = new Saint("Seiya", new Armadura(new Constelacao("Pegaso"), Categoria.BRONZE));
+        ListaSaints lista = new ListaSaints();
+        
+        lista.adicionar(seiya);
+        lista.adicionar(seiya2);
+        
+        assertNull(lista.buscarPorNome("Um nome que não existe"));
+    }
+    
+    @Test
+    public void buscarNomeComListaVazia() {
+        assertNull(new ListaSaints().buscarPorNome("Um nome que não existe"));
+    }
+    
+    @Test
+    public void buscarSaintPorCategoriaDeveRetornarListaDeSaintsCerto() throws Exception {
         Saint seiya = new Saint("Seiya", new Armadura(new Constelacao("Pegaso"), Categoria.BRONZE));
         ListaSaints lista = new ListaSaints();
         Saint marin = new Saint("Marin", new Armadura(new Constelacao("Aguia"), Categoria.PRATA));
@@ -41,6 +70,23 @@ public class ListaSaintsTest {
         listaCategoria.add(seiya);
         
         assertEquals(listaCategoria, lista.buscarPorCategoria(Categoria.BRONZE));
+    }
+     
+    
+    @Test
+    public void buscarSaintPorCategoriaListaVazia() throws Exception {
+        List<Saint> listaCategoria = new ArrayList<Saint>();
+        
+        assertEquals(listaCategoria, new ListaSaints().buscarPorCategoria(Categoria.OURO));
+    }
+    
+    @Test
+    public void buscarPorCategoriaInexistente() throws Exception {
+        ListaSaints listaSaints = new ListaSaints();
+        Saint june = new Saint("June", new Armadura(new Constelacao("Camaleão"), Categoria.BRONZE));
+        listaSaints.adicionar(june);
+        List<Saint> resultadoBusca = listaSaints.buscarPorCategoria(Categoria.PRATA);
+        assertEquals(new ArrayList<Saint>(), resultadoBusca);
     }
     
     @Test
@@ -58,6 +104,21 @@ public class ListaSaintsTest {
         listaStatus.add(marin);
         
         assertEquals(listaStatus, lista.buscarPorStatus(Status.VIVO));
+    }
+    
+    @Test
+    public void buscarPorCategoriaComMaisDeUmExistenteNaCategoria() throws Exception {
+        ListaSaints listaSaints = new ListaSaints();
+        Saint june = new Saint("June", new Armadura(new Constelacao("Camaleão"), Categoria.BRONZE));
+        Saint misty = new SilverSaint("Misty", new Armadura(new Constelacao("Lagarto"), Categoria.PRATA));
+        Saint shun = new Saint("June", new Armadura(new Constelacao("Andrômeda"), Categoria.BRONZE));
+        listaSaints.adicionar(shun);
+        listaSaints.adicionar(misty);
+        listaSaints.adicionar(june);
+        List<Saint> resultadoBusca = listaSaints.buscarPorCategoria(Categoria.BRONZE);
+        assertEquals(shun, resultadoBusca.get(0));
+        assertEquals(june, resultadoBusca.get(1));
+        assertEquals(2, resultadoBusca.size());
     }
     
     @Test
