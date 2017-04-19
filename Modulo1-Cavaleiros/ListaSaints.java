@@ -66,6 +66,10 @@ public class ListaSaints {
     }
 
     public Saint getSaintMenorVida() {
+        if(lista.isEmpty()) {
+            return null;
+        }
+        
         ordenar();
         return lista.get(0);
     }
