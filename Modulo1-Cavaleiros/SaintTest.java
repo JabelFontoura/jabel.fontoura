@@ -127,7 +127,7 @@ public class SaintTest {
     }
     
     @Test
-    public void sainOuroIniciaCom7Sentidos() throws Exception {
+    public void saintOuroIniciaCom7Sentidos() throws Exception {
         GoldSaint hyoga = new GoldSaint("Hyoga", new Armadura (new Constelacao("Virgem"),Categoria.OURO));
         
         assertEquals(7, hyoga.getqtdSentidosDespertados());

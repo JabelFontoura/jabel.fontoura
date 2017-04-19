@@ -44,7 +44,24 @@ public class ListaSaintsTest {
     }
     
     @Test
-    public void getSaintMenorVidaDeFatoRetornaOComMenorVida() throws Exception {
+    public void buscarSaintPorStatusVivoDeveRetornarListaDeSaintsCerto() throws Exception {
+        Saint seiya = new Saint("Seiya", new Armadura(new Constelacao("Pegaso"), Categoria.BRONZE));
+        ListaSaints lista = new ListaSaints();
+        Saint marin = new Saint("Marin", new Armadura(new Constelacao("Aguia"), Categoria.PRATA));
+        
+        lista.adicionar(seiya);
+        lista.adicionar(marin);
+        
+        List<Saint> listaStatus = new ArrayList<Saint>();
+        
+        listaStatus.add(seiya);
+        listaStatus.add(marin);
+        
+        assertEquals(listaStatus, lista.buscarPorStatus(Status.VIVO));
+    }
+    
+    @Test
+    public void getSaintMenorVidaDeFatoRetornaOPrimeiroComMenorVida() throws Exception {
         ListaSaints lista = new ListaSaints();
         Saint seiya = new Saint("Seiya", new Armadura(new Constelacao("Pegaso"), Categoria.BRONZE));
         Saint marin = new Saint("Marin", new Armadura(new Constelacao("Aguia"), Categoria.PRATA));
@@ -62,8 +79,29 @@ public class ListaSaintsTest {
         lista.adicionar(saint2);
         lista.adicionar(saint3);
         
-        assertEquals(marin, lista.getSaintMenorVida());
+        assertEquals(marin, lista.getSaintMenorVida());       
+    }
+    
+    @Test
+    public void getSaintMaiorVidaDeFatoRetornaOPrimeiroComMenorVida() throws Exception {
+        ListaSaints lista = new ListaSaints();
+        Saint seiya = new Saint("Seiya", new Armadura(new Constelacao("Pegaso"), Categoria.BRONZE));
+        Saint marin = new Saint("Marin", new Armadura(new Constelacao("Aguia"), Categoria.PRATA));
+        Saint saint1 = new Saint("Seiya", new Armadura(new Constelacao("Pegaso"), Categoria.BRONZE));
+        Saint saint2 = new Saint("Seiya", new Armadura(new Constelacao("Pegaso"), Categoria.BRONZE));
+        Saint saint3 = new Saint("Seiya", new Armadura(new Constelacao("Pegaso"), Categoria.BRONZE));
         
+        marin.perderVida(90);
+        saint1.perderVida(10);
+        saint2.perderVida(40);
+        
+        lista.adicionar(seiya);
+        lista.adicionar(marin);
+        lista.adicionar(saint1);
+        lista.adicionar(saint2);
+        lista.adicionar(saint3);
+        
+        assertEquals(seiya, lista.getSaintMaiorVida());       
     }
     
     @Test
