@@ -2,6 +2,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.stream.Collectors;
 
 public class ListaSaints {
 
@@ -37,25 +38,15 @@ public class ListaSaints {
     }
 
     public List<Saint> buscarPorCategoria(Categoria categoria) {
-        List<Saint> listaCategoria = new ArrayList<Saint>();
-
-        for(Saint saint : lista) {
-            if(categoria.getValor() == saint.getValorCategoria()) {
-                listaCategoria.add(saint);
-            }
-        }
-        return listaCategoria;
+        return lista.stream()
+                .filter(s -> s.getValorCategoria() == (categoria.getValor()))
+                .collect(Collectors.toList());
     }
 
     public List<Saint > buscarPorStatus(Status status) {
-        List<Saint> listaStatus = new ArrayList<Saint>();
-
-        for(Saint saint : lista) {
-            if(status == saint.getStatus()) {
-                listaStatus.add(saint);
-            }
-        }
-        return listaStatus;
+        return lista.stream()
+                .filter(s -> s.getStatus().equals(status))
+                .collect(Collectors.toList());
     }
 
     public Saint getSaintMaiorVida() throws Exception {
