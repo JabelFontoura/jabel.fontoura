@@ -28,9 +28,9 @@ public class ListaSaints {
     }
 
     public Saint buscarPorNome(String nome) {
-        for(int i = 0; i < lista.size(); i++) {
-            if(nome.equals(lista.get(i).getNome())) {
-                return lista.get(i);
+        for(Saint saint : lista) {
+            if(nome.equals(saint.getNome())) {
+                return saint;
             }
         }
         return null;
@@ -39,20 +39,20 @@ public class ListaSaints {
     public List<Saint> buscarPorCategoria(Categoria categoria) {
         List<Saint> listaCategoria = new ArrayList<Saint>();
 
-        for(int i = 0; i < lista.size(); i++) {
-            if(categoria.getValor() == lista.get(i).getValorCategoria()) {
-                listaCategoria.add(lista.get(i));
+        for(Saint saint : lista) {
+            if(categoria.getValor() == saint.getValorCategoria()) {
+                listaCategoria.add(saint);
             }
         }
         return listaCategoria;
     }
 
-    public List<Saint >buscarPorStatus(Status status) {
+    public List<Saint > buscarPorStatus(Status status) {
         List<Saint> listaStatus = new ArrayList<Saint>();
 
-        for(int i = 0; i < lista.size(); i++) {
-            if(status == lista.get(i).getStatus()) {
-                listaStatus.add(lista.get(i));
+        for(Saint saint : lista) {
+            if(status == saint.getStatus()) {
+                listaStatus.add(saint);
             }
         }
         return listaStatus;
