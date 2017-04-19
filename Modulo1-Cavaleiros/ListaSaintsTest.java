@@ -155,6 +155,14 @@ public class ListaSaintsTest {
     }
     
     @Test
+    public void getSaintMenorVidaComApenasUm() throws Exception {
+        ListaSaints listaSaints = new ListaSaints();
+        Saint june = new Saint("June", new Armadura(new Constelacao("Camaleão"), Categoria.BRONZE));
+        listaSaints.adicionar(june);
+        assertEquals(june, listaSaints.getSaintMenorVida());
+    }
+    
+    @Test
     public void getSaintMenorVidaDeFatoRetornaOPrimeiroComMenorVida() throws Exception {
         ListaSaints lista = new ListaSaints();
         Saint seiya = new Saint("Seiya", new Armadura(new Constelacao("Pegaso"), Categoria.BRONZE));
@@ -174,6 +182,13 @@ public class ListaSaintsTest {
         lista.adicionar(saint3);
         
         assertEquals(marin, lista.getSaintMenorVida());       
+    }
+    
+    @Test
+    public void getSaintMenorVidaComListaVazia() {
+        ListaSaints listaSaints = new ListaSaints();
+        Saint menorVida = listaSaints.getSaintMenorVida();
+        assertNull(menorVida);
     }
     
     @Test
