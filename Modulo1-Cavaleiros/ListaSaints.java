@@ -76,7 +76,7 @@ public class ListaSaints {
         return lista.get(0);
     }
 
-    public void ordenar() { // Tava sem tempo      
+    public void ordenar() {    
         //Collections.sort(lista, (saint1, saint2) -> Double.compare(saint1.getVida(), saint2.getVida()));
        
        int j;
