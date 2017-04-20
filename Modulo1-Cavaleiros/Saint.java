@@ -23,11 +23,11 @@ public class Saint {
     public void vestirArmadura() {
         this.armaduraVestida = true;
     }
-    
+
     public Armadura getArmadura() {
         return this.armadura;
     }
-    
+
     public Constelacao getConstelacaoArmadura() {
         return this.armadura.getConstelacao();
     }
@@ -41,10 +41,10 @@ public class Saint {
             if(dano >= this.vida) {
                 this.vida = 0;
             }else {
-              this.vida -= dano;  
+                this.vida -= dano;  
             }
         }
-        
+
         this.status = atualizaStatus();
     }
 
@@ -57,15 +57,15 @@ public class Saint {
 
         return this.status.VIVO;
     }
-    
+
     public List<Golpe> getGolpes() {
         return this.armadura.getConstelacao().getGolpes();
     }
-    
+
     public void aprenderGolpe(Golpe golpe) {
         this.armadura.getConstelacao().adicionarGolpe(golpe);
     }
-    
+
     public Golpe getProximoGolpe() {
         if(this.golpeAtual >= getGolpes().size()) {
             this.golpeAtual = 0;
@@ -73,10 +73,24 @@ public class Saint {
         return getGolpes().get(golpeAtual++);
     }
 
+    public String getCSV() {
+        StringBuilder sb = new StringBuilder();
+        
+            sb.append(getNome() + ","); 
+            sb.append(getVida() + ","); 
+            sb.append(getConstelacaoArmadura().getNome() + ","); 
+            sb.append(getArmadura().getCategoria() + ",");
+            sb.append(getStatus() + ",");
+            sb.append(getGenero() + ","); 
+            sb.append(isArmaduraVestida());
+        
+        return sb.toString();    
+    }
+
     public int getValorCategoria() {
         return this.armadura.getValorCategoria();
     }
-    
+
     public String getNome() {
         return this.nome;
     }

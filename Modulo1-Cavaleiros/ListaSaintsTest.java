@@ -468,6 +468,85 @@ public class ListaSaintsTest {
     }
     
     @Test
+    public void getCSVDoSaint() throws Exception {     
+        ListaSaints lista = new ListaSaints();
+        Saint june = new Saint("June", new Armadura(new Constelacao("Camaleão"), Categoria.BRONZE));
+        june.setGenero(Genero.FEMININO);
+        june.perderVida(15.5);
+        
+        String csv = june.getCSV();
+        
+        String resultado = "June,84.5,Camaleão,BRONZE,VIVO,FEMININO,false";
+        assertEquals(resultado, csv);
+    }
+    
+    @Test
+    public void getCSVDoSaintComArmadura() throws Exception {     
+        ListaSaints lista = new ListaSaints();
+        Saint june = new Saint("June", new Armadura(new Constelacao("Camaleão"), Categoria.BRONZE));
+        june.setGenero(Genero.FEMININO);
+        june.perderVida(15.5);
+        june.vestirArmadura();
+        
+        String csv = june.getCSV();
+        
+        String resultado = "June,84.5,Camaleão,BRONZE,VIVO,FEMININO,true";
+        assertEquals(resultado, csv);
+    }
+    
+    @Test
+    public void getCSVDoSaintSemGenero() throws Exception {     
+        ListaSaints lista = new ListaSaints();
+        Saint june = new Saint("June", new Armadura(new Constelacao("Camaleão"), Categoria.BRONZE));
+        june.perderVida(15.5);
+        june.vestirArmadura();
+        
+        String csv = june.getCSV();
+        
+        String resultado = "June,84.5,Camaleão,BRONZE,VIVO,NAO_INFORMADO,true";
+        assertEquals(resultado, csv);
+    }
+    
+    @Test
+    public void getCSVDoSaintSemNome() throws Exception {     
+        ListaSaints lista = new ListaSaints();
+        Saint june = new Saint("", new Armadura(new Constelacao("Camaleão"), Categoria.BRONZE));
+        june.perderVida(15.5);
+        june.vestirArmadura();
+        
+        String csv = june.getCSV();
+        
+        String resultado = ",84.5,Camaleão,BRONZE,VIVO,NAO_INFORMADO,true";
+        assertEquals(resultado, csv);
+    }
+    
+    @Test
+    public void getCSVDoSaintSComVida100() throws Exception {     
+        ListaSaints lista = new ListaSaints();
+        Saint june = new Saint("June", new Armadura(new Constelacao("Camaleão"), Categoria.BRONZE));
+        june.vestirArmadura();
+        
+        String csv = june.getCSV();
+        
+        String resultado = "June,100.0,Camaleão,BRONZE,VIVO,NAO_INFORMADO,true";
+        assertEquals(resultado, csv);
+    }
+    
+    
+    @Test
+    public void getCSVDoSaintSemCategoria() throws Exception {     
+        ListaSaints lista = new ListaSaints();
+        Saint june = new Saint("June", new Armadura(new Constelacao(""), Categoria.BRONZE));
+        june.perderVida(15.5);
+        june.vestirArmadura();
+        
+        String csv = june.getCSV();
+        
+        String resultado = "June,84.5,,BRONZE,VIVO,NAO_INFORMADO,true";
+        assertEquals(resultado, csv);
+    }
+    
+    @Test
     public void getCSVCom1Saint() throws Exception {     
         ListaSaints lista = new ListaSaints();
         Saint june = new Saint("June", new Armadura(new Constelacao("Camaleão"), Categoria.BRONZE));
@@ -477,7 +556,7 @@ public class ListaSaintsTest {
         
         String csv = lista.getCSV();
         
-        String resultado = "June,84.5,Camaleão,BRONZE,VIVO,FEMININO,false\n";
+        String resultado = "June,84.5,Camaleão,BRONZE,VIVO,FEMININO,false";
         assertEquals(resultado, csv);
     }
     
@@ -496,9 +575,9 @@ public class ListaSaintsTest {
         lista.adicionar(dohko);
         
         String csv = lista.getCSV();
-        
+
         String resultado = "June,84.5,Camaleão,BRONZE,VIVO,FEMININO,false\n"+
-                        "Dohko,10.0,,OURO,VIVO,NAO_INFORMADO,true\n";
+                        "Dohko,10.0,,OURO,VIVO,NAO_INFORMADO,true";
 
         assertEquals(resultado, csv);
     }

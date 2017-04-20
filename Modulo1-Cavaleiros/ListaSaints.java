@@ -75,36 +75,24 @@ public class ListaSaints {
     }
 
     public void ordenar() {    
-        int j;
-        Saint aux;
-
-        for (int i = 1; i < lista.size(); i++) {    
-            aux = lista.get(i);
-
-            for (j = i - 1; (j >= 0) && (lista.get(j).getVida() > aux.getVida()); j--) {
-                lista.set(j + 1, lista.get(j));
-            }
-            lista.set(j + 1, aux);
-        }     
+        ordenar(TipoOrdenacao.ASCENDENTE);
     }
 
     public void ordenar(TipoOrdenacao tipoOrdenacao) {
-        int j;
+        int j = 0;
         Saint aux;
+        
+        boolean condicao;
 
-        if(tipoOrdenacao.equals(TipoOrdenacao.DESCENDENTE)) {
-            for (int i = 1; i < lista.size(); i++) {    
-                aux = lista.get(i);
-
-                for (j = i - 1; (j >= 0) && (lista.get(j).getVida() < aux.getVida()); j--) {
-                    lista.set(j + 1, lista.get(j));
-                }
-                lista.set(j + 1, aux);
-            } 
-
-        } else {
-            ordenar();
-        }
+        for (int i = 1; i < lista.size(); i++) {    
+            aux = lista.get(i);
+            
+            for (j = i - 1; (j >= 0) && (tipoOrdenacao == TipoOrdenacao.ASCENDENTE ? 
+                (lista.get(j).getVida() > aux.getVida()) : (lista.get(j).getVida() < aux.getVida())); j--) {
+                lista.set(j + 1, lista.get(j));
+            }
+            lista.set(j + 1, aux);
+        } 
     }
 
     public ListaSaints unir(ListaSaints novaLista) {
@@ -147,19 +135,12 @@ public class ListaSaints {
     }
     
     public String getCSV() {
-        String resultado = "";
+        String csv = "";
         
         for(Saint saint : lista) {
-            resultado += 
-                saint.getNome() + "," + 
-                saint.getVida() + "," + 
-                saint.getConstelacaoArmadura().getNome() + "," + 
-                saint.getArmadura().getCategoria() + "," +
-                saint.getStatus() + "," + 
-                saint.getGenero() + "," + 
-                saint.isArmaduraVestida()  + "\n";
+            csv += saint.getCSV() + "\n";
         }
         
-        return resultado;
+        return csv.substring(0, csv.length() - 1);
     }
 }
