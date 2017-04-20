@@ -281,4 +281,153 @@ public class ListaSaintsTest {
         }
     }
     
+    @Test
+    public void unirAdicionaNovaListaNaLista() throws Exception {
+        ListaSaints lista = new ListaSaints();
+        ListaSaints novaLista = new ListaSaints();
+        ListaSaints listaCompleta = new ListaSaints();
+        
+        Saint seiya = new Saint("Seiya", new Armadura(new Constelacao("Pegaso"), Categoria.BRONZE));
+        Saint marin = new Saint("Marin", new Armadura(new Constelacao("Aguia"), Categoria.PRATA));
+        Saint saint1 = new Saint("Seiya", new Armadura(new Constelacao("Pegaso"), Categoria.BRONZE));
+        Saint saint2 = new Saint("Seiya", new Armadura(new Constelacao("Pegaso"), Categoria.BRONZE));
+        Saint saint3 = new Saint("Seiya", new Armadura(new Constelacao("Pegaso"), Categoria.BRONZE));
+        
+        listaCompleta.adicionar(seiya);
+        listaCompleta.adicionar(marin);
+        listaCompleta.adicionar(saint1);
+        listaCompleta.adicionar(saint2);
+        listaCompleta.adicionar(saint3);
+        
+        lista.adicionar(seiya);
+        lista.adicionar(marin);
+        
+        novaLista.adicionar(saint1);
+        novaLista.adicionar(saint2);
+        novaLista.adicionar(saint3);
+        
+        ListaSaints resultado = lista.unir(novaLista);
+        
+        assertTrue(resultado.todos().containsAll(listaCompleta.todos()));
+        assertEquals(listaCompleta.todos().size(), resultado.todos().size());       
+    }
+    
+    @Test
+    public void unirAdicionaNovaListaVazia() throws Exception {
+        ListaSaints lista = new ListaSaints();
+        ListaSaints novaLista = new ListaSaints();
+        ListaSaints listaCompleta = new ListaSaints();
+        
+        Saint seiya = new Saint("Seiya", new Armadura(new Constelacao("Pegaso"), Categoria.BRONZE));
+        Saint marin = new Saint("Marin", new Armadura(new Constelacao("Aguia"), Categoria.PRATA));
+        
+        listaCompleta.adicionar(seiya);
+        listaCompleta.adicionar(marin);
+        
+        lista.adicionar(seiya);
+        lista.adicionar(marin);
+        
+        ListaSaints resultado = lista.unir(novaLista);
+        
+        assertTrue(resultado.todos().containsAll(listaCompleta.todos()));
+        assertEquals(listaCompleta.todos().size(), resultado.todos().size());    
+    }
+    
+    
+    @Test
+    public void diffRetornaListaCerta() throws Exception {
+        ListaSaints lista = new ListaSaints();
+        ListaSaints novaLista = new ListaSaints();
+        ListaSaints listaDiff = new ListaSaints();
+        
+        Saint seiya = new Saint("Seiya", new Armadura(new Constelacao("Pegaso"), Categoria.BRONZE));
+        Saint marin = new Saint("Marin", new Armadura(new Constelacao("Aguia"), Categoria.PRATA));
+        Saint saint1 = new Saint("saint1", new Armadura(new Constelacao("Pegaso"), Categoria.BRONZE));
+        Saint saint2 = new Saint("saint2", new Armadura(new Constelacao("Pegaso"), Categoria.BRONZE));
+        Saint saint3 = new Saint("saint3", new Armadura(new Constelacao("Pegaso"), Categoria.BRONZE));
+        
+        lista.adicionar(seiya);
+        lista.adicionar(marin);
+        lista.adicionar(saint1);
+        
+        novaLista.adicionar(saint1);
+        novaLista.adicionar(saint2);
+        novaLista.adicionar(saint3);
+        
+        listaDiff.adicionar(seiya);
+        listaDiff.adicionar(marin);
+        listaDiff.adicionar(saint2);
+        listaDiff.adicionar(saint3);
+        
+        ListaSaints resultado = lista.diff(novaLista);
+        
+        assertTrue(resultado.todos().containsAll(listaDiff.todos()));
+        assertEquals(listaDiff.todos().size(), resultado.todos().size()); 
+    }
+    
+    @Test
+    public void interscComValoresUnicos() throws Exception {
+        ListaSaints lista = new ListaSaints();
+        ListaSaints novaLista = new ListaSaints();
+        ListaSaints listaInterSec = new ListaSaints();
+        
+        Saint seiya = new Saint("Seiya", new Armadura(new Constelacao("Pegaso"), Categoria.BRONZE));
+        Saint marin = new Saint("Marin", new Armadura(new Constelacao("Aguia"), Categoria.PRATA));
+        Saint saint1 = new Saint("saint1", new Armadura(new Constelacao("Pegaso"), Categoria.BRONZE));
+        Saint saint2 = new Saint("saint2", new Armadura(new Constelacao("Pegaso"), Categoria.BRONZE));
+        Saint saint3 = new Saint("saint3", new Armadura(new Constelacao("Pegaso"), Categoria.BRONZE));
+        
+        lista.adicionar(seiya);
+        lista.adicionar(marin);
+        lista.adicionar(saint1);
+        lista.adicionar(saint2);
+        
+        novaLista.adicionar(saint1);
+        novaLista.adicionar(saint2);
+        novaLista.adicionar(saint3);
+        
+        
+        listaInterSec.adicionar(saint1);
+        listaInterSec.adicionar(saint2);
+        
+        ListaSaints resultado = lista.intersec(novaLista);    
+        
+        assertTrue(resultado.todos().containsAll(listaInterSec.todos()));
+        assertEquals(listaInterSec.todos().size(), resultado.todos().size()); 
+    }
+    
+    @Test
+    public void intersecComValoresRepetidos() throws Exception {
+        ListaSaints lista = new ListaSaints();
+        ListaSaints novaLista = new ListaSaints();
+        ListaSaints listaInterSec = new ListaSaints();
+        
+        Saint seiya = new Saint("Seiya", new Armadura(new Constelacao("Pegaso"), Categoria.BRONZE));
+        Saint marin = new Saint("Marin", new Armadura(new Constelacao("Aguia"), Categoria.PRATA));
+        Saint saint1 = new Saint("saint1", new Armadura(new Constelacao("Pegaso"), Categoria.BRONZE));
+        Saint saint2 = new Saint("saint2", new Armadura(new Constelacao("Pegaso"), Categoria.BRONZE));
+        Saint saint3 = new Saint("saint3", new Armadura(new Constelacao("Pegaso"), Categoria.BRONZE));
+        
+        lista.adicionar(seiya);
+        lista.adicionar(seiya);
+        lista.adicionar(marin);
+        lista.adicionar(saint1);
+        lista.adicionar(saint2);
+        
+        novaLista.adicionar(saint1);
+        novaLista.adicionar(saint1);
+        novaLista.adicionar(saint2);
+        novaLista.adicionar(saint3);
+        
+        
+        listaInterSec.adicionar(saint1);
+        listaInterSec.adicionar(saint2);
+        
+        ListaSaints resultado = lista.intersec(novaLista);    
+        
+        assertTrue(resultado.todos().containsAll(listaInterSec.todos()));
+        assertEquals(listaInterSec.todos().size(), resultado.todos().size()); 
+    }
+    
+    
 }

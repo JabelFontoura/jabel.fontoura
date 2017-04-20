@@ -23,6 +23,14 @@ public class Saint {
     public void vestirArmadura() {
         this.armaduraVestida = true;
     }
+    
+    public Armadura getArmadura() {
+        return this.armadura;
+    }
+    
+    public Constelacao getConstelacaoArmadura() {
+        return this.armadura.getConstelacao();
+    }
 
     public void perderVida(double dano) {
         if(dano < 0) {

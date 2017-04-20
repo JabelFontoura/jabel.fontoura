@@ -107,4 +107,58 @@ public class ListaSaints {
         }
     }
 
+    public ListaSaints unir(ListaSaints novaLista) {
+        ListaSaints resultado = new ListaSaints();
+
+        resultado.todos().addAll(lista);
+        resultado.todos().addAll(novaLista.todos());
+
+        return resultado;
+    }
+
+    public ListaSaints diff(ListaSaints novaLista) {
+        ListaSaints resultado = new ListaSaints();
+        
+        for(Saint saint : lista) {
+            if(!novaLista.todos().contains(saint)){
+                resultado.adicionar(saint);
+            }
+        }
+        
+        for(Saint saint : novaLista.todos()) {
+           if(!lista.contains(saint)) {
+               resultado.adicionar(saint);
+            }
+        }
+        
+        return resultado;
+    }
+
+    public ListaSaints intersec(ListaSaints novaLista) {
+        ListaSaints resultado = new ListaSaints();
+        
+        for(Saint saint : novaLista.todos()) {
+            if(lista.contains(saint) && !resultado.todos().contains(saint)) {
+                resultado.adicionar(saint);
+            }
+        }
+                
+        return resultado;
+    }
+    
+    public String getCSV() {
+        String resultado = "";
+        
+        for(Saint saint : lista) {
+            resultado += 
+                saint.getNome() + "," + 
+                saint.getVida() + "," + 
+                saint.getConstelacaoArmadura().getNome() + "," + 
+                saint.getStatus() + "," + 
+                saint.getGenero() + "," + 
+                saint.isArmaduraVestida()  + "\n";
+        }
+        
+        return resultado;
+    }
 }
