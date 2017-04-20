@@ -82,13 +82,13 @@ public class ListaSaints {
         int j = 0;
         Saint aux;
         
-        boolean condicao;
+        boolean condicao = tipoOrdenacao == TipoOrdenacao.ASCENDENTE;
 
         for (int i = 1; i < lista.size(); i++) {    
             aux = lista.get(i);
             
-            for (j = i - 1; (j >= 0) && (tipoOrdenacao == TipoOrdenacao.ASCENDENTE ? 
-                (lista.get(j).getVida() > aux.getVida()) : (lista.get(j).getVida() < aux.getVida())); j--) {
+            for (j = i - 1; (j >= 0) && ( condicao ? (lista.get(j).getVida() > aux.getVida()) : 
+                                        (lista.get(j).getVida() < aux.getVida())); j--) {
                 lista.set(j + 1, lista.get(j));
             }
             lista.set(j + 1, aux);
@@ -141,6 +141,6 @@ public class ListaSaints {
             csv += saint.getCSV() + "\n";
         }
         
-        return csv.substring(0, csv.length() - 1);
+        return csv.equals("") ? null : csv.substring(0, csv.length() - 1);
     }
 }

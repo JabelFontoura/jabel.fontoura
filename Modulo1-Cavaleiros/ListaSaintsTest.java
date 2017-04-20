@@ -581,4 +581,11 @@ public class ListaSaintsTest {
 
         assertEquals(resultado, csv);
     }
+    
+    @Test
+    public void getCSVComListaVazia() throws Exception {     
+        ListaSaints lista = new ListaSaints();
+        
+        assertNull(lista.getCSV());
+    }
 }
