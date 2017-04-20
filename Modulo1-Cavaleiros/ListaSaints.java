@@ -120,7 +120,7 @@ public class ListaSaints {
         ListaSaints resultado = new ListaSaints();
         
         for(Saint saint : lista) {
-            if(!novaLista.todos().contains(saint)){
+            if(!(novaLista.todos().indexOf(saint) >= 0)){
                 resultado.adicionar(saint);
             }
         }
@@ -154,6 +154,7 @@ public class ListaSaints {
                 saint.getNome() + "," + 
                 saint.getVida() + "," + 
                 saint.getConstelacaoArmadura().getNome() + "," + 
+                saint.getArmadura().getCategoria() + "," +
                 saint.getStatus() + "," + 
                 saint.getGenero() + "," + 
                 saint.isArmaduraVestida()  + "\n";
