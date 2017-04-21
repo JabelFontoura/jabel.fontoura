@@ -1,5 +1,7 @@
 import java.security.InvalidParameterException;
 import java.util.List;
+import java.util.ArrayList;
+
 
 public abstract class Saint {
 
@@ -11,6 +13,8 @@ public abstract class Saint {
     private double vida = 100.0;
     protected int qtdSentidosDespertados;
     private int golpeAtual;
+    private List<Movimento> movimentos = new ArrayList<Movimento>();
+    private int movimentoAtual;
 
     public Saint(String nome, Armadura armadura) throws Exception {
         this.nome = nome;
@@ -71,6 +75,17 @@ public abstract class Saint {
             this.golpeAtual = 0;
         }
         return getGolpes().get(golpeAtual++);
+    }
+    
+    public void adicionarMovimento(Movimento movimento) {
+        this.movimentos.add(movimento);
+    }
+    
+    public Movimento getProximoMovimento() {
+        if(this.movimentoAtual >= this.movimentos.size()) {
+            this.movimentoAtual = 0;
+        }
+        return this.movimentos.get(movimentoAtual++);
     }
 
     public String getCSV() {
