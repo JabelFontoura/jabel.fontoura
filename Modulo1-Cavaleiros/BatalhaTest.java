@@ -7,8 +7,8 @@ public class BatalhaTest {
 
     @Test
     public void categoriaOponenteMaiorQueDesafiador() throws Exception {
-        Saint shaina = new Saint("Shaina", new Armadura(new Constelacao("Serpente"), Categoria.PRATA));
-        Saint hyoga = new Saint("Hyoga", new Armadura(new Constelacao("Serpente"), Categoria.BRONZE));
+        Saint shaina = new SilverSaint("Shaina", "Serpente");
+        Saint hyoga = new BronzeSaint("Hyoga", "Cisne");
 
         Batalha batalha = new Batalha(shaina, hyoga);
 
@@ -20,8 +20,8 @@ public class BatalhaTest {
 
     @Test
     public void categoriasIguaisDesafiadorDevePerderVida() throws Exception {
-        Saint aldebaram = new Saint("Aldebaram", new Armadura(new Constelacao("Aldebaram"), Categoria.OURO));
-        Saint mascaraMorte = new Saint("Mascara da Morte", new Armadura(new Constelacao("Cancer"), Categoria.OURO));
+        Saint aldebaram = new BronzeSaint("Aldebaram", "Aldebaram");
+        Saint mascaraMorte = new BronzeSaint("Mascara da Morte", "Cancer");
 
         Batalha batalha = new Batalha(aldebaram, mascaraMorte);
 
@@ -34,8 +34,8 @@ public class BatalhaTest {
       @Test
      public void categoriaDesafiadorMaiorOponentePerdeVida() throws Exception {
          // Arrange
-         Saint ikki = new Saint("Ikki", new Armadura(new Constelacao("Fênix"), Categoria.BRONZE));
-         Saint mascaraMorte = new Saint("Máscara da Morte", new Armadura(new Constelacao("Câncer"), Categoria.OURO));
+         Saint ikki = new BronzeSaint("Ikki", "Fênix");
+         Saint mascaraMorte = new GoldSaint("Máscara da Morte", "Câncer");
          Batalha batalha = new Batalha(ikki, mascaraMorte);
          // Act
          batalha.iniciaBatalha();

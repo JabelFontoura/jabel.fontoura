@@ -10,8 +10,7 @@ public class SaintTest {
     public void vestirArmaduraDeixaTrue() throws Exception {
         //AAA
         //1. Arrange - Montagem dos dados de teste
-        Armadura escorpiao = new Armadura(new Constelacao("Escorpião"), Categoria.OURO);
-        Saint milo = new Saint("Milo", escorpiao);
+        Saint milo = new GoldSaint("Milo", "Escorpião");
 
         //2. Act - Invocar a ação a ser testada
         milo.vestirArmadura();
@@ -23,19 +22,19 @@ public class SaintTest {
 
     @Test
     public void naoVestirArmaduraDeixaFalse() throws Exception {
-        Saint hyoga = new Saint("Hyoga", new Armadura(new Constelacao("Cisne"), Categoria.BRONZE));
+        Saint hyoga = new BronzeSaint("Hyoga", "Cisne");
         assertEquals(false, hyoga.isArmaduraVestida());
     }
 
     @Test
     public void aoCriarSaintGeneroDeveSerNaoInformado() throws Exception {
-        Saint shaka = new Saint("Shaka", new Armadura(new Constelacao("Vigem"), Categoria.OURO));
+        Saint shaka = new SilverSaint("Shaka", "Vigem");
         assertEquals(Genero.NAO_INFORMADO, shaka.getGenero());
     }
 
     @Test
     public void deveSerPossivelAlterarGenero() throws Exception {
-        Saint jabu = new Saint("Jabu", new Armadura(new Constelacao("Unicórnio"), Categoria.BRONZE));
+        Saint jabu = new BronzeSaint("Jabu", "Unicórnio");
 
         jabu.setGenero(Genero.MASCULINO);
         assertEquals(Genero.MASCULINO, jabu.getGenero());
@@ -46,19 +45,19 @@ public class SaintTest {
 
     @Test
     public void verificarSeSaintNasceVivo() throws Exception{
-        Saint hyoga = new Saint("Hyoga", new Armadura(new Constelacao("Cisne"),Categoria.BRONZE));
+        Saint hyoga = new BronzeSaint("Hyoga", "Cisne");
         assertEquals(Status.VIVO, hyoga.getStatus());
     }
 
     @Test
     public void vidaInicialDeveSer100() throws Exception {
-        Saint hyoga = new Saint("Hyoga", new Armadura(new Constelacao("Cisne"),Categoria.BRONZE));
+        Saint hyoga = new BronzeSaint("Hyoga", "Cisne");
         assertEquals(100.0, hyoga.getVida(), 0.01);
     }
 
     @Test
     public void perderVidaDiminuiVidaInicial() throws Exception {
-        Saint hyoga = new Saint("Hyoga", new Armadura(new Constelacao("Cisne"),Categoria.BRONZE));
+        Saint hyoga = new BronzeSaint("Hyoga", "Cisne");
         double vidaInicial = hyoga.getVida();
 
         hyoga.perderVida(10);
@@ -68,7 +67,7 @@ public class SaintTest {
 
     @Test
     public void perderVidaComDano10() throws Exception {
-        Saint hyoga = new Saint("Hyoga", new Armadura(new Constelacao("Cisne"),Categoria.BRONZE));
+        Saint hyoga = new BronzeSaint("Hyoga", "Cisne");
         
         hyoga.perderVida(10);
         
@@ -77,7 +76,7 @@ public class SaintTest {
     
     @Test
     public void perderVidaComDano100() throws Exception {
-        Saint hyoga = new Saint("Hyoga", new Armadura(new Constelacao("Cisne"),Categoria.BRONZE));
+        Saint hyoga = new BronzeSaint("Hyoga", "Cisne");
         
         hyoga.perderVida(100);
         
@@ -86,7 +85,7 @@ public class SaintTest {
     
     @Test
     public void perderVidaComDano1000() throws Exception {
-        Saint hyoga = new Saint("Hyoga", new Armadura(new Constelacao("Cisne"),Categoria.BRONZE));
+        Saint hyoga = new BronzeSaint("Hyoga", "Cisne");
         
         hyoga.perderVida(100);
         
@@ -95,14 +94,14 @@ public class SaintTest {
     
     @Test(expected=InvalidParameterException.class)
     public void perderVidaComDanoNegativoDeveLançarErro() throws Exception {
-        Saint hyoga = new Saint("Hyoga", new Armadura(new Constelacao("Cisne"),Categoria.BRONZE));
+        Saint hyoga = new BronzeSaint("Hyoga", "Cisne");
         
         hyoga.perderVida(-1000);
     }
     
     @Test
     public void naoDeveSerPossivelAlterarStatusSeForMorto() throws Exception{
-        Saint hyoga = new Saint("Hyoga", new Armadura(new Constelacao("Cisne"),Categoria.BRONZE));
+        Saint hyoga = new BronzeSaint("Hyoga", "Cisne");
         
         hyoga.perderVida(100);
         hyoga.perderVida(10);
@@ -114,41 +113,42 @@ public class SaintTest {
     
     @Test
     public void saintIniciaCom5SentidosDespertados() throws Exception {
-        BronzeSaint hyoga = new BronzeSaint("Hyoga", new Armadura (new Constelacao("Cisne"),Categoria.BRONZE));
+        Saint hyoga = new BronzeSaint("Hyoga", "Cisne");
         
         assertEquals(5, hyoga.getqtdSentidosDespertados());
     }
     
     @Test
     public void saintPrataIniciaCom6Sentidos() throws Exception {
-        SilverSaint hyoga = new SilverSaint("Hyoga", new Armadura (new Constelacao("Cisne"),Categoria.PRATA));
+        SilverSaint hyoga = new SilverSaint("Hyoga", "Cisne");
         
         assertEquals(6, hyoga.getqtdSentidosDespertados());
     }
     
     @Test
     public void saintOuroIniciaCom7Sentidos() throws Exception {
-        GoldSaint hyoga = new GoldSaint("Hyoga", new Armadura (new Constelacao("Virgem"),Categoria.OURO));
+        GoldSaint hyoga = new GoldSaint("Hyoga", "Virgem");
         
         assertEquals(7, hyoga.getqtdSentidosDespertados());
     }
     
     @Test(expected=Exception.class)
     public void constelacaoInvalidadeDeOuroDeveLancarErro() throws Exception {
-        new GoldSaint("Jabel", new Armadura(new Constelacao("Test"), Categoria.OURO));
+        new GoldSaint("Jabel", "Test");
     }
     
     @Test
     public void verificarSeSaintAprendeGolpe() throws Exception {
-         GoldSaint hyoga = new GoldSaint("Hyoga", new Armadura (new Constelacao("Virgem"),Categoria.OURO));
+         GoldSaint hyoga = new GoldSaint("Hyoga", "Virgem");
          
          hyoga.aprenderGolpe(new Golpe("Soco", 5));
          
          assertEquals(1, hyoga.getGolpes().size());
     }
+    
     @Test
     public void proximoGolpeDeveSerRealmenteOProximo() throws Exception {
-         GoldSaint hyoga = new GoldSaint("Hyoga", new Armadura (new Constelacao("Virgem"),Categoria.OURO));
+         GoldSaint hyoga = new GoldSaint("Hyoga", "Virgem");
          Golpe soco = new Golpe("Soco", 5);
          Golpe chute = new Golpe("Chute", 7);
          

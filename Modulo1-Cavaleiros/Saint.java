@@ -1,7 +1,7 @@
 import java.security.InvalidParameterException;
 import java.util.List;
 
-public class Saint {
+public abstract class Saint {
 
     private String nome;
     private Armadura armadura;
