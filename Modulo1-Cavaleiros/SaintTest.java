@@ -160,4 +160,19 @@ public class SaintTest {
          assertEquals(soco, hyoga.getProximoGolpe());
     }
     
+    @Test (expected = IndexOutOfBoundsException.class)
+    public void getProximoMovimentoComListaVazia() throws Exception {
+        Saint hyoga = new BronzeSaint("Hyoga", "Cisne");
+        hyoga.getProximoMovimento();
+        
+    }
+    
+    @Test
+    public void getProximoMovimentoComUmMovimento() throws Exception {
+        Saint hyoga = new BronzeSaint("Hyoga", "Cisne");
+        Movimento vestirArmadura = new VestirArmadura(hyoga);
+        hyoga.adicionarMovimento(vestirArmadura);
+        assertEquals(vestirArmadura, hyoga.getProximoMovimento());
+    }
+    
 }
