@@ -2,7 +2,6 @@ public class Batalha {
 
     private Saint oponente;
     private Saint desafiador;
-    private int turno = 1;
 
     public Batalha(Saint oponente, Saint desafiador) {
         this.oponente = oponente;
@@ -10,27 +9,21 @@ public class Batalha {
     }
 
     public void iniciaBatalha() {
-        this.oponente.aprenderGolpe(new Golpe("Soco", 10));
-        this.desafiador.aprenderGolpe(new Golpe("Soco", 10));
-        
-        this.oponente.adicionarMovimento(new Golpear(oponente, desafiador));
-        this.desafiador.adicionarMovimento(new Golpear(desafiador, oponente));
-        
-        //TODO melhorar logica
+        Saint saintEmAcao = null;
         //Primeiro turno
         if(this.oponente.getValorCategoria() >= this.desafiador.getValorCategoria()) {
+                saintEmAcao = this.oponente;
                 atacar(oponente);
             }else {
+                saintEmAcao = this.desafiador;
                 atacar(desafiador);
             }
         
         //resto dos turnos    
         while(this.oponente.getStatus().equals(Status.VIVO) && this.desafiador.getStatus().equals(Status.VIVO)){
-            if(turno % 2 == 0) {
-                atacar(desafiador);
-            } else {
-                atacar(oponente);
-            }
+            saintEmAcao = saintEmAcao == this.oponente ? this.desafiador : this.oponente;
+            
+            atacar(saintEmAcao);
             
             mostrarQuemGanhou();         
         }
@@ -38,7 +31,6 @@ public class Batalha {
     
     public void atacar(Saint atacado) {
         atacado.getProximoMovimento().executar();
-        turno++;
     }
     
     public void mostrarQuemGanhou() {

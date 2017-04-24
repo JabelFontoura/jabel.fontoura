@@ -69,6 +69,10 @@ public abstract class Saint {
     public void aprenderGolpe(Golpe golpe) {
         this.armadura.getConstelacao().adicionarGolpe(golpe);
     }
+    
+    public void golpear(Saint golpeado) {
+        this.adicionarMovimento(new Golpear(this, golpeado));
+    }
 
     public Golpe getProximoGolpe() {
         if(this.golpeAtual >= getGolpes().size()) {
