@@ -15,13 +15,12 @@ public abstract class Saint {
     private int golpeAtual;
     private List<Movimento> movimentos = new ArrayList<Movimento>();
     private int movimentoAtual;
+    private static int qtdSaints = 0;
 
     public Saint(String nome, Armadura armadura) throws Exception {
         this.nome = nome;
         this.armadura = armadura;
-        this.genero = genero;
-
-        // this.qtdSentidosDespertados += getValorCategoria();
+        
     }
 
     public void vestirArmadura() {
@@ -136,6 +135,10 @@ public abstract class Saint {
 
     public int getqtdSentidosDespertados() {
         return this.qtdSentidosDespertados;
+    }
+    
+    public static int getQtdSaints() {
+        return Saint.qtdSaints;
     }
 
 }
