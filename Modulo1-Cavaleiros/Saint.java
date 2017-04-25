@@ -20,6 +20,7 @@ public abstract class Saint {
     public Saint(String nome, Armadura armadura) throws Exception {
         this.nome = nome;
         this.armadura = armadura;
+        Saint.qtdSaints++;
         
     }
 

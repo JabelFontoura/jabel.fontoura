@@ -5,6 +5,13 @@ import org.junit.Test;
 import java.security.InvalidParameterException;
 
 public class SaintTest {
+    
+    @Test
+    public void qtdSaintsAdicionandoUm() throws Exception {
+		int qtd = Saint.getQtdSaints();
+        new BronzeSaint("Seiya", "Pegasos");
+        assertEquals(qtd + 1, Saint.getQtdSaints());
+    }
 
     @Test
     public void vestirArmaduraDeixaTrue() throws Exception {
