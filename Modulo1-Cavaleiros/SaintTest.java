@@ -6,11 +6,22 @@ import java.security.InvalidParameterException;
 
 public class SaintTest {
     
+    @After
+    public void tearDown() {
+        System.gc();
+    }
+    
     @Test
     public void qtdSaintsAdicionandoUm() throws Exception {
-		int qtd = Saint.getQtdSaints();
         new BronzeSaint("Seiya", "Pegasos");
-        assertEquals(qtd + 1, Saint.getQtdSaints());
+        assertEquals(1, Saint.getQtdSaints());
+    }
+    
+    @Test
+    public void qtdSaintsAdicionandoDois() throws Exception {
+        new BronzeSaint("Seiya", "Pegasos");
+        new SilverSaint("Marin", "Aguia");
+        assertEquals(2, Saint.getQtdSaints());
     }
 
     @Test

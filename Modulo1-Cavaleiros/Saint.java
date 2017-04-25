@@ -141,5 +141,12 @@ public abstract class Saint {
     public static int getQtdSaints() {
         return Saint.qtdSaints;
     }
-
+    
+    public static void decrementarQtdSaints() {
+        Saint.qtdSaints--;
+    }
+    
+    protected void finalize() throws Throwable {
+         Saint.qtdSaints--;
+     }
 }
