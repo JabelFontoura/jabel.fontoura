@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 public abstract class Saint {
 
+    private int id;
     private String nome;
     private Armadura armadura;
     private boolean armaduraVestida = false;
@@ -16,12 +17,18 @@ public abstract class Saint {
     private List<Movimento> movimentos = new ArrayList<Movimento>();
     private int movimentoAtual;
     private static int qtdSaints = 0;
+    private static int acumuladorQtdSaints;
 
     public Saint(String nome, Armadura armadura) throws Exception {
         this.nome = nome;
         this.armadura = armadura;
+        this.id = ++Saint.acumuladorQtdSaints;
         Saint.qtdSaints++;
         
+    }
+    
+    public int getId() {
+        return this.id;
     }
 
     public void vestirArmadura() {
@@ -149,4 +156,8 @@ public abstract class Saint {
     protected void finalize() throws Throwable {
          Saint.qtdSaints--;
      }
+     
+     public static int getAcumuladorQtdSaints() {
+         return Saint.acumuladorQtdSaints;
+    }
 }

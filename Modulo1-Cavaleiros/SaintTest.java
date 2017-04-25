@@ -12,6 +12,41 @@ public class SaintTest {
     }
     
     @Test
+    public void criarUmSaintIncrementaId() throws Exception {
+        int idAnterior = Saint.getAcumuladorQtdSaints();        
+        assertEquals(idAnterior + 1, new BronzeSaint("Shun", "Andromeda").getId());
+    }
+    
+    @Test
+    public void criarDoisSaintIncrementaId() throws Exception {
+        int idAnterior = Saint.getAcumuladorQtdSaints();        
+        
+        new BronzeSaint("Shun", "Andromeda");
+        
+        assertEquals(idAnterior + 2, new BronzeSaint("Hyoga", "Cisne").getId());
+    }
+    
+    @Test
+    public void criarTresSaintIncrementaId() throws Exception {
+        int idAnterior = Saint.getAcumuladorQtdSaints();        
+        
+        new BronzeSaint("Shun", "Andromeda");
+        new SilverSaint("Marin", "Aguia");
+        
+        assertEquals(idAnterior + 3, new BronzeSaint("Hyoga", "Cisne").getId());
+    }
+    
+    @Test
+    public void criarSaintEDepoisLimparEDeveIncrementarId() throws Exception {
+        int idAnterior = Saint.getAcumuladorQtdSaints();        
+        
+        Saint shun = new BronzeSaint("Shun", "Andromeda");
+        shun = null;
+        
+        assertEquals(idAnterior + 2, new GoldSaint("Miro", "Escorpião").getId());
+    }
+    
+    @Test
     public void qtdSaintsAdicionandoUm() throws Exception {
         new BronzeSaint("Seiya", "Pegasos");
         assertEquals(1, Saint.getQtdSaints());
