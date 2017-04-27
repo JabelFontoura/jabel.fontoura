@@ -19,9 +19,8 @@ public class GolpearComDanoDuplo implements Movimento {
         this.golpeado.perderVida(dano);
     }
     
-    public boolean acertouOAtaque() { 
-        
-        return new DadoD3().sortear() == 3;
+    public boolean acertouOAtaque(Sorteador sorteador) { 
+        return sorteador.sortear() == 3;
     }
     
     public boolean equals(Object outro) {
