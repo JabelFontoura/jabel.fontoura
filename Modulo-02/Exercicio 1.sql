@@ -24,9 +24,9 @@ CREATE TABLE Produto (
 -- 4)
 
 INSERT INTO Produto (Nome, Descricao, Data_Criacao, Local_Estoque, Quantidade, Preco)
-VALUES ('Lapís', 'Lapís cinza', '28/04/2017', 'Algum local', 100, 3.00);	
+VALUES ('Lapís', 'Lapís cinza', CONVERT(date, '28/04/2017', 103), 'Algum local', 100, 3.00);	
 
 INSERT INTO Produto (Nome, Descricao, Data_Criacao, Local_Estoque, Quantidade, Preco)
-VALUES ('Caneta', 'Caneta azul', '28/04/2017', 'Algum local', 120, 3.00);	
+VALUES ('Caneta', 'Caneta azul', CONVERT(date, '28/04/2017', 103), 'Algum local', 120, 3.00);	
 
 SELECT * FROM Produto
