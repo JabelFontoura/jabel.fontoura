@@ -9,7 +9,7 @@ ORDER BY Salario;
 
 -- 3) 
 SElECT IDEmpregado, NomeEmpregado, (Salario * 13) AS SalarioAnual,
- (Comissao * 12) AS ComissaoAnual, ((Salario * 13) + (Comissao * 12)) AS RendaAnual 
+ COALESCE((Comissao * 12), 0) AS ComissaoAnual, ((Salario * 13) + COALESCE((Comissao * 12), 0)) AS RendaAnual 
  FROM Empregado;
 
 -- 4)
