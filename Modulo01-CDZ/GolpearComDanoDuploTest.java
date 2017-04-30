@@ -57,5 +57,12 @@ public class GolpearComDanoDuploTest {
         assertEquals(95.0, shiryu.getVida(), 0.01);
     }
     
-    
+    @Test (expected=IndexOutOfBoundsException.class)
+    public void naoGolpear() throws Exception {
+        Saint seiya = new BronzeSaint("Seiya", "Pégaso");
+        Saint shiryu = new SilverSaint("Shiryu", "Dragão");
+        
+        Movimento golpear = new GolpearComDanoDuplo(shiryu, seiya, new DadoD3());
+        golpear.executar();
+    }
 }
