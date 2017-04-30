@@ -8,6 +8,10 @@ public class Golpe {
         this.fatorDano = fatorDano;
     } 
     
+    public int anularGolpe(){
+        return this.fatorDano = 0;
+    }
+    
     public String getNome() {
         return this.nome;
     }
