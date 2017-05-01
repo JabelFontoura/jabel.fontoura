@@ -12,7 +12,7 @@ public class GuerraEntreExercitos {
             impostores.getLista().todos().size() : defensoresDeAthena.getLista().todos().size();
             
          for(int i = 0; i < tamanho; i++) {
-             new Batalha(defensoresDeAthena.getLista().get(i), impostores.getLista().get(i));
+             new Batalha(defensoresDeAthena.getLista().get(i), impostores.getLista().get(i)).iniciaBatalha();
          }
     }
 }
