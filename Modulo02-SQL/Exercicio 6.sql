@@ -38,7 +38,7 @@ SELECT * FROM Produto prod LEFT JOIN PedidoItem pedI ON prod.IDProduto = pedI.ID
 LEFT JOIN Pedido ped ON pedI.IDPedido = ped.IDPedido WHERE ped.IDPEDIDO IS NULL;
 
 -- 6) Liste os 30 produtos que mais geraram lucro em 2016.
-SELECT TOP 30 SUM(pedI.Quantidade * prod.PrecoVenda) AS QuantidadeVendida2016, 
+SELECT TOP 30 SUM(pedI.Quantidade * prod.PrecoVenda) AS Lucro, 
 prod.IDProduto, prod.Nome FROM Produto prod 
 JOIN PedidoItem pedI ON prod.IDProduto = pedI.IDProduto
 JOIN Pedido ped ON pedI.IDPedido = ped.IDPedido WHERE YEAR(DataPedido) = 2016 
