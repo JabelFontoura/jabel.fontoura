@@ -1,0 +1,46 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="62A03EE3-CB00-1BCB-0F02-D8A9E70AF86F" name="FormaPagamento">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 20:50:41 UTC</createdTime>
+<ownerDesignName>Trabalho-1</ownerDesignName>
+<ordsAlias>table_5</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IDFormaPagamento" id="AC2C8D84-3453-D4E5-C0FF-4A0B798D43E9">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 20:51:37 UTC</createdTime>
+<ownerDesignName>Trabalho-1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Tipo" id="83F83DA2-E132-9230-0A6F-674351956E46">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 21:40:28 UTC</createdTime>
+<ownerDesignName>Trabalho-1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>3</dataTypeSize>
+<ownDataTypeParameters>3,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="98932CE4-D827-3907-0AEF-DB62BBE65346" name="FormaPagamento_PK">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 20:51:37 UTC</createdTime>
+<ownerDesignName>Trabalho-1</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="AC2C8D84-3453-D4E5-C0FF-4A0B798D43E9"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

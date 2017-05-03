@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="Trabalho-1" id="F2681624-E445-1514-3441-561C805917F0" version="3.5">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 20:42:17 UTC</createdTime>
+<ownerDesignName>Trabalho-1</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>F2681624-E445-1514-3441-561C805917F0</designId>
+</OSDM_Design>

@@ -1,0 +1,59 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="42D18886-7FE9-FC88-895C-32CB0BD5D89B" name="PratoPedido">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 21:06:52 UTC</createdTime>
+<ownerDesignName>Trabalho-1</ownerDesignName>
+<ordsAlias>table_13</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IDPratoPedido" id="4696DEE9-DCBE-29F3-D050-9F47AA347100">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 21:08:04 UTC</createdTime>
+<ownerDesignName>Trabalho-1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="IDPrato" id="24116E99-2A31-C243-8348-510E3E2C954B">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 21:08:13 UTC</createdTime>
+<ownerDesignName>Trabalho-1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="E216A3D2-69C5-42D3-F962-75C73CAF0745" referredColumn="BA2C8378-FCD0-0816-830C-A773A2075916"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="5476FCCF-C131-C51B-9CAE-3F4AD27C9021" name="PratoPedido_PK">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 21:08:04 UTC</createdTime>
+<ownerDesignName>Trabalho-1</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4696DEE9-DCBE-29F3-D050-9F47AA347100"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="F4BF356E-5BAE-55F4-0E2F-8BFB3D200CBE" name="PratoPedido_Prato_FK">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 21:08:13 UTC</createdTime>
+<ownerDesignName>Trabalho-1</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="24116E99-2A31-C243-8348-510E3E2C954B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

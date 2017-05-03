@@ -1,0 +1,59 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="40A84942-AD7B-7820-7D5B-C4FFB948CE15" name="BebidaPedido">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 21:09:06 UTC</createdTime>
+<ownerDesignName>Trabalho-1</ownerDesignName>
+<ordsAlias>table_14</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IDBebidaPedido" id="4C624A79-ED5C-E968-10B7-6F675266D4DD">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 21:09:30 UTC</createdTime>
+<ownerDesignName>Trabalho-1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="IDBebida" id="10B81C3E-31D2-1803-A048-324B6CF4D4CC">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 21:10:23 UTC</createdTime>
+<ownerDesignName>Trabalho-1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="E1CE3FE2-EC9C-18D4-EEC0-46950F5FCCD2" referredColumn="1874A848-B57D-EFEC-6599-203630E8A0A6"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="1240A52C-B338-71BD-F099-0604859E4310" name="BebidaPedido_PK">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 21:09:30 UTC</createdTime>
+<ownerDesignName>Trabalho-1</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4C624A79-ED5C-E968-10B7-6F675266D4DD"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="963DD21F-4645-E122-5B5C-A9C7F6F5291E" name="BebidaPedido_Bebida_FK">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 21:10:23 UTC</createdTime>
+<ownerDesignName>Trabalho-1</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="10B81C3E-31D2-1803-A048-324B6CF4D4CC"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

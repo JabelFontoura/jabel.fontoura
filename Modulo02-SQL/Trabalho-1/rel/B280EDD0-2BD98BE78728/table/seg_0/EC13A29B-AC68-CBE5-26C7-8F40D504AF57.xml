@@ -1,0 +1,69 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="EC13A29B-AC68-CBE5-26C7-8F40D504AF57" name="Prato">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 20:49:20 UTC</createdTime>
+<ownerDesignName>Trabalho-1</ownerDesignName>
+<ordsAlias>table_2</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IDPrato" id="BA2C8378-FCD0-0816-830C-A773A2075916">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 20:49:39 UTC</createdTime>
+<ownerDesignName>Trabalho-1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="IDIngrediente" id="733CDCB6-431C-C01D-D2BE-FC984EF77B20">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 21:05:12 UTC</createdTime>
+<ownerDesignName>Trabalho-1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="EFDADEDE-9001-DAF9-A6F7-E4B966AD661F" referredColumn="602C23CA-CC53-A7AC-051B-FA5DF891B83E"/>
+</associations>
+</Column>
+<Column name="Preco" id="5765D48D-5D9B-EEB8-C729-5D9AED38FE26">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 21:45:16 UTC</createdTime>
+<ownerDesignName>Trabalho-1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT026</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="101B2914-EEAD-B354-4CEA-A3D7E1D59198" name="Prato_PK">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 20:49:39 UTC</createdTime>
+<ownerDesignName>Trabalho-1</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="BA2C8378-FCD0-0816-830C-A773A2075916"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="2305BDA7-C569-9562-2D25-35661DE9C696" name="Prato_Ingrediente_FK">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 21:05:12 UTC</createdTime>
+<ownerDesignName>Trabalho-1</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="733CDCB6-431C-C01D-D2BE-FC984EF77B20"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

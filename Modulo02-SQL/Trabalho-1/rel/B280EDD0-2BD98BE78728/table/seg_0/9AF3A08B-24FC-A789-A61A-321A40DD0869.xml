@@ -1,0 +1,47 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="9AF3A08B-24FC-A789-A61A-321A40DD0869" name="Garcom">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 21:02:45 UTC</createdTime>
+<ownerDesignName>Trabalho-1</ownerDesignName>
+<ordsAlias>table_11</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IDGarcom" id="9D0D0357-94D9-2571-B903-ED9E752240D6">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 21:03:12 UTC</createdTime>
+<ownerDesignName>Trabalho-1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Nome" id="C2D1088D-6E72-2BEB-849D-C82DD35103A3">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 21:12:07 UTC</createdTime>
+<ownerDesignName>Trabalho-1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="09705B48-3820-4D78-9AE8-87C12664735E" name="Garcom_PK">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 21:03:12 UTC</createdTime>
+<ownerDesignName>Trabalho-1</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="9D0D0357-94D9-2571-B903-ED9E752240D6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

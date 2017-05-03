@@ -1,0 +1,14 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="0D885D49-42C8-29D0-F16F-AAC5D6D9172B" containerWithKeyObject="3EC954FB-37AC-1356-2ED9-F2ACB26CE056" localFKIndex="10F8BE5E-F2AA-984A-08C1-46D66C235B6C" name="ItemPedido_BebidaPedido_FK">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 21:30:06 UTC</createdTime>
+<ownerDesignName>Trabalho-1</ownerDesignName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>40A84942-AD7B-7820-7D5B-C4FFB948CE15</referredTableID>
+<keyObject>1240A52C-B338-71BD-F099-0604859E4310</keyObject>
+<referredKeyID>1240A52C-B338-71BD-F099-0604859E4310</referredKeyID>
+<mandatory>true</mandatory>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

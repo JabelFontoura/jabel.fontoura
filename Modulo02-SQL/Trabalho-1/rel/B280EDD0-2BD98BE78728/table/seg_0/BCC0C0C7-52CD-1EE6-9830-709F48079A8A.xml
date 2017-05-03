@@ -1,0 +1,66 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="BCC0C0C7-52CD-1EE6-9830-709F48079A8A" name="Ingrediente">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 20:59:10 UTC</createdTime>
+<ownerDesignName>Trabalho-1</ownerDesignName>
+<ordsAlias>table_10</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IDIngrediente" id="602C23CA-CC53-A7AC-051B-FA5DF891B83E">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 21:00:02 UTC</createdTime>
+<ownerDesignName>Trabalho-1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Nome" id="789AF6C5-E0D3-C845-615C-85D6949FE273">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 21:04:00 UTC</createdTime>
+<ownerDesignName>Trabalho-1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Valor" id="7CB67D25-B1AF-75D4-D747-D810CD982322">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 21:04:44 UTC</createdTime>
+<ownerDesignName>Trabalho-1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT026</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Quantidade" id="04ED15A5-A74C-D462-D1CE-E253B3BC13A7">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 21:44:41 UTC</createdTime>
+<ownerDesignName>Trabalho-1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT026</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="4D58990A-0C01-3F31-D8F7-5086FF44D625" name="Ingrediente_PK">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 21:00:02 UTC</createdTime>
+<ownerDesignName>Trabalho-1</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="602C23CA-CC53-A7AC-051B-FA5DF891B83E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

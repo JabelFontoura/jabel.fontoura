@@ -1,0 +1,115 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="E1BD77BB-767A-D8A5-343B-8CDFBC8384D8" name="Venda">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 20:58:15 UTC</createdTime>
+<ownerDesignName>Trabalho-1</ownerDesignName>
+<ordsAlias>table_8</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IDVenda" id="05B9CF6C-0D41-7A1D-CF39-61AC10E1973A">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 20:58:33 UTC</createdTime>
+<ownerDesignName>Trabalho-1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="IDPedido" id="DCFD4AB1-2528-163E-9149-60516B220FB6">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 21:37:32 UTC</createdTime>
+<ownerDesignName>Trabalho-1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="AC4611AD-F614-C2CD-CCDE-C83D1F0A8032" referredColumn="5FCA94E4-F517-DBB9-8B2B-4636821A992A"/>
+</associations>
+</Column>
+<Column name="IDFormaPagamento" id="4DC9EB27-2D02-405E-7704-5F28D36CF676">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 21:37:54 UTC</createdTime>
+<ownerDesignName>Trabalho-1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="842F0BCA-ECC6-2652-56D2-917AF1273C96" referredColumn="AC2C8D84-3453-D4E5-C0FF-4A0B798D43E9"/>
+</associations>
+</Column>
+<Column name="Bonus" id="5B210EBC-F049-1AB0-A9A4-F3CDDFD300F7">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 21:42:09 UTC</createdTime>
+<ownerDesignName>Trabalho-1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Desconto" id="E38A5DE1-3187-0FAC-7B63-489CD76E4390">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 21:44:00 UTC</createdTime>
+<ownerDesignName>Trabalho-1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PrecoFinal" id="6B4DAFD3-C978-955E-8FAD-1D342BEF4BD6">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 21:47:13 UTC</createdTime>
+<ownerDesignName>Trabalho-1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT026</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="2D06039F-E082-4EA2-62E2-4F635D800A00" name="Venda_PK">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 20:58:33 UTC</createdTime>
+<ownerDesignName>Trabalho-1</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="05B9CF6C-0D41-7A1D-CF39-61AC10E1973A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="EF3618E5-A01F-F481-F3B8-4ED058A452ED" name="Venda_Pedido_FK">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 21:37:32 UTC</createdTime>
+<ownerDesignName>Trabalho-1</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="DCFD4AB1-2528-163E-9149-60516B220FB6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="B0096026-B1A2-2757-C937-303F47E4B6BD" name="Venda_FormaPagamento_FK">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 21:37:54 UTC</createdTime>
+<ownerDesignName>Trabalho-1</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4DC9EB27-2D02-405E-7704-5F28D36CF676"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

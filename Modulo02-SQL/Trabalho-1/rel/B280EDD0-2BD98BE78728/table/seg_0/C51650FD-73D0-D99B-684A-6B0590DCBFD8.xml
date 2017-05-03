@@ -1,0 +1,56 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="C51650FD-73D0-D99B-684A-6B0590DCBFD8" name="Bebida">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 20:49:44 UTC</createdTime>
+<ownerDesignName>Trabalho-1</ownerDesignName>
+<ordsAlias>table_3</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IDBebida" id="1874A848-B57D-EFEC-6599-203630E8A0A6">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 20:50:09 UTC</createdTime>
+<ownerDesignName>Trabalho-1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Nome" id="DFBA9C2D-D64B-A06C-23FD-6FB8FC70CEFB">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 21:09:52 UTC</createdTime>
+<ownerDesignName>Trabalho-1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Preco" id="3B6B333A-0C69-61DC-D444-5FC9EE6F28EB">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 21:10:09 UTC</createdTime>
+<ownerDesignName>Trabalho-1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT026</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="AF7C014D-3C24-ABE1-8ED3-3244E7118061" name="Bebida_PK">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 20:50:15 UTC</createdTime>
+<ownerDesignName>Trabalho-1</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1874A848-B57D-EFEC-6599-203630E8A0A6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

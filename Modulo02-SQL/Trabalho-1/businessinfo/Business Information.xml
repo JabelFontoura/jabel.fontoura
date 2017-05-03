@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BusinessInfoDesign class="oracle.dbtools.crest.model.businessinfo.BusinessInfoDesign" name="Business Information" id="ED8F7FD1-6215-F560-A2DB-074F8B3F4CDB">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 20:42:17 UTC</createdTime>
+<ownerDesignName>Trabalho-1</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+</BusinessInfoDesign>

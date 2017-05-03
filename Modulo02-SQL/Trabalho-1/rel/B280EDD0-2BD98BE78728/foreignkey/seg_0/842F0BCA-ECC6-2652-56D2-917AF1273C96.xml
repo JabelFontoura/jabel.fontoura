@@ -1,0 +1,14 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="842F0BCA-ECC6-2652-56D2-917AF1273C96" containerWithKeyObject="E1BD77BB-767A-D8A5-343B-8CDFBC8384D8" localFKIndex="B0096026-B1A2-2757-C937-303F47E4B6BD" name="Venda_FormaPagamento_FK">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 21:37:54 UTC</createdTime>
+<ownerDesignName>Trabalho-1</ownerDesignName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>62A03EE3-CB00-1BCB-0F02-D8A9E70AF86F</referredTableID>
+<keyObject>98932CE4-D827-3907-0AEF-DB62BBE65346</keyObject>
+<referredKeyID>98932CE4-D827-3907-0AEF-DB62BBE65346</referredKeyID>
+<mandatory>true</mandatory>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>
