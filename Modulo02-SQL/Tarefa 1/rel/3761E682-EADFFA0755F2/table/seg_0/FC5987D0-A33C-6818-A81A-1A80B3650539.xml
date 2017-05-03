@@ -1,0 +1,81 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="FC5987D0-A33C-6818-A81A-1A80B3650539" name="BeneficiarioCliente">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 20:12:50 UTC</createdTime>
+<ownerDesignName>Tarefa 1</ownerDesignName>
+<ordsAlias>table_7</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IDBeneficiarioCliente" id="1FCE5A76-2916-2192-7F9C-00B79827E0F3">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 20:14:19 UTC</createdTime>
+<ownerDesignName>Tarefa 1</ownerDesignName>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="IDBeneficiario" id="A7746E22-B468-FCBA-5F39-433C3637FCCE">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 20:13:25 UTC</createdTime>
+<ownerDesignName>Tarefa 1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="A6021968-5A28-ECC0-398E-15C1F4626266" referredColumn="FB2D8DB1-F049-D21B-EA70-6C6AACB7CA7B"/>
+</associations>
+</Column>
+<Column name="IDCliente" id="32552754-D430-9040-F7CE-CAD3032AC220">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 20:13:33 UTC</createdTime>
+<ownerDesignName>Tarefa 1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="D7FDB28E-3585-DB5F-7C05-FEBCEFFCB54A" referredColumn="88887B29-E168-5D14-D1A0-31627328AB3D"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="E6532FE5-641D-9E73-2330-519FF98808C3" name="BeneficiarioCliente_PK">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 20:14:19 UTC</createdTime>
+<ownerDesignName>Tarefa 1</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1FCE5A76-2916-2192-7F9C-00B79827E0F3"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="0D285BE2-466C-2E7A-9589-150D7FA8FA40" name="BeneficiarioCliente_Beneficiario_FK">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 20:13:25 UTC</createdTime>
+<ownerDesignName>Tarefa 1</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A7746E22-B468-FCBA-5F39-433C3637FCCE"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="67AD4C75-087F-9E9E-97A5-1EBBF89D0E66" name="BeneficiarioCliente_Cliente_FK">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 20:13:33 UTC</createdTime>
+<ownerDesignName>Tarefa 1</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="32552754-D430-9040-F7CE-CAD3032AC220"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

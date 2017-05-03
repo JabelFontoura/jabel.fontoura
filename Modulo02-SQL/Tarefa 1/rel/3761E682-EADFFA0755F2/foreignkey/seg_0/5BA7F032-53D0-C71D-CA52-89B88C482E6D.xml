@@ -1,0 +1,14 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="5BA7F032-53D0-C71D-CA52-89B88C482E6D" containerWithKeyObject="58A1E921-9478-AA37-A771-4EA67F3DA63D" localFKIndex="7C52E90F-E5C5-BC7E-A2B5-A15EB548F193" name="Beneficiario_Pessoa_FK">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 20:07:39 UTC</createdTime>
+<ownerDesignName>Tarefa 1</ownerDesignName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>3C0B7325-A53F-7889-5DC8-29554336ED9D</referredTableID>
+<keyObject>68C017F8-AFCF-1667-D971-AD9A85AAB3AB</keyObject>
+<referredKeyID>68C017F8-AFCF-1667-D971-AD9A85AAB3AB</referredKeyID>
+<mandatory>true</mandatory>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<relationalModel class="oracle.dbtools.crest.model.design.relational.RelationalDesign" name="Relational_1" id="3761E682-927B-FEF3-EE4C-EADFFA0755F2" mainViewID="F719BAE9-2902-8FA2-2553-64E30EB07A54">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 19:41:05 UTC</createdTime>
+<ownerDesignName>Tarefa 1</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+<selectedRDBMSSite>32076570-2523-435C-2E92-BF29817DFF70</selectedRDBMSSite>
+</relationalModel>

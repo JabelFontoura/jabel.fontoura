@@ -1,0 +1,45 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="91FDD319-E928-540B-E83E-EE230A3B5D81" name="Seguro">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 19:45:31 UTC</createdTime>
+<ownerDesignName>Tarefa 1</ownerDesignName>
+<ordsAlias>table_2</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IDSeguro" id="F1B3DD32-250A-ABA8-2A74-DF1B79379EF8">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 19:46:34 UTC</createdTime>
+<ownerDesignName>Tarefa 1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="TipoSeguro" id="1CBE0014-B226-7349-D4D8-322262A0D164">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 19:56:18 UTC</createdTime>
+<ownerDesignName>Tarefa 1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="3307B3E4-6500-D02E-AE64-CD1F59C06A17" name="Seguro_PK">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 19:46:34 UTC</createdTime>
+<ownerDesignName>Tarefa 1</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F1B3DD32-250A-ABA8-2A74-DF1B79379EF8"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

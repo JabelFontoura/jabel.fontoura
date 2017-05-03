@@ -1,0 +1,59 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="8CE02B96-4C4A-216B-8A64-4A453560A9B2" name="Cliente">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 19:41:36 UTC</createdTime>
+<ownerDesignName>Tarefa 1</ownerDesignName>
+<ordsAlias>table_1</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IDCliente" id="88887B29-E168-5D14-D1A0-31627328AB3D">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 19:43:29 UTC</createdTime>
+<ownerDesignName>Tarefa 1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="IDPessoa" id="5EB0D16A-B0CD-B1AA-EEF3-C2651154F1B7">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 20:07:05 UTC</createdTime>
+<ownerDesignName>Tarefa 1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="DEC9ADAA-5869-34F8-0002-B8800C553929" referredColumn="78FF143D-65CB-7C18-5D87-70CDFB8CD8E5"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="25564CAE-00ED-3407-6943-F896B4141C1E" name="Cliente_PK">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 19:43:29 UTC</createdTime>
+<ownerDesignName>Tarefa 1</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="88887B29-E168-5D14-D1A0-31627328AB3D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="5D1005D5-F309-0544-B3D0-CCC655427D5E" name="Cliente_Pessoa_FK">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 20:07:05 UTC</createdTime>
+<ownerDesignName>Tarefa 1</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5EB0D16A-B0CD-B1AA-EEF3-C2651154F1B7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

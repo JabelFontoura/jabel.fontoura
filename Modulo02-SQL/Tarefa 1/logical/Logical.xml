@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<LogicalDesign class="oracle.dbtools.crest.model.design.logical.LogicalDesign" name="Logical" id="50FCD91F-2B32-ED72-2B66-552BC85F64A3" mainViewID="DAAA1514-56C0-592A-063D-9B6D40E27032">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 19:41:05 UTC</createdTime>
+<ownerDesignName>Tarefa 1</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+</LogicalDesign>

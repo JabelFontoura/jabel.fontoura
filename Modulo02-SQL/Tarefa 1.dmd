@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="Tarefa 1" id="F5657C5C-5EE7-B8A2-1A57-6B18AFD0995E" version="3.5">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 19:41:05 UTC</createdTime>
+<ownerDesignName>Tarefa 1</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>F5657C5C-5EE7-B8A2-1A57-6B18AFD0995E</designId>
+</OSDM_Design>

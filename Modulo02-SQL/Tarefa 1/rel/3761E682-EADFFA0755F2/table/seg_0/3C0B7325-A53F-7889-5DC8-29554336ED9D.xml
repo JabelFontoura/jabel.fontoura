@@ -1,0 +1,76 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="3C0B7325-A53F-7889-5DC8-29554336ED9D" name="Pessoa">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 20:03:57 UTC</createdTime>
+<ownerDesignName>Tarefa 1</ownerDesignName>
+<ordsAlias>table_6</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IDPessoa" id="78FF143D-65CB-7C18-5D87-70CDFB8CD8E5">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 20:06:48 UTC</createdTime>
+<ownerDesignName>Tarefa 1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Nome" id="31D16937-06E4-A642-DB66-A3C210DCE77B">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 20:06:48 UTC</createdTime>
+<ownerDesignName>Tarefa 1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CPF" id="8B1BF449-0148-A37D-09C0-8E4214086DD3">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 20:06:48 UTC</createdTime>
+<ownerDesignName>Tarefa 1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="RG" id="7A7C58E8-9F01-6123-3ECA-FA73FC82D57A">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 20:06:48 UTC</createdTime>
+<ownerDesignName>Tarefa 1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DataNascimento" id="8B904EFB-EE2B-FB1E-C015-E5B2A6AD0814">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 20:06:48 UTC</createdTime>
+<ownerDesignName>Tarefa 1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="68C017F8-AFCF-1667-D971-AD9A85AAB3AB" name="Pessoa_PK">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 20:06:48 UTC</createdTime>
+<ownerDesignName>Tarefa 1</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="78FF143D-65CB-7C18-5D87-70CDFB8CD8E5"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

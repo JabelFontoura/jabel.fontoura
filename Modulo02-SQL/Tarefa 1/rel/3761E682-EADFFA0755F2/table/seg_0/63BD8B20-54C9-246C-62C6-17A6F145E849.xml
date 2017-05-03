@@ -1,0 +1,101 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="63BD8B20-54C9-246C-62C6-17A6F145E849" name="Contrato">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 19:57:04 UTC</createdTime>
+<ownerDesignName>Tarefa 1</ownerDesignName>
+<ordsAlias>table_4</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IDContrato" id="57DC4254-A8D9-88AB-97FF-E9085C7F814C">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 19:58:18 UTC</createdTime>
+<ownerDesignName>Tarefa 1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DataInicio" id="C11E940E-A7FB-65EE-A80C-FF3AEDAE55DF">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 19:58:18 UTC</createdTime>
+<ownerDesignName>Tarefa 1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DataFim" id="DF6A7821-9B08-4459-68A0-0FBD2D33612B">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 19:58:18 UTC</createdTime>
+<ownerDesignName>Tarefa 1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="IDSeguroCliente" id="2884FDDC-02A7-CC19-CB9C-F88096487FDB">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 19:58:31 UTC</createdTime>
+<ownerDesignName>Tarefa 1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="9205F2DD-2A4D-D5E3-5E82-A2CA812424B3" referredColumn="072F16B1-3F9B-6DFB-A9EE-BFB870A9CC2D"/>
+</associations>
+</Column>
+<Column name="IDBeneficiarioCliente" id="7514AFE6-22B8-AC89-0E6C-8B41456E11FC">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 20:15:01 UTC</createdTime>
+<ownerDesignName>Tarefa 1</ownerDesignName>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="1B149227-D95E-B627-478D-8997A8FACD17" referredColumn="1FCE5A76-2916-2192-7F9C-00B79827E0F3"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="733ED85A-7325-5235-EBB5-4400CF962AC3" name="Contrato_PK">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 19:58:18 UTC</createdTime>
+<ownerDesignName>Tarefa 1</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="57DC4254-A8D9-88AB-97FF-E9085C7F814C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="4A4A0A53-87EA-92D8-C163-64F9D910C663" name="Contrato_SeguroCliente_FK">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 19:58:31 UTC</createdTime>
+<ownerDesignName>Tarefa 1</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2884FDDC-02A7-CC19-CB9C-F88096487FDB"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="EB7DDF0A-F680-ACA3-30F7-9EDEBE34A944" name="Contrato_BeneficiarioCliente_FK">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 20:15:01 UTC</createdTime>
+<ownerDesignName>Tarefa 1</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7514AFE6-22B8-AC89-0E6C-8B41456E11FC"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

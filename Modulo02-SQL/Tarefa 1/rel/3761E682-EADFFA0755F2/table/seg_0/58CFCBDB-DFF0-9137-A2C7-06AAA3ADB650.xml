@@ -1,0 +1,35 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="58CFCBDB-DFF0-9137-A2C7-06AAA3ADB650" name="SeguroVida">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 20:21:24 UTC</createdTime>
+<ownerDesignName>Tarefa 1</ownerDesignName>
+<ordsAlias>table_8</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IDSeguroVida" id="E3BA55A2-6F48-44DB-21A7-746C6AC621FC">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 20:21:52 UTC</createdTime>
+<ownerDesignName>Tarefa 1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="77E1ACEF-DD9F-4E43-E671-ECA4FA622FA0" name="SeguroVida_PK">
+<createdBy>jabel.fontoura</createdBy>
+<createdTime>2017-05-03 20:22:58 UTC</createdTime>
+<ownerDesignName>Tarefa 1</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E3BA55A2-6F48-44DB-21A7-746C6AC621FC"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
