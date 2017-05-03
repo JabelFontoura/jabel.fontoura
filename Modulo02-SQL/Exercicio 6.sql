@@ -36,3 +36,10 @@ pois não há relacionamento direto entre Produto e Pedido (será preciso relaciona
 */
 SELECT * FROM Produto prod LEFT JOIN PedidoItem pedI ON prod.IDProduto = pedI.IDProduto
 LEFT JOIN Pedido ped ON pedI.IDPedido = ped.IDPedido WHERE ped.IDPEDIDO IS NULL;
+
+-- 6) Liste os 30 produtos que mais geraram lucro em 2016.
+SELECT TOP 30 SUM(pedI.Quantidade * prod.PrecoVenda) AS QuantidadeVendida2016, 
+prod.IDProduto, prod.Nome FROM Produto prod 
+JOIN PedidoItem pedI ON prod.IDProduto = pedI.IDProduto
+JOIN Pedido ped ON pedI.IDPedido = ped.IDPedido WHERE YEAR(DataPedido) = 2016 
+GROUP BY prod.IDProduto, prod.Nome ORDER BY SUM(pedI.Quantidade * prod.PrecoVenda) DESC;
