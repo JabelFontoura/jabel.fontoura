@@ -27,9 +27,8 @@ GROUP BY Nome HAVING COUNT(Nome) > 1;
 -- 5) Faça uma alteraçao nas cidades que tenham nome+UF duplicados, adicione no final do nome um asterisco. 
 --    Mas atenção! apenas a cidade com maior ID deve ser alterada.
 BEGIN TRANSACTION
-UPDATE c SET c.Nome = c.Nome + '*' FROM (
-	SELECT Nome, COUNT(Nome) FROM Cidade
-	GROUP BY Nome HAVING COUNT(Nome) > 1
-) c;
-GO
+	UPDATE Cidade SET Nome = Nome + '*' WHERE Nome+UF IN (SELECT Nome+UF FROM Cidade
+	GROUP BY Nome, UF HAVING COUNT(1) > 1) AND IDCidade IN(
+		SELECT MAX(IDCidade) FROM Cidade GROUP BY Nome, UF HAVING COUNT(1) > 1);
 COMMIT
+GO
