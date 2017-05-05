@@ -1,0 +1,48 @@
+body {
+    background-color: #ac5353;
+}
+
+div {
+    width: 500px;
+    height: 20vh;
+    background-color: #99e699;
+    border: 2px solid;
+    border-radius: 15px 50px;
+    transition: all 2s;
+    margin-left: 25%;
+    padding: 2%;
+    overflow: hidden;
+}
+
+div:hover {
+    height: 80vh;
+    width: 50vw;
+    box-shadow: 10px 10px 5px #e6e600;
+    font-size: 20px;
+}
+
+p {
+    text-align: justify;
+}
+
+p del {
+    color: white;
+}
+
+p > small {
+    color: purple;
+}
+
+img {
+    opacity: 0;
+    width: 50px;
+    height: 50px;
+    margin-left: 25%;
+    transition: all 2s;
+}
+
+img:hover {
+    opacity: 1;
+    width: 40%;
+    height: 40%;
+}
