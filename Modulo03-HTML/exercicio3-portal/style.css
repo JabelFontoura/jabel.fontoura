@@ -12,6 +12,7 @@ body {
 h1 { 
     margin: 0;
     padding: 0;
+    font-size: 25px;
 }
 
 h2 {
@@ -36,14 +37,14 @@ nav {
     background-color: #c4170c;
     color: white;
     padding-top: 1.5%;
-    padding-bottom: 4.5%;
+    padding-bottom: 4%;
     font-size: 20px;
     text-align: center;
 }
 .noticia {
     float: left;
     width: 44%;
-    border: 1px groove #c3c6cc;
+    border: 1px groove #bbb;
     padding: 2%;
     margin: 3%;
     color: #fff;
@@ -51,11 +52,14 @@ nav {
 
 article {
     color: #333;
+    line-height: 30px;
 }
 
 article:first-letter { 
     font-size: 300%;
     color: #c4170c;
+    float: left;
+    padding-right: 2%;
 }
 
 .clearfix:after {
