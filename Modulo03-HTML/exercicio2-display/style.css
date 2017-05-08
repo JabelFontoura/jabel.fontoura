@@ -1,0 +1,42 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+.container {
+    font-size: 0;
+    height: 100vh;
+}
+
+.row {
+    height: 25%;
+}
+
+.col {
+    height: 25%;
+    font-size: initial;
+    display: inline-block;
+    height: 100%;
+    border: 2px solid black;    
+}
+.row1 {
+    background-color: red;
+    width: 25%;    
+}
+
+.row2 {
+    background-color: blue;
+    width: 50%;    
+}
+.row3 {
+    background-color: purple;
+    width: 100%;    
+}
+
+.row4 {
+    background-color: yellow;
+    width: 10%;   
+}
