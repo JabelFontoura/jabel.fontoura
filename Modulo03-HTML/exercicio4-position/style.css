@@ -1,0 +1,33 @@
+body {
+    margin: 0;
+}
+
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.inner-center {
+    width: 100%;
+    background-color: rgba(61, 157, 153, 0.6);
+    position: absolute;
+    left: 50%;
+    bottom: 0.5%;
+    transform: translateX(-50%);
+}
+
+h1 {
+    color: white;
+    padding-left: 2%;
+}
+
+.inner-center:hover > p {
+    display: block
+}
+
+p {
+    color: white;
+    display: none;
+}
