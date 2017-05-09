@@ -1,0 +1,14 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0 auto;
+}
+
+.background {
+    background-image: url('http://streetfighter.com/wp-content/uploads/2015/10/twitter-featured.jpg'); 
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 80vh;
+}
