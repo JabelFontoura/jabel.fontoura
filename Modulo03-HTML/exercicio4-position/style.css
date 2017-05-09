@@ -24,10 +24,11 @@ h1 {
 }
 
 .inner-center:hover > p {
-    display: block
+    display: block;
 }
 
 p {
+    padding: 0% 2% 0% 2%;
     color: white;
     display: none;
 }
