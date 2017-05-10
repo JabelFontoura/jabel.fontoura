@@ -17,7 +17,7 @@ body {
 }
 
 .menu {
-    width: 35%;
+    width: 40%;
     height: 100%;
     border: 1px groove white;
     border-radius: 10px;
@@ -26,6 +26,8 @@ body {
     background: rgba(117, 117, 117, 0.5);
     white-space: nowrap;
     padding-top: 1%;
+    padding-left: 2%;
+    padding-right: 10%;
     padding-bottom: 2.5%;
 }
 
