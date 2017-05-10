@@ -4,11 +4,78 @@
 
 body {
     margin: 0 auto;
-}
-
-.background {
-    background-image: url('http://streetfighter.com/wp-content/uploads/2015/10/twitter-featured.jpg'); 
+    font-family: 'Open Sans', sans-serif;
+    background-image: url('img/background.jpg'); 
     background-repeat: no-repeat;
     background-size: cover;
-    height: 80vh;
+}
+
+.container{
+  width: 100%;
+  height: 50px;
+  margin: 17.5% auto;
+}
+
+.menu {
+    width: 35%;
+    height: 100%;
+    border: 1px groove white;
+    border-radius: 10px;
+    margin-bottom: 4%;
+    margin-left: 33%;
+    background: rgba(117, 117, 117, 0.5);
+    white-space: nowrap;
+    padding-top: 1%;
+    padding-bottom: 2.5%;
+}
+
+.menu .menu-items .menu-item {
+    display: inline;
+    padding-left: 5.5%;
+    padding-right: 5.5%;
+}
+
+.menu .menu-items .menu-item a{
+    display: inline;
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.menu .menu-items .menu-item a:hover{
+    color: blue;
+}
+
+.titulo {
+    width: 50%;
+    margin-left: 25%;
+    background-color: #4c4d4f;
+    color: #e0e0e0;
+    font-size: 14px;
+    padding: 0.5% 1%
+}
+
+.content {
+    width: 50%;
+    margin-left: 25%;
+    display: block;
+    background-color: #e0e0e0;
+    padding: 0.5% 1%;
+    padding-bottom: 2%;
+}
+
+.ficha, img { 
+    width: 46%;
+    display: inline-block;
+}
+
+img {
+    margin-right: 4%;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: block;
 }
