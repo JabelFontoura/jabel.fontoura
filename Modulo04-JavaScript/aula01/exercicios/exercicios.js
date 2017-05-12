@@ -52,10 +52,8 @@ console.log(fiboSum(7));
 function queroCafe(mascada, precos) {
   precos.sort((a, b) => a - b);
   
-  var resultado = "";
-  
   return precos.map(item => { 
-    if(item <= mascada) return item;
+    return item <= mascada ? item : "";
   }).join(',');
 }
 
