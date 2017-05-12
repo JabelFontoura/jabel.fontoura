@@ -54,7 +54,7 @@ function queroCafe(mascada, precos) {
   
   return precos.map(item => { 
     return item <= mascada ? item : "";
-  }).join(',');
+  }).join(',').replace(/^[,\s]+|[,\s]+$/g, '').replace(/,[,\s]*,/g, ',');
 }
 
 console.log(queroCafe(3.14, [ 5.16, 2.12, 1.15, 3.11, 17.5 ]));
