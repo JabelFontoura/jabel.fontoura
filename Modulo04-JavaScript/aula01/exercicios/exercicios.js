@@ -52,9 +52,8 @@ console.log(fiboSum(7));
 function queroCafe(mascada, precos) {
   precos.sort((a, b) => a - b);
   
-  return precos.map(item => { 
-    return item <= mascada ? item : "";
-  }).join(',').replace(/^[,\s]+|[,\s]+$/g, '').replace(/,[,\s]*,/g, ',');
+  return precos.map(item => item <= mascada ? item : "")
+    .join(',').replace(/^[,\s]+|[,\s]+$/g, '').replace(/,[,\s]*,/g, ',');
 }
 
 console.log(queroCafe(3.14, [ 5.16, 2.12, 1.15, 3.11, 17.5 ]));
