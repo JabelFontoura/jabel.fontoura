@@ -50,3 +50,17 @@ function procurarPorNome(series, nome) {
 console.log(`4) ${procurarPorNome(series, "Jabel Fontoura")}`);
 
 //Exercicio 5
+function mascadaEmSerie(serie) {
+  let salario = 0;
+
+  for(diretor in serie.diretor)
+    salario += 100000;
+  
+  for(elenco in serie.elenco)
+    salario += parseFloat(40000);
+
+  return salario;
+} 
+
+console.log(`5) ${mascadaEmSerie(series[0])}`);
+
