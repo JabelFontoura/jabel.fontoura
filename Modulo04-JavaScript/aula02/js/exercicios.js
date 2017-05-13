@@ -36,3 +36,17 @@ function mediaDeEpisodios(series) {
 }
 
 console.log(mediaDeEpisodios(series));
+
+//Exercicio 4
+function procurarPorNome(series, nome) {
+  let achou = false;
+
+   series.forEach(item => {
+     if(item.elenco.filter(e => e === nome).length >= 1)
+      achou = true;
+  });
+
+  return achou;
+}
+
+console.log(procurarPorNome(series, "Jabel Fontoura"));
