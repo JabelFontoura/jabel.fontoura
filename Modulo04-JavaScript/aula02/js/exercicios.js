@@ -21,7 +21,7 @@ function filtrarSeriesPorAno(series, ano) {
   return series.filter(item => item.anoEstreia >= ano ? item : ''); 
 }
 
-console.log(`2) ${filtrarSeriesPorAno(series, 2017)}`);
+console.log('2)', filtrarSeriesPorAno(series, 2017));
 
 //Exercicio 3
 function mediaDeEpisodios(series) {
@@ -60,3 +60,16 @@ function mascadaEmSerie(serie) {
 } 
 
 console.log(`5) ${mascadaEmSerie(series[0])}`);
+
+//Exercicio 6
+function queroGenero(genero) {
+  let result = [];
+
+  for(serie of series) {
+    if(serie.genero.filter(value => value === genero).length >= 1)
+      result.push(serie.titulo);
+  }
+  return result;  
+}
+
+console.log('6-A)', queroGenero("Caos"));
