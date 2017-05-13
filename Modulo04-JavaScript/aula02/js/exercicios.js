@@ -52,15 +52,11 @@ console.log(`4) ${procurarPorNome(series, "Jabel Fontoura")}`);
 //Exercicio 5
 function mascadaEmSerie(serie) {
   let salario = 0;
-
-  for(diretor in serie.diretor)
-    salario += 100000;
   
-  for(elenco in serie.elenco)
-    salario += parseFloat(40000);
+  salario += 100000 * serie.diretor.length; 
+  salario += 40000 * serie.elenco.length;
 
   return salario;
 } 
 
 console.log(`5) ${mascadaEmSerie(series[0])}`);
-
