@@ -88,3 +88,34 @@ function queroTitulo(titulo) {
 
 console.log('6-B)', queroTitulo('The'));
 
+//Exercicio 7
+function creditosIlluminatis(serie) {
+  let diretores = [];
+  let atores = [];
+
+  for(diretor of serie.diretor) 
+    diretores.push(diretor);
+
+  for(elenco of serie.elenco) 
+    atores.push(elenco);
+
+  diretores.sort(ordenarUltimoNome);
+  atores.sort(ordenarUltimoNome);
+
+  return `\nTitulo: \n${serie.titulo}\n
+Diretores: \n${diretores.join('\n')}\n
+Elenco: \n${atores.join('\n')}`;
+}
+
+function ordenarUltimoNome(a, b){
+    if(getUltimoNome(a) < getUltimoNome(b)) return -1;
+    if(getUltimoNome(a) > getUltimoNome(b)) return 1;
+    return 0;
+}
+
+function getUltimoNome(nome) {
+    const n = nome.split(' ');
+    return n[n.length - 1];
+}
+
+console.log('7)', creditosIlluminatis(series[1]));
