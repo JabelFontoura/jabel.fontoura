@@ -14,14 +14,14 @@ function seriesInvalidas(series) {
   return invalidas.join('').substring(0, invalidas.join('').length - 2);
 }
 
-console.log(seriesInvalidas(series));
+console.log(`1) ${seriesInvalidas(series)}`);
 
 //Exercicio 2
 function filtrarSeriesPorAno(series, ano) {
   return series.filter(item => item.anoEstreia >= ano ? item : ''); 
 }
 
-console.log(filtrarSeriesPorAno(series, 2017));
+console.log(`2) ${filtrarSeriesPorAno(series, 2017)}`);
 
 //Exercicio 3
 function mediaDeEpisodios(series) {
@@ -33,7 +33,7 @@ function mediaDeEpisodios(series) {
   return totalEpi / series.length;
 }
 
-console.log(mediaDeEpisodios(series));
+console.log(`3) ${mediaDeEpisodios(series)}`);
 
 //Exercicio 4
 function procurarPorNome(series, nome) {
@@ -47,4 +47,6 @@ function procurarPorNome(series, nome) {
   return achou;
 }
 
-console.log(procurarPorNome(series, "Jabel Fontoura"));
+console.log(`4) ${procurarPorNome(series, "Jabel Fontoura")}`);
+
+//Exercicio 5
