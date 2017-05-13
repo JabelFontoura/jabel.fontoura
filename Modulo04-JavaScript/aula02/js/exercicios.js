@@ -119,3 +119,19 @@ function getUltimoNome(nome) {
 }
 
 console.log('7)', creditosIlluminatis(series[1]));
+
+//Exercicio 8
+function elencoIlluminati(series) {
+  let result = [];
+
+  for(serie of series) {
+    for(ator of serie.elenco) {
+      if(ator.indexOf('.') >= 1) 
+        result.push(ator.substring(ator.indexOf('.') - 1, ator.indexOf('.')));
+    }
+  }
+
+  return `#${result.join('')}`;
+}
+
+console.log('8)', elencoIlluminati(series));
