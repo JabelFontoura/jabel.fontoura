@@ -18,9 +18,7 @@ console.log(seriesInvalidas(series));
 
 //Exercicio 2
 function filtrarSeriesPorAno(series, ano) {
-  return series.filter(item => {
-    return item.anoEstreia >= ano ? item : '';
-  }); 
+  return series.filter(item => item.anoEstreia >= ano ? item : ''); 
 }
 
 console.log(filtrarSeriesPorAno(series, 2017));
