@@ -2,7 +2,7 @@
 function seriesInvalidas(series) {
   const invalidas = [];
   invalidas.push('Séries inválidas: ');
-  series.map(item => {
+  series.forEach(item => {
     if(item.anoEstreia > new Date().getFullYear()) 
       invalidas.push(item.titulo + ' - ');
     
@@ -24,3 +24,15 @@ function filtrarSeriesPorAno(series, ano) {
 }
 
 console.log(filtrarSeriesPorAno(series, 2017));
+
+//Exercicio 3
+function mediaDeEpisodios(series) {
+  let totalEpi = 0;
+
+  for(serie of series) 
+    totalEpi += serie.numeroEpisodios;
+
+  return totalEpi / series.length;
+}
+
+console.log(mediaDeEpisodios(series));
