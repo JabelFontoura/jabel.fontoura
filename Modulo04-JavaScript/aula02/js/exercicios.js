@@ -47,7 +47,7 @@ function procurarPorNome(series, nome) {
   return achou;
 }
 
-console.log(`4) ${procurarPorNome(series, "Jabel Fontoura")}`);
+console.log(`4) ${procurarPorNome(series, 'Jabel Fontoura')}`);
 
 //Exercicio 5
 function mascadaEmSerie(serie) {
@@ -61,7 +61,7 @@ function mascadaEmSerie(serie) {
 
 console.log(`5) ${mascadaEmSerie(series[0])}`);
 
-//Exercicio 6
+//Exercicio 6-A
 function queroGenero(genero) {
   let result = [];
 
@@ -72,4 +72,19 @@ function queroGenero(genero) {
   return result;  
 }
 
-console.log('6-A)', queroGenero("Caos"));
+console.log('6-A)', queroGenero('Caos'));
+
+//Exercicio 6-B
+function queroTitulo(titulo) {
+  let result = [];
+
+  for(serie of series) {
+    if(serie.titulo.includes(titulo))
+      result.push(serie.titulo);
+  }
+
+  return result;
+} 
+
+console.log('6-B)', queroTitulo('The'));
+
