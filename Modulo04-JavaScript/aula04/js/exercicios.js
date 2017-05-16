@@ -1,3 +1,4 @@
 Number.prototype.arredondar = function (casas = 2) {
-    return parseFloat(this).toFixed(casas);
+    const mutiplicador = Math.pow(10.0, casas);
+    return Math.round(this * mutiplicador) / mutiplicador;
 }
