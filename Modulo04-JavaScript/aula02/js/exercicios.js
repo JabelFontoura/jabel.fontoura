@@ -134,4 +134,4 @@ function elencoIlluminati(series) {
   return `#${result.join('')}`;
 }
 
-console.log('8)', elencoIlluminati(series));
+console.log('8)', elencoIlluminati(series));/**/
