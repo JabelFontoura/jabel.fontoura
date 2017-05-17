@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html ng-app="aula01">
+	<head>
+		<title></title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+		<script src="js/aula01.js"></script>
+	</head>
+	<body ng-controller="Exemplo1">
+		<div>
+			<label>Nome:</label>
+			<input type="text" ng-model="pokemon.nome">
+			<input type="text" ng-model="pokemon.tipo">
+			<hr>
+			<h1>Pokemon: {{pokemon.nome}}!</h1>
+			<h1>Tipo: {{pokemon.tipo}}!</h1>
+		</div>
+	</body>
+</html>
