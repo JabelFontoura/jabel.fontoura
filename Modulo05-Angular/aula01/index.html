@@ -4,7 +4,8 @@
 		<title></title>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+		<script src="../angular.js"></script>
+		<script src="../bootstrap/css/bootstrap.css"></script>
 		<script src="js/aula01.js"></script>
 	</head>
 	<body>
@@ -22,7 +23,7 @@
 		<div ng-controller="Exercicio2">
 			<h2>Exercicio 2</h2>
 			<label>Filtro:</label>
-			<input type="text" ng-model="filtroNome" placeholder="Filtre pokemons por nome">
+			<input type="text" ng-model="filtroNome" placeholder="Filtre pokemons aqui">
 			<ul ng-repeat="pokemon in pokemons | filter:filtroNome">
 				<li>{{pokemon.nome}} - {{pokemon.tipo}}</li>
 			</ul>
