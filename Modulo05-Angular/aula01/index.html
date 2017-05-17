@@ -5,28 +5,30 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<script src="../angular.js"></script>
-		<script src="../bootstrap/css/bootstrap.css"></script>
+		<link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
 		<script src="js/aula01.js"></script>
 	</head>
 	<body>
-		<div ng-controller="Exercicio1">
-			<h2>Exercicio 1</h2>
-			<label>Nome:</label>
-			<input type="text" ng-model="pokemon.nome">
-			<label>Tipo:</label>
-			<input type="text" ng-model="pokemon.tipo">
-			<hr>
-			<h3>Pokemon: {{pokemon.nome}}!</h3>
-			<h3>Tipo: {{pokemon.tipo}}!</h3>
-		</div>
+		<div class="container-fluid">
+			<div class="col-md-6" ng-controller="Exercicio1">
+				<h2>Exercicio 1</h2>
+				<label>Nome:</label>
+				<input type="text" ng-model="pokemon.nome">
+				<label>Tipo:</label>
+				<input type="text" ng-model="pokemon.tipo">
+				<hr>
+				<h3>Pokemon: {{pokemon.nome}}!</h3>
+				<h3>Tipo: {{pokemon.tipo}}!</h3>
+			</div>
 
-		<div ng-controller="Exercicio2">
-			<h2>Exercicio 2</h2>
-			<label>Filtro:</label>
-			<input type="text" ng-model="filtroNome" placeholder="Filtre pokemons aqui">
-			<ul ng-repeat="pokemon in pokemons | filter:filtroNome">
-				<li>{{pokemon.nome}} - {{pokemon.tipo}}</li>
-			</ul>
+			<div class="col-md-6" ng-controller="Exercicio2">
+				<h2>Exercicio 2</h2>
+				<label>Filtro:</label>
+				<input type="text" ng-model="filtroNome" placeholder="Filtre pokemons aqui">
+				<ul ng-repeat="pokemon in pokemons | filter:filtroNome">
+					<li>{{pokemon.nome}} - {{pokemon.tipo}}</li>
+				</ul>
+			</div>
 		</div>
 	</body>
 </html>
