@@ -7,15 +7,25 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 		<script src="js/aula01.js"></script>
 	</head>
-	<body ng-controller="Exemplo1">
-		<div>
+	<body>
+		<div ng-controller="Exercicio1">
+			<h2>Exercicio 1</h2>
 			<label>Nome:</label>
 			<input type="text" ng-model="pokemon.nome">
 			<label>Tipo:</label>
 			<input type="text" ng-model="pokemon.tipo">
 			<hr>
-			<h1>Pokemon: {{pokemon.nome}}!</h1>
-			<h1>Tipo: {{pokemon.tipo}}!</h1>
+			<h3>Pokemon: {{pokemon.nome}}!</h3>
+			<h3>Tipo: {{pokemon.tipo}}!</h3>
+		</div>
+
+		<div ng-controller="Exercicio2">
+			<h2>Exercicio 2</h2>
+			<label>Filtro:</label>
+			<input type="text" ng-model="filtroNome" placeholder="Filtre pokemons por nome">
+			<ul ng-repeat="pokemon in pokemons | filter:filtroNome">
+				<li>{{pokemon.nome}} - {{pokemon.tipo}}</li>
+			</ul>
 		</div>
 	</body>
 </html>
