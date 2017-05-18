@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html ng-app="aula02">
+	<head>
+		<title>Aula 2</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="../angular.js"></script>
+		<link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
+		<script src="js/aula02.js"></script>
+	</head>
+	<body>
+		<div class="container-fluid">
+            <h1>Exercício 2</h1>
+            <div class="form-group" ng-controller="Exercicio2">
+                <label for="date">Data:</label>
+                <input type="text" name="date" placeholder="dd/mm/aaaa" value="" ng-model="data">
+                <button class="btn btn-default" ng-click="imprime()">Click</button>
+                <span>{{resultadoData | date:'shortDate'}}</span>
+            </div>
+		</div>
+	</body>
+</html>
