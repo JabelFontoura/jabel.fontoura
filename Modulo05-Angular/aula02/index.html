@@ -17,6 +17,13 @@
                 <button class="btn btn-default" ng-click="imprime()">Click</button>
                 <span>{{resultadoData | date:'shortDate'}}</span>
             </div>
+
+            <h1>Exercicio 3</h1>
+            <div ng-controller="Exercicio3">
+                <ul ng-repeat="instrutor in instrutores">
+                    <li>{{instrutor.nome | mascada}}</li>
+                </ul>
+            </div>
 		</div>
 	</body>
 </html>
