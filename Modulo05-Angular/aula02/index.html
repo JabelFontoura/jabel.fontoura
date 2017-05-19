@@ -6,42 +6,44 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<script src="../angular.js"></script>
 		<link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
+		<link href="style.css" rel="stylesheet">
 		<script src="js/aula02.js"></script>
 		<script src="js/lista-instrutores.js"></script>
 	</head>
 	<body>
 		<div class="container-fluid">
-            <h1>Exercício 2</h1>
-            <div class="form-group" ng-controller="Exercicio2">
+            <h1>AngularJS - Aula 02</h2>
+            <div class="col-md-4 form-group" ng-controller="Exercicio2">
+            <h2>Exercício 2</h1>
                 <label for="date">Data:</label>
                 <input type="text" name="date" placeholder="dd/mm/aaaa" value="" ng-model="data">
-                <button class="btn btn-default" ng-click="imprime()">Click</button>
-                <span>{{resultadoData | date:'shortDate'}}</span>
+                <button class="btn btn-default" ng-click="imprime()">Converter</button>
+                <h3>ShortDate:{{resultadoData | date:'shortDate'}}</h3>
             </div>
 
-            <h1>Exercicio 3</h1>
-            <div ng-controller="Exercicio3">
+            <div class="col-md-4" ng-controller="Exercicio3">
+            <h2>Exercicio 3</h2>
                 <ul ng-repeat="instrutor in instrutores">
                     <li>{{instrutor.nome | mascada}}</li>
                 </ul>
             </div>
 
-            <h1>Exercicio 4 - Tema</h1>
-            <div ng-controller="Tema1">
+            <div class="col-md-4" ng-controller="Tema1">
+            <h2>Exercicio 4 - Tema</h2>
                 <ul ng-repeat="item in aulasInstrutor | orderBy: 'numero'">
                     <li>{{item.aula}} - {{item.instrutor}}</li>
                 </ul>
             </div>
 
-            <h1>Exercicio 5 - Tema</h1>
-            <div ng-controller="Tema1">
+            <div class="col-md-4" ng-controller="Tema1">
+            <h2>Exercicio 5 - Tema</h2>
                 <ul ng-repeat="item in aulasInstrutor">
                     <li>{{item.aula}} - {{item.instrutor | mascada}}</li>
                 </ul>
             </div>
 
-            <h1>Exercicio 6 - Tema</h1>
-            <div ng-controller="Tema3">
+            <div class="col-md-4" ng-controller="Tema3">
+            <h2>Exercicio 6 - Tema</h2>
                 <ul ng-repeat="item in aulasInstrutor | orderBy: 'numero'">
                     <li>{{lpad(item.numero)}} {{item.aula}} - {{item.instrutor | mascada}}</li>
                 </ul>
