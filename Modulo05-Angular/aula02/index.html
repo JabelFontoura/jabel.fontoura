@@ -28,8 +28,15 @@
 
             <h1>Exercicio 4 - Tema</h1>
             <div ng-controller="Tema1">
-                <ul ng-repeat="item in aulasInstrutor">
+                <ul ng-repeat="item in aulasInstrutor | orderBy: 'numero'">
                     <li>{{item.aula}} - {{item.instrutor}}</li>
+                </ul>
+            </div>
+
+            <h1>Exercicio 5 - Tema</h1>
+            <div ng-controller="Tema1">
+                <ul ng-repeat="item in aulasInstrutor">
+                    <li>{{item.aula}} - {{item.instrutor | mascada}}</li>
                 </ul>
             </div>
 		</div>

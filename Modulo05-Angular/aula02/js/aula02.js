@@ -14,16 +14,19 @@ module.controller('Exercicio3', ($scope, $filter) => {
 });
 
 module.controller('Tema1', ($scope, $filter) => {
+	$scope.aulasInstrutor = carregaListaAulaInstrutor();
+});
+
+//FILTERS
+module.filter('mascada', () => (nome) => nome.replace(/(nunes)/i, '$ $1 $'));
+
+
+function carregaListaAulaInstrutor() {
 	let aulas = [];
 
 	instrutores.forEach(item => {
 		item.aula.forEach(e => aulas.push({numero: e.numero, aula: e.nome, instrutor: item.nome }));
 	});
 
-	$scope.aulasInstrutor = aulas.sort((a, b) => a.numero - b.numero);
-
-});
-
-//FILTERS
-module.filter('mascada', () => (nome) => nome.replace(/(nunes)/i, '$ $1 $'));
-
+	return aulas;
+}
