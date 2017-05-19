@@ -13,30 +13,23 @@ module.controller('Exercicio3', ($scope, $filter) => {
     $scope.instrutores = instrutores;
 });
 
-module.controller('Tema1', ($scope, $filter) => {
-	$scope.aulasInstrutor = carregaListaAulaInstrutor();
-});
-
-module.controller('Tema3', ($scope, $filter) => {
-	$scope.lpad = function lpad(num) {
-		let str = num.toString();
-		const pad = "000"
-
-		return pad.substring(0, pad.length - str.length) + str;
-}
-
-	$scope.aulasInstrutor = carregaListaAulaInstrutor();
-});
-
-module.filter('mascada', () => (nome) => nome.replace(/(nunes)/i, '$ $1 $'));
-module.filter('toUpperCase', () => (exp) => exp.replace(/(banco de dados i)/gi, exp.toUpperCase()));
-
-function carregaListaAulaInstrutor() {
+module.controller('Tema', ($scope, $filter) => {
 	let aulas = [];
 
 	instrutores.forEach(item => {
 		item.aula.forEach(e => aulas.push({numero: e.numero, aula: e.nome, instrutor: item.nome }));
 	});
 
-	return aulas;
+	$scope.aulasInstrutor = aulas;
+});
+
+module.filter('mascada', () => (nome) => nome.replace(/(nunes)/i, '$ $1 $'));
+module.filter('toUpperCase', () => (exp) => exp.replace(/(banco de dados i)/gi, exp.toUpperCase()));
+module.filter('numeroAula', () => (aulaInstrutor) => `${lpad(aulaInstrutor.numero)} - ${aulaInstrutor.aula}`);
+
+function lpad(num) {
+		let str = num.toString();
+		const pad = "000"
+
+		return pad.substring(0, pad.length - str.length) + str;
 }
