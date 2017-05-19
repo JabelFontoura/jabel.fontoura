@@ -1,0 +1,23 @@
+body {
+  margin: 0 auto;
+  background-color: #f0ffdd;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+h1 {
+  text-align: center;
+}
+
+.container-fluid > div {
+  height: 300px;
+  border: 1px groove black;
+  margin: 0;
+}
+.container-fluid > div:hover {
+  border: 3px groove red;
+  background-color: #c4dafc; 
+  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+}

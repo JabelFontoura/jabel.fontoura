@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="aula03">
+    <head>
+			<title></title>
+			<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+			<script src="../angular.js"></script>
+			<script src="controller.js"></script>
+			<link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
+			<link href="style.css" rel="stylesheet">
+    </head>
+    <body>
+		<div class="container-fluid" ng-controller="MainController">
+			<h1>Angular - Aula 03</h1>
+			<br>
+			<form novalidate name="formAula03">
+				<div class="form-group">
+					<label for="nome">Novo Nome:</label>
+					<input type="text" name="nome" ng-model="novoNome" required>
+					<button class="btn btn-primary" ng-click="incluir(novoNome)">Incluir</button>
+				</div>
+			</form>
+			<h2>Nomes</h2>
+			<ul>
+				<li ng-repeat="item in nomes">
+					{{ item }}
+				</li>
+			</ul>
+			</div>
+    </body>
+</html>
