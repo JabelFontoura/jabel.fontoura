@@ -7,6 +7,7 @@
 		<script src="../angular.js"></script>
 		<link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
 		<script src="js/aula02.js"></script>
+		<script src="js/lista-instrutores.js"></script>
 	</head>
 	<body>
 		<div class="container-fluid">
@@ -22,6 +23,13 @@
             <div ng-controller="Exercicio3">
                 <ul ng-repeat="instrutor in instrutores">
                     <li>{{instrutor.nome | mascada}}</li>
+                </ul>
+            </div>
+
+            <h1>Exercicio 4 - Tema</h1>
+            <div ng-controller="Tema1">
+                <ul ng-repeat="item in aulasInstrutor">
+                    <li>{{item.aula}} - {{item.instrutor}}</li>
                 </ul>
             </div>
 		</div>
