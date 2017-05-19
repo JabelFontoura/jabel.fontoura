@@ -5,7 +5,7 @@
 			<meta charset="UTF-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1">
 			<script src="../angular.js"></script>
-			<script src="controller.js"></script>
+			<script src="js/controller.js"></script>
 			<link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
 			<link href="style.css" rel="stylesheet">
     </head>
@@ -13,18 +13,50 @@
 		<div class="container-fluid" ng-controller="MainController">
 			<h1>Angular - Aula 03</h1>
 			<br>
-			<form novalidate name="formAula03">
+			<form  novalidate name="formAula03" ng-submit="incluirInstruror(instrutor)">
 				<div class="form-group">
-					<label for="nome">Novo Nome:</label>
-					<input type="text" name="nome" ng-model="novoNome" required>
-					<button class="btn btn-primary" ng-click="incluir(novoNome)">Incluir</button>
+					<label for="nome">Nome:</label>
+					<input type="text" name="nome" required minlength="3" maxlength="20" ng-model="instrutor.nome">
+				</div>
+
+				<div class="form-group">
+					<label for="sobrenome">Sobrenome:</label>
+					<input type="text" name="sobrenome" maxlength="30" ng-model="instrutor.sobreNome">
+				</div>
+
+				<div class="form-group">
+					<label for="idade">Idade:</label>
+					<input type="number" name="idade" required  ng-model="instrutor.idade">
+				</div>
+				
+				<div class="form-group">
+					<label for="email">Email:</label>
+					<input type="email" name="email" required ng-model="instrutor.email">
+				</div>
+				
+				<div class="form-group">
+					<label for="deuAula">Já deu aula:</label>
+					<input type="checkbox" name="deuAula" ng-checked="deuAula" ng-model="instrutor.deuAula">
+				</div>
+				
+				<div class="form-group">
+					<label for="aula">Aula:</label>
+					<select name="aula" ng-model="instrutor.aula">
+						<option ng-repeat="item in aulas" value="{{item}}">{{item}}</option>
+					</select>
+				</div>
+				
+				<div class="form-group">
+					<button class="btn btn-primary" type="submit">Incluir</button>
 				</div>
 			</form>
-			<h2>Nomes</h2>
-			<ul>
-				<li ng-repeat="item in nomes">
-					{{ item }}
-				</li>
+			<h2>Instrutores</h2>
+			<ul ng-repeat="item in instrutores">
+				<li><strong>Nome: {{ item.nome }}</strong></li>
+				<li>Sobrenome: {{ item.sobreNome }}</li>
+				<li>Idade: {{ item.idade }}</li>
+				<li>Já deu aula: {{ item.deuAula }}</li>
+				<li>Aula: {{ item.aula }}</li>
 			</ul>
 			</div>
     </body>
