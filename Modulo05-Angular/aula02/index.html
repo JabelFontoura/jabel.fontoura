@@ -39,6 +39,13 @@
                     <li>{{item.aula}} - {{item.instrutor | mascada}}</li>
                 </ul>
             </div>
+
+            <h1>Exercicio 6 - Tema</h1>
+            <div ng-controller="Tema3">
+                <ul ng-repeat="item in aulasInstrutor | orderBy: 'numero'">
+                    <li>{{lpad(item.numero)}} {{item.aula}} - {{item.instrutor | mascada}}</li>
+                </ul>
+            </div>
 		</div>
 	</body>
 </html>

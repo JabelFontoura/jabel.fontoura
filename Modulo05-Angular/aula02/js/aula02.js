@@ -17,9 +17,18 @@ module.controller('Tema1', ($scope, $filter) => {
 	$scope.aulasInstrutor = carregaListaAulaInstrutor();
 });
 
-//FILTERS
-module.filter('mascada', () => (nome) => nome.replace(/(nunes)/i, '$ $1 $'));
+module.controller('Tema3', ($scope, $filter) => {
+	$scope.lpad = function lpad(num) {
+		let str = num.toString();
+		const pad = "000"
 
+		return pad.substring(0, pad.length - str.length) + str;
+}
+
+	$scope.aulasInstrutor = carregaListaAulaInstrutor();
+});
+
+module.filter('mascada', () => (nome) => nome.replace(/(nunes)/i, '$ $1 $'));
 
 function carregaListaAulaInstrutor() {
 	let aulas = [];
