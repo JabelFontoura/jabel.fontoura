@@ -52,7 +52,7 @@
             <h2>Exercicio 6 - Tema</h2>
                 <ul ng-repeat="item in aulasInstrutor | orderBy: 'numero'">
                     <li>
-                        <div class="col-md-5">{{lpad(item.numero)}} - {{item.aula}}</div>
+                        <div class="col-md-6">{{lpad(item.numero)}} - {{item.aula | toUpperCase}}</div>
                         <div class="col-md-5">{{item.instrutor | mascada}}</div>
                     </li>
                 </ul>

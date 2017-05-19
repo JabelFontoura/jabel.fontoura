@@ -29,6 +29,7 @@ module.controller('Tema3', ($scope, $filter) => {
 });
 
 module.filter('mascada', () => (nome) => nome.replace(/(nunes)/i, '$ $1 $'));
+module.filter('toUpperCase', () => (exp) => exp.replace(/(banco de dados i)/gi, exp.toUpperCase()));
 
 function carregaListaAulaInstrutor() {
 	let aulas = [];
