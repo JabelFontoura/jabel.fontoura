@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="aula03">
     <head>
-			<title></title>
+			<title>AngularJs - Aula 03</title>
 			<meta charset="UTF-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1">
 			<script src="../angular.js"></script>
@@ -11,9 +11,9 @@
     </head>
     <body>
 		<div class="container-fluid" ng-controller="MainController">
-			<h1>Angular - Aula 03</h1>
+			<h1>AngularJS - Aula 03</h1>
 			<br>
-			<form  novalidate name="formAula03" ng-submit="incluirInstruror(instrutor)">
+			<form novalidate name="formAula03" ng-submit="incluirInstruror(instrutor)">
 				<div class="form-group">
 					<label for="nome">Nome:</label>
 					<input type="text" name="nome" required minlength="3" maxlength="20" ng-model="instrutor.nome">

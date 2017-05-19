@@ -23,8 +23,8 @@ module.controller('MainController', ($scope) => {
     $scope.incluirInstruror = (instrutor) => {
         if($scope.formAula03.$invalid) return;  
          
-        console.log($scope.instrutores);
-        $scope.instrutores.push(instrutor);
+        $scope.instrutores.push(Object.assign({}, instrutor));
+        for (let prop in instrutor) delete instrutor[prop];
     }
 });
 
