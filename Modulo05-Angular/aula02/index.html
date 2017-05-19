@@ -31,21 +31,30 @@
             <div class="col-md-4" ng-controller="Tema1">
             <h2>Exercicio 4 - Tema</h2>
                 <ul ng-repeat="item in aulasInstrutor | orderBy: 'numero'">
-                    <li>{{item.aula}} - {{item.instrutor}}</li>
+                    <li>
+                        <div class="col-md-5">{{item.aula}}</div>
+                        <div class="col-md-5">{{item.instrutor}}</div>
+                    </li>
                 </ul>
             </div>
 
             <div class="col-md-4" ng-controller="Tema1">
             <h2>Exercicio 5 - Tema</h2>
                 <ul ng-repeat="item in aulasInstrutor">
-                    <li>{{item.aula}} - {{item.instrutor | mascada}}</li>
+                   <li>
+                        <div class="col-md-5">{{item.aula}}</div>
+                        <div class="col-md-5">{{item.instrutor | mascada}}</div>
+                    </li>
                 </ul>
             </div>
 
             <div class="col-md-4" ng-controller="Tema3">
             <h2>Exercicio 6 - Tema</h2>
                 <ul ng-repeat="item in aulasInstrutor | orderBy: 'numero'">
-                    <li>{{lpad(item.numero)}} {{item.aula}} - {{item.instrutor | mascada}}</li>
+                    <li>
+                        <div class="col-md-5">{{lpad(item.numero)}} - {{item.aula}}</div>
+                        <div class="col-md-5">{{item.instrutor | mascada}}</div>
+                    </li>
                 </ul>
             </div>
 		</div>
