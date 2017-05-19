@@ -24,7 +24,7 @@ module.controller('Tema', ($scope, $filter) => {
 });
 
 module.filter('mascada', () => (nome) => nome.replace(/(nunes)/i, '$ $1 $'));
-module.filter('toUpperCase', () => (exp) => exp.replace(/(banco de dados i)/gi, exp.toUpperCase()));
+module.filter('toUpperCase', () => (exp) => exp.replace(/(banco de dados i)/gi, 'banco de dados i'.toUpperCase()));
 module.filter('numeroAula', () => (aulaInstrutor) => `${lpad(aulaInstrutor.numero)} - ${aulaInstrutor.aula}`);
 
 function lpad(num) {
