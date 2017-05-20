@@ -24,7 +24,6 @@ module.controller('MainController', ($scope) => {
 
   $scope.deletar = () => {
     if($scope.delete.$valid) {
-      console.log(getIdIndex(), '---', $scope.idDelete);
       $scope.aulas.splice(getIdIndex(), 1);
     }
   }
