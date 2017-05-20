@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html ng-app="crud">
+  <head>
+    <title>AngularJS - Trabalho</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="../../angular.js"></script>
+    <script src="controller.js"></script>
+    <link href="../../bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container" ng-controller="MainController">
+      <h1>AngularJS - Trabalho - Final de Semana (CRUD)</h1>
+      <hr>
+      <form class="col-md-3 form-horizontal" name="create" novalidate ng-submit="adicionar()">
+          <div class="col-md-12 form-group">
+            <h2>Adicionar Aula</h2>
+            <input class="form-control" type="text" name="novaAula" placeholder="Digite um nome para aula" required ng-model="novaAula.nome">
+            <br>
+            <button class="btn btn-primary form-control" type="submit">Adicionar</button>
+          </div>
+      </form>
+      <form class="col-md-3 form-horizontal" name="update" novalidate ng-submit="editar()">    
+          <div class="col-md-12 form-group">
+            <h2>Atualizar Aula</h2>
+            <select class="form-control" name="aulas" ng-model="idUpdate">
+              <option selected="selected">Selecione uma aula</option>
+						  <option ng-repeat="item in aulas | orderBy: 'nome'" value="{{item.id}}">{{item.nome}}</option>
+					  </select>
+            <br>
+            <input class="form-control" type="text" name="editAula" placeholder="Escolha um novo nome para aula" required ng-model="edit.nome">
+            <br>
+            <button class="btn btn-primary form-control" type="submit">Editar</button>
+          </div>
+      </form>
+      <form class="col-md-3 form-horizontal" name="delete" novalidate ng-submit="deletar()">   
+        <div class="col-md-12 form-group">
+          <h2>Deletar Aula</h2>
+          <select class="form-control" name="aulas" ng-model="idDelete">
+            <option selected="selected">Selecione uma aula</option>
+            <option ng-repeat="item in aulas | orderBy: 'nome'" value="{{item.id}}">{{item.nome}}</option>
+          </select>
+          <br>
+          <button class="btn btn-primary form-control" type="submit">Deletar</button>
+        </div>
+      </form>      
+      <div class="col-md-3">
+        <h2>Aulas</h2>
+        <ul>
+          <li ng-repeat="item in aulas | orderBy: 'nome'">{{item.id}} - {{item.nome}}</li>
+        </ul>
+      </div>
+      
+    </div>
+  </body>
+</html>

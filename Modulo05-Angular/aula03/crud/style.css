@@ -1,0 +1,21 @@
+body {
+  margin: 0 auto;
+  background-color: #f0ffdd;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+h1, h2 {
+  text-align: center;
+}
+
+form > div {
+  padding-left: 200px;
+}
+.container-fluid > div:hover {
+  border: 3px groove red;
+  background-color: #c4dafc; 
+  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+}
