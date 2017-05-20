@@ -24,11 +24,15 @@ module.controller('MainController', ($scope) => {
 
   $scope.deletar = () => {
     if($scope.delete.$valid) {
-      $scope.aulas.forEach((item) => {
-        if(item.id === Number($scope.idDelete)) {
-          $scope.aulas.splice(item.id, 1);
-        }
-      });
+      console.log(getIdIndex(), '---', $scope.idDelete);
+      $scope.aulas.splice(getIdIndex(), 1);
     }
+  }
+
+  function getIdIndex() {
+    for(let i = 0; i < $scope.aulas.length; i++) 
+        if($scope.aulas[i].id === Number($scope.idDelete)) return i;
+      
+      return -1;
   }
 });
