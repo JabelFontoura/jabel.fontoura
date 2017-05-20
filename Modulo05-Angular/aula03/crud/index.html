@@ -13,55 +13,117 @@
     <div class="container" ng-controller="MainController">
       <h1>AngularJS - Trabalho - Final de Semana (CRUD)</h1>
       <hr>
-      <form class="col-md-3 form-horizontal" name="create" novalidate ng-submit="adicionar()">
-          <div class="col-md-12 form-group">
-            <h2>Adicionar Aula</h2>
-            <label for="novaAula">Nome:</label>
-            <input class="form-control" type="text" name="novaAula" placeholder="Digite um nome para aula" required ng-model="novaAula.nome">
-            <br>
-            <button class="btn btn-primary form-control" type="submit">Adicionar</button>
-          </div>
-      </form>
-      <form class="col-md-3 form-horizontal" name="update" novalidate ng-submit="editar()">    
-          <div class="col-md-12 form-group">
-            <h2>Atualizar Aula</h2>
-          <label for="aulas">Selecione uma aula:</label>
-            <select class="form-control" name="aulas" ng-model="idUpdate">
-              <option selected="selected">Selecione uma aula</option>
-						  <option ng-repeat="item in aulas | orderBy: 'nome'" value="{{item.id}}">{{item.nome}}</option>
-					  </select>
-            <br>
-            <label for="novaAula">Nome:</label>
-            <input class="form-control" type="text" name="editAula" placeholder="Escolha um novo nome para aula" required ng-model="edit.nome">
-            <br>
-            <button class="btn btn-primary form-control" type="submit">Editar</button>
-          </div>
-      </form>
-      <form class="col-md-3 form-horizontal" name="delete" novalidate ng-submit="deletar()">   
-        <div class="col-md-12 form-group">
-          <h2>Deletar Aula</h2>
-          <label for="aulas">Selecione uma aula:</label>
-          <select class="form-control" name="aulas" ng-model="idDelete">
-            <option ng-repeat="item in aulas | orderBy: 'nome'" value="{{item.id}}">{{item.nome}}</option>
-          </select>
-          <br>
-          <button class="btn btn-primary form-control" type="submit">Deletar</button>
+      <div class="col-md-12">
+        <form class="col-md-6 form-horizontal" name="createAula" novalidate ng-submit="adicionarAula()">
+            <div class="col-md-12 form-group">
+              <h2>Adicionar Aula</h2>
+              <label for="novaAula">Nome:</label>
+              <input 
+                class="form-control" 
+                type="text" 
+                name="novaAula" 
+                placeholder="Digite um nome para aula" 
+                required 
+                minlength="2"
+                maxlength="20"
+                ng-model="novaAula.nome"
+              >
+              <p class="erro" ng-show="createAulaExiste">Aula já cadastrada.</p>
+            </div>
+            <div class=" col-md-12 form-group">
+              <button class="btn btn-primary form-control" type="submit">Adicionar</button>
+            </div>
+        </form>
+        <div class="col-md-6">
+          <h2>Aulas</h2>
+          <table class="table table-striped table-bordered table-hover table-condensed">
+            <tr>
+              <th>ID</th>
+              <th>Nome</th>
+              <th>Editar</th>
+              <th>Deletar</th>
+            </tr>
+            <tr ng-repeat="item in aulas | orderBy: 'nome'">
+              <td>{{item.id}}</td>
+              <td>{{item.nome}}</td>
+              <td><button class="btn btn-warning" type="submit" ng-click="mostrarAula(item)"><span class="glyphicon glyphicon-pencil"></span></button></td>
+              <td><button class="btn btn-danger" type="submit" ng-click="deletarAula(item.id)"><span class="glyphicon glyphicon-trash"></span></button></td>
+            </tr>
+          </table>
         </div>
-      </form>      
-      <div class="col-md-3">
-        <h2>Aulas</h2>
-        <table class="table table-striped table-bordered table-hover table-condensed">
-          <tr>
-            <th>ID</th>
-            <th>Nome</th>
-          </tr>
-          <tr ng-repeat="item in aulas | orderBy: 'nome'">
-            <td>{{item.id}}</td>
-            <td>{{item.nome}}</td>
-          </tr>
-        </table>
       </div>
-      
+      <form class="col-md-6 form-horizontal" name="updateAula" novalidate ng-submit="editarAula()" ng-show="showEdit">
+        <div class="form-group">
+          <input class="form-control" type="text" name="editAula" placeholder="Escolha um novo nome para aula"  required ng-model="editAula.nome">
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary form-control" type="submit">Editar</button>
+        </div>
+      </form>
+      <hr>
+
+      <div class="col-md-12">
+        <form class="col-md-3 form-horizontal" name="createInstrutor" novalidate ng-submit="adicionarInstrutor()">
+            <div class="col-md-12 form-group">
+              <div class="form-group">
+              <h2>Adicionar Instrutor</h2>
+              <label for="novoInstrutor">Nome:</label>
+              <input 
+                class="form-control" 
+                type="text" 
+                name="novoInstrutor" 
+                placeholder="Digite um nome para o instrutor" 
+                required 
+                minlength="2"
+                maxlength="20"
+                ng-model="novoInstrutor.nome"
+              >
+              <p class="erro" ng-show="createAulaExiste">Instrutor já cadastrada.</p>
+            </div>
+            <div class="form-group">
+              <label for="sobrenome">Sobrenome:</label>
+              <input class="form-control" type="text" name="sobrenome" maxlength="30" ng-model="novoInstrutor.sobreNome">
+            </div>
+
+            <div class="form-group">
+              <label for="idade">Idade:</label>
+              <input class="form-control" type="number" name="idade" required  ng-model="novoInstrutor.idade">
+            </div>
+            
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input class="form-control" type="email" name="email" required ng-model="novoInstrutor.email">
+            </div>
+            
+            <div class="form-group">
+              <label for="DandoAula">Dando aula:</label>
+              <input class="form-control" type="checkbox" name="dandoAula" ng-checked="deuAula" ng-model="novoInstrutor.dandoAula">
+            </div>
+            <div class="form-group">
+              <button class="btn btn-primary form-control" type="submit">Adicionar</button>
+            </div>
+          </form>
+      </div>
+
+      <div class="col-md-3">
+          <h2>Instrutores</h2>
+          <table class="table table-striped table-bordered table-hover table-condensed">
+            <tr>
+              <th>ID</th>
+              <th>Foto</th>
+              <th>Nome</th>
+              <th>Sbronome</th>
+              <th>Idade</th>
+              <th>Email</th>
+              <th>Dando aula</th>
+              <th>Aulas</th>
+            </tr>
+            <tr ng-repeat="item in instrutores | orderBy: 'nome'">
+              <td>{{item.id}}</td>
+              <td>{{item.nome}}</td>
+            </tr>
+          </table>
+        </div>
     </div>
   </body>
 </html>

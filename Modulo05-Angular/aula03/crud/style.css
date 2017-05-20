@@ -15,6 +15,11 @@ form > div {
   padding-left: 200px;
 }
 
+.erro {
+  color:red;
+  font-weight: 700;
+}
+
 table {
   background-color: white;
 }
