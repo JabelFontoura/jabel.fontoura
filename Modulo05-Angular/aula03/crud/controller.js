@@ -91,31 +91,33 @@ module.controller('MainController', ($scope, toastr) => {
 
   $scope.editarInstrutor = () => {
     if($scope.updateInstrutor.$valid) {
-      $scope.instrutores.forEach(item => $scope.editInstrutorExiste = item.nome === $scope.editInstrutor.nome);
-
-      if(!$scope.editInstrutorExiste){
-        $scope.instrutores.forEach((item) => {
-          if(item.id === Number($scope.idInstrutorUpdate)) {
-            item.nome = $scope.editInstrutor.nome;
-            item.foto = $scope.editInstrutor.foto;
-            item.sobrenome = $scope.editInstrutor.sobrenome;
-            item.idade = $scope.editInstrutor.idade;
-            item.email = $scope.editInstrutor.email;
-            item.dandoAula = $scope.editInstrutor.dandoAula;
-            console.log('aulas',item.aulas);
-            item.aulas = getValorCheckbox('checkbox-edit-aula');
-            console.log('aulas',item.aulas);
-          }
-        });
-      }
+      //$scope.instrutores.forEach(item => $scope.editInstrutorExiste = item.nome === $scope.editInstrutor.nome);
+      $scope.instrutores.forEach((item) => {
+        if(item.id === Number($scope.idInstrutorUpdate)) {
+          item.nome = $scope.editInstrutor.nome;
+          item.foto = $scope.editInstrutor.foto;
+          item.sobrenome = $scope.editInstrutor.sobrenome;
+          item.idade = $scope.editInstrutor.idade;
+          item.email = $scope.editInstrutor.email;
+          item.aulas = getValorCheckbox('checkbox-edit-aula');
+          if($scope.editDandoAula) item.dandoAula = 'Sim';
+          else item.dandoAula = 'Não';
+        }
+      });
       $scope.editInstrutor = {};
       $scope.showEditInstrutor = false;
+      $scope.editInstrutorExiste = false;
     }
   }
 
   $scope.deletarInstrutor = (id) => {
-    $scope.instrutores.splice(getIdIndex(id, $scope.instrutores), 1);
-    $scope.showEditInstrutor = false;
+    $scope.instrutores.forEach(item => $scope.editDandoAula = item.dandoAula === 'Sim');
+    if(!$scope.editDandoAula) {
+      $scope.instrutores.splice(getIdIndex(id, $scope.instrutores), 1);
+      $scope.showEditInstrutor = false;
+    }else {
+      toastr.error('Não é possível excluir este instrutor. Está dando aula.');
+    }
   }
 
   $scope.getCheckedAula = (id) => {

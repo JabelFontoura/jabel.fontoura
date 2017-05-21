@@ -175,7 +175,6 @@
                 maxlength="20"
                 ng-model="editInstrutor.nome"
               >
-              <p class="erro" ng-show="editInstrutorExiste">Instrutor já cadastrado.</p>
             </div>
 
             <div class="form-group">
@@ -200,7 +199,7 @@
             
             <div class="form-group">
               <label for="editDandoAula">Dando aula:</label>
-              <input class="form-control" type="checkbox" name="editDandoAula" ng-checked="deuAula" ng-model="editInstrutor.dandoAula">
+              <input class="form-control" type="checkbox" name="editDandoAula" ng-checked="editInstrutor.dandoAula === 'Sim'" ng-model="editDandoAula">
             </div>
             
             <div class="form-group" ng-repeat="item in aulas">
