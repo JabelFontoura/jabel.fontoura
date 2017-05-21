@@ -4,7 +4,7 @@ module.controller('MainController', ($scope, toastr) => {
   let idAula = 0;
   let idInstrutor = 0;
   $scope.aulas = [{id: idAula++, nome: 'HTML & CSS'}, {id: idAula++, nome: 'Javascript'}, {id: idAula++, nome: 'Angular'}];
-  $scope.instrutores = [{id: idInstrutor++, nome:'teste', foto: 'https://pbs.twimg.com/profile_images/799010304273371136/HNncmPwZ.jpg', aulas: [ {id: 0, nome: 'HTML & CSS'}, {id: 1, nome: 'Javascript'}]}];
+  $scope.instrutores = [];
 
 
   $scope.adicionarAula = () => {
@@ -13,6 +13,8 @@ module.controller('MainController', ($scope, toastr) => {
       if(!$scope.createAulaExiste){
         $scope.novaAula.id = idAula++;
         $scope.aulas.push(angular.copy($scope.novaAula));
+
+        toastr.success('Aula inserida com sucesso.');
       } else {
         toastr.error('Aula já cadastrada.');
       }
@@ -52,17 +54,28 @@ module.controller('MainController', ($scope, toastr) => {
 
   $scope.adicionarInstrutor = () => {
     if($scope.createInstrutor.$valid) {
-      $scope.instrutores.forEach(item => $scope.createInstrutorExiste = item.nome === $scope.novoInstrutor.nome);
-      if(!$scope.createInstrutorExiste){
-        // if(!$scope.novoInstrutor.deuAula) {
-        //   $scope.novoInstrutor.dandoAula = 'Não';
-        // } else {
-        //   $scope.novoInstrutor.dandoAula = 'Sim';
-        // } 
+      $scope.instrutores.forEach(item => $scope.nomeInstrutorExiste = item.nome === $scope.novoInstrutor.nome);
+      $scope.instrutores.forEach(item => $scope.emailInstrutorExiste = item.email === $scope.novoInstrutor.email);
+
+      if(!$scope.nomeInstrutorExiste){
+        if($scope.emailInstrutorExiste) {
+          toastr.error('Email já está sendo utilizado.');
+          return;
+        }
+
+        if(!$scope.novoInstrutor.foto) $scope.novoInstrutor.foto = 'https://pbs.twimg.com/profile_images/799010304273371136/HNncmPwZ.jpg'
+
+        if($scope.novoInstrutor.dandoAula) $scope.novoInstrutor.dandoAula = 'Sim';
+        else $scope.novoInstrutor.dandoAula = 'Não';
 
         $scope.novoInstrutor.id = idInstrutor++;
         $scope.novoInstrutor.aulas = getValorCheckbox('checkbox-aula');
         $scope.instrutores.push(angular.copy($scope.novoInstrutor));
+
+        toastr.success('Instrutor inserido com sucesso.');
+      } else {
+        toastr.error('Instrutor já cadastrado.');
+        return;
       }
       $scope.novoInstrutor = {};
     }

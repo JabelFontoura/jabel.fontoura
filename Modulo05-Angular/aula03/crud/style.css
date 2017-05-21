@@ -27,3 +27,7 @@ table {
 img {
   width: 50px;
 }
+
+input:required {
+  border: 2px groove orange;
+}
