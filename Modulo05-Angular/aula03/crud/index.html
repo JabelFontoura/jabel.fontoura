@@ -48,12 +48,12 @@
             <tr ng-repeat="item in aulas | orderBy: 'nome'">
               <td>{{item.id}}</td>
               <td>{{item.nome}}</td>
-              <td><button class="btn btn-warning" type="submit" ng-click="mostrarAula(item)"><span class="glyphicon glyphicon-pencil"></span></button></td>
-              <td><button class="btn btn-danger" type="submit" ng-click="deletarAula(item.id)"><span class="glyphicon glyphicon-trash"></span></button></td>
+              <td><button class="btn btn-warning" ng-click="mostrarAula(item)"><span class="glyphicon glyphicon-pencil"></span></button></td>
+              <td><button class="btn btn-danger" ng-click="deletarAula(item.id)"><span class="glyphicon glyphicon-trash"></span></button></td>
             </tr>
           </table>
         </div>
-          <form class="col-md-8 form-horizontal" name="updateAula" novalidate ng-submit="editarAula()" ng-show="showEdit">
+          <form class="col-md-8 form-horizontal" name="updateAula" novalidate ng-submit="editarAula()" ng-show="showEditAula">
             <div class="form-group">
             <h2>Editar Aula</h2>
               <label for="editAula">Nome:</label>
@@ -84,7 +84,7 @@
                 maxlength="20"
                 ng-model="novoInstrutor.nome"
               >
-              <p class="erro" ng-show="createAulaExiste">Instrutor já cadastrada.</p>
+              <p class="erro" ng-show="createInstrutorExiste">Instrutor já cadastrado.</p>
             </div>
 
             <div class="form-group">
@@ -136,6 +136,8 @@
               <th>Email</th>
               <th>Dando aula</th>
               <th>Aulas</th>
+              <th>Editar</th>
+              <th>Deletar</th>
             </tr>
             <tr ng-repeat="item in instrutores | orderBy: 'nome'">
               <td>{{item.id}}</td>
@@ -150,8 +152,65 @@
                   <li ng-repeat="aula in item.aulas | orderBy: 'nome'">{{aula.nome}}</li>
                 </ul>
               </td>
+              <td><button class="btn btn-warning" ng-click="mostrarInstrutor(item)"><span class="glyphicon glyphicon-pencil"></span></button></td>
+              <td><button class="btn btn-danger" ng-click="deletarInstrutor(item.id)"><span class="glyphicon glyphicon-trash"></span></button></td>
             </tr>
           </table>
+        </div>
+        <div class="col-md-7">
+           <form class="col-md-12 form-horizontal" name="updateInstrutor" novalidate ng-submit="editarInstrutor()"  ng-show="showEditInstrutor">
+            <div class="col-md-12 form-group">
+              <div class="form-group">
+              <h2>Editar Instrutor</h2>
+              <label for="editInstrutor">Nome:</label>
+              <input 
+                class="form-control" 
+                type="text" 
+                name="editInstrutor" 
+                placeholder="Digite um nome para o instrutor" 
+                required 
+                minlength="2"
+                maxlength="20"
+                ng-model="editInstrutor.nome"
+              >
+              <p class="erro" ng-show="editInstrutorExiste">Instrutor já cadastrado.</p>
+            </div>
+
+            <div class="form-group">
+              <label for="editFoto">Foto:</label>
+              <input class="form-control" type="text" name="editFoto" placeholder="http://foto.com/3.png" ng-model="editInstrutor.foto">
+            </div>
+
+            <div class="form-group">
+              <label for="editSobrenome">Sobrenome:</label>
+              <input class="form-control" type="text" name="editSobrenome" maxlength="30" ng-model="editInstrutor.sobrenome">
+            </div>
+
+            <div class="form-group">
+              <label for="editIdade">Idade:</label>
+              <input class="form-control" type="number" name="editIdade" required  ng-model="editInstrutor.idade">
+            </div>
+            
+            <div class="form-group">
+              <label for="editEmail">Email:</label>
+              <input class="form-control" type="email" name="editEmail" required ng-model="editInstrutor.email">
+            </div>
+            
+            <div class="form-group">
+              <label for="editDandoAula">Dando aula:</label>
+              <input class="form-control" type="checkbox" name="editDandoAula" ng-checked="deuAula" ng-model="editInstrutor.dandoAula">
+            </div>
+            
+            <div class="form-group" ng-repeat="item in aulas">
+              <label>
+                <input class="checkbox-aula" type="checkbox" name="editAulas" value="{{item}}" ng-checked="getCheckedAula(item.id)">
+                {{item.nome}}
+              </label>
+            </div>
+            <div class="form-group">
+              <button class="btn btn-primary form-control" type="submit">Editar</button>
+            </div>
+          </form>
         </div>
     </div>
   </body>
