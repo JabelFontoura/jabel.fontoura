@@ -1,10 +1,10 @@
-const module = angular.module('crud', []);
+const module = angular.module('crud', ['ngAnimate', 'toastr']);
 
-module.controller('MainController', ($scope) => {
+module.controller('MainController', ($scope, toastr) => {
   let idAula = 0;
   let idInstrutor = 0;
   $scope.aulas = [{id: idAula++, nome: 'HTML & CSS'}, {id: idAula++, nome: 'Javascript'}, {id: idAula++, nome: 'Angular'}];
-  $scope.instrutores = [{id: idInstrutor++, nome:'teste', aulas: [ {id: 0, nome: 'HTML & CSS'}, {id: 1, nome: 'Javascript'}]}];
+  $scope.instrutores = [{id: idInstrutor++, nome:'teste', foto: 'https://pbs.twimg.com/profile_images/799010304273371136/HNncmPwZ.jpg', aulas: [ {id: 0, nome: 'HTML & CSS'}, {id: 1, nome: 'Javascript'}]}];
 
 
   $scope.adicionarAula = () => {
@@ -13,6 +13,8 @@ module.controller('MainController', ($scope) => {
       if(!$scope.createAulaExiste){
         $scope.novaAula.id = idAula++;
         $scope.aulas.push(angular.copy($scope.novaAula));
+      } else {
+        toastr.error('Aula já cadastrada.');
       }
       $scope.novaAula = {};
     }
@@ -40,7 +42,12 @@ module.controller('MainController', ($scope) => {
   }
 
   $scope.deletarAula = (id) => {
-      $scope.aulas.splice(getIdIndex(id, $scope.aulas), 1);
+       $scope.aulaUsada = aulaSendoUsada(id);
+       if(!$scope.aulaUsada){
+        $scope.aulas.splice(getIdIndex(id, $scope.aulas), 1);
+       } else {
+         toastr.error('Não é possível excluir esta aula. Está sendo utilizada.');
+       }
   }
 
   $scope.adicionarInstrutor = () => {
@@ -54,7 +61,7 @@ module.controller('MainController', ($scope) => {
         // } 
 
         $scope.novoInstrutor.id = idInstrutor++;
-        $scope.novoInstrutor.aulas = getValorCheckbox();
+        $scope.novoInstrutor.aulas = getValorCheckbox('checkbox-aula');
         $scope.instrutores.push(angular.copy($scope.novoInstrutor));
       }
       $scope.novoInstrutor = {};
@@ -66,7 +73,6 @@ module.controller('MainController', ($scope) => {
     $scope.showEditInstrutor = true;
     $scope.idInstrutorUpdate = item.id;
     $scope.editInstrutor = Object.assign({}, item);
-    console.log($scope.editInstrutor);
   }
 
 
@@ -76,7 +82,6 @@ module.controller('MainController', ($scope) => {
 
       if(!$scope.editInstrutorExiste){
         $scope.instrutores.forEach((item) => {
-            console.log(item);
           if(item.id === Number($scope.idInstrutorUpdate)) {
             item.nome = $scope.editInstrutor.nome;
             item.foto = $scope.editInstrutor.foto;
@@ -84,6 +89,9 @@ module.controller('MainController', ($scope) => {
             item.idade = $scope.editInstrutor.idade;
             item.email = $scope.editInstrutor.email;
             item.dandoAula = $scope.editInstrutor.dandoAula;
+            console.log('aulas',item.aulas);
+            item.aulas = getValorCheckbox('checkbox-edit-aula');
+            console.log('aulas',item.aulas);
           }
         });
       }
@@ -105,9 +113,18 @@ module.controller('MainController', ($scope) => {
       return false;
   }
 
-  function getValorCheckbox() {
+  function aulaSendoUsada(id) {
+    if(!angular.isUndefined($scope.instrutores) && Object.keys($scope.instrutores).length > 0) {
+      for(instrutor of $scope.instrutores)
+        for(aula of instrutor.aulas)
+          if(aula.id === id) return true;
+    }
+      return false;
+  }
+
+  function getValorCheckbox(classe) {
     let result = [];
-    let boxs = document.getElementsByClassName('checkbox-aula');
+    let boxs = document.getElementsByClassName(classe);
 
     for(let i = 0; i< boxs.length; i++){ 
       if(boxs[i].checked) { 
