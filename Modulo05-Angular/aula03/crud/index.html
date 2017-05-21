@@ -14,27 +14,29 @@
       <h1>AngularJS - Trabalho - Final de Semana (CRUD)</h1>
       <hr>
       <div class="col-md-12">
-        <form class="col-md-6 form-horizontal" name="createAula" novalidate ng-submit="adicionarAula()">
+        <form class="col-md-5 form-horizontal" name="createAula" novalidate ng-submit="adicionarAula()">
             <div class="col-md-12 form-group">
               <h2>Adicionar Aula</h2>
-              <label for="novaAula">Nome:</label>
-              <input 
-                class="form-control" 
-                type="text" 
-                name="novaAula" 
-                placeholder="Digite um nome para aula" 
-                required 
-                minlength="2"
-                maxlength="20"
-                ng-model="novaAula.nome"
-              >
-              <p class="erro" ng-show="createAulaExiste">Aula já cadastrada.</p>
-            </div>
-            <div class=" col-md-12 form-group">
+              <div class="form-group">
+                <label for="novaAula">Nome:</label>
+                <input 
+                  class="form-control" 
+                  type="text" 
+                  name="novaAula" 
+                  placeholder="Digite um nome para aula" 
+                  required 
+                  minlength="2"
+                  maxlength="20"
+                  ng-model="novaAula.nome"
+                >
+                <p class="erro" ng-show="createAulaExiste">Aula já cadastrada.</p>
+              </div>
+            <div class="form-group">
               <button class="btn btn-primary form-control" type="submit">Adicionar</button>
             </div>
+          </div>
         </form>
-        <div class="col-md-6">
+        <div class="col-md-7">
           <h2>Aulas</h2>
           <table class="table table-striped table-bordered table-hover table-condensed">
             <tr>
@@ -51,19 +53,23 @@
             </tr>
           </table>
         </div>
+          <form class="col-md-8 form-horizontal" name="updateAula" novalidate ng-submit="editarAula()" ng-show="showEdit">
+            <div class="form-group">
+            <h2>Editar Aula</h2>
+              <label for="editAula">Nome:</label>
+              <input class="form-control" type="text" name="editAula" placeholder="Escolha um novo nome para aula"  required ng-model="editAula.nome">
+            </div>
+            <div class="form-group">
+              <button class="btn btn-primary form-control" type="submit">Editar</button>
+            </div>
+          </form>
+        
       </div>
-      <form class="col-md-6 form-horizontal" name="updateAula" novalidate ng-submit="editarAula()" ng-show="showEdit">
-        <div class="form-group">
-          <input class="form-control" type="text" name="editAula" placeholder="Escolha um novo nome para aula"  required ng-model="editAula.nome">
-        </div>
-        <div class="form-group">
-          <button class="btn btn-primary form-control" type="submit">Editar</button>
-        </div>
-      </form>
+
       <hr>
 
       <div class="col-md-12">
-        <form class="col-md-3 form-horizontal" name="createInstrutor" novalidate ng-submit="adicionarInstrutor()">
+        <form class="col-md-5 form-horizontal" name="createInstrutor" novalidate ng-submit="adicionarInstrutor()">
             <div class="col-md-12 form-group">
               <div class="form-group">
               <h2>Adicionar Instrutor</h2>
@@ -80,9 +86,15 @@
               >
               <p class="erro" ng-show="createAulaExiste">Instrutor já cadastrada.</p>
             </div>
+
+            <div class="form-group">
+              <label for="foto">Foto:</label>
+              <input class="form-control" type="text" name="foto" placeholder="http://foto.com/3.png" ng-model="novoInstrutor.foto">
+            </div>
+
             <div class="form-group">
               <label for="sobrenome">Sobrenome:</label>
-              <input class="form-control" type="text" name="sobrenome" maxlength="30" ng-model="novoInstrutor.sobreNome">
+              <input class="form-control" type="text" name="sobrenome" maxlength="30" ng-model="novoInstrutor.sobrenome">
             </div>
 
             <div class="form-group">
@@ -99,20 +111,27 @@
               <label for="DandoAula">Dando aula:</label>
               <input class="form-control" type="checkbox" name="dandoAula" ng-checked="deuAula" ng-model="novoInstrutor.dandoAula">
             </div>
+            
+            <div class="form-group" ng-repeat="item in aulas">
+              <label>
+                <input class="checkbox-aula" type="checkbox" name="aulas" value="{{item}}">
+                {{item.nome}}
+              </label>
+            </div>
             <div class="form-group">
               <button class="btn btn-primary form-control" type="submit">Adicionar</button>
             </div>
           </form>
       </div>
 
-      <div class="col-md-3">
+      <div class="col-md-7">
           <h2>Instrutores</h2>
           <table class="table table-striped table-bordered table-hover table-condensed">
             <tr>
               <th>ID</th>
               <th>Foto</th>
               <th>Nome</th>
-              <th>Sbronome</th>
+              <th>Sobrenome</th>
               <th>Idade</th>
               <th>Email</th>
               <th>Dando aula</th>
@@ -120,7 +139,17 @@
             </tr>
             <tr ng-repeat="item in instrutores | orderBy: 'nome'">
               <td>{{item.id}}</td>
+              <td><img ng-src="{{item.foto}}" alt="Foto do {{item.nome}} {{item.sobrenome}}"></td>
               <td>{{item.nome}}</td>
+              <td>{{item.sobrenome}}</td>
+              <td>{{item.idade}}</td>
+              <td>{{item.email}}</td>
+              <td>{{item.dandoAula}}</td>
+              <td>
+                <ul>
+                  <li ng-repeat="aula in item.aulas | orderBy: 'nome'">{{aula.nome}}</li>
+                </ul>
+              </td>
             </tr>
           </table>
         </div>

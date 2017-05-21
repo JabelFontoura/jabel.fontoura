@@ -1,7 +1,8 @@
 const module = angular.module('crud', []);
 
 module.controller('MainController', ($scope) => {
-  let id = 0;
+  let idAula = 0;
+  let idInstrutor = 0;
   $scope.aulas = [];
   $scope.instrutores = [];
 
@@ -9,7 +10,7 @@ module.controller('MainController', ($scope) => {
     if($scope.createAula.$valid) {
       $scope.aulas.forEach(item => $scope.createAulaExiste = item.nome === $scope.novaAula.nome);
       if(!$scope.createAulaExiste){
-        $scope.novaAula.id = id++;
+        $scope.novaAula.id = idAula++;
         $scope.aulas.push(angular.copy($scope.novaAula));
       }
       $scope.novaAula = {};
@@ -46,7 +47,8 @@ module.controller('MainController', ($scope) => {
     if($scope.createInstrutor.$valid) {
       $scope.aulas.forEach(item => $scope.createInstrutorExiste = item.nome === $scope.novoInstrutor.nome);
       if(!$scope.createInstrutorExiste){
-        $scope.novoInstrutor.id = id++;
+        $scope.novoInstrutor.id = idInstrutor++;
+        $scope.novoInstrutor.aulas = getValorCheckbox();
         $scope.instrutores.push(angular.copy($scope.novoInstrutor));
       }
       $scope.novoInstrutor = {};
@@ -55,6 +57,20 @@ module.controller('MainController', ($scope) => {
 
   $scope.editarInstrutor = () => {
 
+  }
+
+  function getValorCheckbox() {
+    let result = [];
+    let boxs = document.getElementsByClassName('checkbox-aula');
+
+    for(let i = 0; i< boxs.length; i++){ 
+      if(boxs[i].checked) { 
+        result.push(JSON.parse(boxs[i].value));
+      }
+      boxs[i].checked = false;
+    }
+      
+    return result;
   }
 
   function getIdIndex(id) {
