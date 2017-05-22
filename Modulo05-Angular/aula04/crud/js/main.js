@@ -1,19 +1,19 @@
-const module = angular.module('crud', ['ngAnimate', 'toastr']);
+const app = angular.module('crud', ['ngRoute', 'ngAnimate', 'toastr']);
 
 app.config(($routeProvider) => {
     $routeProvider
 			.when('/aulas', {
-					templateUrl: '../aulas.html',
-					controller: 'AulaController'
+					templateUrl: 'html/aulas.html'
+					// controller: 'AulaController'
 			})
       .when('/instrutores', {
-					templateUrl: '../instrutores.html',
+					templateUrl: 'html/instrutores.html',
 					controller: 'InstrutorController'
 			})
-			.otherwise({redirecTo: '/'});
+			.otherwise({redirectTo: '/'});
 });
 
-module.controller('MainController', ($scope, toastr) => {
+app.controller('MainController', ($scope, toastr) => {
   let idAula = 0;
   let idInstrutor = 0;
   $scope.aulas = [{id: idAula++, nome: 'HTML & CSS'}, {id: idAula++, nome: 'Javascript'}, {id: idAula++, nome: 'Angular'}];
