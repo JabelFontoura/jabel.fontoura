@@ -1,0 +1,33 @@
+body {
+  margin: 0 auto;
+  background-color: #f0ffdd;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+h1, h2 {
+  text-align: center;
+}
+
+form > div {
+  padding-left: 200px;
+}
+
+.erro {
+  color:red;
+  font-weight: 700;
+}
+
+table {
+  background-color: white;
+}
+
+img {
+  width: 50px;
+}
+
+input:required {
+  border: 2px groove orange;
+}
