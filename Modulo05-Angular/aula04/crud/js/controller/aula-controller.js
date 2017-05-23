@@ -4,7 +4,11 @@ angular.module('crud').controller('AulaController', ($scope, $routeParams, toast
 
   $scope.adicionarAula = () => {
     if($scope.createAula.$valid) {
-      aulaService.create($scope.novaAula);
+      aulaService.create($scope.novaAula)
+        .then(response => {
+          toastr.success('Aula inserida com sucesso.')
+          list();
+        }).catch(error => toastr.error('Ocorreu um erro ao inserir essa aula.'));
     }
   }
 
@@ -18,7 +22,11 @@ angular.module('crud').controller('AulaController', ($scope, $routeParams, toast
 
   $scope.editarAula = () => {
     if($scope.updateAula.$valid) {
-			aulaService.update($scope.editAula);
+			aulaService.update($scope.editAula)
+        .then(response => { 
+          toastr.success('Aula alterada com sucesso.');
+          list();
+        }).catch(error => toastr.error('Ocorreu um erro ao alterar essa aula'));
 
       $scope.editAula = {};
       $scope.showEditAula = false;
@@ -27,7 +35,12 @@ angular.module('crud').controller('AulaController', ($scope, $routeParams, toast
 
   $scope.deletarAula = (aula) => {
 		if(!aulaSendoUsada(aula.id)){
-    	aulaService.delete(aula);
+    	aulaService.delete(aula)
+      .then(response => {
+         toastr.success('Aula deletada com sucesso.')
+         list();
+      }).catch(error => toastr.error('Ocorreu um erro ao deletar a aula.'));
+
     } else {
       toastr.error('Não é possível excluir esta aula. Está sendo utilizada.');
     }
@@ -44,12 +57,8 @@ angular.module('crud').controller('AulaController', ($scope, $routeParams, toast
   }
 
   function list() {
-    aulaService.list().then(function (response) {
-      $scope.aulas = response.data;
-    });
-		instrutorService.list().then(function (response) {
-      $scope.instrutores = response.data;
-    });
+    aulaService.list().then((response) => $scope.aulas = response.data);
+		instrutorService.list().then((response) => $scope.instrutores = response.data);
   }
 
 });
