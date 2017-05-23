@@ -35,7 +35,6 @@ angular.module('crud').controller('AulaController', ($scope, $routeParams, toast
   $scope.deletarAula = (aula) => {
 		if(!aulaSendoUsada(aula.id)){
     	aulaService.delete(aula);
-			toastr.info('Aula deletada com sucesso.');
     } else {
       toastr.error('Não é possível excluir esta aula. Está sendo utilizada.');
     }
