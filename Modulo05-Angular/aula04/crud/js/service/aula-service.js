@@ -49,7 +49,7 @@ angular.module('crud').factory('aulaService', function ($http, toastr) {
   function deletar(aula) {
     $http.delete(`${urlBase}/aula/${aula.id}`, aula)
     .then(response => toastr.success('Aula deletada com sucesso.')
-    .catch(error => toastr.error('Ocorreu um erro ao deletar a aula.'));
+    .catch(error => toastr.error('Ocorreu um erro ao deletar a aula.')));
   }
 
   return {
