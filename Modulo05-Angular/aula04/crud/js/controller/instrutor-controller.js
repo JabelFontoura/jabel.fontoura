@@ -4,7 +4,11 @@ angular.module('crud').controller('InstrutorController', ($scope, toastr, aulaSe
 
 $scope.adicionarInstrutor = () => {
     if($scope.createInstrutor.$valid) {
-      instrutorService.create($scope.novoInstrutor, getValorCheckbox('checkbox-aula'));
+      instrutorService.create($scope.novoInstrutor, getValorCheckbox('checkbox-aula'))
+        .then(response => {
+           toastr.success('Instrutor inserido com sucesso.')
+           list();
+        }).catch(error => toastr.error('Ocorreu algum erro ao cadastrar esse instrutor.'));
       $scope.novoInstrutor = {};
     }
   }
@@ -17,17 +21,26 @@ $scope.adicionarInstrutor = () => {
   }
 
 
+  $scope.deletarInstrutor = (instrutor) => {
+    instrutorService.delete(instrutor)
+      .then(response => {
+        toastr.info('Instrutor removido com sucesso.')
+        list();
+      }).catch(error => toastr.error('Ocorreu algum erro ao deletar esse instrutor.'));
+  }
+
   $scope.editarInstrutor = () => {
     if($scope.updateInstrutor.$valid) {
       $scope.editInstrutor.aulas = getValorCheckbox('checkbox-edit-aula');
-      instrutorService.update($scope.editInstrutor);
+      instrutorService.update($scope.editInstrutor)
+        .then(response => {
+           toastr.success('Instrutor alterado com sucesso.');
+           list();
+      }).catch(error => toastr.error('Erro ao alterar esse instrutor.'));
+
       $scope.editInstrutor = {};
       $scope.showEditInstrutor = false;
     }
-  }
-
-  $scope.deletarInstrutor = (instrutor) => {
-    instrutorService.delete(instrutor);
   }
 
   $scope.getCheckedAula = (id) => {

@@ -14,10 +14,7 @@ angular.module('crud').factory('instrutorService', function ($http, toastr) {
   };
 
   function atualizar(instrutor) {
-    console.log(instrutor);
-    $http.put(urlBase + '/instrutor' + '/' + instrutor.id, instrutor)
-      .then(response => toastr.success('Instrutor alterado com sucesso.'))
-      .catch(error => toastr.error('Erro ao alterar esse instrutor.'));
+    return $http.put(urlBase + '/instrutor' + '/' + instrutor.id, instrutor);
   };
 
   function criar(instrutor, aulasMarcadas) {
@@ -39,9 +36,7 @@ angular.module('crud').factory('instrutorService', function ($http, toastr) {
 
         instrutor.aulas = aulasMarcadas;
 
-        $http.post(`${urlBase}/instrutor`, instrutor)
-          .then(response => toastr.success('Instrutor inserido com sucesso.'))
-          .catch(error => toastr.error('Ocorreu algum erro ao cadastrar esse instrutor.'));
+        return $http.post(`${urlBase}/instrutor`, instrutor);
       } else {
         toastr.error('Instrutor já cadastrado.');
         return;
@@ -52,9 +47,7 @@ angular.module('crud').factory('instrutorService', function ($http, toastr) {
     let dandoAula = false;
     instrutores.forEach(item => dandoAula = item.dandoAula === 'Sim');
     if(!dandoAula) {
-      $http.delete(`${urlBase}/instrutor/${instrutor.id}`, instrutor)
-        .then(response => toastr.info('Instrutor removido com sucesso.'))
-        .catch(error => toastr.error('Ocorreu algum erro ao deletar esse instrutor.'));
+      return $http.delete(`${urlBase}/instrutor/${instrutor.id}`, instrutor);
     }else {
       toastr.error('Não é possível excluir este instrutor. Está dando aula.');
     }
