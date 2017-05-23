@@ -1,5 +1,8 @@
 angular.module('crud').controller('InstrutorController', ($scope, toastr, aulaService, instrutorService) => {
 
+
+
+
   list();
 
 $scope.adicionarInstrutor = () => {
@@ -32,6 +35,7 @@ $scope.adicionarInstrutor = () => {
   $scope.editarInstrutor = () => {
     if($scope.updateInstrutor.$valid) {
       $scope.editInstrutor.aulas = getValorCheckbox('checkbox-edit-aula');
+
       instrutorService.update($scope.editInstrutor)
         .then(response => {
            toastr.success('Instrutor alterado com sucesso.');
@@ -52,12 +56,8 @@ $scope.adicionarInstrutor = () => {
   }
 
   function list() {
-    aulaService.list().then(function (response) {
-      $scope.aulas = response.data;
-    });
-		instrutorService.list().then(function (response) {
-      $scope.instrutores = response.data;
-    });
+    aulaService.list().then((response) => $scope.aulas = response.data);
+		instrutorService.list().then((response) => $scope.instrutores = response.data);
   }
 
   function getValorCheckbox(classe) {

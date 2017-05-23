@@ -24,7 +24,7 @@ angular.module('crud').controller('AulaController', ($scope, $routeParams, toast
     if($scope.updateAula.$valid) {
 			aulaService.update($scope.editAula)
         .then(response => { 
-          toastr.success('Aula alterada com sucesso.');
+          toastr.info('Aula alterada com sucesso.');
           list();
         }).catch(error => toastr.error('Ocorreu um erro ao alterar essa aula'));
 
@@ -34,26 +34,11 @@ angular.module('crud').controller('AulaController', ($scope, $routeParams, toast
   }
 
   $scope.deletarAula = (aula) => {
-		if(!aulaSendoUsada(aula.id)){
-    	aulaService.delete(aula)
-      .then(response => {
-         toastr.success('Aula deletada com sucesso.')
-         list();
-      }).catch(error => toastr.error('Ocorreu um erro ao deletar a aula.'));
-
-    } else {
-      toastr.error('Não é possível excluir esta aula. Está sendo utilizada.');
-    }
-  }
-
-  function aulaSendoUsada(id) {
-    if(!angular.isUndefined($scope.instrutores) && Object.keys($scope.instrutores).length > 0) {
-			console.log($scope.instrutores);
-      for(instrutor of $scope.instrutores)
-        for(aula of instrutor.aulas)
-          if(aula === id) return true;
-    }
-		return false;
+    aulaService.delete(aula)
+    .then(response => {
+        toastr.info('Aula deletada com sucesso.')
+        list();
+    }).catch(error => toastr.error('Ocorreu um erro ao deletar a aula.'));
   }
 
   function list() {

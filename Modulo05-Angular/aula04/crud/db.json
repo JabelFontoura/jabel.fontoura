@@ -30,14 +30,8 @@
       "email": "email@cwi.com.br",
       "dandoAula": true,
       "aulas": [
-        {
-          "id": 1,
-          "nome": "OO"
-        },
-        {
-          "id": 4,
-          "nome": "Banco de Dados I"
-        }
+        "1",
+        "4"
       ],
       "foto": "http://www2.uol.com.br/guiadolitoral/imgnoticia/conheca-a-historia-por-tras-da-iconica-foto-de-einstein-mostrando-a-lingua-4030-f1.jpg"
     },
@@ -46,19 +40,22 @@
       "idade": 12,
       "email": "teste@teste.com",
       "foto": "https://pbs.twimg.com/profile_images/799010304273371136/HNncmPwZ.jpg",
-      "dandoAula": "Não",
+      "dandoAula": false,
       "aulas": [
-        {
-          "id": 2,
-          "nome": "Javascript"
-        },
-        {
-          "id": 3,
-          "nome": "AngularJS"
-        }
+        "1",
+        "4"
       ],
       "id": 1,
       "sobrenome": "aaaa"
+    },
+    {
+      "nome": "asdas",
+      "idade": 12,
+      "email": "asd@asd.com",
+      "foto": "https://pbs.twimg.com/profile_images/799010304273371136/HNncmPwZ.jpg",
+      "aulas": [],
+      "id": 2,
+      "dandoAula": true
     }
   ]
 }

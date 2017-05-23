@@ -18,39 +18,15 @@ angular.module('crud').factory('instrutorService', function ($http, toastr) {
   };
 
   function criar(instrutor, aulasMarcadas) {
-    let nomeExiste = false;
-    let emailExiste = false;
-    instrutores.forEach(item => nomeExiste = item.nome === instrutor.nome);
-    instrutores.forEach(item => emailExiste = item.email === instrutor.email);
+    if(!instrutor.foto) instrutor.foto = 'https://pbs.twimg.com/profile_images/799010304273371136/HNncmPwZ.jpg'
 
-      if(!nomeExiste){
-        if(emailExiste) {
-          toastr.error('Email já está sendo utilizado.');
-          return;
-        }
+    instrutor.aulas = aulasMarcadas;
 
-        if(!instrutor.foto) instrutor.foto = 'https://pbs.twimg.com/profile_images/799010304273371136/HNncmPwZ.jpg'
-
-        if(instrutor.dandoAula) instrutor.dandoAula = 'Sim';
-        else instrutor.dandoAula = 'Não';
-
-        instrutor.aulas = aulasMarcadas;
-
-        return $http.post(`${urlBase}/instrutor`, instrutor);
-      } else {
-        toastr.error('Instrutor já cadastrado.');
-        return;
-      }
+    return $http.post(`${urlBase}/instrutor`, instrutor);
   };
 
   function deletar(instrutor) {
-    let dandoAula = false;
-    instrutores.forEach(item => dandoAula = item.dandoAula === 'Sim');
-    if(!dandoAula) {
-      return $http.delete(`${urlBase}/instrutor/${instrutor.id}`, instrutor);
-    }else {
-      toastr.error('Não é possível excluir este instrutor. Está dando aula.');
-    }
+    return $http.delete(`${urlBase}/instrutor/${instrutor.id}`, instrutor);
   };
 
   return {
