@@ -47,7 +47,7 @@ $scope.adicionarInstrutor = () => {
   $scope.getCheckedAula = (id) => {
     if(!angular.isUndefined($scope.editInstrutor) && Object.keys($scope.editInstrutor).length > 0) {
       for(aula of $scope.editInstrutor.aulas) 
-        if(aula.id === id) return true;
+        if(aula === id) return true;
     }
       return false;
   }
@@ -72,12 +72,3 @@ $scope.adicionarInstrutor = () => {
   }
 
 });
-
-
-
-
-angular.module('crud').filter('idToNome', (aulaService) => (id, scope) => {
-  for(item of scope.$parent.$parent.aulas) 
-    if(item.id === Number(id)) return item.nome;
-});
-

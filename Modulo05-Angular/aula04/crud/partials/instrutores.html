@@ -75,7 +75,7 @@
               <td>{{item.sobrenome}}</td>
               <td>{{item.idade}}</td>
               <td>{{item.email}}</td>
-              <td>{{item.dandoAula}}</td>
+              <td>{{item.dandoAula | dandoAulaToText}}</td>
               <td>
                 <ul>
                   <li ng-repeat="aula in item.aulas">{{aula | idToNome:this}}</li>
