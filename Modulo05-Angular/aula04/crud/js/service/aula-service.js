@@ -14,7 +14,22 @@ angular.module('crud').factory('aulaService', function ($http, toastr) {
   };
 
   function atualizar(aula) {
-    return $http.put(urlBase + '/aula' + '/' + aula.id, aula);
+    let aulaExiste = false;
+
+    aulas.forEach(item =>{
+       if(item.nome.localeCompare(aula.nome) === 0 ) aulaExiste = true;
+    });
+    
+      if(!aulaExiste){
+
+        aulas.forEach((item) => {
+          if(item.id === Number(aula.id)) 
+              $http.put(urlBase + '/aula' + '/' + aula.id, aula);
+        });
+        toastr.success('Aula alterada com sucesso.');
+      } else {
+        toastr.error('Aula já cadastrada.');
+      }
   };
 
   function criar(aula) {

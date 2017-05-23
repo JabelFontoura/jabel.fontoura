@@ -12,18 +12,21 @@ angular.module('crud').controller('AulaController', ($scope, $routeParams, toast
     $scope.editAula = {};
     $scope.showEditAula = true;
     $scope.idAulaUpdate = item.id;
+    $scope.editAula.id = item.id;
     $scope.editAula.nome = item.nome;
   }
 
   $scope.editarAula = () => {
     if($scope.updateAula.$valid) {
-      $scope.aulas.forEach(item => $scope.editAulaExiste = item.nome === $scope.editAula.nome);
-      if(!$scope.editAulaExiste){
-        $scope.aulas.forEach((item) => {
-          if(item.id === Number($scope.idAulaUpdate)) 
-            item.nome = $scope.editAula.nome;
-        });
-      }
+			aulaService.update($scope.editAula);
+
+      // $scope.aulas.forEach(item => $scope.editAulaExiste = item.nome === $scope.editAula.nome);
+      // if(!$scope.editAulaExiste){
+      //   $scope.aulas.forEach((item) => {
+      //     if(item.id === Number($scope.idAulaUpdate)) 
+      //       item.nome = $scope.editAula.nome;
+      //   });
+      // }
       $scope.editAula = {};
       $scope.showEditAula = false;
     }
