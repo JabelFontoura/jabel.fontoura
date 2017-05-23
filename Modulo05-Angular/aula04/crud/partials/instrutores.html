@@ -78,7 +78,7 @@
               <td>{{item.dandoAula}}</td>
               <td>
                 <ul>
-                  <li ng-repeat="aula in item.aulas">{{aula}}</li>
+                  <li ng-repeat="aula in item.aulas">{{aula | idToNome:this}}</li>
                 </ul>
               </td>
               <td><button class="btn btn-warning" ng-click="mostrarInstrutor(item)"><span class="glyphicon glyphicon-pencil"></span></button></td>

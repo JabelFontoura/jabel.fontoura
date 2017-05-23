@@ -45,6 +45,4 @@ angular.module('crud').controller('AulaController', ($scope, $routeParams, toast
     aulaService.list().then((response) => $scope.aulas = response.data);
 		instrutorService.list().then((response) => $scope.instrutores = response.data);
   }
-
 });
-

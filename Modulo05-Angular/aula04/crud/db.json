@@ -42,20 +42,11 @@
       "foto": "https://pbs.twimg.com/profile_images/799010304273371136/HNncmPwZ.jpg",
       "dandoAula": false,
       "aulas": [
-        "1",
-        "4"
+        0,
+        2
       ],
       "id": 1,
       "sobrenome": "aaaa"
-    },
-    {
-      "nome": "asdas",
-      "idade": 12,
-      "email": "asd@asd.com",
-      "foto": "https://pbs.twimg.com/profile_images/799010304273371136/HNncmPwZ.jpg",
-      "aulas": [],
-      "id": 2,
-      "dandoAula": true
     }
   ]
 }

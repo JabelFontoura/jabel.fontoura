@@ -1,8 +1,5 @@
 angular.module('crud').controller('InstrutorController', ($scope, toastr, aulaService, instrutorService) => {
 
-
-
-
   list();
 
 $scope.adicionarInstrutor = () => {
@@ -75,3 +72,12 @@ $scope.adicionarInstrutor = () => {
   }
 
 });
+
+
+
+
+angular.module('crud').filter('idToNome', (aulaService) => (id, scope) => {
+  for(item of scope.$parent.$parent.aulas) 
+    if(item.id === Number(id)) return item.nome;
+});
+
