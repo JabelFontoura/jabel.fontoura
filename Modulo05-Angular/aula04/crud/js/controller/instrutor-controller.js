@@ -30,6 +30,14 @@ $scope.adicionarInstrutor = () => {
     instrutorService.delete(instrutor);
   }
 
+  $scope.getCheckedAula = (id) => {
+    if(!angular.isUndefined($scope.editInstrutor) && Object.keys($scope.editInstrutor).length > 0) {
+      for(aula of $scope.editInstrutor.aulas) 
+        if(aula.id === id) return true;
+    }
+      return false;
+  }
+
   function list() {
     aulaService.list().then(function (response) {
       $scope.aulas = response.data;

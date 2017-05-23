@@ -23,10 +23,12 @@ angular.module('crud').factory('aulaService', function ($http, toastr) {
       if(!aulaExiste){
 
         aulas.forEach((item) => {
-          if(item.id === Number(aula.id)) 
-              $http.put(urlBase + '/aula' + '/' + aula.id, aula);
+          if(item.id === Number(aula.id)) {
+              $http.put(urlBase + '/aula' + '/' + aula.id, aula)
+              .then(response => toastr.success('Aula alterada com sucesso.'))
+              .catch(error => toastr.error('Ocorreu um erro ao alterar essa aula'));
+          }
         });
-        toastr.success('Aula alterada com sucesso.');
       } else {
         toastr.error('Aula já cadastrada.');
       }
@@ -36,16 +38,18 @@ angular.module('crud').factory('aulaService', function ($http, toastr) {
     let aulaExiste;
     aulas.forEach(item => aulaExiste = item.nome === aula.nome);
       if(!aulaExiste){
-        $http.post(`${urlBase}/aula`, aula);
-        toastr.success('Aula inserida com sucesso.');
+        $http.post(`${urlBase}/aula`, aula)
+        .then(response => toastr.success('Aula inserida com sucesso.'))
+        .catch(error => toastr.error('Ocorreu um erro ao inserir essa aula.'));
       } else {
         toastr.error('Aula já cadastrada.');
       }
-      getTodasAsAulas().then(response => aulas = response.data);
   };
 
   function deletar(aula) {
-    $http.delete(`${urlBase}/aula/${aula.id}`, aula);
+    $http.delete(`${urlBase}/aula/${aula.id}`, aula)
+    .then(response => toastr.success('Aula deletada com sucesso.')
+    .catch(error => toastr.error('Ocorreu um erro ao deletar a aula.'));
   }
 
   return {
