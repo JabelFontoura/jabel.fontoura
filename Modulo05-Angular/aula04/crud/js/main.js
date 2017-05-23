@@ -3,35 +3,20 @@ const app = angular.module('crud', ['ngRoute', 'ngAnimate', 'toastr']);
 app.config(($routeProvider) => {
     $routeProvider
 			.when('/aulas', {
-					templateUrl: 'html/aulas.html'
-					// controller: 'AulaController'
+					templateUrl: 'partials/aulas.html'
 			})
       .when('/instrutores', {
-					templateUrl: 'html/instrutores.html',
-					controller: 'InstrutorController'
+					templateUrl: 'partials/instrutores.html'
 			})
 			.otherwise({redirectTo: '/'});
 });
 
 app.controller('MainController', ($scope, toastr) => {
-  let idInstrutor = 0;
-  let idAula = 0;
-  $scope.aulas = [{id: idAula++, nome: 'HTML & CSS'}, {id: idAula++, nome: 'Javascript'}, {id: idAula++, nome: 'Angular'}];
-  $scope.instrutores = [];
 
   $scope.getCheckedAula = (id) => {
     if(!angular.isUndefined($scope.editInstrutor) && Object.keys($scope.editInstrutor).length > 0) {
       for(aula of $scope.editInstrutor.aulas) 
         if(aula.id === id) return true;
-    }
-      return false;
-  }
-
-  function aulaSendoUsada(id) {
-    if(!angular.isUndefined($scope.instrutores) && Object.keys($scope.instrutores).length > 0) {
-      for(instrutor of $scope.instrutores)
-        for(aula of instrutor.aulas)
-          if(aula.id === id) return true;
     }
       return false;
   }
