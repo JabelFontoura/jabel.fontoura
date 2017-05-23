@@ -1,30 +1,10 @@
-angular.module('crud').controller('InstrutorController', ($scope, toastr) => {
+angular.module('crud').controller('InstrutorController', ($scope, toastr, aulaService, instrutorService) => {
+
+  list();
 
 $scope.adicionarInstrutor = () => {
     if($scope.createInstrutor.$valid) {
-      $scope.instrutores.forEach(item => $scope.nomeInstrutorExiste = item.nome === $scope.novoInstrutor.nome);
-      $scope.instrutores.forEach(item => $scope.emailInstrutorExiste = item.email === $scope.novoInstrutor.email);
-
-      if(!$scope.nomeInstrutorExiste){
-        if($scope.emailInstrutorExiste) {
-          toastr.error('Email já está sendo utilizado.');
-          return;
-        }
-
-        if(!$scope.novoInstrutor.foto) $scope.novoInstrutor.foto = 'https://pbs.twimg.com/profile_images/799010304273371136/HNncmPwZ.jpg'
-
-        if($scope.novoInstrutor.dandoAula) $scope.novoInstrutor.dandoAula = 'Sim';
-        else $scope.novoInstrutor.dandoAula = 'Não';
-
-        $scope.novoInstrutor.id = idInstrutor++;
-        $scope.novoInstrutor.aulas = getValorCheckbox('checkbox-aula');
-        $scope.instrutores.push(angular.copy($scope.novoInstrutor));
-
-        toastr.success('Instrutor inserido com sucesso.');
-      } else {
-        toastr.error('Instrutor já cadastrado.');
-        return;
-      }
+      instrutorService.create($scope.novoInstrutor, getValorCheckbox('checkbox-aula'));
       $scope.novoInstrutor = {};
     }
   }
@@ -32,39 +12,45 @@ $scope.adicionarInstrutor = () => {
   $scope.mostrarInstrutor = (item) => {
     $scope.editInstrutor = {};
     $scope.showEditInstrutor = true;
-    $scope.idInstrutorUpdate = item.id;
     $scope.editInstrutor = Object.assign({}, item);
+    $scope.editInstrutor.id = item.id;
   }
 
 
   $scope.editarInstrutor = () => {
     if($scope.updateInstrutor.$valid) {
-      //$scope.instrutores.forEach(item => $scope.editInstrutorExiste = item.nome === $scope.editInstrutor.nome);
-      $scope.instrutores.forEach((item) => {
-        if(item.id === Number($scope.idInstrutorUpdate)) {
-          item.nome = $scope.editInstrutor.nome;
-          item.foto = $scope.editInstrutor.foto;
-          item.sobrenome = $scope.editInstrutor.sobrenome;
-          item.idade = $scope.editInstrutor.idade;
-          item.email = $scope.editInstrutor.email;
-          item.aulas = getValorCheckbox('checkbox-edit-aula');
-          if($scope.editDandoAula) item.dandoAula = 'Sim';
-          else item.dandoAula = 'Não';
-        }
-      });
+      $scope.editInstrutor.aulas = getValorCheckbox('checkbox-edit-aula');
+      instrutorService.update($scope.editInstrutor);
       $scope.editInstrutor = {};
       $scope.showEditInstrutor = false;
-      $scope.editInstrutorExiste = false;
     }
   }
 
-  $scope.deletarInstrutor = (id) => {
-    $scope.instrutores.forEach(item => $scope.editDandoAula = item.dandoAula === 'Sim');
-    if(!$scope.editDandoAula) {
-      $scope.instrutores.splice(getIdIndex(id, $scope.instrutores), 1);
-      $scope.showEditInstrutor = false;
-    }else {
-      toastr.error('Não é possível excluir este instrutor. Está dando aula.');
-    }
+  $scope.deletarInstrutor = (instrutor) => {
+    instrutorService.delete(instrutor);
   }
+
+  function list() {
+    aulaService.list().then(function (response) {
+      $scope.aulas = response.data;
+    });
+		instrutorService.list().then(function (response) {
+      $scope.instrutores = response.data;
+    });
+  }
+
+  function getValorCheckbox(classe) {
+    let result = [];
+    let boxs = document.getElementsByClassName(classe);
+
+    for(let i = 0; i< boxs.length; i++){ 
+      if(boxs[i].checked) { 
+        result.push(JSON.parse(boxs[i].value));
+      }
+      boxs[i].checked = false;
+    }
+      
+    return result;
+  }
+
 });

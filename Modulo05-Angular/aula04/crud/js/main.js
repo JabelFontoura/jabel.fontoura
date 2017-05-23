@@ -21,20 +21,6 @@ app.controller('MainController', ($scope, toastr) => {
       return false;
   }
 
-  function getValorCheckbox(classe) {
-    let result = [];
-    let boxs = document.getElementsByClassName(classe);
-
-    for(let i = 0; i< boxs.length; i++){ 
-      if(boxs[i].checked) { 
-        result.push(JSON.parse(boxs[i].value));
-      }
-      boxs[i].checked = false;
-    }
-      
-    return result;
-  }
-
   function getIdIndex(id, array) {
     for(let i = 0; i < array.length; i++) 
         if(array[i].id === id) return i;

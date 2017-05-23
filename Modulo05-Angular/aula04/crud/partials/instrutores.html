@@ -41,7 +41,7 @@
               <input class="form-control checkbox-dandoAula-create" type="checkbox" name="dandoAula" ng-checked="deuAula" ng-model="novoInstrutor.dandoAula">
             </div>
             
-            <div class="form-group" ng-repeat="item in aulas">
+            <div class="form-group" ng-repeat="item in aulas | orderBy: 'nome'">
               <label>
                 <input class="checkbox-aula" type="checkbox" name="aulas" value="{{item}}">
                 {{item.nome}}
@@ -82,7 +82,7 @@
                 </ul>
               </td>
               <td><button class="btn btn-warning" ng-click="mostrarInstrutor(item)"><span class="glyphicon glyphicon-pencil"></span></button></td>
-              <td><button class="btn btn-danger" ng-click="deletarInstrutor(item.id)"><span class="glyphicon glyphicon-trash"></span></button></td>
+              <td><button class="btn btn-danger" ng-click="deletarInstrutor(item)"><span class="glyphicon glyphicon-trash"></span></button></td>
             </tr>
           </table>
         </div>
