@@ -21,8 +21,10 @@
   <body>
     <div class="container" ng-controller="MainController">
       <h1>AngularJS - Trabalho - Final de Semana (CRUD)</h1>
-      <h3><a href="#!/aulas">Aulas</a></h3>
-      <h3><a href="#!/instrutores">Instrutores</a></h3>
+      <nav>
+        <a href="#!/aulas"><button class="btn btn-default">Aulas</button></a>
+        <a href="#!/instrutores"><button class="btn btn-default">Instrutores</button></a>
+      </nav>
       <ng-view></ng-view>
     </div>
   </body>

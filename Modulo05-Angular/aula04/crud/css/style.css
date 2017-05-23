@@ -31,3 +31,8 @@ img {
 input:required {
   border: 2px groove orange;
 }
+
+nav {
+  padding-top: 2%;
+  text-align: center;
+}
