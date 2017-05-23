@@ -20,13 +20,6 @@ angular.module('crud').controller('AulaController', ($scope, $routeParams, toast
     if($scope.updateAula.$valid) {
 			aulaService.update($scope.editAula);
 
-      // $scope.aulas.forEach(item => $scope.editAulaExiste = item.nome === $scope.editAula.nome);
-      // if(!$scope.editAulaExiste){
-      //   $scope.aulas.forEach((item) => {
-      //     if(item.id === Number($scope.idAulaUpdate)) 
-      //       item.nome = $scope.editAula.nome;
-      //   });
-      // }
       $scope.editAula = {};
       $scope.showEditAula = false;
     }
