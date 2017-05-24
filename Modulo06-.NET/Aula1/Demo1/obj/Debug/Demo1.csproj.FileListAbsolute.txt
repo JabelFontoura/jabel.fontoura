@@ -1,0 +1,6 @@
+C:\Users\jabel.fontoura\Documents\jabel.fontoura\Modulo06-.NET\Aula1\Demo1\bin\Debug\Demo1.exe.config
+C:\Users\jabel.fontoura\Documents\jabel.fontoura\Modulo06-.NET\Aula1\Demo1\bin\Debug\Demo1.exe
+C:\Users\jabel.fontoura\Documents\jabel.fontoura\Modulo06-.NET\Aula1\Demo1\bin\Debug\Demo1.pdb
+C:\Users\jabel.fontoura\Documents\jabel.fontoura\Modulo06-.NET\Aula1\Demo1\obj\Debug\Demo1.csprojResolveAssemblyReference.cache
+C:\Users\jabel.fontoura\Documents\jabel.fontoura\Modulo06-.NET\Aula1\Demo1\obj\Debug\Demo1.exe
+C:\Users\jabel.fontoura\Documents\jabel.fontoura\Modulo06-.NET\Aula1\Demo1\obj\Debug\Demo1.pdb
