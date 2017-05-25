@@ -7,7 +7,7 @@ namespace Exercicio3Test
     [TestClass]
     public class FolhaPagamentoUnitTest
     {
-        [TestMethod()]
+        [TestMethod]
         public void Validar_Demonstrativo_Industria_Salario_1000()
         {
             int horasCategoria = 200;

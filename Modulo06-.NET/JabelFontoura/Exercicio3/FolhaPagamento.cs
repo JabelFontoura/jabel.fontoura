@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+using System;
 
 namespace Exercicio3
 {
@@ -10,30 +7,28 @@ namespace Exercicio3
     {
         public Demonstrativo GerarDemonstrativo(int horasCategoria, double salarioBase, double horasExtras, double horasDescontadas)
         {
-            var valorHora = salarioBase / horasCategoria;
-            var hExtras = new HorasCalculadas(horasExtras, valorHora * horasExtras);
-            var hDescontadas = new HorasCalculadas(horasDescontadas, valorHora * horasDescontadas);
-            var totalProventos = (salarioBase + hExtras.ValorTotalHoras - hDescontadas.ValorTotalHoras);
-            var inss = new CalculaINSS(totalProventos).calcular();
-            var irpf = new CalculaIRPF(totalProventos, inss).calcular();
-            var totalDescontos = inss.Valor + irpf.Valor;
-            var aliquotaFgts = 11;
-            var fgts = new Desconto(aliquotaFgts, (totalProventos * aliquotaFgts) / 100);
+            var ValorHora = salarioBase / horasCategoria;
+            var HorasExtras = new HorasCalculadas(horasExtras, ValorHora * horasExtras);
+            var HorasDescontadas = new HorasCalculadas(horasDescontadas, ValorHora * horasDescontadas);
+            var TotalProventos = (salarioBase + HorasExtras.ValorTotalHoras - HorasDescontadas.ValorTotalHoras);
+            var Inss = new CalculaINSS().calcular(TotalProventos);
+            var Irpf = new CalculaIRPF().calcular(TotalProventos - Inss.Valor);
+            var TotalDescontos = Inss.Valor + Irpf.Valor;
+            var AliquotaFgts = 0.11;
+            var Fgts = new Desconto(AliquotaFgts, Utils.DoFormat((TotalProventos * AliquotaFgts)));
 
             return new Demonstrativo(
                 salarioBase, 
                 horasCategoria, 
-                hExtras, 
-                hDescontadas,
-                totalProventos, 
-                inss, 
-                irpf,
-                totalDescontos,
-                (totalProventos - totalDescontos),
-                fgts 
+                HorasExtras, 
+                HorasDescontadas,
+                TotalProventos, 
+                Inss, 
+                Irpf,
+                Utils.DoFormat(TotalDescontos),
+                Utils.DoFormat((TotalProventos - TotalDescontos)),
+                Fgts 
             );
         }
-
-
     }
 }

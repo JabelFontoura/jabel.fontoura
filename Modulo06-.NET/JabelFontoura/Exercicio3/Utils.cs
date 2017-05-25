@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace Exercicio3
 {
-    public interface ICalcula
+    class Utils
     {
-        Desconto calcular(double valor);
+
+        public static double DoFormat(double valor)
+        {
+            return Math.Truncate(valor * 100) / 100;
+        }
     }
 }
