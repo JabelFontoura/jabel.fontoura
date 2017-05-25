@@ -1,0 +1,6 @@
+D:\Classes\CWI\jabel.fontoura\Modulo06-.NET\JabelFontoura\Exercicio3\bin\Debug\Exercicio3.exe.config
+D:\Classes\CWI\jabel.fontoura\Modulo06-.NET\JabelFontoura\Exercicio3\bin\Debug\Exercicio3.exe
+D:\Classes\CWI\jabel.fontoura\Modulo06-.NET\JabelFontoura\Exercicio3\bin\Debug\Exercicio3.pdb
+D:\Classes\CWI\jabel.fontoura\Modulo06-.NET\JabelFontoura\Exercicio3\obj\Debug\Exercicio3.csprojResolveAssemblyReference.cache
+D:\Classes\CWI\jabel.fontoura\Modulo06-.NET\JabelFontoura\Exercicio3\obj\Debug\Exercicio3.exe
+D:\Classes\CWI\jabel.fontoura\Modulo06-.NET\JabelFontoura\Exercicio3\obj\Debug\Exercicio3.pdb
