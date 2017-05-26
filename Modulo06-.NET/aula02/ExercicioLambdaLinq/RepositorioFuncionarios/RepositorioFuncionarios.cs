@@ -144,12 +144,33 @@ namespace Repositorio
 
         public dynamic FuncionarioMaisComplexo()
         {
-            throw new NotImplementedException();
+            return Funcionarios
+                    .Where(f => !f.Cargo.Titulo.Equals("Desenvolvedor Júnior"))
+                    .Select(f => new {
+                        Nome = f.Nome,
+                        DataNascimento = f.DataNascimento.ToString("dd/M/yyyy", CultureInfo.InvariantCulture),
+                        SalarioRS = String.Format("R$ {0:N2}", f.Cargo.Salario).Replace('.', ','),
+                        SalarioUS = String.Format("${0:N2}", f.Cargo.Salario),
+                        QuantidadeMesmoCargo = Funcionarios.Where(c => c.Cargo.Equals(f.Cargo)).Count()
+                    })
+                    .OrderByDescending(f => getNumeroConsoantes(f.Nome))
+                    .First();
         }
 
         public bool CaseContains(string baseString, string textToSearch, StringComparison comparisonMode)
         {
             return (baseString.IndexOf(textToSearch, comparisonMode) != -1);
+        }
+
+        public int getNumeroConsoantes(string input)
+        {
+            var vogais = "aeiou";
+            var consoantes = 0;
+
+            foreach (char letra in input)
+                if (!vogais.Any(c => c == letra)) consoantes++;
+
+            return consoantes;
         }
     }
 }
