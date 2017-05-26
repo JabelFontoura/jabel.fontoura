@@ -149,8 +149,8 @@ namespace Repositorio
                     .Select(f => new {
                         Nome = f.Nome,
                         DataNascimento = f.DataNascimento.ToString("dd/M/yyyy", CultureInfo.InvariantCulture),
-                        SalarioRS = String.Format("R$ {0:N2}", f.Cargo.Salario).Replace('.', ','),
-                        SalarioUS = String.Format("${0:N2}", f.Cargo.Salario),
+                        SalarioRS = f.Cargo.Salario.ToString("C", new CultureInfo("pt-BR")).Replace("$", "$ "),
+                        SalarioUS = f.Cargo.Salario.ToString("C", new CultureInfo("en-US")),
                         QuantidadeMesmoCargo = Funcionarios.Where(c => c.Cargo.Equals(f.Cargo)).Count()
                     })
                     .OrderByDescending(f => getNumeroConsoantes(f.Nome))
