@@ -117,7 +117,7 @@ namespace Repositorio
 
         public double SalarioMedio(TurnoTrabalho? turno = null)
         {
-            return Funcionarios.Where(f => f.TurnoTrabalho.Equals(turno)).Select(f => f.Cargo.Salario).Average();
+            return Funcionarios.Where(f => turno.Equals(null) ? true : f.TurnoTrabalho.Equals(turno)).Select(f => f.Cargo.Salario).Average();
         }
 
         public IList<Funcionario> AniversariantesDoMes()
