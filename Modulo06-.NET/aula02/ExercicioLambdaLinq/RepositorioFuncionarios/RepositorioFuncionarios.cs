@@ -105,12 +105,14 @@ namespace Repositorio
 
         public IList<Funcionario> FiltrarPorIdadeAproximada(int idade)
         {
-            throw new NotImplementedException();
+            return Funcionarios
+                    .Where(f => CalcularIdade(f.DataNascimento) <= (idade + 5) && CalcularIdade(f.DataNascimento) >= (idade - 5))
+                    .ToList();
         }
 
         private int CalcularIdade(DateTime dataNascimento)
         {
-            throw new NotImplementedException();
+            return DateTime.Today.Year - dataNascimento.Year;
         }
 
         public double SalarioMedio(TurnoTrabalho? turno = null)
