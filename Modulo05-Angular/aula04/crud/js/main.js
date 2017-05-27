@@ -1,4 +1,4 @@
-const app = angular.module('crud', ['ngRoute', 'ngAnimate', 'toastr']);
+const app = angular.module('crud', ['ngRoute']);
 
 app.config(($routeProvider) => {
     $routeProvider
