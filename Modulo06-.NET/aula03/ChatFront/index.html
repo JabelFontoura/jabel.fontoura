@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+		<title>Jabel's Chat</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<link href="css/style.css" rel="stylesheet">
+	</head>
+	<body>
+		<div class="container">
+			<h1>Jabel's Chat</h1>
+			<ng-view></ng-view>
+		</div>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+		<script src="js/main.js"></script>
+		<script src="js/services/login-service.js"></script>
+		<script src="js/services/chat-service.js"></script>
+		<script src="js/controllers/login-controller.js"></script>
+		<script src="js/controllers/chat-controller.js"></script>
+		<script src="js/router.js"></script>
+	</body>
+</html>
