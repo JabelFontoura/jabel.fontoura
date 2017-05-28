@@ -8,8 +8,7 @@ angular.module('app').controller('LoginController', function ($scope, $window, l
       loginService.create(usuario)
         .then(response => {
           localStorage.setItem("Usuario", JSON.stringify(response.data));
-          console.log(localStorage.getItem("Usuario"));
-          entrouComSucesso(usuario);
+          entrouComSucesso(JSON.parse(localStorage.getItem("Usuario")));
         })
         .catch(error => {
           toastr.error('Ocorreu um erro ao entrar no chat.');
