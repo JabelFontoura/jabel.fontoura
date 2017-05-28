@@ -2,7 +2,7 @@ angular.module('app').controller('ChatController', function($scope, $window, cha
 
   if(localStorage.getItem("Usuario") === null) sair();
 
-  $scope.usuarioAtual = loginService.getUser();
+  $scope.usuarioAtual = JSON.parse(localStorage.getItem("Usuario"));
   $scope.mensagens = {};
 
   setInterval(() => listar(), 2000);
@@ -20,9 +20,11 @@ angular.module('app').controller('ChatController', function($scope, $window, cha
       $scope.mensagem = {};
   }
 
-$scope.sair = () => {
+$scope.sair = sair;
+
+function sair() {
   localStorage.clear();
-  $window.$window.location.href = '#!/';
+  $window.location.href = '#!/';
 }
 
   function listar() {

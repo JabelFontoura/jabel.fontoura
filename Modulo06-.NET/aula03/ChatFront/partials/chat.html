@@ -8,7 +8,7 @@
       <div class="title">Jabel's Chat</div>
    </div>
    <ul class="messages">
-     <li class="message appeared" ng-repeat="item in mensagens" ng-class="(usuarioAtual.Nome == item.Usuario.Nome) ? 'right' : 'left'">
+     <li class="message appeared" ng-repeat="item in mensagens" ng-class="(usuarioAtual.Id == item.Usuario.Id) ? 'right' : 'left'">
       <img class="avatar" ng-src="{{item.Usuario.Foto}}" alt="{{item.Usuario.Nome}}">
         <div class="text_wrapper">
           <div class="text">{{item.Texto}}</div>

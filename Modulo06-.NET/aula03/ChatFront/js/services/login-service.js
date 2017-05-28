@@ -7,10 +7,6 @@ angular.module('app').factory('loginService', function ($http) {
     create: function(usuario) {
       usuarioAtual = usuario;
       return $http.post(url, usuario);
-    },
-    getUser: function () {
-      if(typeof localStorage.getItem("Nome") !== 'undefined') usuarioAtual = localStorage.getItem("Usuario");
-      return usuarioAtual;
     }
   };
 });

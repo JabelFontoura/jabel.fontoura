@@ -19,7 +19,7 @@ namespace ChatApi.Controllers
 
             Regex rgx = new Regex(@"(nunes)", RegexOptions.IgnoreCase);
 
-            usuario.Nome = rgx.Replace(usuario.Nome, "$$$$$ $1 $$$$$");
+            usuario.Nome = rgx.Replace(usuario.Nome, "$$$$$$ $1 $$$$$$");
 
             lock(locker)
             {
@@ -28,7 +28,7 @@ namespace ChatApi.Controllers
                 Usuarios.Add(usuario);
             }
 
-            return Ok();
+            return Ok(usuario);
         }
 
         public IEnumerable<Usuario> Get()
