@@ -1,7 +1,9 @@
 angular.module('app').controller('LoginController', function ($scope, $window, loginService, toastr) {
 
-    if(localStorage.getItem("Usuario") !== null)
+    if(localStorage.getItem("Usuario") !== null){
+      console.log(localStorage.getItem("Usuario"));
       entrouComSucesso(JSON.parse(localStorage.getItem("Usuario")));
+    }
 
   $scope.addUsuario = (usuario) => {
     if($scope.novoUsuario.$valid){

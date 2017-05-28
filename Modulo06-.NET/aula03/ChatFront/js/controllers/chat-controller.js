@@ -1,6 +1,6 @@
 angular.module('app').controller('ChatController', function($scope, $window, chatService, loginService, toastr) {
 
-  if(localStorage.getItem("Usuario") === null) sair();
+  if(localStorage.getItem("Usuario") === null) $window.location.href = '#!/';
 
   $scope.usuarioAtual = JSON.parse(localStorage.getItem("Usuario"));
   $scope.mensagens = {};
@@ -20,18 +20,16 @@ angular.module('app').controller('ChatController', function($scope, $window, cha
       $scope.mensagem = {};
   }
 
-$scope.sair = sair;
-
-function sair() {
+$scope.sair = () => {
   localStorage.clear();
-  $window.location.href = '#!/';
+  $window.location.href = '#!/';  
 }
 
   function listar() {
     chatService.list()
       .then(response => {
         if($scope.mensagens.length !== response.data.length) {
-          $scope.mensagens = response.data
+          $scope.mensagens = response.data;
         }
       });
   }
