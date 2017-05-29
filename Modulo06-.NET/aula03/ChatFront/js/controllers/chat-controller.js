@@ -1,6 +1,16 @@
 angular.module('app').controller('ChatController', function($scope, $window, chatService, loginService, toastr) {
 
-  if(localStorage.getItem("Usuario") === null) $window.location.href = '#!/';
+  const usuario = JSON.parse(localStorage.getItem("Usuario"));
+  console.log(usuario);
+  if(usuario === null) {
+    $window.location.href = '#!/';
+  }
+  else {
+    loginService.findById(usuario.Id).then(response => {
+        console.log(response.data);
+        if(response.data.length < 1) $window.location.href = '#!/';
+      });
+  }
 
   $scope.usuarioAtual = JSON.parse(localStorage.getItem("Usuario"));
   $scope.mensagens = {};

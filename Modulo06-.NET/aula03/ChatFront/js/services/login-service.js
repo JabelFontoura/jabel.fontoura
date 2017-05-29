@@ -7,6 +7,12 @@ angular.module('app').factory('loginService', function ($http) {
     create: function(usuario) {
       usuarioAtual = usuario;
       return $http.post(url, usuario);
+    },
+    list: function() {
+      return $http.get(url);
+    },
+    findById: function(id) {
+      return $http.get(url + '/' + id);
     }
   };
 });
