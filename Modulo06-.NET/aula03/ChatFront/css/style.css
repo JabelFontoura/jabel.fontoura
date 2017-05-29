@@ -11,6 +11,15 @@ img {
   width: 50px;
 }
 
+h1 {
+  padding-top: 5%;
+  text-align: center;
+}
+
+.center {
+  padding-top: 5%;
+}
+
 .chat_window {
   position: absolute;
   width: calc(100% - 20px);
