@@ -69,6 +69,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorio\AutorRepositorio.cs" />
+    <Compile Include="Repositorio\IRepositorio.cs" />
     <Compile Include="Repositorio\LivroRepositorio.cs" />
     <Compile Include="Repositorio\RevisorRepositorio.cs" />
   </ItemGroup>

@@ -25,6 +25,17 @@ namespace EditoraCrescer.Infraesturtura.Repositorio
              return livros;
         }
 
+        public object ListarResumo()
+        {
+            return contexto.Livros.Select(l => new {
+               Isbn = l.Isbn,
+               Titulo = l.Titulo,
+               Capa = l.Capa,
+               NomeAutor = l.Autor.Nome,
+               Genero = l.Genero
+            }).ToList();
+        }
+
         public Livro Obter(int isbn)
         {
             var livro = contexto.Livros.FirstOrDefault(l => l.Isbn == isbn);
@@ -35,6 +46,22 @@ namespace EditoraCrescer.Infraesturtura.Repositorio
             return livro;
         }
 
+        public object ObterResumoLancamentos()
+        {
+            var data = DateTime.Now.AddDays(-7);
+
+            return contexto.Livros
+                .Where(l => (l.DataPublicacao > data))
+                .Select(l => new {
+                    Isbn = l.Isbn,
+                    Titulo = l.Titulo,
+                    Capa = l.Capa,
+                    NomeAutor = l.Autor.Nome,
+                    Genero = l.Genero
+                })
+                .ToList();
+        }
+
         public object Obter(string genero)
         {
             var livro = contexto.Livros.FirstOrDefault(l => l.Genero.Contains(genero));
@@ -43,6 +70,17 @@ namespace EditoraCrescer.Infraesturtura.Repositorio
             livro.Revisor = revisorRepositorio.Obter(livro.IdRevisor);
 
             return livro;
+        }
+
+        public object ObterResumo(string genero)
+        {
+            return contexto.Livros.Where(l => l.Genero.Contains(genero)).Select(l => new {
+                Isbn = l.Isbn,
+                Titulo = l.Titulo,
+                Capa = l.Capa,
+                NomeAutor = l.Autor.Nome,
+                Genero = l.Genero
+            }).ToList();
         }
 
         public Livro Alterar(int isbn, Livro livro)

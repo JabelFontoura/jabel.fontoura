@@ -17,7 +17,8 @@ namespace EditoraCrescer.Api.Controllers
         
         public IHttpActionResult Get()
         {
-            return Ok(new { dados = repositorio.Listar() });
+            //return Ok(new { dados = repositorio.Listar() });
+            return Ok(new { dados = repositorio.ListarResumo() });
         }
         
         [Route("{isbn:int}")]
@@ -29,7 +30,15 @@ namespace EditoraCrescer.Api.Controllers
         [Route("{genero}")]
         public IHttpActionResult Get(string genero)
         {
-            return Ok(new { dados = repositorio.Obter(genero) });
+            //return Ok(new { dados = repositorio.Obter(genero) });
+            return Ok(new { dados = repositorio.ObterResumo(genero) });
+        }
+
+
+        [HttpGet][Route("lancamentos")]
+        public IHttpActionResult GetLancamentos()
+        {
+            return Ok(repositorio.ObterResumoLancamentos());
         }
 
         public IHttpActionResult Post(Livro livro)
