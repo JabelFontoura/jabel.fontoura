@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EditoraCrescer.Infraesturtura.Repositorio
 {
-    public class RevisorRepositorio
+    public class RevisorRepositorio : IDisposable
     {
         private Contexto contexto = new Contexto();
 
@@ -21,16 +21,31 @@ namespace EditoraCrescer.Infraesturtura.Repositorio
             return contexto.Revisores.Where(a => a.Id == id).FirstOrDefault();
         }
 
-        public void Criar(Revisor revisor)
+        public Revisor Criar(Revisor revisor)
         {
             contexto.Revisores.Add(revisor);
             contexto.SaveChanges();
+
+            return revisor;
         }
 
         public void Deletar(int id)
         {
             contexto.Revisores.Remove(contexto.Revisores.Where(l => l.Id == id).FirstOrDefault());
             contexto.SaveChanges();
+        }
+
+        public object Alterar(int id, Revisor revisor)
+        {
+            contexto.Entry(revisor).State = System.Data.Entity.EntityState.Modified;
+            contexto.SaveChanges();
+
+            return Obter(id);
+        }
+
+        public void Dispose()
+        {
+            contexto.Dispose();
         }
     }
 }
