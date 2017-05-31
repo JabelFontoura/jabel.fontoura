@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EditoraCrescer.Infraesturtura.Repositorio
 {
-    public class LivroRepositorio
+    public class LivroRepositorio : IDisposable
     {
         private Contexto contexto = new Contexto();
         private AutorRepositorio autorRepositorio = new AutorRepositorio();
@@ -25,16 +25,51 @@ namespace EditoraCrescer.Infraesturtura.Repositorio
              return livros;
         }
 
-        public void Criar(Livro livro)
+        public Livro Obter(int isbn)
+        {
+            var livro = contexto.Livros.FirstOrDefault(l => l.Isbn == isbn);
+
+            livro.Autor = autorRepositorio.Obter(livro.IdAutor);
+            livro.Revisor = revisorRepositorio.Obter(livro.IdRevisor);
+
+            return livro;
+        }
+
+        public object Obter(string genero)
+        {
+            var livro = contexto.Livros.FirstOrDefault(l => l.Genero == genero);
+
+            livro.Autor = autorRepositorio.Obter(livro.IdAutor);
+            livro.Revisor = revisorRepositorio.Obter(livro.IdRevisor);
+
+            return livro;
+        }
+
+        public Livro Alterar(int isbn, Livro livro)
+        {
+            contexto.Entry(livro).State = System.Data.Entity.EntityState.Modified;
+            contexto.SaveChanges();
+
+            return Obter(isbn);
+        }
+
+        public Livro Criar(Livro livro)
         {
             contexto.Livros.Add(livro);
             contexto.SaveChanges();
+
+            return livro;
         }
 
         public void Deletar(int id)
         {
             contexto.Livros.Remove(contexto.Livros.Where(l => l.Isbn == id).FirstOrDefault());
             contexto.SaveChanges();
+        }
+
+        public void Dispose()
+        {
+            contexto.Dispose();
         }
     }
 }
