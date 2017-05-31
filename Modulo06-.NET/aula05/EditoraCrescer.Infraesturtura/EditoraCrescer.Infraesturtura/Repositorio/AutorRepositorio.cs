@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EditoraCrescer.Infraesturtura.Repositorio
 {
-    public class AutorRepositorio : IDisposable
+    public class AutorRepositorio : IRepositorio<Autor>, IDisposable
     {
         private Contexto contexto = new Contexto();
         private RevisorRepositorio revisorRepositorio = new RevisorRepositorio();
@@ -48,7 +48,7 @@ namespace EditoraCrescer.Infraesturtura.Repositorio
             contexto.SaveChanges();
         }
 
-        public object Alterar(int id, Autor autor)
+        public Autor Alterar(int id, Autor autor)
         {
             contexto.Entry(autor).State = System.Data.Entity.EntityState.Modified;
             contexto.SaveChanges();

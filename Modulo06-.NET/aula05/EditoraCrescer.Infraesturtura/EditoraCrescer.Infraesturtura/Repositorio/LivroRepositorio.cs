@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EditoraCrescer.Infraesturtura.Repositorio
 {
-    public class LivroRepositorio : IDisposable
+    public class LivroRepositorio : IRepositorio<Livro>, IDisposable
     {
         private Contexto contexto = new Contexto();
         private AutorRepositorio autorRepositorio = new AutorRepositorio();
