@@ -17,37 +17,38 @@ namespace EditoraCrescer.Api.Controllers
         
         public IHttpActionResult Get()
         {
-            return Ok(repositorio.Listar());
+            return Ok(new { dados = repositorio.Listar() });
         }
         
         [Route("{isbn:int}")]
         public IHttpActionResult Get(int isbn)
         {
-            return Ok(repositorio.Obter(isbn));
+            return Ok(new { dados = repositorio.Obter(isbn) });
         }
 
         [Route("{genero}")]
         public IHttpActionResult Get(string genero)
         {
-            return Ok(repositorio.Obter(genero));
+            return Ok(new { dados = repositorio.Obter(genero) });
         }
 
         public IHttpActionResult Post(Livro livro)
         {
             repositorio.Criar(livro);
-            return Ok(livro);
+            return Ok(new { dados = livro });
         }
 
         [Route("{isbn:int}")]
         public IHttpActionResult Put(int isbn, Livro livro)
         {
-            return Ok(repositorio.Alterar(isbn, livro));
+            return Ok(new { dados = repositorio.Alterar(isbn, livro) });
         }
 
-        public IHttpActionResult Delete(int id)
+        [Route("{isbn:int}")]
+        public IHttpActionResult Delete(int isbn)
         {
-            repositorio.Deletar(id);
-            return Ok();
+            repositorio.Deletar(isbn);
+            return Ok(new { mensagens = "Deletado com sucesso"});
         }
 
         protected override void Dispose(bool disposing)
