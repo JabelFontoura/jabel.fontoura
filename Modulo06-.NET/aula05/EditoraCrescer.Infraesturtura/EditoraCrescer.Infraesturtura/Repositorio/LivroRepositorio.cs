@@ -37,7 +37,7 @@ namespace EditoraCrescer.Infraesturtura.Repositorio
 
         public object Obter(string genero)
         {
-            var livro = contexto.Livros.FirstOrDefault(l => l.Genero == genero);
+            var livro = contexto.Livros.FirstOrDefault(l => l.Genero.Contains(genero));
 
             livro.Autor = autorRepositorio.Obter(livro.IdAutor);
             livro.Revisor = revisorRepositorio.Obter(livro.IdRevisor);
