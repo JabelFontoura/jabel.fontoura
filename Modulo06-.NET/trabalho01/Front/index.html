@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html ng-app="app">
+  <head>
+    <title>Editora Crescer</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="css/style.css" rel="stylesheet">
+  </head>
+  <body>
+		<div class="container-fluid">
+			<nav>
+				<ul class="menu">
+					<li><a href="#">Home</a></li>
+					<li><a href="#">News</a></li>
+					<li><a href="#">Contact</a></li>
+					<li><a href="#">About</a></li>
+				</ul>
+			</nav>
+
+			<div class="container" ng-controller="LivrosController">
+				<div class="lancamentos">
+					<h2>Últimos lançamentos</h2>
+					<hr>
+						<div uib-carousel active="active" interval="5000" no-wrap="noWrapSlides">
+							<div uib-slide ng-repeat="item in lancamentos track by item.Id" index="item.Id">
+									<img ng-src="{{item.Capa}}" alt="{{item.Titulo}}">
+									<!--<div class="carousel-caption">-->
+										<div>
+											<h4>{{item.Titulo}}</h4>
+											<p>{{item.Descricao}}</p>
+									</div>
+							</div>
+						</div>
+				</div>
+				<div class="livros">
+					<h2>Todos nossos livros</h2>
+					<hr>
+					<ul class="list">
+						<li ng-repeat="item in livros">
+							<div class="item">
+								<img ng-src="{{item.Capa}}" alt="{{item.Titulo}}">
+								<h4>{{item.Titulo}}</h4>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.js"></script>
+		<script src="js/main.js"></script>
+		<script src="js/services/livros.service.js"></script>
+		<script src="js/controllers/livros.controller.js"></script>
+  </body>
+</html>

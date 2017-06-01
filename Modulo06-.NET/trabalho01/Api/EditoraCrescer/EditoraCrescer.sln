@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.6
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EditoraCrescer.Infraesturtura", "EditoraCrescer.Infraesturtura\EditoraCrescer.Infraesturtura.csproj", "{121ABA41-6EA5-4BBA-A9D9-C51A5A5318AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EditoraCrescer.Api", "EditoraCrescer.Api\EditoraCrescer.Api.csproj", "{3CAC22AF-AC3E-49BA-AB8C-6BA2DE40D61A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{121ABA41-6EA5-4BBA-A9D9-C51A5A5318AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{121ABA41-6EA5-4BBA-A9D9-C51A5A5318AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{121ABA41-6EA5-4BBA-A9D9-C51A5A5318AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{121ABA41-6EA5-4BBA-A9D9-C51A5A5318AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CAC22AF-AC3E-49BA-AB8C-6BA2DE40D61A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CAC22AF-AC3E-49BA-AB8C-6BA2DE40D61A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CAC22AF-AC3E-49BA-AB8C-6BA2DE40D61A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CAC22AF-AC3E-49BA-AB8C-6BA2DE40D61A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
