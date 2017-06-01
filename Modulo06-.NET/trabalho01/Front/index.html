@@ -10,6 +10,10 @@
   <body>
 		<div class="container-fluid">
 			<nav>
+				<div class="logo">
+					<img src="http://www.descubraomundo.com/sites/default/files/images/escolas/logos/intercambio_escola_ec_logo_13.jpg" alt="Logo da Editora Crescer">
+					<span>Editora Crescer</span>
+				</div>
 				<ul class="menu">
 					<li><a href="#">Home</a></li>
 					<li><a href="#">News</a></li>
@@ -22,7 +26,7 @@
 				<div class="lancamentos">
 					<h2>Últimos lançamentos</h2>
 					<hr>
-						<div uib-carousel active="active" interval="5000" no-wrap="noWrapSlides">
+						<div class="carousel" uib-carousel active="active" interval="5000" no-wrap="noWrapSlides">
 							<div uib-slide ng-repeat="item in lancamentos track by item.Id" index="item.Id">
 									<img ng-src="{{item.Capa}}" alt="{{item.Titulo}}">
 									<!--<div class="carousel-caption">-->
