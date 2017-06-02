@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EditoraCrescer.WebApi;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
@@ -12,6 +13,7 @@ namespace EditoraCrescer.Api
         {
             // Web API configuration and services
             config.EnableCors(new EnableCorsAttribute("*", "*", "*"));
+            //config.Filters.Add(new ErrosGlobaisFilterAttribute());
 
             // Web API routes
             config.MapHttpAttributeRoutes();

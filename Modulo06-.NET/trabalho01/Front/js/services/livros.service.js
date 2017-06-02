@@ -13,8 +13,20 @@ angular.module('app').factory('livrosService', function ($http) {
     return $http.get(url);
   }
 
-  function listarLancamentos() {
-    return $http.get(url + '/lancamentos');
+  function listar(parametros) {
+    return $http({
+          url: url,
+          method: 'GET',
+          params: parametros
+        });
+  }
+
+  function listarLancamentos(parametros) {
+    return $http({
+          url: url + '/lancamentos',
+          method: 'GET',
+          params: parametros
+        });
   }
 
   function criar(livro) {

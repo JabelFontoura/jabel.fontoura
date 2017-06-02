@@ -3,6 +3,12 @@
   background-color: #f7f4ed;
 }
 
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
 body {
   margin: 0;
 }
@@ -15,10 +21,15 @@ h2 {
   border-bottom: 2px solid rgba(248,150,93,0.3);
 }
 
+h4 {
+  font-weight: 600;
+  text-align: center;
+}
+
 .container-fluid { padding: 0; }
 
 nav {
-  background-color: rgb(255,183,107);
+  background-color: #f8965d;
   width: 100%;
   height: 100%;
 }
@@ -27,12 +38,23 @@ nav .menu {
     list-style-type: none;
     margin: 0;
     padding: 0;
+    margin-left: 2%;
     overflow: hidden;
-    background-color: #333;
+    background-color: #f8965d;
+    float: left;
+    height: 100%;
 }
 
 nav .logo {
   float: left;
+  background-color: #f8965d;
+}
+
+nav .logo span {
+  background-color: #f8965d;
+  color: white;
+  font-weight: 500;
+  font-size: 18px;
 }
 
 nav img {
@@ -41,7 +63,7 @@ nav img {
 
 nav .menu li { 
   float: left; 
-  background-color: black; 
+  background-color: #f8965d; 
   }
 
 nav .menu li a {
@@ -52,27 +74,22 @@ nav .menu li a {
     text-decoration: none;
 }
 
-nav .menu li a:hover { background-color: #111; }
+nav .menu li a:hover { background-color: #f8965d; }
 
-.container {
-  padding: 0;
+.center {
+  padding: 0 5%;
   margin: 0;
-  width: 100%;
-}
-
-.carousel {
-  padding-left: 5%;
-  padding-right: 5%;
+  width: auto;
 }
 
 .item {
-  padding: 20%;
+  padding: 5% 15%;
   width: auto;
-  float: left;
 }
 
 img {
-  width: 200px;
+  height: auto;
+  width: 250px;
 }
 
 .list li { float: left; }
@@ -87,3 +104,9 @@ img {
 .livros {
 
 }
+
+.center .pagination {
+  position: absolute;
+  left: 50%;
+}
+

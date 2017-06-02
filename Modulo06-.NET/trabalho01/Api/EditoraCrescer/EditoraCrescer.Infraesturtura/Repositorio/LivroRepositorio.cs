@@ -36,6 +36,21 @@ namespace EditoraCrescer.Infraesturtura.Repositorio
             }).ToList();
         }
 
+        public object ListarResumo(int quantidadePular, int quantidadeTrazer)
+        {
+            return contexto.Livros
+                .OrderBy(l => l.Isbn)
+                .Skip(quantidadePular)
+                .Take(quantidadeTrazer)
+                .Select(l => new {
+                    Isbn = l.Isbn,
+                    Titulo = l.Titulo,
+                    Capa = l.Capa,
+                    NomeAutor = l.Autor.Nome,
+                    Genero = l.Genero
+                }).ToList();
+        }
+
         public Livro Obter(int isbn)
         {
             var livro = contexto.Livros.FirstOrDefault(l => l.Isbn == isbn);
@@ -46,12 +61,15 @@ namespace EditoraCrescer.Infraesturtura.Repositorio
             return livro;
         }
 
-        public object ObterResumoLancamentos()
+        public object ObterResumoLancamentos(int quantidadePular, int quantidadeTrazer)
         {
             var data = DateTime.Now.AddDays(-7);
 
             return contexto.Livros
                 .Where(l => (l.DataPublicacao > data))
+                .OrderBy(l => l.Isbn)
+                .Skip(quantidadePular)
+                .Take(quantidadeTrazer)
                 .Select(l => new {
                     Isbn = l.Isbn,
                     Titulo = l.Titulo,

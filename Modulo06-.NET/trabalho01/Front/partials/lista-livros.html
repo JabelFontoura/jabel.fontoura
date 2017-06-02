@@ -1,0 +1,32 @@
+<div class="center">
+<div class="lancamentos">
+  <h2>Últimos lançamentos</h2>
+  <hr>
+  <ul class="list">
+    <li ng-repeat="item in lancamentos">
+      <div class="col-md-6 item">
+        <img ng-src="{{item.Capa}}" alt="{{item.Titulo}}">
+        <h4>{{item.Titulo}}</h4>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<div class="livros">
+  <h2>Todos nossos livros</h2>
+  <hr>
+  <ul class="list">
+    <li ng-repeat="item in livros">
+      <div class="col-md-6 item">
+        <img ng-src="{{item.Capa}}" alt="{{item.Titulo}}">
+        <h4>{{item.Titulo}}</h4>
+      </div>
+    </li>
+  </ul>
+</div>
+  <ul class="pagination">
+    <li><a href="" ng-click="voltar()"><</a></li>
+    <li><a href="">...</a></li>
+    <li><a href="" ng-click="avancar()">></a></li>
+  </ul>
+</div>

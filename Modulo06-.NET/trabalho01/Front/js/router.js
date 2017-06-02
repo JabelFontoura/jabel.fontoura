@@ -1,12 +1,12 @@
 angular.module('app').config(($routeProvider) => {
     $routeProvider
 		.when('/', {
-			templateUrl: 'partials/login.html',
-			controller: 'LoginController'
+			templateUrl: 'partials/lista-livros.html',
+			controller: 'LivrosController'
 		})
-		.when('/chat', {
-			templateUrl: 'partials/chat.html',
-      controller: 'ChatController'
+		.when('/detalhe-livro', {
+			templateUrl: 'partials/detalhe-livro.html',
+      // controller: 'ChatController'
 		})
 		.otherwise({redirectTo: '/'});
 });
