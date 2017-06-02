@@ -5,7 +5,9 @@
   <ul class="list">
     <li ng-repeat="item in lancamentos">
       <div class="col-md-6 item">
-        <img ng-src="{{item.Capa}}" alt="{{item.Titulo}}">
+        <div class="img-height">
+          <img ng-src="{{item.Capa}}" alt="{{item.Titulo}}">
+        </div>
         <h4>{{item.Titulo}}</h4>
       </div>
     </li>
@@ -18,7 +20,9 @@
   <ul class="list">
     <li ng-repeat="item in livros">
       <div class="col-md-6 item">
-        <img ng-src="{{item.Capa}}" alt="{{item.Titulo}}">
+        <div class="img-height">
+          <img ng-src="{{item.Capa}}" alt="{{item.Titulo}}">
+        </div>
         <h4>{{item.Titulo}}</h4>
       </div>
     </li>
@@ -26,7 +30,7 @@
 </div>
   <ul class="pagination">
     <li><a href="" ng-click="voltar()"><</a></li>
-    <li><a href="">...</a></li>
+    <li><a href="" ng-repeat="item in totalLivros" ng-click="irParaPagina(item.indice)">{{item.indice}}</a></li>
     <li><a href="" ng-click="avancar()">></a></li>
   </ul>
 </div>
