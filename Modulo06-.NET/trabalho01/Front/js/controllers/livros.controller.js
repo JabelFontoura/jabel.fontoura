@@ -13,28 +13,28 @@ angular.module('app').controller('LivrosController', function ($scope, livrosSer
   listar();
 
   $scope.irParaPagina = (num) => {
-    let result = 0;
-
     if(num > paginaAtual) 
-      $scope.parametros.quantidadePular += (num - 1) * 5;
+      $scope.parametros.quantidadePular = (num - 1) * $scope.parametros.quantidadeTrazer;
     else if(num < paginaAtual)
-      $scope.parametros.quantidadePular -= (num) * 5
-    
-    console.log('pular',$scope.parametros.quantidadePular);
-    console.log('num', num);
-    console.log('pagina', paginaAtual);
+      $scope.parametros.quantidadePular = (num - 1) * $scope.parametros.quantidadeTrazer;
+
     listar();
     paginaAtual = num;
   }
 
   $scope.avancar = () => {
-    $scope.parametros.quantidadePular += 5;
+    $scope.parametros.quantidadePular += $scope.parametros.quantidadeTrazer;
+    paginaAtual++;    
     listar();
   }
 
   $scope.voltar = () => {
-    $scope.parametros.quantidadePular -= 5;
-    if($scope.parametros.quantidadePular < 0) $scope.parametros.quantidadePular = 0;
+    $scope.parametros.quantidadePular -= $scope.parametros.quantidadeTrazer;
+    paginaAtual--;    
+    if($scope.parametros.quantidadePular < 0){
+       $scope.parametros.quantidadePular = 0;
+       paginaAtual = 1;
+    }
     listar();
   }
   

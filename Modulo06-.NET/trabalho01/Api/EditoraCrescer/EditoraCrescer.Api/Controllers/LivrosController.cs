@@ -1,4 +1,5 @@
-﻿using EditoraCrescer.Infraesturtura;
+﻿using EditoraCrescer.Api.App_Start;
+using EditoraCrescer.Infraesturtura;
 using EditoraCrescer.Infraesturtura.Entidades;
 using EditoraCrescer.Infraesturtura.Repositorio;
 using System;
@@ -15,6 +16,7 @@ namespace EditoraCrescer.Api.Controllers
     {
         private LivroRepositorio repositorio = new LivroRepositorio();
         
+        //[BasicAuthorization]
         public IHttpActionResult Get()
         {
             //return Ok(new { dados = repositorio.Listar() });

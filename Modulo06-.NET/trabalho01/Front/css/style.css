@@ -1,6 +1,5 @@
 * {
   box-sizing: border-box;
-  background-color: #f7f4ed;
 }
 
 .clearfix:after {
@@ -11,6 +10,7 @@
 
 body {
   margin: 0;
+  background-color: #f7f4ed;
 }
 
 h2 {
@@ -104,8 +104,7 @@ img {
   height: 380px;
 }
 
-.livros {
-
+.lancamentos {
 }
 
 .center .pagination {
