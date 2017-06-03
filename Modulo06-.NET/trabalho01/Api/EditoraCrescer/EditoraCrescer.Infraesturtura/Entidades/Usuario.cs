@@ -9,7 +9,7 @@ namespace EditoraCrescer.Infraesturtura.Entidades
 {
     public class Usuario
     {
-        public List<string> Mensagens { get; private set; }
+        public List<string> Mensagens { get; private set; }21
 
         static readonly char[] _caracteresNovaSenha = "abcdefghijklmnopqrstuvzwyz1234567890*-_".ToCharArray();
         static readonly int _numeroCaracteresNovaSenha = 10;

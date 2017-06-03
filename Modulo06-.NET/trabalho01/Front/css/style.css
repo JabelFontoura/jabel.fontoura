@@ -13,7 +13,7 @@ body {
   background-color: #f7f4ed;
 }
 
-h2 {
+.lancamentos h2, .livros h2 {
   color: #f8965d;
   text-align: left;
   font-weight: 700;
@@ -100,16 +100,47 @@ img {
     overflow: hidden;
 }
 
-.img-height {
-  height: 380px;
+.list a:link {
+  text-decoration: none;
+  color: black;
 }
 
-.lancamentos {
+.img-height {
+  height: 380px;
 }
 
 .center .pagination {
   position: absolute;
   left: 45%;
+}
+
+.detalhes {
+  margin-top: 5%;
+}
+
+.detalhes .col-md-6 {
+  margin-bottom: 10%;
+}
+
+.detalhes h1 {
+  font-weight: 800;
+  font-size: 40px;
+}
+
+.detalhes h4 {
+  display: inline-block;
+}
+
+.detalhes h2 {
+  color: #2f3030;
+  text-align: left;
+  font-weight: 700;
+  font-size: 1.75em;
+  border-bottom: 2px solid rgba(47, 48, 48, 0.3);
+}
+
+.detalhes img {
+  width: 500px;
 }
 
 /* Login */

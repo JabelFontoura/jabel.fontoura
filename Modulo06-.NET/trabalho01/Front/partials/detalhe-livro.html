@@ -1,16 +1,19 @@
 <div class="center">
   <div class="detalhes">
-    <img ng-src="{{livro.Capa}}" alt="Capa do livro {{livro.Titulo}}">
-    <h2>{{livro.Titulo}}</h2>
-    <h4>{{livro.NomeAutor}}</h4>
-    <div class="descricao">
+    <div class="col-md-6">
+      <img ng-src="{{livro.Capa}}" alt="Capa do livro {{livro.Titulo}}">
+    </div>
+    <div class="col-md-6">
+      <h1>{{livro.Titulo}}</h1>
+      <h4><strong>Autor:</strong> {{livro.Autor.Nome}}</h4>
+      <br>
+      <h4><strong>Genero:</strong> {{livro.Genero}}</h4>
       <h2>Descrição</h2>
       <article>
         {{livro.Descricao}}
       </article>
-
       <h2>Dados do Produto</h2>
       <p><strong>ISBN: </strong>{{livro.Isbn}}</p>
-    </div> 
+    </div>
   </div>
 </div>

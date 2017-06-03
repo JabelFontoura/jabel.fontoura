@@ -10,7 +10,7 @@
   </head>
   <body>
 		<div class="container-fluid">
-			<nav class="clearfix" ng-controller="UsuarioController">
+			<nav class="clearfix">
 				<div class="logo">
 					<img src="http://www.descubraomundo.com/sites/default/files/images/escolas/logos/intercambio_escola_ec_logo_13.jpg" alt="Logo da Editora Crescer">
 					<span>Editora Crescer</span>
@@ -22,9 +22,9 @@
 					<li><a href="#">About</a></li>
 				</ul>
 
-				<ul>
+				<ul ng-controller="UsuarioController">
 					<li id="login">
-						<a id="login-trigger" href="#">
+						<a id="login-trigger" href="">
 							Logar <span>▼</span>
 						</a>
 						<div id="login-content">
@@ -50,6 +50,9 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js" type="text/javascript"></script>
+		<script src="https://rawgit.com/cwi-crescer-2017-1/instrutores/master/modulo-05-angularjs/auth/auth.module.js" type="text/javascript"></script>
+		<script src="js/modules/auth.module.js"></script>
 		<script src="js/main.js"></script>
 		<script src="js/router.js"></script>
 		<script src="js/services/livros.service.js"></script>
