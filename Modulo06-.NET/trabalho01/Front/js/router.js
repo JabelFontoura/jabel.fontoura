@@ -4,9 +4,9 @@ angular.module('app').config(($routeProvider) => {
 			templateUrl: 'partials/lista-livros.html',
 			controller: 'LivrosController'
 		})
-		.when('/detalhe-livro', {
+		.when('/detalhe-livro/:isbn', {
 			templateUrl: 'partials/detalhe-livro.html',
-      // controller: 'ChatController'
+      controller: 'LivroController'
 		})
 		.otherwise({redirectTo: '/'});
 });

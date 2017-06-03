@@ -10,7 +10,7 @@
   </head>
   <body>
 		<div class="container-fluid">
-			<nav class="clearfix">
+			<nav class="clearfix" ng-controller="UsuarioController">
 				<div class="logo">
 					<img src="http://www.descubraomundo.com/sites/default/files/images/escolas/logos/intercambio_escola_ec_logo_13.jpg" alt="Logo da Editora Crescer">
 					<span>Editora Crescer</span>
@@ -21,10 +21,32 @@
 					<li><a href="#">Contact</a></li>
 					<li><a href="#">About</a></li>
 				</ul>
+
+				<ul>
+					<li id="login">
+						<a id="login-trigger" href="#">
+							Logar <span>▼</span>
+						</a>
+						<div id="login-content">
+							<form>
+								<fieldset id="inputs">
+									<input id="username" type="email" name="Email" placeholder="Email" required>   
+									<input id="password" type="password" name="Password" placeholder="Senha" required>
+								</fieldset>
+								<fieldset id="actions">
+									<input type="submit" id="submit" value="Logar">
+									<label><input type="checkbox" checked="checked">Me mantenha logado</label>
+								</fieldset>
+							</form>
+						</div>                     
+					</li>
+				</ul>
 			</nav>
 				<ng-view></ng-view>
 		</div>
 
+		<script src="js/plugins/jquery-3.2.1.min.js"></script>
+		<script src="js/plugins/login.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.js"></script>
@@ -32,5 +54,7 @@
 		<script src="js/router.js"></script>
 		<script src="js/services/livros.service.js"></script>
 		<script src="js/controllers/livros.controller.js"></script>
+		<script src="js/controllers/livro.controller.js"></script>
+		<script src="js/controllers/usuario.controller.js"></script>
   </body>
 </html>

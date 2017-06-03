@@ -6,7 +6,9 @@
     <li ng-repeat="item in lancamentos">
       <div class="col-md-6 item">
         <div class="img-height">
-          <img ng-src="{{item.Capa}}" alt="{{item.Titulo}}">
+          <a href="#!/detalhe-livro/{{item.Isbn}}">
+            <img ng-src="{{item.Capa}}" alt="{{item.Titulo}}">
+          </a>
         </div>
         <h4>{{item.Titulo}}</h4>
       </div>
