@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -7,10 +8,8 @@ using System.Threading.Tasks;
 
 namespace EditoraCrescer.Infraesturtura.Entidades
 {
-    public class Usuario
+    public class Usuario : EntidadeBasica
     {
-        public List<string> Mensagens { get; private set; }21
-
         static readonly char[] _caracteresNovaSenha = "abcdefghijklmnopqrstuvzwyz1234567890*-_".ToCharArray();
         static readonly int _numeroCaracteresNovaSenha = 10;
 
@@ -19,6 +18,9 @@ namespace EditoraCrescer.Infraesturtura.Entidades
         public string Email { get; private set; }
         public string Senha { get; private set; }
         public List<Permissao> Permissoes { get; private set; }
+
+        protected Usuario()
+        { }
 
         public Usuario(string nome, string email, string senha)
         {
@@ -63,11 +65,13 @@ namespace EditoraCrescer.Infraesturtura.Entidades
 
         public void AtribuirPermissoes(params string[] nomes)
         {
+            Permissoes = new List<Permissao>();
+
             foreach (var nome in nomes)
                 Permissoes.Add(new Permissao(nome));
         }
 
-        public bool Validar()
+        public override bool Validar()
         {
             Mensagens.Clear();
 

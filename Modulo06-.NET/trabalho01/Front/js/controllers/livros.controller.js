@@ -1,4 +1,4 @@
-angular.module('app').controller('LivrosController', function ($scope, livrosService) {
+angular.module('app').controller('LivrosController', function ($scope, livrosService, toastr) {
   let paginaAtual = 1;
 
   livrosService.listar()

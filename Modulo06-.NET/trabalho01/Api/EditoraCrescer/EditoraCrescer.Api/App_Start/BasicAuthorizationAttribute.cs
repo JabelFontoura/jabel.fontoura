@@ -2,6 +2,7 @@
 using EditoraCrescer.Infraesturtura.Repositorio;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -52,6 +53,7 @@ namespace EditoraCrescer.Api.App_Start
                 if (ValidarUsuario(userNameAndPassword[0], userNameAndPassword[1], out usuario))
                 {
                     string[] papeis = usuario.Permissoes.Select(papel => papel.Nome).ToArray();
+
                     var identidade = new GenericIdentity(usuario.Email);
                     var genericUser = new GenericPrincipal(identidade, papeis);
 
