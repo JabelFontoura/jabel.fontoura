@@ -63,12 +63,14 @@ namespace EditoraCrescer.Api.Controllers
             return Ok(new { dados = livro });
         }
 
+        [BasicAuthorization(Roles = "Administrador, Publicador, Colaborador")]
         [Route("{isbn:int}")]
         public IHttpActionResult Put(int isbn, Livro livro)
         {
             return Ok(new { dados = repositorio.Alterar(isbn, livro) });
         }
 
+        [BasicAuthorization(Roles = "Administrador, Publicador, Colaborador")]
         [Route("{isbn:int}")]
         public IHttpActionResult Delete(int isbn)
         {

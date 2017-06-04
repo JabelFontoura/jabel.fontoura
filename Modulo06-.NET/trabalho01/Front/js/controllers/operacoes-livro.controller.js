@@ -17,21 +17,16 @@ angular.module('app').controller('OperacoesLivroController', function ($scope, $
   }
 
   $scope.showAdicionar = () => {
+      limparTudo()
       $scope.livro = {};
-
       $scope.showAdicionarComponent = true
-      $scope.showAlterarComponent = false;
-      $scope.showRemoverComponent = false;
-      $scope.showPublicarComponent = false;
-      $scope.showRevisarComponent = false;
-      $scope.showEditarForm = false;
           
       $scope.salvar = (livro) => {
 
         if($scope.IdAutor === 'novo') $scope.IdAutor = null;
         else $scope.Autor = null;
 
-        livrosService.create(livro, $localStorage.headerAuth)
+        livrosService.criar(livro, $localStorage.headerAuth)
         .then(response => toastr.success('Livro cadastrado com sucesso'))
         .catch(error => console.log(error));
 
@@ -41,18 +36,14 @@ angular.module('app').controller('OperacoesLivroController', function ($scope, $
 
     };
     $scope.showAlterar = () => {
+      limparTudo()
       $scope.showAlterarComponent = true;
-      $scope.showAdicionarComponent = false
-      $scope.showRemoverComponent = false;
-      $scope.showRevisarComponent = false;
-      $scope.showPublicarComponent = false;
-      $scope.showEditarForm = false;
       
       $scope.nomeOperacao = 'editar';
 
       $scope.executar = (isbn) => {
         livrosService.findById(isbn)
-          .then(response => $scope.livro = response.data.dados)
+          .then(response => $scope.livro = response.data.dados.mensagens)
           .catch(error => console.log(error));
           
           $scope.showEditarForm = true;
@@ -72,31 +63,52 @@ angular.module('app').controller('OperacoesLivroController', function ($scope, $
       }
     }; 
     $scope.showRemover = () => {
+      limparTudo()
       $scope.showRemoverComponent = true;
-      $scope.showAdicionarComponent = false;
-      $scope.showAlterarComponent = false;
-      $scope.showRevisarComponent = false;
-      $scope.showPublicarComponent = false;
-
       $scope.nomeOperacao = 'remover';
       
 
       $scope.executar = (isbn) => {
+        livrosService.findById(isbn)
+          .then(response => $scope.livro = response.data.dados)
+          .catch(error => console.log(error));
 
+        $scope.showRemoverComponent = false;
+        $scope.showConfirmacaoRemover = true;
       }
+
+      $scope.salvar = (isbn) => {
+        livrosService.remover(isbn)
+          .then(response => toastr.info(response.data.dados))
+          .catch(error => console.log(error));
+
+        $scope.showConfirmacaoRemover = false;
+        $scope.livro = {};
+      }
+
+      $scope.sair = () => {
+        oastr.info('Operação cancelada.');
+        $scope.showConfirmacaoRemover = false;
+        $scope.livro = {};
+      }
+      
     };
     $scope.showRevisar = () => {
+      limparTudo()
       $scope.showRevisarComponent = true;
-      $scope.showAdicionarComponent = false;
-      $scope.showAlterarComponent = false;
-      $scope.showRemoverComponent = false;
-      $scope.showPublicarComponent = false;
     }; 
     $scope.showPublicar = () => {
+      limparTudo()
       $scope.showPublicarComponent = true;
+    };
+
+    function limparTudo() {
+      $scope.showPublicarComponent = false;
       $scope.showAdicionarComponent = false
       $scope.showAlterarComponent = false;
       $scope.showRemoverComponent = false;
       $scope.showRevisarComponent = false;
-    };  
+      $scope.showEditarForm = false;
+      $scope.showConfirmacaoRemover = false;
+    }  
 });

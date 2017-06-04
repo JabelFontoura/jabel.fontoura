@@ -1,0 +1,18 @@
+<div class="center">
+  <div class="remover">
+    <div class="col-md-5">
+      <img ng-src="{{livro.Capa}}" alt="Capa do livro {{livro.Titulo}}">
+    </div>
+    <div class="col-md-6">
+      <ul>
+        <li><strong>ISBN: </strong>{{livro.Isbn}}</li>
+        <li><strong>Titulo: </strong>{{livro.Titulo}}</li>
+        <li><strong>Autor:</strong> {{livro.Autor.Nome}}</li>
+        <li><strong>Genero:</strong> {{livro.Genero}}</li>
+      </ul>
+    </div>
+
+    <button class="btn btn-default" ng-click="salvar(livro.Isbn)">Sim</button>
+    <button class="btn btn-default" ng-click="sair()">Não</button>
+  </div>
+</div>

@@ -5,8 +5,9 @@ angular.module('app').factory('livrosService', function ($http) {
   return {
     listar: listar,
     listarLancamentos: listarLancamentos,
-    create: criar,
+    criar: criar,
     alterar: alterar,
+    remover: remover,
     findById: obterPorId,
     getQuantidadeTotal: getQuantidadeTotal
   };
@@ -54,6 +55,16 @@ angular.module('app').factory('livrosService', function ($http) {
           Authorization: headerAuth
         },
         data: livro
+      });
+  }
+
+      function remover(isbn, headerAuth) {
+      return $http({
+        url: url + '/' + isbn,
+        method: 'DELETE',
+        headers: {
+          Authorization: headerAuth
+        }
       });
   }
 
