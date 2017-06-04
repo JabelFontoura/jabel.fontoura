@@ -10,7 +10,7 @@ angular.module('app').config(($routeProvider) => {
 		})
 		.when('/administrativo', {
 			templateUrl: 'partials/administrativo.html',
-      controller: 'CadastroLivroController'
+      controller: 'OperacoesLivroController'
 		})
 		.otherwise({redirectTo: '/'});
 });

@@ -47,8 +47,8 @@ angular.module('app').controller('LivrosController', function ($scope, livrosSer
   }
 
   function init() {
-    livrosService.listar()
-      .then(response => gerarQuantidadePaginas(response.data.dados.length / 5))
+    livrosService.getQuantidadeTotal()
+      .then(response => gerarQuantidadePaginas(response.data.dados / 5))
       .catch(error => console.log(error));
 
     $scope.parametros = {

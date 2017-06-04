@@ -1,0 +1,43 @@
+<form class="form-horizontal" novalidate ng-submit="salvar(livro)">
+  <div class="form-group">
+    <label for="titulo" class="col-sm-2 control-label">Titulo</label>
+    <div class="col-md-8">
+      <input type="text" class="form-control" name="titulo" placeholder="Titulo" required ng-model="livro.Titulo">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="idAutor" class="col-sm-2 control-label">Autor</label>
+    <div class="col-md-8">
+      <select class="form-control" name="autorSelect" ng-model="livro.idAutor">
+        <option class="novo-autor" value="novo" >Novo Autor</option>
+        <option ng-repeat="item in autores" value="{{item.Id}}" ng-selected="livro.IdAutor === item.Id">{{item.Nome}}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group" ng-if="livro.idAutor == 'novo'">
+    <label for="autor" class="col-sm-2 control-label">Autor</label>
+    <div class="col-md-8">
+      <input type="text" class="form-control" name="autor" placeholder="Autor" required ng-model="livro.Autor.Nome">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="genero" class="col-sm-2 control-label">Genero</label>
+    <div class="col-md-8">
+      <input type="text" class="form-control" name="genero" placeholder="Genero" required ng-model="livro.Genero">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="descricao" class="col-sm-2 control-label">Descricao</label>
+    <div class="col-md-8">
+      <textarea class="form-control" rows="4" name="descricao" ng-model="livro.Descricao"></textarea>
+    </div>
+  </div>
+  <div class="form-group">
+    <div>
+      <button type="submit" class="strech btn-lg btn-block btn btn-primary">Salvar</button>
+    </div>
+  </div>
+</form>

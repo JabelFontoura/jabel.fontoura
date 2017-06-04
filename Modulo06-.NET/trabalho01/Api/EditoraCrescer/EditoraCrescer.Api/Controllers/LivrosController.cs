@@ -29,6 +29,13 @@ namespace EditoraCrescer.Api.Controllers
             return Ok(new { dados = repositorio.ListarResumo(quantidadePular, quantidadeTrazer) });
         }
 
+        [HttpGet]
+        [Route("quantidadetotal")]
+        public IHttpActionResult ObterQuantidadeLivrosPublicadosExcetoLancamentos()
+        {
+            return Ok(new { dados = repositorio.ObterQuantidadeLivros() });
+        }
+
         [Route("{isbn:int}")]
         public IHttpActionResult Get(int isbn)
         {
@@ -49,6 +56,7 @@ namespace EditoraCrescer.Api.Controllers
             return Ok(new { dados = repositorio.ObterResumoLancamentos(quantidadePular, quantidadeTrazer) });
         }
 
+        [BasicAuthorization(Roles = "Administrador, Publicador, Colaborador")]
         public IHttpActionResult Post(Livro livro)
         {
             repositorio.Criar(livro);

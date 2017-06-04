@@ -1,0 +1,17 @@
+<h2>Selecione um livro para {{nomeOperacao}}</h2>
+<table class="table table-striped table-bordered table-hover">
+  <tr>
+    <th>Isbn</th>
+    <th>Capa</th>
+    <th>Titulo</th>
+    <th>Autor</th>
+  </tr>
+  <tr ng-repeat="item in livros" ng-click="executar(isbn)">
+    <td>{{item.Isbn}}
+    <input type="hidden" ng-init="isbn = item.Isbn" ng-model="isbn">
+    </td>
+    <td><img ng-src="{{item.Capa}}" alt="Capa do livro {{item.Titulo}}"></td>
+    <td>{{item.Titulo}}</td>
+    <td>{{item.NomeAutor}}</td>
+  </tr>
+</table>

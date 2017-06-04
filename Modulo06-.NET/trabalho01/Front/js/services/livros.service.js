@@ -6,11 +6,17 @@ angular.module('app').factory('livrosService', function ($http) {
     listar: listar,
     listarLancamentos: listarLancamentos,
     create: criar,
-    findById: obterPorId
+    alterar: alterar,
+    findById: obterPorId,
+    getQuantidadeTotal: getQuantidadeTotal
   };
 
   function listar() {
     return $http.get(url);
+  }
+
+  function getQuantidadeTotal() {
+    return $http.get(url + '/quantidadetotal');
   }
 
   function listar(parametros) {
@@ -29,8 +35,26 @@ angular.module('app').factory('livrosService', function ($http) {
         });
   }
 
-  function criar(livro) {
-    return $http.post(url, livro);
+  function criar(livro, headerAuth) {
+    return $http({
+      url: url,
+      method: 'POST',
+      headers: {
+        Authorization: headerAuth
+      },
+      data: livro
+    });
+  }
+
+    function alterar(livro, headerAuth) {
+      return $http({
+        url: url + '/' + livro.Isbn,
+        method: 'PUT',
+        headers: {
+          Authorization: headerAuth
+        },
+        data: livro
+      });
   }
 
   function obterPorId(id) {

@@ -16,7 +16,7 @@ namespace EditoraCrescer.Infraesturtura.Repositorio
             return contexto.Revisores.ToList();
         }
 
-        public Revisor Obter(int id)
+        public Revisor Obter(int? id)
         {
             return contexto.Revisores.Where(a => a.Id == id).FirstOrDefault();
         }
@@ -46,6 +46,11 @@ namespace EditoraCrescer.Infraesturtura.Repositorio
         public void Dispose()
         {
             contexto.Dispose();
+        }
+
+        public Revisor Obter(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

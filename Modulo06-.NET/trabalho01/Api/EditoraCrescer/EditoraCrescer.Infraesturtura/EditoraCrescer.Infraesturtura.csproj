@@ -75,6 +75,22 @@
     <Compile Include="Migrations\201706022027330_AdicionarTabelaUsuarios.Designer.cs">
       <DependentUpon>201706022027330_AdicionarTabelaUsuarios.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706041938310_AlterarCamposDataParaOpcional.cs" />
+    <Compile Include="Migrations\201706041938310_AlterarCamposDataParaOpcional.Designer.cs">
+      <DependentUpon>201706041938310_AlterarCamposDataParaOpcional.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706041946058_AlterarCamposRevisorParaOpcional.cs" />
+    <Compile Include="Migrations\201706041946058_AlterarCamposRevisorParaOpcional.Designer.cs">
+      <DependentUpon>201706041946058_AlterarCamposRevisorParaOpcional.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706041947577_AlterarCamposRevisorParaOpcionalRevert.cs" />
+    <Compile Include="Migrations\201706041947577_AlterarCamposRevisorParaOpcionalRevert.Designer.cs">
+      <DependentUpon>201706041947577_AlterarCamposRevisorParaOpcionalRevert.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706041954413_AlterarCamposRevisorParaOpcional1.cs" />
+    <Compile Include="Migrations\201706041954413_AlterarCamposRevisorParaOpcional1.Designer.cs">
+      <DependentUpon>201706041954413_AlterarCamposRevisorParaOpcional1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorio\AutorRepositorio.cs" />
@@ -99,6 +115,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706022027330_AdicionarTabelaUsuarios.resx">
       <DependentUpon>201706022027330_AdicionarTabelaUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706041938310_AlterarCamposDataParaOpcional.resx">
+      <DependentUpon>201706041938310_AlterarCamposDataParaOpcional.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706041946058_AlterarCamposRevisorParaOpcional.resx">
+      <DependentUpon>201706041946058_AlterarCamposRevisorParaOpcional.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706041947577_AlterarCamposRevisorParaOpcionalRevert.resx">
+      <DependentUpon>201706041947577_AlterarCamposRevisorParaOpcionalRevert.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706041954413_AlterarCamposRevisorParaOpcional1.resx">
+      <DependentUpon>201706041954413_AlterarCamposRevisorParaOpcional1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

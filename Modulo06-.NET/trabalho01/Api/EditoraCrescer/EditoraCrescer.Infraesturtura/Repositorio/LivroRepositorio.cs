@@ -51,6 +51,11 @@ namespace EditoraCrescer.Infraesturtura.Repositorio
                 }).ToList();
         }
 
+        public object ObterQuantidadeLivros()
+        {
+            return contexto.Livros.Count();   
+        }
+
         public Livro Obter(int isbn)
         {
             var livro = contexto.Livros.FirstOrDefault(l => l.Isbn == isbn);
