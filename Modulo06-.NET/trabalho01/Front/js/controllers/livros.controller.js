@@ -1,16 +1,8 @@
 angular.module('app').controller('LivrosController', function ($scope, livrosService, toastr) {
+  
   let paginaAtual = 1;
 
-  livrosService.listar()
-    .then(response => gerarQuantidadePaginas(response.data.dados.length / 5))
-    .catch(error => console.log(error));
-
-  $scope.parametros = {
-      quantidadePular: 0,
-      quantidadeTrazer: 5
-    };
-
-  listar();
+  init();
 
   $scope.irParaPagina = (num) => {
     if(num > paginaAtual) 
@@ -52,5 +44,18 @@ angular.module('app').controller('LivrosController', function ($scope, livrosSer
     $scope.totalLivros = [];
     for(var i = 1; i <= Math.ceil(num); i++) 
       $scope.totalLivros.push({indice: i}); 
+  }
+
+  function init() {
+    livrosService.listar()
+      .then(response => gerarQuantidadePaginas(response.data.dados.length / 5))
+      .catch(error => console.log(error));
+
+    $scope.parametros = {
+        quantidadePular: 0,
+        quantidadeTrazer: 5
+      };
+
+    listar();
   }
 });

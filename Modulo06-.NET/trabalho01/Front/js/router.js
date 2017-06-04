@@ -8,5 +8,9 @@ angular.module('app').config(($routeProvider) => {
 			templateUrl: 'partials/detalhe-livro.html',
       controller: 'LivroController'
 		})
+		.when('/administrativo', {
+			templateUrl: 'partials/administrativo.html',
+      controller: 'CadastroLivroController'
+		})
 		.otherwise({redirectTo: '/'});
 });

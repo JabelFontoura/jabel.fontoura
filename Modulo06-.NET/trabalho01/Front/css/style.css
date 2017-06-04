@@ -247,7 +247,7 @@ nav li #login-content {
   float: left;
   height: 30px;
   padding: 0;
-  width: 100px;
+  width: 100%;
   cursor: pointer;
   font: bold 14px Arial, Helvetica;
   color: #fff;
