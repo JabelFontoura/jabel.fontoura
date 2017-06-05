@@ -67,28 +67,28 @@ namespace EditoraCrescer.Api.Controllers
             return Ok(new { dados = repositorio.ObterResumoComRevisao() });
         }
 
-        [BasicAuthorization(Roles = "Administrador, Publicador, Colaborador")]
+        [BasicAuthorization(Roles = "Colaborador")]
         public IHttpActionResult Post(Livro livro)
         {
             repositorio.Criar(livro);
             return Ok(new { dados = livro });
         }
 
-        [BasicAuthorization(Roles = "Administrador, Colaborador")]
+        [BasicAuthorization(Roles = "Colaborador")]
         [Route("{isbn:int}")]
         public IHttpActionResult Put(int isbn, Livro livro)
         {
             return Ok(new { dados = repositorio.Alterar(isbn, livro) });
         }
 
-        [BasicAuthorization(Roles = "Administrador, Revisor")]
+        [BasicAuthorization(Roles = "Revisor")]
         [HttpPut, Route("revisar/{isbn:int}")]
         public IHttpActionResult RevisarLivro(int isbn, Livro livro)
         {
             return Ok(new { dados = repositorio.Alterar(isbn, livro) });
         }
 
-        [BasicAuthorization(Roles = "Administrador, Publicador")]
+        [BasicAuthorization(Roles = "Publicador")]
         [HttpPut, Route("publicar/{isbn:int}")]
         public IHttpActionResult PublicarLivro(int isbn, Livro livro)
         {
@@ -101,7 +101,7 @@ namespace EditoraCrescer.Api.Controllers
             return Ok(new { dados = repositorio.Alterar(isbn, livro) });
         }
 
-        [BasicAuthorization(Roles = "Administrador, Publicador, Colaborador")]
+        [BasicAuthorization(Roles = "Colaborador")]
         [Route("{isbn:int}")]
         public IHttpActionResult Delete(int isbn)
         {

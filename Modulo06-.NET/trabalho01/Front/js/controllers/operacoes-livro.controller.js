@@ -4,7 +4,7 @@ angular.module('app').controller('OperacoesLivroController', function ($scope, $
   function init() {
 
     autoresService.listar()
-      .then(response => $scope.Autores = response.data.dados)
+      .then(response => $scope.autores = response.data.dados)
       .catch(error => console.log(error));
 
     $scope.isRevisor = authService.possuiPermissao("Revisor");
@@ -20,8 +20,8 @@ angular.module('app').controller('OperacoesLivroController', function ($scope, $
           
       $scope.salvar = (livro) => {
 
-        if(livro.IdAutor === 'novo') livro.IdAutor = null;
-        else livro.Autor = null;
+        if($scope.livro.IdAutor === 'novo') $scope.livro.IdAutor = null;
+        else $scope.livro.Autor = null;
 
         livrosService.criar(livro, $localStorage.headerAuth)
         .then(response => toastr.success('Livro cadastrado com sucesso'))
@@ -74,7 +74,7 @@ angular.module('app').controller('OperacoesLivroController', function ($scope, $
       }
 
       $scope.salvar = (livro) => {
-        livrosService.remover(livro.Isbn)
+        livrosService.remover(livro.Isbn, $localStorage.headerAuth)
           .then(response => toastr.info(response.data.dados))
           .catch(error => console.log(error));
 

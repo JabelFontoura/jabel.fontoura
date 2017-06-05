@@ -57,7 +57,7 @@ angular.module('app').factory('livrosService', function ($http) {
     });
   }
 
-  function alterar(livro, headerAuth, operacao = null) {
+  function alterar(livro, headerAuth, operacao = '') {
     return $http({
       url: url + '/' + operacao + livro.Isbn,
       method: 'PUT',
