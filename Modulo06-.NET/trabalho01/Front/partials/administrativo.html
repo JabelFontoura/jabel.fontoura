@@ -1,13 +1,11 @@
 <div class="center">
   <div class="administrativo">
-
     <h1>Operações Disponíveis</h1>
     <button class="btn btn-primary" ng-click="showAdicionar()">Adicionar Livro</button>
     <button class="btn btn-warning" ng-click="showAlterar()">Alterar Livro</button>
     <button class="btn btn-danger" ng-click="showRemover()">Remover Livro</button>
-    <button class="btn btn-info" ng-click="showRevisar()">Revisar Livro</button>
-    <button class="btn btn-success" ng-click="showPublicar()">Publicar Livro</button>
-
+    <button class="btn btn-info" ng-if="isRevisor" ng-click="showRevisar()">Revisar Livro</button>
+    <button class="btn btn-success" ng-if="isPublicador" ng-click="showPublicar()">Publicar Livro</button>
   </div>
 
   <div class="operacoes">
@@ -17,10 +15,12 @@
     <div ng-if="showEditarForm" ng-include="'partials/adm/form-livro.html'"></div>
 
     <div class="remover" ng-if="showRemoverComponent" ng-include="'partials/adm/lista-livros.html'"></div>
-    <div class="remover" ng-if="showConfirmacaoRemover" ng-include="'partials/adm/confirmacao-remover.html'"></div>
+    <div class="remover" ng-if="showConfirmacaoRemover" ng-include="'partials/adm/confirmacao-operacao.html'"></div>
     
     <div class="revisar" ng-if="showRevisarComponent" ng-include="'partials/adm/lista-livros.html'"></div>
     <div class="revisar" ng-if="showRevisarForm" ng-include="'partials/adm/revisar-livro.html'"></div>
 
+    <div class="publicar" ng-if="showPublicarComponent" ng-include="'partials/adm/lista-livros.html'"></div>
+    <div class="publicar" ng-if="showConfirmacaoPublicar" ng-include="'partials/adm/confirmacao-operacao.html'"></div>
   </div>
 </div>

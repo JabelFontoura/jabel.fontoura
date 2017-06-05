@@ -10,10 +10,7 @@ angular.module('app').controller('OperacoesLivroController', function ($scope, $
     $scope.isRevisor = authService.possuiPermissao("Revisor");
     $scope.isPublicador = authService.possuiPermissao("Publicador");
     
-    livrosService.listar()
-      .then(response => $scope.livros = response.data.dados)
-      .catch(error => console.log(error));
-
+    listar();
   }
 
   $scope.showAdicionar = () => {
@@ -36,6 +33,7 @@ angular.module('app').controller('OperacoesLivroController', function ($scope, $
 
     };
     $scope.showAlterar = () => {
+      listar();
       limparTudo()
       $scope.showAlterarComponent = true;
       
@@ -62,6 +60,7 @@ angular.module('app').controller('OperacoesLivroController', function ($scope, $
     }; 
 
     $scope.showRemover = () => {
+      listar();
       limparTudo()
       $scope.showRemoverComponent = true;
       $scope.nomeOperacao = 'remover';
@@ -74,8 +73,8 @@ angular.module('app').controller('OperacoesLivroController', function ($scope, $
         $scope.showConfirmacaoRemover = true;
       }
 
-      $scope.salvar = (isbn) => {
-        livrosService.remover(isbn)
+      $scope.salvar = (livro) => {
+        livrosService.remover(livro.Isbn)
           .then(response => toastr.info(response.data.dados))
           .catch(error => console.log(error));
 
@@ -133,17 +132,53 @@ angular.module('app').controller('OperacoesLivroController', function ($scope, $
         livro = {};
 
         function atualizarRevisor() {
-          livrosService.alterar(livro, $localStorage.headerAuth)
-          .then(response => toastr.success('Livro Editado com sucesso'))
+          livrosService.alterar(livro, $localStorage.headerAuth, 'revisar/')
+          .then(response => toastr.success('Livro revisado com sucesso'))
           .catch(error => console.log(error));
         }
       }
 
     }; 
     $scope.showPublicar = () => {
+      livrosService.listarLivrosRevisados()
+        .then(response => $scope.livros = response.data.dados)
+        .catch(error => console.log(error));
+
       limparTudo()
       $scope.showPublicarComponent = true;
+      $scope.nomeOperacao = 'publicar';
+
+      $scope.executar = (isbn) => {
+        buscarPorIsbn(isbn);
+
+        $scope.showPublicarComponent = false;
+        $scope.showConfirmacaoPublicar = true;
+      }
+
+      $scope.salvar = (livro) => {
+        livro.DataPublicacao = new Date().toLocaleDateString();
+
+        livrosService.alterar(livro, $localStorage.headerAuth, 'publicar/')
+          .then(response => toastr.success('Livro publicado com sucesso'))
+          .catch(error => console.log(error));
+
+        $scope.showConfirmacaoPublicar = false;
+        $scope.livro = {};
+      }
+
+      $scope.sair = () => {
+        toastr.info('Operação cancelada.');
+        $scope.showConfirmacaoPublicar = false;
+        $scope.livro = {};
+      }
+
     };
+
+    function listar() {
+      livrosService.listar()
+      .then(response => $scope.livros = response.data.dados)
+      .catch(error => console.log(error));
+    }
 
     function buscarPorIsbn(isbn) {
       livrosService.findById(isbn)
@@ -160,5 +195,6 @@ angular.module('app').controller('OperacoesLivroController', function ($scope, $
       $scope.showEditarForm = false;
       $scope.showConfirmacaoRemover = false;
       $scope.showRevisarForm = false;
+      $scope.showConfirmacaoPublicar = false;
     }  
 });

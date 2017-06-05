@@ -19,5 +19,13 @@ namespace EditoraCrescer.Infraesturtura.Entidades
         public Revisor Revisor { get; set; }
         public DateTime? DataRevisao { get; set; }
         public string Capa { get; set; }
+
+        public bool ValidarDataPublicacao()
+        {
+            return (
+                this.DataPublicacao.Value.DayOfWeek == DayOfWeek.Sunday ||
+                this.DataPublicacao.Value.DayOfWeek == DayOfWeek.Saturday
+                );
+        }
     }
 }

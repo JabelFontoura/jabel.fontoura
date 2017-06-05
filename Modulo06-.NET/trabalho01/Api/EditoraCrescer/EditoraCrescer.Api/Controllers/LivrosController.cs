@@ -61,6 +61,12 @@ namespace EditoraCrescer.Api.Controllers
             return Ok(new { dados = repositorio.ObterResumoSemRevisao() });
         }
 
+        [HttpGet, Route("revisados")]
+        public IHttpActionResult GetLivrosRevisados()
+        {
+            return Ok(new { dados = repositorio.ObterResumoComRevisao() });
+        }
+
         [BasicAuthorization(Roles = "Administrador, Publicador, Colaborador")]
         public IHttpActionResult Post(Livro livro)
         {
@@ -68,10 +74,30 @@ namespace EditoraCrescer.Api.Controllers
             return Ok(new { dados = livro });
         }
 
-        [BasicAuthorization(Roles = "Administrador, Publicador, Revisor, Colaborador")]
+        [BasicAuthorization(Roles = "Administrador, Colaborador")]
         [Route("{isbn:int}")]
         public IHttpActionResult Put(int isbn, Livro livro)
         {
+            return Ok(new { dados = repositorio.Alterar(isbn, livro) });
+        }
+
+        [BasicAuthorization(Roles = "Administrador, Revisor")]
+        [HttpPut, Route("revisar/{isbn:int}")]
+        public IHttpActionResult RevisarLivro(int isbn, Livro livro)
+        {
+            return Ok(new { dados = repositorio.Alterar(isbn, livro) });
+        }
+
+        [BasicAuthorization(Roles = "Administrador, Publicador")]
+        [HttpPut, Route("publicar/{isbn:int}")]
+        public IHttpActionResult PublicarLivro(int isbn, Livro livro)
+        {
+            if (livro.IdRevisor == null || livro.DataRevisao == null)
+                return BadRequest("Um livro só pode ser publicado se estiver revisado");
+
+            if(livro.ValidarDataPublicacao())
+                return BadRequest("Um livro não pode ser publicado no fim de semana");
+
             return Ok(new { dados = repositorio.Alterar(isbn, livro) });
         }
 

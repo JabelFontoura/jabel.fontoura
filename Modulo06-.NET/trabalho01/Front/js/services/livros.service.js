@@ -6,6 +6,7 @@ angular.module('app').factory('livrosService', function ($http) {
     listar: listar,
     listarLancamentos: listarLancamentos,
     listarLivrosSemRevisao: listarLivrosSemRevisao,
+    listarLivrosRevisados: listarLivrosRevisados,
     criar: criar,
     alterar: alterar,
     remover: remover,
@@ -37,8 +38,12 @@ angular.module('app').factory('livrosService', function ($http) {
         });
   }
 
-   function listarLivrosSemRevisao() {
+  function listarLivrosSemRevisao() {
     return $http.get(url + '/revisao');
+  }
+  
+  function listarLivrosRevisados() {
+    return $http.get(url + '/revisados');
   }
 
   function criar(livro, headerAuth) {
@@ -52,9 +57,9 @@ angular.module('app').factory('livrosService', function ($http) {
     });
   }
 
-  function alterar(livro, headerAuth) {
+  function alterar(livro, headerAuth, operacao = null) {
     return $http({
-      url: url + '/' + livro.Isbn,
+      url: url + '/' + operacao + livro.Isbn,
       method: 'PUT',
       headers: {
         Authorization: headerAuth
