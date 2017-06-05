@@ -66,6 +66,19 @@ namespace EditoraCrescer.Infraesturtura.Repositorio
             return livro;
         }
 
+        public object ObterResumoSemRevisao()
+        {
+            return contexto.Livros
+                .Where(l => l.IdRevisor == null)
+                .Select(l => new {
+                    Isbn = l.Isbn,
+                    Titulo = l.Titulo,
+                    Capa = l.Capa,
+                    NomeAutor = l.Autor.Nome,
+                    Genero = l.Genero
+                }).ToList();
+        }
+
         public object ObterResumoLancamentos(int quantidadePular, int quantidadeTrazer)
         {
             var data = DateTime.Now.AddDays(-7);

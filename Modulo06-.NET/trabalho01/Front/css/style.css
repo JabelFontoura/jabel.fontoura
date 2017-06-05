@@ -174,26 +174,26 @@ img {
   font-weight: 700;
 }
 
-.operacoes .alterar h2 {
+.operacoes .novo-revisor {
+  color: #45a84e;
+  font-weight: 700;
+}
+
+.operacoes h2 {
   font-weight: 700;
   text-align: center;
-}
-
-.operacoes .alterar table img {
-  width: 25px;
-}
-
-.operacoes .remover h2 {
-  font-weight: 700;
-  text-align: center;
-}
-
-.operacoes .remover table img {
-  width: 25px;
 }
 
 .operacoes .remover img {
   width: 250px;
+}
+
+.operacoes table img {
+  width: 25px;
+}
+
+.operacoes .remover table img {
+  width: 25px;
 }
 
 .operacoes .remover .btn{

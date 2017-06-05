@@ -1,0 +1,23 @@
+<form class="form-horizontal"  novalidate ng-submit="salvar(livro)">
+  <div class="form-group">
+    <label for="idAutor" class="col-sm-2 control-label">Revisor</label>
+    <div class="col-md-8">
+      <select class="form-control" name="revisorSelect" ng-model="livro.IdRevisor">
+        <option class="novo-revisor" value="novo" >Novo Revisor</option>
+        <option ng-repeat="item in revisores" value="{{item.Id}}" ng-selected="livro.IdRevisor === item.Id">{{item.Nome}}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group" ng-if="livro.IdRevisor == 'novo'">
+    <label for="revisor" class="col-sm-2 control-label">Novo Revisor</label>
+    <div class="col-md-8">
+      <input type="text" class="form-control" name="revisor" placeholder="Revisor" required ng-model="livro.Revisor.Nome">
+    </div>
+  </div>
+  <div class="form-group">
+    <div>
+      <button type="submit" class="strech btn-lg btn-block btn btn-primary">Salvar</button>
+    </div>
+  </div>
+</form>
