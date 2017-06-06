@@ -13,7 +13,7 @@ namespace LocadoraGamesCrescer.Infraestrutura.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201706060123355_CriacaoDoBancoLocadoraGames"; }
+            get { return "201706060251334_CriacaoDoBancoLocadoraGames"; }
         }
         
         string IMigrationMetadata.Source

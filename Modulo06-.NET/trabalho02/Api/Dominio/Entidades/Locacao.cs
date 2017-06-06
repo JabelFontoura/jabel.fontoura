@@ -16,6 +16,7 @@ namespace Dominio.Entidades
         public Produto Produto { get; set; }
         public int IdProduto { get; set; }
         public List<Extra> Extras { get; set; }
+        public ExtraPacote ExtrasPacote { get; set; }
         public DateTime DataEntrega { get; set; }
         public DateTime DataDevolucao { get; set; }
         public DateTime DataPedido { get; set; }

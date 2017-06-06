@@ -30,24 +30,31 @@ namespace LocadoraGamesCrescer.Infraestrutura
             modelBuilder.Configurations.Add(new ProdutoMap());
             modelBuilder.Configurations.Add(new UsuarioMap());
 
-            modelBuilder.Entity<Extra>()
-                .HasMany<Pacote>(e => e.Pacotes)
-                .WithMany(p => p.Extras)
-                .Map(cs =>
-                {
-                    cs.MapLeftKey("IdExtra");
-                    cs.MapRightKey("IdPacote");
-                    cs.ToTable("ExtraPacote");
-                });
+            //modelBuilder.Entity<Extra>()
+            //    .HasMany<Pacote>(e => e.Pacotes)
+            //    .WithMany(p => p.Extras)
+            //    .Map(cs =>
+            //    {
+            //        cs.MapLeftKey("IdExtra");
+            //        cs.MapRightKey("IdPacote");
+            //        cs.ToTable("ExtraPacote");
+            //    });
+
+
+            modelBuilder.Entity<ExtraPacote>().HasKey(ep => new { ep.IdExtra, ep.IdPacote});
+
+            modelBuilder.Entity<ExtraPacote>().HasRequired(ep => ep.Extra).WithMany(p => p.Pacotes).HasForeignKey(ep => ep.IdPacote);
+
+            modelBuilder.Entity<ExtraPacote>().HasRequired(ep => ep.Pacote).WithMany(c => c.Extras).HasForeignKey(ep => ep.IdExtra);
 
             modelBuilder.Entity<Extra>()
                 .HasMany<Locacao>(e => e.Locacao)
                 .WithMany(p => p.Extras)
-                .Map(cs =>
+                .Map(el =>
                 {
-                    cs.MapLeftKey("IdExtra");
-                    cs.MapRightKey("IdLocacao");
-                    cs.ToTable("ExtraLocacao");
+                    el.MapLeftKey("IdExtra");
+                    el.MapRightKey("IdLocacao");
+                    el.ToTable("ExtraLocacao");
                 });
 
         }

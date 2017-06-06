@@ -54,9 +54,9 @@
     <Compile Include="Mapping\PacoteMap.cs" />
     <Compile Include="Mapping\ProdutoMap.cs" />
     <Compile Include="Mapping\UsuarioMap.cs" />
-    <Compile Include="Migrations\201706060123355_CriacaoDoBancoLocadoraGames.cs" />
-    <Compile Include="Migrations\201706060123355_CriacaoDoBancoLocadoraGames.Designer.cs">
-      <DependentUpon>201706060123355_CriacaoDoBancoLocadoraGames.cs</DependentUpon>
+    <Compile Include="Migrations\201706060251334_CriacaoDoBancoLocadoraGames.cs" />
+    <Compile Include="Migrations\201706060251334_CriacaoDoBancoLocadoraGames.Designer.cs">
+      <DependentUpon>201706060251334_CriacaoDoBancoLocadoraGames.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -75,8 +75,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201706060123355_CriacaoDoBancoLocadoraGames.resx">
-      <DependentUpon>201706060123355_CriacaoDoBancoLocadoraGames.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201706060251334_CriacaoDoBancoLocadoraGames.resx">
+      <DependentUpon>201706060251334_CriacaoDoBancoLocadoraGames.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

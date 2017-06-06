@@ -44,14 +44,42 @@ namespace LocadoraGamesCrescer.Infraestrutura.Migrations
                         DataPedido = c.DateTime(nullable: false),
                         ValorPrevisto = c.Decimal(nullable: false, precision: 18, scale: 2),
                         ValorFinal = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        ExtrasPacote_IdExtra = c.Int(),
+                        ExtrasPacote_IdPacote = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Cliente", t => t.IdCliente, cascadeDelete: true)
+                .ForeignKey("dbo.ExtraPacotes", t => new { t.ExtrasPacote_IdExtra, t.ExtrasPacote_IdPacote })
                 .ForeignKey("dbo.Produto", t => t.IdProduto, cascadeDelete: true)
                 .ForeignKey("dbo.Usuario", t => t.IdUsuario, cascadeDelete: true)
                 .Index(t => t.IdCliente)
                 .Index(t => t.IdUsuario)
-                .Index(t => t.IdProduto);
+                .Index(t => t.IdProduto)
+                .Index(t => new { t.ExtrasPacote_IdExtra, t.ExtrasPacote_IdPacote });
+            
+            CreateTable(
+                "dbo.ExtraPacotes",
+                c => new
+                    {
+                        IdExtra = c.Int(nullable: false),
+                        IdPacote = c.Int(nullable: false),
+                        Id = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => new { t.IdExtra, t.IdPacote })
+                .ForeignKey("dbo.Extra", t => t.IdPacote, cascadeDelete: true)
+                .ForeignKey("dbo.Pacote", t => t.IdExtra, cascadeDelete: true)
+                .Index(t => t.IdExtra)
+                .Index(t => t.IdPacote);
+            
+            CreateTable(
+                "dbo.Pacote",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Nome = c.String(),
+                        DiasDuracao = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.Produto",
@@ -77,16 +105,6 @@ namespace LocadoraGamesCrescer.Infraestrutura.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.Pacote",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Nome = c.String(),
-                        DiasDuracao = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => t.Id);
-            
-            CreateTable(
                 "dbo.ExtraLocacao",
                 c => new
                     {
@@ -99,42 +117,31 @@ namespace LocadoraGamesCrescer.Infraestrutura.Migrations
                 .Index(t => t.IdExtra)
                 .Index(t => t.IdLocacao);
             
-            CreateTable(
-                "dbo.ExtraPacote",
-                c => new
-                    {
-                        IdExtra = c.Int(nullable: false),
-                        IdPacote = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => new { t.IdExtra, t.IdPacote })
-                .ForeignKey("dbo.Extra", t => t.IdExtra, cascadeDelete: true)
-                .ForeignKey("dbo.Pacote", t => t.IdPacote, cascadeDelete: true)
-                .Index(t => t.IdExtra)
-                .Index(t => t.IdPacote);
-            
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.ExtraPacote", "IdPacote", "dbo.Pacote");
-            DropForeignKey("dbo.ExtraPacote", "IdExtra", "dbo.Extra");
             DropForeignKey("dbo.ExtraLocacao", "IdLocacao", "dbo.Locacao");
             DropForeignKey("dbo.ExtraLocacao", "IdExtra", "dbo.Extra");
             DropForeignKey("dbo.Locacao", "IdUsuario", "dbo.Usuario");
             DropForeignKey("dbo.Locacao", "IdProduto", "dbo.Produto");
+            DropForeignKey("dbo.Locacao", new[] { "ExtrasPacote_IdExtra", "ExtrasPacote_IdPacote" }, "dbo.ExtraPacotes");
+            DropForeignKey("dbo.ExtraPacotes", "IdExtra", "dbo.Pacote");
+            DropForeignKey("dbo.ExtraPacotes", "IdPacote", "dbo.Extra");
             DropForeignKey("dbo.Locacao", "IdCliente", "dbo.Cliente");
-            DropIndex("dbo.ExtraPacote", new[] { "IdPacote" });
-            DropIndex("dbo.ExtraPacote", new[] { "IdExtra" });
             DropIndex("dbo.ExtraLocacao", new[] { "IdLocacao" });
             DropIndex("dbo.ExtraLocacao", new[] { "IdExtra" });
+            DropIndex("dbo.ExtraPacotes", new[] { "IdPacote" });
+            DropIndex("dbo.ExtraPacotes", new[] { "IdExtra" });
+            DropIndex("dbo.Locacao", new[] { "ExtrasPacote_IdExtra", "ExtrasPacote_IdPacote" });
             DropIndex("dbo.Locacao", new[] { "IdProduto" });
             DropIndex("dbo.Locacao", new[] { "IdUsuario" });
             DropIndex("dbo.Locacao", new[] { "IdCliente" });
-            DropTable("dbo.ExtraPacote");
             DropTable("dbo.ExtraLocacao");
-            DropTable("dbo.Pacote");
             DropTable("dbo.Usuario");
             DropTable("dbo.Produto");
+            DropTable("dbo.Pacote");
+            DropTable("dbo.ExtraPacotes");
             DropTable("dbo.Locacao");
             DropTable("dbo.Extra");
             DropTable("dbo.Cliente");
