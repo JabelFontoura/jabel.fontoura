@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EditoraCrescer.Infraesturtura.Entidades;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Dominio.Entidades
 {
-    public class Cliente
+    public class Cliente : EntidadeBasica
     {
         public int Id { get; set; }
         public string Nome { get; set; }
@@ -17,5 +18,24 @@ namespace Dominio.Entidades
 
         public Cliente()
         { }
+
+        public Cliente(string nome, string endereco, string cpf, Genero genero, DateTime dataNascimento)
+        {
+            Nome = nome;
+            Endereco = endereco;
+            Cpf = cpf;
+            Genero = genero;
+            DataNascimento = dataNascimento;
+        }
+
+        public override bool Validar()
+        {
+            Mensagens.Clear();
+
+            if (string.IsNullOrWhiteSpace(Nome))
+                Mensagens.Add("Nome é inválido.");
+
+            return Mensagens.Count == 0;
+        }
     }
 }

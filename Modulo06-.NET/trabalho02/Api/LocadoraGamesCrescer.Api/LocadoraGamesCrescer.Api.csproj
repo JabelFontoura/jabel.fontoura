@@ -96,10 +96,17 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\BasicAuthorizationAttribute.cs" />
+    <Compile Include="App_Start\ErrosGlobaisFilterAttribute.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\ClientesController.cs" />
+    <Compile Include="Controllers\ControllerBasica.cs" />
+    <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\RegistarUsuarioModel.cs" />
+    <Compile Include="Models\RegistrarClienteModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -113,8 +120,16 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Dominio\LocadoraGamesCrescer.Dominio.csproj">
+      <Project>{0302C11F-62C4-463F-81E0-0F4ACEE4F5D3}</Project>
+      <Name>LocadoraGamesCrescer.Dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LocadoraGamesCrescer.Infraestrutura\LocadoraGamesCrescer.Infraestrutura.csproj">
+      <Project>{61E42AE1-2BA7-4F68-A106-E68DFDA22652}</Project>
+      <Name>LocadoraGamesCrescer.Infraestrutura</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

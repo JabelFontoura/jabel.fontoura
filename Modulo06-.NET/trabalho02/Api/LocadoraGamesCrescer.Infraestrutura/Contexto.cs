@@ -1,5 +1,6 @@
 ﻿using Dominio.Entidades;
 using LocadoraGamesCrescer.Infraestrutura.Mapping;
+using LocadoraGamesCrescer.Infraesturtura.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -17,6 +18,9 @@ namespace LocadoraGamesCrescer.Infraestrutura
         public DbSet<Pacote> Pacotes { get; set; }
         public DbSet<Produto> Produtos { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<Permissao> Permissoes { get; set; }
+        public DbSet<ExtraPacote> ExtrasPacote { get; set; }
+        public DbSet<ExtraLocacao> ExtrasLocacao{ get; set; }
 
         public Contexto() : base("name=LocadoraGames")
         { }
@@ -29,34 +33,18 @@ namespace LocadoraGamesCrescer.Infraestrutura
             modelBuilder.Configurations.Add(new PacoteMap());
             modelBuilder.Configurations.Add(new ProdutoMap());
             modelBuilder.Configurations.Add(new UsuarioMap());
+            modelBuilder.Configurations.Add(new ExtraPacoteMap());
+            modelBuilder.Configurations.Add(new ExtraLocacaoMap());
 
             //modelBuilder.Entity<Extra>()
-            //    .HasMany<Pacote>(e => e.Pacotes)
+            //    .HasMany<Locacao>(e => e.Locacao)
             //    .WithMany(p => p.Extras)
-            //    .Map(cs =>
+            //    .Map(el =>
             //    {
-            //        cs.MapLeftKey("IdExtra");
-            //        cs.MapRightKey("IdPacote");
-            //        cs.ToTable("ExtraPacote");
+            //        el.MapLeftKey("IdExtra");
+            //        el.MapRightKey("IdLocacao");
+            //        el.ToTable("ExtraLocacao");
             //    });
-
-
-            modelBuilder.Entity<ExtraPacote>().HasKey(ep => new { ep.IdExtra, ep.IdPacote});
-
-            modelBuilder.Entity<ExtraPacote>().HasRequired(ep => ep.Extra).WithMany(p => p.Pacotes).HasForeignKey(ep => ep.IdPacote);
-
-            modelBuilder.Entity<ExtraPacote>().HasRequired(ep => ep.Pacote).WithMany(c => c.Extras).HasForeignKey(ep => ep.IdExtra);
-
-            modelBuilder.Entity<Extra>()
-                .HasMany<Locacao>(e => e.Locacao)
-                .WithMany(p => p.Extras)
-                .Map(el =>
-                {
-                    el.MapLeftKey("IdExtra");
-                    el.MapRightKey("IdLocacao");
-                    el.ToTable("ExtraLocacao");
-                });
-
         }
     }
 }

@@ -3,7 +3,7 @@ namespace LocadoraGamesCrescer.Infraestrutura.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class CriacaoDoBancoLocadoraGames : DbMigration
+    public partial class CriacaoDoBanco : DbMigration
     {
         public override void Up()
         {
@@ -36,40 +36,39 @@ namespace LocadoraGamesCrescer.Infraestrutura.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        IdCliente = c.Int(nullable: false),
-                        IdUsuario = c.Int(nullable: false),
-                        IdProduto = c.Int(nullable: false),
                         DataEntrega = c.DateTime(nullable: false),
                         DataDevolucao = c.DateTime(nullable: false),
                         DataPedido = c.DateTime(nullable: false),
                         ValorPrevisto = c.Decimal(nullable: false, precision: 18, scale: 2),
                         ValorFinal = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        ExtrasPacote_IdExtra = c.Int(),
-                        ExtrasPacote_IdPacote = c.Int(),
+                        IdCliente = c.Int(nullable: false),
+                        ExtrasPacote_Id = c.Int(),
+                        IdProduto = c.Int(nullable: false),
+                        IdUsuario = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Cliente", t => t.IdCliente, cascadeDelete: true)
-                .ForeignKey("dbo.ExtraPacotes", t => new { t.ExtrasPacote_IdExtra, t.ExtrasPacote_IdPacote })
+                .ForeignKey("dbo.ExtraPacote", t => t.ExtrasPacote_Id)
                 .ForeignKey("dbo.Produto", t => t.IdProduto, cascadeDelete: true)
                 .ForeignKey("dbo.Usuario", t => t.IdUsuario, cascadeDelete: true)
                 .Index(t => t.IdCliente)
-                .Index(t => t.IdUsuario)
+                .Index(t => t.ExtrasPacote_Id)
                 .Index(t => t.IdProduto)
-                .Index(t => new { t.ExtrasPacote_IdExtra, t.ExtrasPacote_IdPacote });
+                .Index(t => t.IdUsuario);
             
             CreateTable(
-                "dbo.ExtraPacotes",
+                "dbo.ExtraPacote",
                 c => new
                     {
-                        IdExtra = c.Int(nullable: false),
+                        Id = c.Int(nullable: false, identity: true),
                         IdPacote = c.Int(nullable: false),
-                        Id = c.Int(nullable: false),
+                        IdExtra = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => new { t.IdExtra, t.IdPacote })
+                .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Extra", t => t.IdPacote, cascadeDelete: true)
                 .ForeignKey("dbo.Pacote", t => t.IdExtra, cascadeDelete: true)
-                .Index(t => t.IdExtra)
-                .Index(t => t.IdPacote);
+                .Index(t => t.IdPacote)
+                .Index(t => t.IdExtra);
             
             CreateTable(
                 "dbo.Pacote",
@@ -100,7 +99,15 @@ namespace LocadoraGamesCrescer.Infraestrutura.Migrations
                         Nome = c.String(),
                         Email = c.String(),
                         Senha = c.String(),
-                        Cargo = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Permissaos",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Nome = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -108,40 +115,79 @@ namespace LocadoraGamesCrescer.Infraestrutura.Migrations
                 "dbo.ExtraLocacao",
                 c => new
                     {
-                        IdExtra = c.Int(nullable: false),
-                        IdLocacao = c.Int(nullable: false),
+                        Id = c.Int(nullable: false, identity: true),
+                        Quantidade = c.Int(nullable: false),
+                        Extra_Id = c.Int(nullable: false),
+                        Locacao_Id = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => new { t.IdExtra, t.IdLocacao })
-                .ForeignKey("dbo.Extra", t => t.IdExtra, cascadeDelete: true)
-                .ForeignKey("dbo.Locacao", t => t.IdLocacao, cascadeDelete: true)
-                .Index(t => t.IdExtra)
-                .Index(t => t.IdLocacao);
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Extra", t => t.Extra_Id, cascadeDelete: true)
+                .ForeignKey("dbo.Locacao", t => t.Locacao_Id, cascadeDelete: true)
+                .Index(t => t.Extra_Id)
+                .Index(t => t.Locacao_Id);
+            
+            CreateTable(
+                "dbo.LocacaoExtras",
+                c => new
+                    {
+                        Locacao_Id = c.Int(nullable: false),
+                        Extra_Id = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => new { t.Locacao_Id, t.Extra_Id })
+                .ForeignKey("dbo.Locacao", t => t.Locacao_Id, cascadeDelete: true)
+                .ForeignKey("dbo.Extra", t => t.Extra_Id, cascadeDelete: true)
+                .Index(t => t.Locacao_Id)
+                .Index(t => t.Extra_Id);
+            
+            CreateTable(
+                "dbo.PermissaoUsuario",
+                c => new
+                    {
+                        IdUsuario = c.Int(nullable: false),
+                        IdPermissao = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => new { t.IdUsuario, t.IdPermissao })
+                .ForeignKey("dbo.Usuario", t => t.IdUsuario, cascadeDelete: true)
+                .ForeignKey("dbo.Permissaos", t => t.IdPermissao, cascadeDelete: true)
+                .Index(t => t.IdUsuario)
+                .Index(t => t.IdPermissao);
             
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.ExtraLocacao", "IdLocacao", "dbo.Locacao");
-            DropForeignKey("dbo.ExtraLocacao", "IdExtra", "dbo.Extra");
+            DropForeignKey("dbo.ExtraLocacao", "Locacao_Id", "dbo.Locacao");
+            DropForeignKey("dbo.ExtraLocacao", "Extra_Id", "dbo.Extra");
             DropForeignKey("dbo.Locacao", "IdUsuario", "dbo.Usuario");
+            DropForeignKey("dbo.PermissaoUsuario", "IdPermissao", "dbo.Permissaos");
+            DropForeignKey("dbo.PermissaoUsuario", "IdUsuario", "dbo.Usuario");
             DropForeignKey("dbo.Locacao", "IdProduto", "dbo.Produto");
-            DropForeignKey("dbo.Locacao", new[] { "ExtrasPacote_IdExtra", "ExtrasPacote_IdPacote" }, "dbo.ExtraPacotes");
-            DropForeignKey("dbo.ExtraPacotes", "IdExtra", "dbo.Pacote");
-            DropForeignKey("dbo.ExtraPacotes", "IdPacote", "dbo.Extra");
+            DropForeignKey("dbo.Locacao", "ExtrasPacote_Id", "dbo.ExtraPacote");
+            DropForeignKey("dbo.ExtraPacote", "IdExtra", "dbo.Pacote");
+            DropForeignKey("dbo.ExtraPacote", "IdPacote", "dbo.Extra");
+            DropForeignKey("dbo.LocacaoExtras", "Extra_Id", "dbo.Extra");
+            DropForeignKey("dbo.LocacaoExtras", "Locacao_Id", "dbo.Locacao");
             DropForeignKey("dbo.Locacao", "IdCliente", "dbo.Cliente");
-            DropIndex("dbo.ExtraLocacao", new[] { "IdLocacao" });
-            DropIndex("dbo.ExtraLocacao", new[] { "IdExtra" });
-            DropIndex("dbo.ExtraPacotes", new[] { "IdPacote" });
-            DropIndex("dbo.ExtraPacotes", new[] { "IdExtra" });
-            DropIndex("dbo.Locacao", new[] { "ExtrasPacote_IdExtra", "ExtrasPacote_IdPacote" });
-            DropIndex("dbo.Locacao", new[] { "IdProduto" });
+            DropIndex("dbo.PermissaoUsuario", new[] { "IdPermissao" });
+            DropIndex("dbo.PermissaoUsuario", new[] { "IdUsuario" });
+            DropIndex("dbo.LocacaoExtras", new[] { "Extra_Id" });
+            DropIndex("dbo.LocacaoExtras", new[] { "Locacao_Id" });
+            DropIndex("dbo.ExtraLocacao", new[] { "Locacao_Id" });
+            DropIndex("dbo.ExtraLocacao", new[] { "Extra_Id" });
+            DropIndex("dbo.ExtraPacote", new[] { "IdExtra" });
+            DropIndex("dbo.ExtraPacote", new[] { "IdPacote" });
             DropIndex("dbo.Locacao", new[] { "IdUsuario" });
+            DropIndex("dbo.Locacao", new[] { "IdProduto" });
+            DropIndex("dbo.Locacao", new[] { "ExtrasPacote_Id" });
             DropIndex("dbo.Locacao", new[] { "IdCliente" });
+            DropTable("dbo.PermissaoUsuario");
+            DropTable("dbo.LocacaoExtras");
             DropTable("dbo.ExtraLocacao");
+            DropTable("dbo.Permissaos");
             DropTable("dbo.Usuario");
             DropTable("dbo.Produto");
             DropTable("dbo.Pacote");
-            DropTable("dbo.ExtraPacotes");
+            DropTable("dbo.ExtraPacote");
             DropTable("dbo.Locacao");
             DropTable("dbo.Extra");
             DropTable("dbo.Cliente");

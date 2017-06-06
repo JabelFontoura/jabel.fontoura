@@ -13,6 +13,12 @@ namespace LocadoraGamesCrescer.Infraestrutura.Mapping
         public UsuarioMap()
         {
             ToTable("Usuario");
+            HasMany(x => x.Permissoes).WithMany().Map(x =>
+            {
+                x.MapLeftKey("IdUsuario");
+                x.MapRightKey("IdPermissao");
+                x.ToTable("PermissaoUsuario");
+            });
         }
     }
 }

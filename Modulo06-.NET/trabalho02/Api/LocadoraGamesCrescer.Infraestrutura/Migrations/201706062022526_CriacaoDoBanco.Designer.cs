@@ -7,13 +7,13 @@ namespace LocadoraGamesCrescer.Infraestrutura.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class CriacaoDoBancoLocadoraGames : IMigrationMetadata
+    public sealed partial class CriacaoDoBanco : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(CriacaoDoBancoLocadoraGames));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(CriacaoDoBanco));
         
         string IMigrationMetadata.Id
         {
-            get { return "201706060251334_CriacaoDoBancoLocadoraGames"; }
+            get { return "201706062022526_CriacaoDoBanco"; }
         }
         
         string IMigrationMetadata.Source

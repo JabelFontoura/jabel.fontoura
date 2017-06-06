@@ -16,15 +16,23 @@ namespace LocadoraGamesCrescer.Infraestrutura.Mapping
 
             HasRequired(x => x.Cliente)
                 .WithMany()
-                .HasForeignKey(x => x.IdCliente);
+                .Map(x => x.MapKey("IdCliente"));
 
             HasRequired(x => x.Usuario)
                 .WithMany()
-                .HasForeignKey(x => x.IdUsuario);
-
+                .Map(x => x.MapKey("IdUsuario"));
+            
             HasRequired(x => x.Produto)
                 .WithMany()
-                .HasForeignKey(x => x.IdProduto);
+                .Map(x => x.MapKey("IdProduto"));
+
+            HasOptional(x => x.ExtrasPacote)
+                .WithMany()
+                .Map(x => x.MapKey("IdExtraPacote"));
+
+            //HasOptional(x => x.ExtrasPacote)
+            //    .WithMany()
+            //    .HasForeignKey(x => x.IdExtraPacote);
         }
     }
 }

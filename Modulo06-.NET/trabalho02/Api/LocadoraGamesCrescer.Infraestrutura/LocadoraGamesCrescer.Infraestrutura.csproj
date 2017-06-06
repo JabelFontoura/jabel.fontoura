@@ -49,35 +49,58 @@
   <ItemGroup>
     <Compile Include="Contexto.cs" />
     <Compile Include="Mapping\ClienteMap.cs" />
+    <Compile Include="Mapping\ExtraLocacaoMap.cs" />
     <Compile Include="Mapping\ExtraMap.cs" />
+    <Compile Include="Mapping\ExtraPacoteMap.cs" />
     <Compile Include="Mapping\LocacaoMap.cs" />
     <Compile Include="Mapping\PacoteMap.cs" />
+    <Compile Include="Mapping\PermissaoMap.cs" />
     <Compile Include="Mapping\ProdutoMap.cs" />
     <Compile Include="Mapping\UsuarioMap.cs" />
-    <Compile Include="Migrations\201706060251334_CriacaoDoBancoLocadoraGames.cs" />
-    <Compile Include="Migrations\201706060251334_CriacaoDoBancoLocadoraGames.Designer.cs">
-      <DependentUpon>201706060251334_CriacaoDoBancoLocadoraGames.cs</DependentUpon>
+    <Compile Include="Migrations\201706062022526_CriacaoDoBanco.cs" />
+    <Compile Include="Migrations\201706062022526_CriacaoDoBanco.Designer.cs">
+      <DependentUpon>201706062022526_CriacaoDoBanco.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706062025356_CriacaoDoBanco1.cs" />
+    <Compile Include="Migrations\201706062025356_CriacaoDoBanco1.Designer.cs">
+      <DependentUpon>201706062025356_CriacaoDoBanco1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706062031110_CriacaoDoBanco2.cs" />
+    <Compile Include="Migrations\201706062031110_CriacaoDoBanco2.Designer.cs">
+      <DependentUpon>201706062031110_CriacaoDoBanco2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706062110246_AjusteNomeDeFKExtraPacote.cs" />
+    <Compile Include="Migrations\201706062110246_AjusteNomeDeFKExtraPacote.Designer.cs">
+      <DependentUpon>201706062110246_AjusteNomeDeFKExtraPacote.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositorio\ClienteRepositorio.cs" />
+    <Compile Include="Repositorio\UsuarioRepositorio.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Repositorio\" />
+    <EmbeddedResource Include="Migrations\201706062022526_CriacaoDoBanco.resx">
+      <DependentUpon>201706062022526_CriacaoDoBanco.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706062025356_CriacaoDoBanco1.resx">
+      <DependentUpon>201706062025356_CriacaoDoBanco1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706062031110_CriacaoDoBanco2.resx">
+      <DependentUpon>201706062031110_CriacaoDoBanco2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706062110246_AjusteNomeDeFKExtraPacote.resx">
+      <DependentUpon>201706062110246_AjusteNomeDeFKExtraPacote.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Dominio\LocadoraGamesCrescer.Dominio.csproj">
       <Project>{0302C11F-62C4-463F-81E0-0F4ACEE4F5D3}</Project>
       <Name>LocadoraGamesCrescer.Dominio</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201706060251334_CriacaoDoBancoLocadoraGames.resx">
-      <DependentUpon>201706060251334_CriacaoDoBancoLocadoraGames.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

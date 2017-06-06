@@ -12,6 +12,7 @@ namespace LocadoraGamesCrescer.Api
         {
             // Web API configuration and services
             config.EnableCors(new EnableCorsAttribute("*", "*", "*"));
+            ////config.Filters.Add(new ErrosGlobaisFilterAttribute());
 
             // Web API routes
             config.MapHttpAttributeRoutes();
