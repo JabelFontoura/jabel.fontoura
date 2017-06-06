@@ -10,9 +10,12 @@ namespace Dominio.Entidades
     {
         public int Id { get; set; }
         public Cliente Cliente { get; set; }
+        public int IdCliente { get; set; }
         public Usuario Usuario { get; set; }
+        public int IdUsuario { get; set; }
         public Produto Produto { get; set; }
-        public List<Extras> Extras { get; set; }
+        public int IdProduto { get; set; }
+        public List<Extra> Extras { get; set; }
         public DateTime DataEntrega { get; set; }
         public DateTime DataDevolucao { get; set; }
         public DateTime DataPedido { get; set; }

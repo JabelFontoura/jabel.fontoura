@@ -43,7 +43,7 @@
     <Compile Include="Entidades\Enums\Cargo.cs" />
     <Compile Include="Entidades\Cliente.cs" />
     <Compile Include="Entidades\Enums\Genero.cs" />
-    <Compile Include="Entidades\Extras.cs" />
+    <Compile Include="Entidades\Extra.cs" />
     <Compile Include="Entidades\Locacao.cs" />
     <Compile Include="Entidades\Pacote.cs" />
     <Compile Include="Entidades\Produto.cs" />

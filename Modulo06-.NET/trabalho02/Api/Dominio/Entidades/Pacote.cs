@@ -11,7 +11,7 @@ namespace Dominio.Entidades
         public int Id { get; set; }
         public string Nome { get; set; }
         public int DiasDuracao { get; set; }
-        public List<Extras> Extras { get; set; }
+        public virtual List<Extra> Extras { get; set; }
 
         public Pacote()
         { }

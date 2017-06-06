@@ -47,11 +47,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contexto.cs" />
+    <Compile Include="Mapping\ClienteMap.cs" />
+    <Compile Include="Mapping\ExtraMap.cs" />
+    <Compile Include="Mapping\LocacaoMap.cs" />
+    <Compile Include="Mapping\PacoteMap.cs" />
+    <Compile Include="Mapping\ProdutoMap.cs" />
+    <Compile Include="Mapping\UsuarioMap.cs" />
+    <Compile Include="Migrations\201706060123355_CriacaoDoBancoLocadoraGames.cs" />
+    <Compile Include="Migrations\201706060123355_CriacaoDoBancoLocadoraGames.Designer.cs">
+      <DependentUpon>201706060123355_CriacaoDoBancoLocadoraGames.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Repositorio\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Dominio\LocadoraGamesCrescer.Dominio.csproj">
+      <Project>{0302C11F-62C4-463F-81E0-0F4ACEE4F5D3}</Project>
+      <Name>LocadoraGamesCrescer.Dominio</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201706060123355_CriacaoDoBancoLocadoraGames.resx">
+      <DependentUpon>201706060123355_CriacaoDoBancoLocadoraGames.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
