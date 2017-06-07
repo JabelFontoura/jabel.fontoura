@@ -4,6 +4,11 @@ angular.module('app').controller('ClientesController', function($scope, $localSt
 
   $scope.avancar = (cliente) => {
     $scope.escolherCliente = false;
+
+    if(cliente.Id === 'novo') cliente.Id = null;
+    else cliente.Nome = null;
+
+    console.log(cliente);
   }
 
   function init() {

@@ -11,9 +11,6 @@
 body {
   margin: 0;
   background-color: #f7f4ed;
-  background-image: url('http://wallup.net/wp-content/uploads/2016/05/24/323086-digital_art-GAME_OVER-minimalism-text-video_games-retro_games-transparent_background-pixels.png');
-  background-repeat: no-repeat;
-  background-size:cover
 }
 
 .container-fluid { padding: 0; }
