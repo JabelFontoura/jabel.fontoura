@@ -26,6 +26,12 @@ namespace LocadoraGamesCrescer.Api.Controllers
             return Ok(new { dados = _repositorio.Listar() });
         }
 
+        [HttpGet, Route("disponiveis"), BasicAuthorization(Roles = "Colaborador")]
+        public IHttpActionResult ListarDisponiveis()
+        {
+            return Ok(new { dados = _repositorio.ListarDisponiveis() });
+        }
+
         [HttpGet]
         public IHttpActionResult Obter(int id)
         {

@@ -1,0 +1,19 @@
+<h1>Selecione um Produto</h1>
+
+<form class="form-horizontal" novalidate ng-submit="avancarProduto(produto)">
+  <div class="form-group">
+    <label for="idProduto" class="col-sm-2 control-label">Produto</label>
+    <div class="col-md-8">
+      <select class="form-control" name="idProduto" ng-model="produto.Id">
+        <option ng-repeat="item in produtos" value="{{item.Id}}" ng-selected="produto.Id === item.Id">{{item.Nome}}</option>
+      </select>
+    </div>
+  </div>  
+
+  <div class="form-group">
+      <button type="submit" class="strech btn-lg btn-block btn btn-primary">Avançar</button>
+  </div>
+      <button class="strech btn-lg btn-block btn btn-warnning" ng-click="voltarProduto()">Voltar</button>
+  <div class="form-group">
+  </div>
+</form>

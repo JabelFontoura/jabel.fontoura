@@ -6,7 +6,7 @@ angular.module('app').config(($routeProvider) => {
 		})
     .when('/administrativo', {
 			templateUrl: 'partials/administrativo.html',
-			controller: 'ClientesController'
+			controller: 'AdministrativoController'
 		})
 		.otherwise({redirectTo: '/'});
 });
