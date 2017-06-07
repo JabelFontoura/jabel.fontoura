@@ -22,6 +22,7 @@ namespace LocadoraGamesCrescer.Infraestrutura.Repositorio
             contexto.Entry(cliente).State = System.Data.Entity.EntityState.Modified;
             contexto.SaveChanges();
         }
+
         public void Excluir(Cliente cliente)
         {
             contexto.Clientes.Remove(cliente);
