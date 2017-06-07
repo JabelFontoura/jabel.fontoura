@@ -11,6 +11,9 @@
 body {
   margin: 0;
   background-color: #f7f4ed;
+  background-image: url('http://wallup.net/wp-content/uploads/2016/05/24/323086-digital_art-GAME_OVER-minimalism-text-video_games-retro_games-transparent_background-pixels.png');
+  background-repeat: no-repeat;
+  background-size:cover
 }
 
 .container-fluid { padding: 0; }
@@ -33,6 +36,8 @@ nav .menu {
 }
 
 nav .logo {
+  margin-top: 0.7%;
+  margin-left: 1%;
   float: left;
   background-color: #7289ad;
 }
@@ -50,14 +55,34 @@ nav img {
 
 nav .menu li { 
   background-color: #7289ad; 
-  }
+}
 
 nav .menu li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.produtos{ 
+  margin: 5%;
+  background-color: #ededb6;
+}
+
+.administrativo h1 {
+  margin-top: 5%;
+  text-align: center;
+  font-weight: 700;
+}
+.administrativo .strech {
+  width: 65%;
+  margin: 0 17.5%;
+}
+
+.administrativo .novo-cliente {
+  color: #45a84e;
+  font-weight: 700;
 }
 
 /* ----- Login ----- */
@@ -69,7 +94,6 @@ nav ul {
   position: relative;
   float: right;
   background: #eee;
-  border-bottom: 1px solid #fff;
   border-radius: 3px;    
 }
 

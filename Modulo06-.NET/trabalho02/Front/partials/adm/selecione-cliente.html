@@ -1,0 +1,24 @@
+<h1>Selecione um Cliente</h1>
+
+<form class="form-horizontal" novalidate ng-submit="avancar(livro)">
+  <div class="form-group">
+    <label for="idCliente" class="col-sm-2 control-label">Cliente</label>
+    <div class="col-md-8">
+      <select class="form-control" name="idCliente" ng-model="cliente.Id">
+        <option class="novo-cliente" value="novo" >Novo Cliente</option>
+        <option ng-repeat="item in clientes" value="{{item.Id}}" ng-selected="cliente.Id === item.Id">{{item.Nome}}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group" ng-if="cliente.Id == 'novo'">
+    <label for="cliente" class="col-sm-2 control-label">Novo Autor</label>
+    <div class="col-md-8">
+      <input type="text" class="form-control" name="cliente" placeholder="Nome Do Cliente" required ng-model="cliente.Nome">
+    </div>
+  </div>
+
+  <div class="form-group">
+      <button type="submit" class="strech btn-lg btn-block btn btn-primary">Avançar</button>
+  </div>
+</form>

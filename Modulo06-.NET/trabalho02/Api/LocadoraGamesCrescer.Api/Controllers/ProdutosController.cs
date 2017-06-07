@@ -33,9 +33,9 @@ namespace LocadoraGamesCrescer.Api.Controllers
         }
 
         [HttpPut, Route("alugar/{id:int}"), BasicAuthorization(Roles = "Colaborador")]
-        public HttpResponseMessage Alugar(int Id)
+        public HttpResponseMessage Alugar(int id)
         {
-            var produto = _repositorio.Obter(Id);
+            var produto = _repositorio.Obter(id);
 
             if (produto.Validar())
                 return ResponderErro(produto.Mensagens);

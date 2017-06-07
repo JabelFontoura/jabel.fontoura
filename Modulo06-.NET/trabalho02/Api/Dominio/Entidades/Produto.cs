@@ -24,7 +24,7 @@ namespace Dominio.Entidades
             if (Quantidade <= 0)
                 Mensagens.Add("Não possui produtos suficientes para alugar");
 
-            return Quantidade <= 0;
+            return Quantidade > 0;
         }
 
         public void Alugar()

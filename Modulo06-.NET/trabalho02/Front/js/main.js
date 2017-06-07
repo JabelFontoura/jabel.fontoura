@@ -4,7 +4,7 @@ angular.module('app', ['ngRoute', 'auth', 'ngAnimate', 'toastr']);
 angular.module('app').constant('authConfig', {
 
     // Obrigatória - URL da API que retorna o usuário
-    urlUsuario: 'http://localhost:55166/api/acessos/usuario',
+    urlUsuario: 'http://localhost:54771/api/acessos/usuario',
 
     // Obrigatória - URL da aplicação que possui o formulário de login
     urlLogin: '/usuario',
