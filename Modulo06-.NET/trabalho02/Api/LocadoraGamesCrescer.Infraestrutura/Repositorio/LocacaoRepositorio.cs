@@ -15,14 +15,14 @@ namespace LocadoraGamesCrescer.Infraestrutura.Repositorio
         {
             return contexto.Database
                 .SqlQuery<ListagemPacoteView>(
-                @"SELECT p.Id AS IdPacote, p.Nome as NomePacote, p.DiasDuracao, e.Nome AS NomeExtra, ep.Quantidade 
+                @"SELECT p.Id AS IdPacote, p.Nome as NomePacote, p.DiasDuracao, e.Nome AS NomeExtra, e.Valor, ep.Quantidade 
                     FROM extra e  JOIN ExtraPacote ep ON e.Id = ep.IdExtra
                     JOIN Pacote p on p.Id = ep.IdPacote ")
                     .GroupBy(x => x.IdPacote)
                     .Select(e => new {
                         Nome = e.FirstOrDefault().NomePacote,
                         DiasDuracao = e.FirstOrDefault().DiasDuracao,
-                        Extra = e.Select(x => new { Nome = x.NomeExtra, Quantidade = x.Quantidade }) 
+                        Extra = e.Select(x => new { Nome = x.NomeExtra, Quantidade = x.Quantidade, Valor = x.Valor }) 
                     });
 
             //return contexto.

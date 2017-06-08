@@ -1,17 +1,17 @@
 <h1>Selecione um Pacote</h1>
 
-<form class="form-horizontal" name="clienteForm" novalidate ng-submit="avancarPacote(cliente)">
+<form class="form-horizontal" name="clienteForm" novalidate ng-submit="avancarPacote(pacote)">
   <div class="form-group">
-    <label for="genero" class="col-sm-2 control-label">Pacotes</label>
+    <label for="pac" class="col-sm-2 control-label">Pacotes</label>
     <div class="col-md-3" ng-repeat="item in pacotes">
       <input 
         type="radio" 
-        name="pacote" 
-        value="item.Id" 
+        name="pac" 
+        ng-value="{{item}}" 
         required 
-        ng-model="item.Id" 
+        ng-model="$parent.pacote" 
       > 
-      <span>{{item.Nome}}</span>
+      <span>{{item.Nome}} - R$ {{item.ValorTotal}}</span>
       <br>
       Esse Pacote Contém:
       <ul>

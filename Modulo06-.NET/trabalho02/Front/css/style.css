@@ -67,7 +67,7 @@ nav .menu li a {
   background-color: #ededb6;
 }
 
-.administrativo h1 {
+.administrativo h1,.administrativo h2 {
   margin-top: 5%;
   text-align: center;
   font-weight: 700;

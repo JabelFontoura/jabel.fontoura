@@ -1,5 +1,7 @@
 <div class="administrativo">
   <div ng-if="escolherCliente" ng-include="'partials/adm/selecione-cliente.html'"></div>
   <div ng-if="escolherProduto" ng-include="'partials/adm/selecione-produto.html'"></div>
-  <div ng-if="true" ng-include="'partials/adm/selecione-pacote.html'"></div>
+  <div ng-if="escolherPacote" ng-include="'partials/adm/selecione-pacote.html'"></div>
+
+  <h2>Valor: R$ {{valor}}</h2>
 </div>

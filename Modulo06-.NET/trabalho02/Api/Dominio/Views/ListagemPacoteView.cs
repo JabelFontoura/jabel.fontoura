@@ -12,6 +12,7 @@ namespace Dominio.Views
         public string NomePacote { get; set; }
         public int DiasDuracao { get; set; }
         public string NomeExtra { get; set; }
+        public decimal Valor { get; set; }
         public int Quantidade { get; set; }
     }
 }

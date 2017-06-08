@@ -4,8 +4,8 @@
   <div class="form-group">
     <label for="idProduto" class="col-sm-2 control-label">Produto</label>
     <div class="col-md-8">
-      <select class="form-control" name="idProduto" ng-model="produto.Id">
-        <option ng-repeat="item in produtos" value="{{item.Id}}" ng-selected="produto.Id === item.Id">{{item.Nome}}</option>
+      <select class="form-control" name="idProduto" ng-model="produto">
+        <option ng-repeat="item in produtos" ng-value="{{item}}" ng-selected="produto.Id === item.Id">{{item.Nome}} - R$ {{item.Valor}}</option>
       </select>
     </div>
   </div>  

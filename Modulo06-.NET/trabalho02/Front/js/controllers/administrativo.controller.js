@@ -5,7 +5,7 @@ angular.module('app').controller('AdministrativoController', function($scope, $l
   $scope.avancarCliente = (cliente) => {
       $scope.escolherCliente = false;
       $scope.escolherProduto = true;
-
+      cliente.DataNascimento = new Date(cliente.DataNascimento).toLocaleDateString();
       if(cliente.Id === 'novo') {
         cliente.Id = null;
         clientesService.criar(cliente, $localStorage.headerAuth)
@@ -23,7 +23,8 @@ angular.module('app').controller('AdministrativoController', function($scope, $l
     $scope.escolherProduto = false;
   }
 
-  $scope.avancarProduto = () => {
+  $scope.avancarProduto = (produto) => {
+    $scope.valor += Number(produto.Valor);
     $scope.escolherProduto = false;
     $scope.escolherPacote = true;
   }
@@ -31,11 +32,23 @@ angular.module('app').controller('AdministrativoController', function($scope, $l
   $scope.voltarProduto = () => {
     $scope.escolherCliente = true;
     $scope.escolherProduto = false;
+    $scope.valor = 0;
+  }
+
+    $scope.avancarPacote = (pacote) => {
+      $scope.valor += Number(pacote.ValorTotal);
+  }
+
+  $scope.voltarPacote = () => {
+    $scope.escolherPacote = false;
+    $scope.escolherProduto = true;
+    console.log($scope.ValorTotal);
   }
 
   function init() {
     listar();
 
+    $scope.valor = 0.00;
     $scope.escolherCliente = true;
     $scope.escolherPacote = false;
     $scope.escolherProduto = false;
@@ -52,7 +65,15 @@ angular.module('app').controller('AdministrativoController', function($scope, $l
         .catch(error => console.log(error));
 
       locacaoService.listarPacotes($localStorage.headerAuth)
-        .then(response => $scope.pacotes = response.data.dados)
+        .then(response => {
+          $scope.pacotes = response.data.dados;
+
+          let valor = 0;
+          $scope.pacotes.forEach(item => {
+            item.Extra.forEach(e => valor += (e.Valor * e.Quantidade));
+            item.ValorTotal = valor.toFixed(2);
+          });
+        })
         .catch(error => console.log(error));
   }
 
