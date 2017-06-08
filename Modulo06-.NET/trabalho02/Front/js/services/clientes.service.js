@@ -10,7 +10,7 @@ angular.module('app').factory('clientesService', function ($http) {
 
   function criar(cliente, headerAuth) {
     return $http({
-      url: url + '/registar',
+      url: url + '/registrar',
       method: 'POST',
       headers: {
         Authorization: headerAuth

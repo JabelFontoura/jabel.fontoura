@@ -3,13 +3,13 @@ angular.module('app').controller('AdministrativoController', function($scope, $l
   init();
 
   $scope.avancarCliente = (cliente) => {
-      $scope.escolherCliente = false;
+      limpar();
       $scope.escolherProduto = true;
       cliente.DataNascimento = new Date(cliente.DataNascimento).toLocaleDateString();
       if(cliente.Id === 'novo') {
         cliente.Id = null;
         clientesService.criar(cliente, $localStorage.headerAuth)
-        .then(response => toast.success('Cliente inserido com sucesso.'))
+        .then(response => toastr.success('Cliente inserido com sucesso.'))
         .catch(error => { 
           console.log(error);
           $scope.escolherCliente = false;
@@ -19,40 +19,50 @@ angular.module('app').controller('AdministrativoController', function($scope, $l
   }
 
   $scope.voltarCliente = () => {
+    limpar();
     $scope.escolherCliente = true;
-    $scope.escolherProduto = false;
   }
 
   $scope.avancarProduto = (produto) => {
+    limpar();
     $scope.valor += Number(produto.Valor);
-    $scope.escolherProduto = false;
     $scope.escolherPacote = true;
   }
 
   $scope.voltarProduto = () => {
+    limpar();
     $scope.escolherCliente = true;
-    $scope.escolherProduto = false;
     $scope.valor = 0;
   }
 
-    $scope.avancarPacote = (pacote) => {
-      $scope.valor += Number(pacote.ValorTotal);
+  $scope.avancarPacote = (pacote) => {
+    $scope.valor += Number(pacote.ValorTotal);
   }
 
   $scope.voltarPacote = () => {
-    $scope.escolherPacote = false;
+    limpar();
     $scope.escolherProduto = true;
-    console.log($scope.ValorTotal);
+  }
+
+  $scope.avancarExtras = (extras) => {
+    limpar();
+    $scope.escolherExtras = true;
   }
 
   function init() {
     listar();
 
-    $scope.valor = 0.00;
+    limpar();
     $scope.escolherCliente = true;
-    $scope.escolherPacote = false;
+    $scope.valor = 0.00;
+  }
+
+  function limpar() {
+    $scope.escolherCliente = false;
     $scope.escolherProduto = false;
+    $scope.escolherPacote = false;
     $scope.escolherOpcionais = false;
+    $scope.escolherExtras = false;
   }
 
   function listar() {
