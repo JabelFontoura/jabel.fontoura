@@ -9,7 +9,7 @@ angular.module('app').factory('locacaoService', function ($http) {
     obter: obter
   }
 
-  function listar(headerAuth) {
+  function listarPacotes(headerAuth) {
     return $http({
       url: url + '/pacotes',
       method: 'GET',

@@ -13,21 +13,23 @@ namespace LocadoraGamesCrescer.Infraestrutura.Repositorio
 
         public dynamic ListarPacotes()
         {
-            //return contexto.Database
-            //    .SqlQuery<ListagemPacoteView>(
-            //    @"SELECT 
-            //            p.Nome as NomePacote, p.DiasDuracao, e.Nome, ep.Quantidade 
-            //        FROM extra e  JOIN ExtraPacote ep 
-            //            ON e.Id = ep.IdExtra
-            //        JOIN Pacote p on p.Id = ep.IdPacote ");
+            return contexto.Database
+                .SqlQuery<ListagemPacoteView>(
+                @"SELECT p.Id AS IdPacote, p.Nome as NomePacote, p.DiasDuracao, e.Nome AS NomeExtra, ep.Quantidade 
+                    FROM extra e  JOIN ExtraPacote ep ON e.Id = ep.IdExtra
+                    JOIN Pacote p on p.Id = ep.IdPacote ")
+                    .GroupBy(x => x.IdPacote)
+                    .Select(e => new {
+                        Nome = e.FirstOrDefault().NomePacote,
+                        DiasDuracao = e.FirstOrDefault().DiasDuracao,
+                        Extra = e.Select(x => new { Nome = x.NomeExtra, Quantidade = x.Quantidade }) 
+                    });
 
-
-            return null;
             //return contexto.
             //    ExtrasPacote
-            //    .GroupBy(x => x.Pacote.Nome)
+            //    .GroupBy(x => new { x.Pacote })
             //    .Select(g => new {
-            //        Nome = g.Key,
+            //        Nome = g.Key.Pacote.Nome,
             //        Duracao = g.FirstOrDefault().Pacote.DiasDuracao,
             //        Extras = g.Select(x => new { Nome = x.Extra.Nome, Quantidade = x.Quantidade })
             //    }).ToList();

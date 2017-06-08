@@ -4,7 +4,19 @@ angular.module('app').factory('clientesService', function ($http) {
 
   return {
     listar: listar,
-    obter: obter
+    obter: obter,
+    criar: criar
+  }
+
+  function criar(cliente, headerAuth) {
+    return $http({
+      url: url + '/registar',
+      method: 'POST',
+      headers: {
+        Authorization: headerAuth
+      },
+      data: cliente
+    });
   }
 
   function listar(headerAuth) {

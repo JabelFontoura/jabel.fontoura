@@ -2,16 +2,21 @@
 
 <form class="form-horizontal" name="clienteForm" novalidate ng-submit="avancarPacote(cliente)">
   <div class="form-group">
-    <label for="genero" class="col-sm-2 control-label">Genero</label>
-    <div class="col-md-8">
+    <label for="genero" class="col-sm-2 control-label">Pacotes</label>
+    <div class="col-md-3" ng-repeat="item in pacotes">
       <input 
         type="radio" 
         name="pacote" 
         value="item.Id" 
         required 
         ng-model="item.Id" 
-        ng-repeat="item in pacotes"
-      > Não informado <br>
+      > 
+      <span>{{item.Nome}}</span>
+      <br>
+      Esse Pacote Contém:
+      <ul>
+        <li ng-repeat="extra in item.Extra">{{extra.Nome}} - {{extra.Quantidade}}</li>
+      </ul>
     </div>
   </div>
 

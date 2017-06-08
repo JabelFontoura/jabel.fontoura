@@ -16,11 +16,11 @@ namespace LocadoraGamesCrescer.Infraestrutura.Mapping
             HasKey(ep => ep.Id);
 
             HasRequired(ep => ep.Extra)
-                .WithMany(p => p.Pacotes)
+                .WithMany()
                 .Map(ep => ep.MapKey("IdPacote"));
 
             HasRequired(ep => ep.Pacote)
-                .WithMany(c => c.Extras)
+                .WithMany()
                 .Map(ep => ep.MapKey("IdExtra"));
 
         }
