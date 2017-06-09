@@ -1,5 +1,8 @@
-﻿using EditoraCrescer.Api.App_Start;
+﻿using Dominio.Entidades;
+using EditoraCrescer.Api.App_Start;
+using LocadoraGamesCrescer.Api.Models;
 using LocadoraGamesCrescer.Infraestrutura.Repositorio;
+using LocadoraGamesCrescer.Infraesturtura.Repositorio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +16,15 @@ namespace LocadoraGamesCrescer.Api.Controllers
     public class LocacaoController : ControllerBasica
     {
         readonly LocacaoRepositorio _locacaoRepositorio;
+        readonly ClienteRepositorio _clienteRepositiorio;
+        readonly UsuarioRepositorio _usuarioRepositorio;
+
 
         public LocacaoController()
         {
             _locacaoRepositorio = new LocacaoRepositorio();
+            _clienteRepositiorio = new ClienteRepositorio();
+            _usuarioRepositorio = new UsuarioRepositorio();
         }
 
         [HttpGet, Route("pacotes")]
@@ -25,5 +33,17 @@ namespace LocadoraGamesCrescer.Api.Controllers
             return Ok( new { dados = _locacaoRepositorio.ListarPacotes() } );
         }
 
+        [HttpPost, Route("registrar")]
+        public HttpResponseMessage CriarLocacao([FromBody]RegistrarLocacaoModel model)
+        {
+            var cliente = _clienteRepositiorio.Obter(model.IdCliente);
+            var usuario = _usuarioRepositorio.Obter(model.EmailUsuario);
+
+           // var pacote = model.ExtraPacote.Pacote.
+
+            var locacao = new Locacao(cliente, usuario, model.Produto, model.DataEntrega, model.DataPedido, model.ExtraPacote, model.ValorPrevisto);
+
+            return ResponderOK( _locacaoRepositorio.Criar(locacao));
+        }
     }
 }

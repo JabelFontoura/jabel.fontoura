@@ -6,7 +6,8 @@ angular.module('app').factory('locacaoService', function ($http) {
   return {
     listar: listar,
     listarPacotes: listarPacotes,
-    obter: obter
+    obter: obter,
+    criar: criar
   }
 
   function listarPacotes(headerAuth) {
@@ -16,6 +17,17 @@ angular.module('app').factory('locacaoService', function ($http) {
       headers: {
         Authorization: headerAuth
       }
+    });
+  }
+
+  function criar(locacao, headerAuth) {
+    return $http({
+      url: url + '/registrar',
+      method: 'POST',
+      headers: {
+        Authorization: headerAuth
+      },
+      data: locacao
     });
   }
 

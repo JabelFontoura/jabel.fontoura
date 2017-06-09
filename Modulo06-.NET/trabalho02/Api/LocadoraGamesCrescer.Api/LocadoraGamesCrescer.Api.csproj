@@ -110,6 +110,7 @@
     </Compile>
     <Compile Include="Models\RegistarUsuarioModel.cs" />
     <Compile Include="Models\RegistrarClienteModel.cs" />
+    <Compile Include="Models\RegistrarLocacaoModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

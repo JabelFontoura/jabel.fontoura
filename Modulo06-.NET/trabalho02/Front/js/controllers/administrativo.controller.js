@@ -1,4 +1,4 @@
-angular.module('app').controller('AdministrativoController', function($scope, $localStorage, $location, clientesService, locacaoService, produtosService, extrasService, toastr) {
+angular.module('app').controller('AdministrativoController', function($scope, $localStorage, $location, clientesService, locacaoService, produtosService, extrasService, authService, toastr) {
 
   init();
 
@@ -9,12 +9,17 @@ angular.module('app').controller('AdministrativoController', function($scope, $l
       if(cliente.Id === 'novo') {
         cliente.Id = null;
         clientesService.criar(cliente, $localStorage.headerAuth)
-        .then(response => toastr.success('Cliente inserido com sucesso.'))
+        .then(response => {
+          toastr.success('Cliente inserido com sucesso.');
+          $scope.cliente = response.data.dados.Id;
+        })
         .catch(error => { 
           console.log(error);
           $scope.escolherCliente = false;
           $scope.escolherProduto = true;
         });
+      } else {
+        $scope.cliente = cliente.Id;
       }
   }
 
@@ -40,9 +45,15 @@ angular.module('app').controller('AdministrativoController', function($scope, $l
   }
 
   $scope.avancarPacote = (pacote) => {
-    $scope.pacote = pacote;
+    limpar();
+    if(typeof pacote !== 'undefined') {
+      $scope.pacote = pacote;
+      console.log(pacote);
+      $scope.valor += Number(pacote.ValorTotal);
+    } else {
+      $scope.comData = true;
+    }
     $scope.escolherExtras = true;
-    $scope.valor += Number(pacote.ValorTotal);
   }
 
   $scope.voltarPacote = () => {
@@ -54,19 +65,58 @@ angular.module('app').controller('AdministrativoController', function($scope, $l
   $scope.avancarExtras = (extra) => {
     limpar();
     $scope.extrasSelecionados = extra;
-    Object.getOwnPropertyNames(extra).forEach(item => {
-      $scope.extras.forEach(e => {
-        if(Number(item) === Number(e.Id)) $scope.valor += e.Valor * extra[item];
+    if(typeof extra !== 'undefined') {
+      Object.getOwnPropertyNames(extra).forEach(item => {
+        $scope.extras.forEach(e => {
+          if(Number(item) === Number(e.Id)) $scope.valor += e.Valor * extra[item];
+        });
       });
-    });
+    }
 
     $scope.escolherExtras = false;
+
+    if(typeof $scope.pacote !== 'undefined') {
+      $scope.final = true;
+      $scope.comData = false;
+    } 
   }
 
   $scope.voltarExtras = () => {
     limpar();
     $scope.extrasSelecionados = extra;
     $scope.escolherExtras = true;
+  }
+
+  $scope.avancarData = data => {
+    limpar();
+    $scope.data = data;
+    $scope.final = true;
+    $scope.comData = false;
+  }
+
+  $scope.finalizar = () => {
+    let data = new Date();
+    if(typeof $scope.pacote !== 'undefined'){
+      console.log(data);
+      console.log($scope.pacote.DiasDuracao);
+       data = data.setDate(data.getDate() + $scope.pacote.DiasDuracao); 
+       console.log(data);
+       data = data.toLocaleString();
+    }
+    else data.setDate($scope.data).toLocaleString();
+
+    let locacao = {
+      EmailUsuario: authService.getUsuario().Email,
+      IdCliente: Number($scope.cliente),
+      Produto: $scope.produto,
+      ExtraPacote: $scope.pacote,
+      DataEntrega : new Date().toLocaleString(),
+      DataPedido: data
+    };
+    
+    console.log(locacao);
+
+    locacaoService.criar(locacao, $localStorage.headerAuth)
   }
 
   function init() {

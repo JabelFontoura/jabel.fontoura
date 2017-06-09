@@ -1,0 +1,17 @@
+<h1>Selecione um Data</h1>
+
+<form class="form-horizontal" name="clienteForm" novalidate ng-submit="avancarData(data)">
+  <div class="form-group">
+    <label for="pac" class="col-sm-2 control-label">Data Devolucao</label>
+    <div class="col-md-8">
+      <input type="date" name="pac" required ng-model="data"> 
+    </div>
+  </div>
+
+  <div class="form-group">
+      <button type="submit" class="strech btn-lg btn-block btn btn-primary">Avançar</button>
+  </div>
+  <div class="form-group">
+      <button class="strech btn-lg btn-block btn btn-warnning" ng-click="voltarData()">Voltar</button>
+  </div>
+</form>

@@ -11,10 +11,12 @@ namespace LocadoraGamesCrescer.Infraestrutura.Repositorio
     {
         private Contexto contexto = new Contexto();
 
-        public void Criar(Cliente cliente)
+        public Cliente Criar(Cliente cliente)
         {
             contexto.Clientes.Add(cliente);
             contexto.SaveChanges();
+
+            return Obter(cliente.Cpf);
         }
 
         public void Alterar(Cliente cliente)

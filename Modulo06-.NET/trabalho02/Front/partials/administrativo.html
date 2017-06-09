@@ -2,8 +2,18 @@
   <div ng-if="escolherCliente" ng-include="'partials/adm/selecione-cliente.html'"></div>
   <div ng-if="escolherProduto" ng-include="'partials/adm/selecione-produto.html'"></div>
   <div ng-if="escolherPacote" ng-include="'partials/adm/selecione-pacote.html'"></div>
-  <div ng-if="true" ng-include="'partials/adm/selecione-extras.html'"></div>
+  <div ng-if="escolherExtras" ng-include="'partials/adm/selecione-extras.html'"></div>
+  <div ng-if="comData && !escolherExtras" ng-include="'partials/adm/selecione-data.html'"></div>
 
+  <div ng-if="final">
+    <div class="form-group">
+      <h1>Finalizar Locacao</h1>
+      <br>
+      <button class="strech btn-lg btn-block btn btn-primary" type="submit" ng-click="finalizar()">Finalizar</button>
+    </div>
+  </div>
+
+  
   <!--<h2 ng-if="produto">Produto: {{produto.Nome}} - R$ {{produto.Valor}}</h2>
   <h2 ng-if="pacote">Produto: {{pacote.Nome}} - R$ {{pacote.Valor * pacote.Quantidade}}</h2>-->
   <h2>Valor: R$ {{valor}}</h2>

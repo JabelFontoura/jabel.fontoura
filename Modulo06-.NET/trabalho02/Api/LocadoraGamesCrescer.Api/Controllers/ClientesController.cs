@@ -53,7 +53,7 @@ namespace LocadoraGamesCrescer.Api.Controllers
             }
             else
             {
-                return ResponderErro("Usuário já existe.");
+                return ResponderErro("Cliente já existe.");
             }
 
             return ResponderOK();
