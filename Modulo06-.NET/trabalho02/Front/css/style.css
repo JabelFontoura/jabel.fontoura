@@ -62,7 +62,7 @@ nav .menu li a {
   text-decoration: none;
 }
 
-.produtos{ 
+.produtos, .locacao{ 
   margin: 5%;
   background-color: #ededb6;
 }

@@ -1,0 +1,21 @@
+<h2>Locações</h2>
+
+<div class="locacao">
+  <table class="table table-striped table-bordered table-hover">
+    <tr>
+      <th>Id</th>
+      <th>Cliente</th>
+      <th>Data Entrega</th>
+      <th>Data Pedido</th>
+      <th>Data Devolução</th>
+      <th>Valor Previsto</th>
+      <th>Produto</th>
+    </tr>
+    <tr ng-repeat="item in listaLocacao">
+      <td>{{item.Id}}</td>
+      <td>{{item.Nome}}</td>
+      <td>{{item.Valor}}</td>
+      <td>{{item.Quantidade}}</td>
+    </tr>
+  </table>
+</div>

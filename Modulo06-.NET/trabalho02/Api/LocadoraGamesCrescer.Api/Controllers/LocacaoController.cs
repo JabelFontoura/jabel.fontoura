@@ -30,6 +30,11 @@ namespace LocadoraGamesCrescer.Api.Controllers
 
         }
 
+        public HttpResponseMessage Get()
+        {
+            return ResponderOK(_locacaoRepositorio.Listar());
+        }
+
         [HttpGet, Route("pacotes")]
         public IHttpActionResult ListarPacote()
         {

@@ -44,10 +44,19 @@ namespace LocadoraGamesCrescer.Infraestrutura.Repositorio
 
         public Locacao Criar(Locacao locacao)
         {
+            locacao.DataPedido = DateTime.Now;
+            contexto.Entry(locacao.Cliente).State = System.Data.Entity.EntityState.Unchanged;
+            contexto.Entry(locacao.Produto).State = System.Data.Entity.EntityState.Unchanged;
+            contexto.Entry(locacao.ExtrasPacote.Pacote).State = System.Data.Entity.EntityState.Unchanged;
             contexto.Locacoes.Add(locacao);
             contexto.SaveChanges();
 
             return locacao;
+        }
+
+        public List<Locacao> Listar()
+        {
+            return contexto.Locacoes.ToList();
         }
 
         public Extra ObterExtra(int id)

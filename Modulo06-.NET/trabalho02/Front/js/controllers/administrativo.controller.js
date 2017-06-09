@@ -11,7 +11,7 @@ angular.module('app').controller('AdministrativoController', function($scope, $l
         clientesService.criar(cliente, $localStorage.headerAuth)
         .then(response => {
           toastr.success('Cliente inserido com sucesso.');
-          $scope.cliente = response.data.dados.Id;
+          //$scope.cliente = response.data.dados.Id;
         })
         .catch(error => { 
           console.log(error);
@@ -119,6 +119,12 @@ angular.module('app').controller('AdministrativoController', function($scope, $l
     console.log(locacao);
 
     locacaoService.criar(locacao, $localStorage.headerAuth)
+      .then(response => { 
+        toastr.success('Locacao registrada com sucesso.');
+        $scope.final = false;
+        $scope.escolherCliente = true;
+      })
+      .catch(error => console.log(error));
   }
 
   function init() {
@@ -161,6 +167,11 @@ angular.module('app').controller('AdministrativoController', function($scope, $l
           });
         })
         .catch(error => console.log(error));
+
+        locacaoService.listar($localStorage.headerAuth)
+          .then(response => $scope.listaLocacao)
+          .catch(error => console.log(error));
+
   }
 
 }); 
