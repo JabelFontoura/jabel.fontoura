@@ -101,6 +101,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ClientesController.cs" />
     <Compile Include="Controllers\ControllerBasica.cs" />
+    <Compile Include="Controllers\ExtrasController.cs" />
     <Compile Include="Controllers\LocacaoController.cs" />
     <Compile Include="Controllers\ProdutosController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />

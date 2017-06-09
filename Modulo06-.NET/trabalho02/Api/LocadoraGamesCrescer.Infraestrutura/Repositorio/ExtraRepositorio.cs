@@ -40,5 +40,10 @@ namespace LocadoraGamesCrescer.Infraestrutura.Repositorio
 
             return extra;
         }
+
+        public List<Extra> ListarDisponiveis()
+        {
+            return contexto.Extras.Where(x => x.Quantidade > 0).ToList();
+        }
     }
 }

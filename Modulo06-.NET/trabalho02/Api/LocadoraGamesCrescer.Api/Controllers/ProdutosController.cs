@@ -46,7 +46,7 @@ namespace LocadoraGamesCrescer.Api.Controllers
             if (produto.Validar())
                 return ResponderErro(produto.Mensagens);
 
-            return ResponderOK(new { dados = _repositorio.Alugar(produto) });
+            return ResponderOK(_repositorio.Alugar(produto));
         }
 
         [HttpPut, Route("devolver/{id:int}"), BasicAuthorization(Roles = "Colaborador")]
@@ -54,7 +54,7 @@ namespace LocadoraGamesCrescer.Api.Controllers
         {
             var produto = _repositorio.Obter(id);
 
-            return ResponderOK(new { dados = _repositorio.Devolver(produto) });
+            return ResponderOK( _repositorio.Devolver(produto) );
         }
     }
 }

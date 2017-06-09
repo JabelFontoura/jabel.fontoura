@@ -1,15 +1,50 @@
 <h1>Selecione Extras</h1>
 
-<form class="form-horizontal" novalidate ng-submit="avancarExtras(extras)">
+<form class="form-horizontal" novalidate ng-submit="avancarExtras(extra)">
   <div class="form-group">
-    <label for="extra" class="col-sm-2 control-label">Produto</label>
-    <div class="col-md-8">
+    <label for="extra" class="col-sm-2 control-label">Extras</label>
+    <div class="col-md-2">
+      {{extras[0].Nome}}
       <input 
-        type="radio" 
-        name="pac" 
-        ng-value="{{item}}" 
+        type="number" 
+        name="{{extras[0].Id}}" 
+        ng-value="{{extras[0]}}" 
+        ng-model="extra[1]" 
         required 
-        ng-model="$parent.pacote" 
+        max="{{extras[0].Quantidade}}"
+      > 
+    </div>
+    <div class="col-md-2">
+      {{extras[1].Nome}}
+      <input 
+        type="number" 
+        name="{{extras[1].Id}}" 
+        ng-value="{{extras[1]}}" 
+        ng-model="extra[2]" 
+        required 
+        max="{{extras[1].Quantidade}}"
+      > 
+    </div>
+    <div class="col-md-2">
+      {{extras[2].Nome}}
+      <input 
+        type="number" 
+        name="{{extras[2].Id}}" 
+        ng-value="{{extras[2]}}" 
+        ng-model="extra[3]" 
+        required 
+        max="{{extras[2].Quantidade}}"
+      > 
+    </div>
+    <div class="col-md-2">
+      {{extras[3].Nome}}
+      <input 
+        type="number" 
+        name="{{extras[3].Id}}" 
+        ng-value="{{extras[3]}}" 
+        ng-model="extra[4]" 
+        required 
+        max="{{extras[3].Quantidade}}"
       > 
     </div>
   </div>  

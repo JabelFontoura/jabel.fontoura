@@ -1,4 +1,4 @@
-angular.module('app').controller('AdministrativoController', function($scope, $localStorage, $location, clientesService, locacaoService, produtosService, toastr) {
+angular.module('app').controller('AdministrativoController', function($scope, $localStorage, $location, clientesService, locacaoService, produtosService, extrasService, toastr) {
 
   init();
 
@@ -25,27 +25,47 @@ angular.module('app').controller('AdministrativoController', function($scope, $l
 
   $scope.avancarProduto = (produto) => {
     limpar();
+
+    $scope.produto = produto;    
     $scope.valor += Number(produto.Valor);
     $scope.escolherPacote = true;
   }
 
   $scope.voltarProduto = () => {
     limpar();
+
+    $scope.produto = null;
     $scope.escolherCliente = true;
     $scope.valor = 0;
   }
 
   $scope.avancarPacote = (pacote) => {
+    $scope.pacote = pacote;
+    $scope.escolherExtras = true;
     $scope.valor += Number(pacote.ValorTotal);
   }
 
   $scope.voltarPacote = () => {
     limpar();
+    //$scope.valor -= $scope.pacote.Valor;
     $scope.escolherProduto = true;
   }
 
-  $scope.avancarExtras = (extras) => {
+  $scope.avancarExtras = (extra) => {
     limpar();
+    $scope.extrasSelecionados = extra;
+    Object.getOwnPropertyNames(extra).forEach(item => {
+      $scope.extras.forEach(e => {
+        if(Number(item) === Number(e.Id)) $scope.valor += e.Valor * extra[item];
+      });
+    });
+
+    $scope.escolherExtras = false;
+  }
+
+  $scope.voltarExtras = () => {
+    limpar();
+    $scope.extrasSelecionados = extra;
     $scope.escolherExtras = true;
   }
 
@@ -72,6 +92,10 @@ angular.module('app').controller('AdministrativoController', function($scope, $l
 
       produtosService.listarDisponiveis($localStorage.headerAuth)
         .then(response => $scope.produtos = response.data.dados)
+        .catch(error => console.log(error));
+
+      extrasService.listarDisponiveis($localStorage.headerAuth)
+        .then(response => $scope.extras = response.data.dados)
         .catch(error => console.log(error));
 
       locacaoService.listarPacotes($localStorage.headerAuth)
