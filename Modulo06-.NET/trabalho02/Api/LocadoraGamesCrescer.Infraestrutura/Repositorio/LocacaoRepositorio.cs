@@ -49,5 +49,16 @@ namespace LocadoraGamesCrescer.Infraestrutura.Repositorio
 
             return locacao;
         }
+
+        public Extra ObterExtra(int id)
+        {
+            return contexto.Extras.FirstOrDefault(x => x.Id == id);
+        }
+
+        public Pacote ObterPacote(int id)
+        {
+            return contexto.Pacotes.FirstOrDefault(x => x.Id == id);
+        }
+
     }
 }

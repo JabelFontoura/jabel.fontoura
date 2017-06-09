@@ -9,6 +9,8 @@ namespace LocadoraGamesCrescer.Api.Models
     public class RegistrarLocacaoModel
     {
         public int IdCliente { get; set; }
+        public int IdPacote { get; set; }
+        public int IdExtra { get; set; }
         public string EmailUsuario { get; set; }
         public Produto Produto { get; set; }
         public ExtraPacote ExtraPacote { get; set; }

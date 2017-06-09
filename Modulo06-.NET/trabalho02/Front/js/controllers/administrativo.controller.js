@@ -109,6 +109,8 @@ angular.module('app').controller('AdministrativoController', function($scope, $l
       EmailUsuario: authService.getUsuario().Email,
       IdCliente: Number($scope.cliente),
       Produto: $scope.produto,
+      IdExtra: 1,
+      IdPacote: $scope.pacote.IdPacote,
       ExtraPacote: $scope.pacote,
       DataEntrega : new Date().toLocaleString(),
       DataPedido: data

@@ -18,6 +18,7 @@ namespace LocadoraGamesCrescer.Api.Controllers
         readonly LocacaoRepositorio _locacaoRepositorio;
         readonly ClienteRepositorio _clienteRepositiorio;
         readonly UsuarioRepositorio _usuarioRepositorio;
+        readonly ExtraRepositorio _extraRepositorio;
 
 
         public LocacaoController()
@@ -25,6 +26,8 @@ namespace LocadoraGamesCrescer.Api.Controllers
             _locacaoRepositorio = new LocacaoRepositorio();
             _clienteRepositiorio = new ClienteRepositorio();
             _usuarioRepositorio = new UsuarioRepositorio();
+            _extraRepositorio = new ExtraRepositorio();
+
         }
 
         [HttpGet, Route("pacotes")]
@@ -39,7 +42,8 @@ namespace LocadoraGamesCrescer.Api.Controllers
             var cliente = _clienteRepositiorio.Obter(model.IdCliente);
             var usuario = _usuarioRepositorio.Obter(model.EmailUsuario);
 
-           // var pacote = model.ExtraPacote.Pacote.
+            model.ExtraPacote.Pacote = _locacaoRepositorio.ObterPacote(model.IdPacote);
+            model.ExtraPacote.Extra = _extraRepositorio.Obter(model.IdExtra);
 
             var locacao = new Locacao(cliente, usuario, model.Produto, model.DataEntrega, model.DataPedido, model.ExtraPacote, model.ValorPrevisto);
 
