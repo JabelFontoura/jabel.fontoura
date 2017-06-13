@@ -12,7 +12,7 @@ DECLARE
 BEGIN
   DBMS_OUTPUT.PUT_LINE('---Cidades duplicadas');
    FOR reg IN C_ListaCidades LOOP
-    DBMS_OUTPUT.PUT_LINE('Cidade -- ' || reg.nome);
+    DBMS_OUTPUT.PUT_LINE('--------- Cidade' || reg.nome || '---------');
     FOR item  in C_ClientesPorCidades(reg.nome) LOOP
       DBMS_OUTPUT.PUT_LINE('Cliente -- ' || item.nomeCliente);
      END LOOP;
