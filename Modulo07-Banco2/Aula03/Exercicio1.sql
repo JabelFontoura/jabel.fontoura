@@ -18,7 +18,7 @@ CREATE OR REPLACE PACKAGE BODY pck_aula03 AS
       FOR c in c_cidades LOOP     
           FOR i in c_clientes (c.Nome, c.UF) LOOP
                 UPDATE Cliente SET IDCidade = c.MenorIdCidade 
-                WHERE IDCidade != c.MenorIdCidade;
+                WHERE IDCidade != c.MenorIdCidade AND IdCliente = i.IDCliente;
           END LOOP;
           DELETE FROM Cidade WHERE Nome = c.Nome AND IDCidade != c.MenorIdCidade;
       END LOOP;
