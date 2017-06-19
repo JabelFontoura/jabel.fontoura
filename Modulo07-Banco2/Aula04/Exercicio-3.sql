@@ -1,0 +1,1 @@
+SELECT IDLogAposta, IDAposta Possivel_Fraude FROM Log_Aposta;
