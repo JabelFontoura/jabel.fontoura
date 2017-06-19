@@ -63,5 +63,3 @@ BEGIN
   INSERT INTO Log_Numero_Aposta (IDLogNumero_Aposta, IDLogAposta, IDAposta, IDNumero_Aposta, Numero, Data, Operacao) 
   VALUES (sqLogNumero_Aposta.NEXTVAL, v_IDAposta, :new.IDAposta, :new.IDNumero_Aposta, :new.Numero, SYSDATE, v_operacao);
 END TR_AUD1_NUMERO_APOSTA;
-
-SELECT * FROM LOG_APOSTA;
