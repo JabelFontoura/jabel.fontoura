@@ -9,4 +9,3 @@ FROM Aposta a JOIN Cidade cid ON a.IDCidade = cid.IDCidade
 JOIN Concurso co ON co.IDConcurso = a.IDConcurso
 LEFT JOIN Aposta_Premiada ap ON ap.IDAposta = a.IDAposta
 GROUP BY co.IDConcurso, cid.UF;
-
