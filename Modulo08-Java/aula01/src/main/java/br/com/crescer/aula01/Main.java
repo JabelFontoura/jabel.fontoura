@@ -3,6 +3,7 @@ package br.com.crescer.aula01;
 // @author jabel.fontoura
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -11,15 +12,13 @@ public class Main {
     public static void main(String[] args) {
         
         StringBuffer sb = new StringBuffer();
-        List<String> list = new ArrayList<String>();
-        
-        for(Estados e : Estados.values()) 
-            list.add(e.getNome());
-        
+        List<Estados> list = Arrays.asList(Estados.values());
         Collections.sort(list);
         
-        for(String s : list)
-            sb.append(s + ", ");
+        for(Estados e : list)
+            sb.append(e.getNome() + ", ");
+        
+        sb.deleteCharAt(sb.length() - 2);
         
         System.out.println(sb.toString());
     }
