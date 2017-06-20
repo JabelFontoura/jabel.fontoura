@@ -14,14 +14,13 @@ public class Main {
         List<String> list = new ArrayList<String>();
         
         for(Estados e : Estados.values()) 
-            sb.append(e.getNome() + ",");
-        
-        for(String s : sb.toString().split(","))
-            list.add(s);
+            list.add(e.getNome());
         
         Collections.sort(list);
         
         for(String s : list)
-            System.out.println(s);
+            sb.append(s + ", ");
+        
+        System.out.println(sb.toString());
     }
 }
