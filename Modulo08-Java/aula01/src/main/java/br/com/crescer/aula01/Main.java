@@ -10,16 +10,7 @@ import java.util.List;
  
 public class Main {
     public static void main(String[] args) {
-        
-        StringBuffer sb = new StringBuffer();
-        List<Estados> list = Arrays.asList(Estados.values());
-        Collections.sort(list);
-        
-        for(Estados e : list)
-            sb.append(e.getNome() + ", ");
-        
-        sb.deleteCharAt(sb.length() - 2);
-        
-        System.out.println(sb.toString());
+        //new OrdenadorEstados().ordenar();
+        new Datas().somar();
     }
 }
