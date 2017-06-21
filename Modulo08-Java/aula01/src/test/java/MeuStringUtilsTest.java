@@ -1,5 +1,4 @@
-package br.com.crescer.exercicios;
-
+import br.com.crescer.exercicios.MeuStringUtils;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
