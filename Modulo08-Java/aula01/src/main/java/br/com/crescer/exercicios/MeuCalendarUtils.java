@@ -1,7 +1,6 @@
 package br.com.crescer.exercicios;
 
 import java.text.SimpleDateFormat;
-import java.time.Period;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
