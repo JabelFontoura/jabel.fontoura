@@ -1,6 +1,7 @@
-package br.com.crescer.aula03;
+package br.com.crescer.dao;
 
 // @author jabel.fontoura
+import br.com.crescer.aula03.ConnectionUtils;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;

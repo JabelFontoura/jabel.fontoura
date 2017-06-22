@@ -2,6 +2,9 @@ package br.com.crescer.aula03;
 
 // @author jabel.fontoura
 
+import br.com.crescer.dao.TesteDAO;
+
+
 public class ExemploDDL {
   
     public static void main(String[] args) {
