@@ -6,6 +6,8 @@ public class Main {
   public static void main(String[] args) {
     SQLUtils sql = new SQLUtilsImpl();
     
-    sql.runFile("C:\\Temp\\teste.sql");
+    //sql.runFile("C:\\Temp\\teste.sql");
+    
+    System.out.println(sql.executeQuery("SELECT * FROM Estado"));
   }
 }
