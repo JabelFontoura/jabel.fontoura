@@ -55,11 +55,22 @@ public class SQLUtilsImpl implements SQLUtils {
 
   @Override
   public void importCSV(File file) {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    String[] linhas = read(file.getAbsolutePath()).split("\n");
+    try (final PreparedStatement statement = ConnectionUtils.abreConexao().prepareStatement(criarInsert(file, linhas))) {
+      for (String s : linhas) {
+        String[] valores = s.split(",");
+        for (int i = 1; i <= valores.length; i++) {
+          statement.setObject(i, valores[i - 1]);
+        }
+        statement.executeQuery();
+      }
+    } catch (final SQLException e) {
+      System.err.format("SQLException: %s", e);
+    }
   }
 
   @Override
-  public File importCSV(String query) {
+  public File exportCSV(String query) {
     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
   }
 
@@ -67,16 +78,34 @@ public class SQLUtilsImpl implements SQLUtils {
     try {
       final Reader reader = new FileReader(string);
       final BufferedReader bufferReader = new BufferedReader(reader);
-
       final StringBuilder sb = new StringBuilder();
 
       bufferReader.lines().forEach(l -> sb.append(l + "\n"));
 
       return sb.toString();
-
     } catch (Exception ex) {
       return null;
     }
+  }
+
+  public String criarInsert(File file, String linhas[]) {
+    StringBuilder sb = new StringBuilder("INSERT INTO ");
+    String tabela = file.getName();
+    int bindings = countOcorrences(linhas[0], ",") + 1;
+
+    sb.append(tabela.substring(0, tabela.indexOf(".")));
+    sb.append(" VALUES (");
+    for (int i = 0; i < bindings; i++) {
+      sb.append("?,");
+    }
+    sb.deleteCharAt(sb.length() - 1);
+    sb.append(")");
+
+    return sb.toString();
+  }
+
+  public int countOcorrences(String string, String busca) {
+    return string.length() - string.replace(busca, "").length();
   }
 
 }
