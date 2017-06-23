@@ -11,6 +11,8 @@ public class Main {
     
     //System.out.println(sql.executeQuery("SELECT * FROM Estado"));
     
-    sql.importCSV(new File("C:\\Temp\\Pais.csv"));
+    //sql.importCSV(new File("C:\\Temp\\Pais.csv"));
+    
+    sql.exportCSV("SELECT * FROM PAIS");
   }
 }

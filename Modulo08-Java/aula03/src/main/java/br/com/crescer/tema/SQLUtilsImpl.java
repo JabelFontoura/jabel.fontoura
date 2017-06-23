@@ -3,14 +3,21 @@ package br.com.crescer.tema;
 // @author Jabel
 import br.com.crescer.aula03.ConnectionUtils;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.Reader;
+import java.io.Writer;
+import java.nio.file.Files;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class SQLUtilsImpl implements SQLUtils {
 
@@ -35,13 +42,16 @@ public class SQLUtilsImpl implements SQLUtils {
       try (final ResultSet resultSet = preparedStatement.executeQuery()) {
         ResultSetMetaData lines = resultSet.getMetaData();
         int colunas = lines.getColumnCount();
-        for (int i = 1; i < colunas; i++) {
-          result.append(lines.getColumnName(i)).append(" ");
-        }
+//        for (int i = 1; i < colunas; i++) {
+//          result.append(lines.getColumnName(i)).append(", ");
+//        }
+//        result.deleteCharAt(result.length() - 2);
+//        result.append("\n");
         while (resultSet.next()) {
           for (int i = 0; i < colunas; i++) {
-            result.append(resultSet.getString(i + 1)).append(" ");
+            result.append(resultSet.getString(i + 1)).append(", ");
           }
+          result.deleteCharAt(result.length() - 2);
           result.append("\n");
         }
       } catch (final SQLException e) {
@@ -71,7 +81,19 @@ public class SQLUtilsImpl implements SQLUtils {
 
   @Override
   public File exportCSV(String query) {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    String result = executeQuery("SELECT * FROM PAIS");
+    File file = new File("C:\\Temp\\export.csv");
+    if(!file.exists()) {
+      try {
+        file.createNewFile();
+      } catch (IOException ex) {
+        Logger.getLogger(SQLUtilsImpl.class.getName()).log(Level.SEVERE, null, ex);
+      }
+    }
+    
+    write(file.getAbsolutePath(), result);
+    
+    return file;
   }
 
   public String read(String string) {
@@ -84,7 +106,25 @@ public class SQLUtilsImpl implements SQLUtils {
 
       return sb.toString();
     } catch (Exception ex) {
+      ex.printStackTrace();
       return null;
+    }
+  }
+  
+  public void write(String stringFile, String conteudo) {
+    try {
+      final Writer writer = new FileWriter(stringFile);
+      final BufferedWriter bufferWriter = new BufferedWriter(writer);
+      
+      String[] linhas = conteudo.split("\n");
+      
+      for(String linha : linhas){
+        bufferWriter.append(linha);
+        bufferWriter.newLine();
+      }
+      bufferWriter.flush();
+    } catch (IOException ex) {
+      ex.printStackTrace();
     }
   }
 
