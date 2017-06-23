@@ -9,7 +9,7 @@ public final class ConnectionUtils {
 
   private static final String url = "jdbc:oracle:thin:@localhost:1521:xe";
   private static final String user = "System";
-  private static final String pass = "oracle";
+  private static final String pass = "jabel";
   
   private ConnectionUtils() { }
 
