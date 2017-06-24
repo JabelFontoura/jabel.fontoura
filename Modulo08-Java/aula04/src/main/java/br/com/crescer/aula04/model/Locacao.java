@@ -11,6 +11,7 @@ import static javax.persistence.GenerationType.SEQUENCE;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
  
 @Entity
@@ -18,6 +19,7 @@ import javax.persistence.Table;
 public class Locacao {
 
   @Id
+  @SequenceGenerator(name = "SEQ_LOCACAO", sequenceName = "SEQ_LOCACAO")
   @GeneratedValue(strategy = SEQUENCE, generator = "SEQ_LOCACAO")
   @Basic(optional = false)
   private Long id;

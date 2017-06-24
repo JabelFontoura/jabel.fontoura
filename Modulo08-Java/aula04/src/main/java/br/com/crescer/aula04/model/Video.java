@@ -11,6 +11,7 @@ import static javax.persistence.GenerationType.SEQUENCE;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
  
 @Entity
@@ -19,6 +20,7 @@ public class Video {
   
   @Id
   @Basic(optional = false)
+  @SequenceGenerator(name = "SEQ_VIDEO", sequenceName = "SEQ_VIDEO")
   @GeneratedValue(strategy = SEQUENCE, generator = "SEQ_VIDEO")
   private Long id;
   

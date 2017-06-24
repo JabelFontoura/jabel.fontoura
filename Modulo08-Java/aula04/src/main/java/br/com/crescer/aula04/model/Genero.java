@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.SEQUENCE;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 
@@ -15,11 +16,12 @@ import javax.persistence.Table;
 public class Genero {
   
   @Id
+  @SequenceGenerator(name = "SEQ_GENERO", sequenceName = "SEQ_GENERO")
   @GeneratedValue(strategy = SEQUENCE, generator = "SEQ_GENERO")
   @Basic(optional = false)
   private Long id;
   
-  @Column(name = "GENERO")
+  @Column(name = "DESCRICAO")
   @Basic(optional = false)
   private String descricao;
 

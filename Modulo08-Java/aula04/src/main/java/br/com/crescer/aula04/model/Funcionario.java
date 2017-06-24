@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.SEQUENCE;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
  
 @Entity
@@ -16,6 +17,7 @@ public class Funcionario {
   
   @Id
   @Basic(optional = false)
+  @SequenceGenerator(name = "SEQ_FUNCIONARIO", sequenceName = "SEQ_FUNCIONARIO")
   @GeneratedValue(strategy = SEQUENCE, generator = "SEQ_FUNCIONARIO")
   private Long id;
   
