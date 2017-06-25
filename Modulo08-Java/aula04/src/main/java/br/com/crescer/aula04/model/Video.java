@@ -40,6 +40,9 @@ public class Video {
   
   @Column(name = "DATA_LANCAMENTO")
   private Date dataLancamento;
+  
+  @Column(name = "DURACAO")
+  private String duracao;
 
   public Long getId() {
     return id;
@@ -87,5 +90,13 @@ public class Video {
 
   public void setDataLancamento(Date dataLancamento) {
     this.dataLancamento = dataLancamento;
+  }
+
+  public String getDuracao() {
+    return duracao;
+  }
+
+  public void setDuracao(String duracao) {
+    this.duracao = duracao;
   }
 }
