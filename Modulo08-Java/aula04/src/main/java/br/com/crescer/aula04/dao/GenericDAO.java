@@ -1,7 +1,7 @@
 package br.com.crescer.aula04.dao;
 
  // @author Jabel
-import java.lang.reflect.ParameterizedType;
+import br.com.crescer.aula04.Connection;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
@@ -9,13 +9,14 @@ import org.hibernate.Session;
  
 public class GenericDAO<T, ID> implements CrudDao<T, ID>{
   
-  private final EntityManager em = Persistence.createEntityManagerFactory("CRESCER").createEntityManager();
+  private final EntityManager em = Connection.getEntityManager();
   private final Session session;
   private Class<T> entity;
 
   public GenericDAO(Class<T> entity) {
     this.entity = entity;
-    em.getTransaction().begin();
+    if(!em.getTransaction().isActive())
+      em.getTransaction().begin();
     this.session = em.unwrap(Session.class);
   }
   
