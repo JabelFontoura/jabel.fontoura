@@ -1,6 +1,7 @@
 package br.com.crescer.aula05;
 
 // @author jabel.fontoura
+import br.com.crescer.aula04.model.Locacao;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -51,7 +52,7 @@ public class ClienteServlet extends HttpServlet {
   protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     if(req.getParameter("nome") != null)
     nomes.add(req.getParameter("nome"));
-    
+
     resp.sendRedirect("/aula05/cliente");
   }
   
