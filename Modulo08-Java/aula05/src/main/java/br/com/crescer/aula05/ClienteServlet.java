@@ -1,7 +1,6 @@
 package br.com.crescer.aula05;
 
 // @author jabel.fontoura
-import br.com.crescer.aula04.model.Locacao;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
