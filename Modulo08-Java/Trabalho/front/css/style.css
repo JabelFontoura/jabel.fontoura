@@ -38,7 +38,7 @@ body {
   content: "";
 }
 
-.login-background::after {
+.default-background::after {
   background-image: url('../assets/images/login-background.jpg');
 }
 
@@ -74,4 +74,16 @@ body {
   padding-right: 5%;
   border: 1px solid black;
   background-color: #f9f9ef;
+}
+
+.home .header {
+  background-color: black;
+  color: white;
+  margin: 0;
+  padding: 1%;
+  margin-bottom: 2%;
+}
+
+.home .header h1 {
+  margin: 0;
 }
