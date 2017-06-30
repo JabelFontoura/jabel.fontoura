@@ -39,5 +39,4 @@ public class ClienteRest {
   public void delete(@PathVariable Long id) {
     service.remove(id);
   }
-  
 }

@@ -35,7 +35,7 @@ public class GeneroRest {
     return service.save(genero);
   }
   
-  @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+  @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
   public void delete(@PathVariable Long id) {
     service.remove(id);
   }
