@@ -4,16 +4,16 @@ angular.module('app').controller('UsuarioController', function ($scope, $locatio
     init();
   });
 
-  $scope.login = function (usuario) {
+  $scope.logar = function (usuario) {
     authService.login(usuario)
       .then(
         function (response) {
           $scope.logado = true;
-          $location.path('/administrativo');
-          toastr.success(`Bem vindo ${response.data.dados.Nome}`);
+          toastr.success(`Bem vindo ${response.nome}`);
         },
         function (response) {
           $scope.logado = false;
+          console.log('resp', response);
           toastr.error('Ocorreu um error ao fazer seu login.');
         });
   };

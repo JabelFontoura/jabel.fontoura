@@ -25,6 +25,12 @@ angular.module('auth').factory('authService', function (authConfig, $http, $q, $
     let deferred = $q.defer();
 
     let headerAuth = montarHeader(usuario);
+    
+    console.log('url', {
+      url: urlUsuario,
+      method: 'GET',
+      headers: headerAuth
+    });
 
     $http({
       url: urlUsuario,
