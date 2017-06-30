@@ -1,10 +1,10 @@
 package br.com.crescer.social.service;
 
- // @author Jabel
+ // @author jabel.fontoura
 import br.com.crescer.social.model.Usuario;
 import java.math.BigDecimal;
 import java.util.List;
-
+ 
 public interface UsuarioService {
   
   Usuario save(Usuario u);

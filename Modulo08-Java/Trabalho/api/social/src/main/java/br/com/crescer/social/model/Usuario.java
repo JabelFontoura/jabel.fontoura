@@ -2,6 +2,7 @@ package br.com.crescer.social.model;
 
  // @author Jabel
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Collection;
@@ -62,8 +63,10 @@ public class Usuario implements Serializable {
   @Column(name = "DATA_NASCIMENTO")
   @Temporal(TemporalType.TIMESTAMP)
   private Date dataNascimento;
+  @JsonIgnore
   @OneToMany(mappedBy = "idUsuario")
   private Collection<Amigos> amigosCollection;
+  @JsonIgnore
   @OneToMany(mappedBy = "idAmigo")
   private Collection<Amigos> amigosCollection1;
   @OneToMany(mappedBy = "idUsuario")

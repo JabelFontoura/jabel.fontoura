@@ -1,10 +1,11 @@
 package br.com.crescer.social.controller;
 
- // @author Jabel
+ // @author jabel.fontoura
+import br.com.crescer.social.model.Amigos;
 import br.com.crescer.social.model.Usuario;
-import br.com.crescer.social.service.UsuarioService;
+import br.com.crescer.social.service.AmigosService;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.math.BigDecimal;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,28 +14,22 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
- 
+
 @RestController
-@RequestMapping("/usuario")
-public class UsuarioController {
+@RequestMapping("/amigos")
+public class AmigosController {
   
   @Autowired
-  private UsuarioService service;
+  private AmigosService service;
   
   @GetMapping(value = "/{id}")
-  public Usuario get(@PathVariable BigDecimal id) {
+  public Amigos get(@PathVariable BigDecimal id) {
     return service.findById(id);
-  }
-  
-  @GetMapping
-  public List<Usuario> get() {
-    return service.findAll();
   }
   
   @PostMapping
   @ResponseBody
-  public Usuario post(@RequestBody Usuario usuario) {
-    return service.save(usuario);
+  public Amigos post(@RequestBody Amigos amigos) {
+    return service.save(amigos);
   }
-
 }

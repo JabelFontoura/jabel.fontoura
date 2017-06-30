@@ -2,6 +2,7 @@ package br.com.crescer.social.model;
 
  // @author Jabel
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import javax.persistence.Basic;
@@ -15,8 +16,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
-
-
  
 @Entity
 @Table(name = "AMIGOS")

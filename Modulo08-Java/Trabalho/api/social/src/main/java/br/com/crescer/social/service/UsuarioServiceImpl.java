@@ -15,19 +15,16 @@ public class UsuarioServiceImpl implements UsuarioService{
   @Autowired
   private UsuarioRepository repositorio;
   
-  @Override
   public Usuario save(Usuario u) {
     u.setSenha(new BCryptPasswordEncoder().encode(u.getSenha()));
     
     return repositorio.save(u);
   }
 
-  @Override
   public List<Usuario> findAll() {
     return (List<Usuario>) repositorio.findAll();
   }
 
-  @Override
   public Usuario findById(BigDecimal id) {
     return repositorio.findOne(id);
   }
