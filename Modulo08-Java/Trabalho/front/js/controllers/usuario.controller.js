@@ -1,8 +1,15 @@
-angular.module('app').controller('UsuarioController', function ($scope, $location, authService, toastr, $localStorage) {
+angular.module('app').controller('UsuarioController', function ($scope, $location, authService, usuarioService, toastr, $localStorage) {
 
   $scope.$on('$locationChangeStart', function(event) {
     init();
   });
+
+  $scope.criar = (usuario) => {
+    console.log(usuario);
+    usuarioService.criar(usuario)
+      .then(response => toastr.success('Usuario criado com sucesso'))
+      .catch(error => console.log());
+  }
 
   $scope.logar = function (usuario) {
     authService.login(usuario)
@@ -26,7 +33,6 @@ angular.module('app').controller('UsuarioController', function ($scope, $locatio
   function init() {
     if($localStorage.usuarioLogado === null) {
       $scope.logado = false;
-      console.log('lala');
       $location.path('/login');
     } else {
       $scope.logado = true;

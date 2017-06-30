@@ -3,7 +3,7 @@ package br.com.crescer.social.security;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
-import static org.springframework.http.HttpMethod.GET;
+import static org.springframework.http.HttpMethod.POST;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -21,7 +21,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 @EnableGlobalMethodSecurity(securedEnabled = true)
 public class SocialWebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-  @Value("${social.security.public:/health}")
+  @Value("${social.security:/usuario}")
   private String[] securityPublic;
 
   @Autowired
@@ -30,15 +30,16 @@ public class SocialWebSecurityConfig extends WebSecurityConfigurerAdapter {
   @Override
   protected void configure(HttpSecurity httpSecurity) throws Exception {
     httpSecurity
-            .authorizeRequests().antMatchers(GET, securityPublic).permitAll()
+            .authorizeRequests().antMatchers(POST, securityPublic).permitAll()
             .and()
-            .authorizeRequests().anyRequest().authenticated()
+            .authorizeRequests().antMatchers("/**").authenticated()
             .and()
             .httpBasic()
             .and()
             .logout().logoutUrl("/logout").deleteCookies("JSESSIONID").permitAll()
             .and()
-            .cors().and()
+            .cors()
+            .and()
             .csrf().disable();
   }
 

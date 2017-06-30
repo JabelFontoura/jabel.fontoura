@@ -6,7 +6,7 @@ import br.com.crescer.social.repository.UsuarioRepository;
 import java.math.BigDecimal;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,6 +17,8 @@ public class UsuarioServiceImpl implements UsuarioService{
   
   @Override
   public Usuario save(Usuario u) {
+    u.setSenha(new BCryptPasswordEncoder().encode(u.getSenha()));
+    
     return repositorio.save(u);
   }
 

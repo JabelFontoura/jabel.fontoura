@@ -4,7 +4,7 @@
       <div class="form-group">
         <label for="nome" class="col-sm-2 control-label">Nome</label>
         <div class="col-sm-10">
-          <input type="email" class="form-control" name="nome" placeholder="Nome" required ng-model="usuario.nome">
+          <input type="nome" class="form-control" name="nome" placeholder="Nome" required ng-model="usuario.nome">
         </div>
       </div>
       <div class="form-group">
@@ -22,7 +22,23 @@
       <div class="form-group">
         <label for="foto" class="col-sm-2 control-label">Foto</label>
         <div class="col-sm-10">
-          <input type="password" class="form-control" name="foto" placeholder="Foto" ng-model="usuario.foto">
+          <input type="text" class="form-control" name="foto" placeholder="Foto" ng-model="usuario.foto">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="data" class="col-sm-2 control-label">Data Nascimento</label>
+        <div class="col-sm-10">
+          <input type="date" class="form-control" name="date" ng-model="usuario.dataNascimento">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for=sexo class="col-sm-2 control-label">Sexo</label>
+        <div class="col-sm-10">
+          <select class="form-control" name="sexo" ng-model="usuario.sexo">
+            <option value="M">Masculino</option>
+            <option value="F">Feminino</option>
+            <option value="O">Outro</option>
+          </select>
         </div>
       </div>
       <div class="form-group">
