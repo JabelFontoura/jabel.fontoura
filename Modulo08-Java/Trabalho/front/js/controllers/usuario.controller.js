@@ -5,9 +5,12 @@ angular.module('app').controller('UsuarioController', function ($scope, $locatio
   });
 
   $scope.criar = (usuario) => {
-    console.log(usuario);
+    usuario.id = 0;
     usuarioService.criar(usuario)
-      .then(response => toastr.success('Usuario criado com sucesso'))
+      .then(response => {
+        toastr.success('Usuario criado com sucesso');
+        $location.path('/');
+      })
       .catch(error => console.log());
   }
 

@@ -4,7 +4,12 @@ angular.module('app').factory('usuarioService', function ($http) {
 
   return {
     listar: listar,
-    criar: criar
+    criar: criar,
+    getLogged: getLogged
+  }
+
+  function getLogged() {
+    return $http.get(`${url}/logged`);
   }
 
   function listar() {
