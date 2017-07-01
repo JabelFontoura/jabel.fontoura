@@ -2,9 +2,9 @@ package br.com.crescer.social.service.interfaces;
 
  // @author jabel.fontoura
 import br.com.crescer.social.model.Amigos;
+import br.com.crescer.social.model.Usuario;
 import java.math.BigDecimal;
 import java.util.List;
-import org.springframework.stereotype.Service;
 
 public interface AmigosService {
 
@@ -13,5 +13,7 @@ public interface AmigosService {
   List<Amigos> findAll();
 
   Amigos findById(BigDecimal id);
+  
+  Long countByIdUsuarioAndAceito(BigDecimal idUsuario, Character aceito);
   
 }
