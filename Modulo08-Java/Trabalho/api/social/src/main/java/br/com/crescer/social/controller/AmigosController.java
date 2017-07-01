@@ -2,6 +2,7 @@ package br.com.crescer.social.controller;
 
  // @author jabel.fontoura
 import br.com.crescer.social.model.Amigos;
+import br.com.crescer.social.model.Usuario;
 import br.com.crescer.social.service.interfaces.AmigosService;
 import java.math.BigDecimal;
 import java.util.List;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -42,4 +44,15 @@ public class AmigosController {
   public Amigos post(@RequestBody Amigos amigos) {
     return service.save(amigos);
   }
+  
+  @GetMapping(value = "/lista/{id}")
+  public List<Amigos> getAmigos(@PathVariable BigDecimal id) {
+    return service.findAllByIdUsuario(id);
+  }
+  
+  @PutMapping
+  public Amigos update(@RequestParam BigDecimal idUsuario, @RequestParam Character aceito) {
+    return null;
+  }
+  
 }

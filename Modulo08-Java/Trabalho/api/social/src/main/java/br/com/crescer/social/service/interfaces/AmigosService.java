@@ -16,4 +16,8 @@ public interface AmigosService {
   
   Long countByIdUsuarioAndAceito(BigDecimal idUsuario, Character aceito);
   
+  Amigos findByIdUsuarioAndIdAmigo(Usuario idUsuario, Usuario idAmigo);
+  
+  List<Amigos> findAllByIdUsuario(BigDecimal idUsuario);
+  
 }

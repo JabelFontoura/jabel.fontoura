@@ -25,10 +25,23 @@ public class AmigosServiceImpl implements AmigosService {
   public List<Amigos> findAll() {
     return (List<Amigos>) repositorio.findAll();
   }
+  
+  @Override
+  public List<Amigos> findAllByIdUsuario(BigDecimal idUsuario) {
+    final Usuario usuario = new Usuario();
+    usuario.setId(idUsuario);
+    
+    return repositorio.findAllByIdUsuario(usuario);
+  }
 
   @Override
   public Amigos findById(BigDecimal id) {
     return repositorio.findOne(id);
+  }
+  
+  @Override
+  public Amigos findByIdUsuarioAndIdAmigo(Usuario idUsuario, Usuario idAmigo) {
+    return repositorio.findByIdUsuarioAndIdAmigo(idUsuario, idAmigo);
   }
   
   @Override
@@ -38,4 +51,7 @@ public class AmigosServiceImpl implements AmigosService {
     
     return repositorio.countByIdUsuarioAndAceito(usuario, aceito);
   }
+
+
+  
 }
