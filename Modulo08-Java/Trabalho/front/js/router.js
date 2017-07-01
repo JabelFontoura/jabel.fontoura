@@ -4,6 +4,10 @@ angular.module('app').config(($routeProvider) => {
 		templateUrl: 'partials/home.html',
 		controller: 'HomeController'
 	})
+	.when('/amigo/:id', {
+		templateUrl: 'partials/home.html',
+		controller: 'AmigosController'
+	})
 	.when('/login', {
 		templateUrl: 'partials/login.html',
 		controller: 'UsuarioController'

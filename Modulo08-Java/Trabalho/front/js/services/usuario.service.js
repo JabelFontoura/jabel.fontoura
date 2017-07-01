@@ -3,9 +3,10 @@ angular.module('app').factory('usuarioService', function ($http) {
   const url = 'http://localhost:9090/api/usuario';
 
   return {
-    listar: listar,
-    criar: criar,
-    getLogged: getLogged
+    findAll: listar,
+    create: criar,
+    getLogged: getLogged,
+    findById: buscarPorId
   }
 
   function getLogged() {
@@ -14,6 +15,10 @@ angular.module('app').factory('usuarioService', function ($http) {
 
   function listar() {
     return $http.get(url);
+  }
+
+  function buscarPorId(id) {
+    return $http.get(`${url}/${id}`);
   }
 
   function criar(usuario) {

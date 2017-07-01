@@ -6,7 +6,7 @@ angular.module('app').controller('UsuarioController', function ($scope, $locatio
 
   $scope.criar = (usuario) => {
     usuario.id = 0;
-    usuarioService.criar(usuario)
+    usuarioService.create(usuario)
       .then(response => {
         toastr.success('Usuario criado com sucesso');
         $location.path('/');

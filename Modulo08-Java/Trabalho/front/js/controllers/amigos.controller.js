@@ -1,11 +1,11 @@
-angular.module('app').controller('HomeController', function ($scope, $location, authService, usuarioService, amigosService, toastr, $localStorage) {
+angular.module('app').controller('AmigosController', function ($scope, $routeParams, $location, authService, usuarioService, amigosService, toastr, $localStorage) {
 
-    init();
+  init();
 
   function init() {
-    usuarioService.getLogged()
+    usuarioService.findById($routeParams.id)
       .then(response => {
-        $scope.usuario = response.data.dados;
+        $scope.usuario = response.data;
 
         amigosService.countAceitos($scope.usuario.id, 'P')
           .then(response => $scope.usuario.qtoSolicitacoes = response.data)
