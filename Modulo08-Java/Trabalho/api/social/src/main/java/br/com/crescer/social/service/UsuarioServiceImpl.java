@@ -1,6 +1,7 @@
 package br.com.crescer.social.service;
 
  // @author Jabel
+import br.com.crescer.social.service.interfaces.UsuarioService;
 import br.com.crescer.social.model.Usuario;
 import br.com.crescer.social.repository.UsuarioRepository;
 import java.math.BigDecimal;

@@ -1,4 +1,4 @@
-package br.com.crescer.social.service;
+package br.com.crescer.social.service.interfaces;
 
  // @author jabel.fontoura
 import br.com.crescer.social.model.Usuario;

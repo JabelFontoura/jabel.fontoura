@@ -3,7 +3,7 @@ package br.com.crescer.social.controller;
  // @author jabel.fontoura
 import br.com.crescer.social.model.Amigos;
 import br.com.crescer.social.model.Usuario;
-import br.com.crescer.social.service.AmigosService;
+import br.com.crescer.social.service.interfaces.AmigosService;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.math.BigDecimal;
 import org.springframework.beans.factory.annotation.Autowired;

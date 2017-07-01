@@ -2,7 +2,7 @@ package br.com.crescer.social.controller;
 
 // @author Jabel
 import br.com.crescer.social.model.Usuario;
-import br.com.crescer.social.service.UsuarioService;
+import br.com.crescer.social.service.interfaces.UsuarioService;
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
