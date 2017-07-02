@@ -12,4 +12,8 @@ public interface ComentarioService {
   List<Comentario> findAll();
 
   Comentario findById(BigDecimal id);
+  
+  Long countByIdPost(BigDecimal idPost);
+  
+  List<Comentario> findAllByIdPost(BigDecimal idPost);
 }

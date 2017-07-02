@@ -20,4 +20,6 @@ public interface AmigosService {
   
   List<Amigos> findAllByIdUsuario(BigDecimal idUsuario);
   
+  List<Amigos> findAllByIdUsuarioAndAceito(BigDecimal idUsuario, Character aceito);
+  
 }

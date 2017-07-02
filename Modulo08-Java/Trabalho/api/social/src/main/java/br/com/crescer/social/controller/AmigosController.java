@@ -45,9 +45,9 @@ public class AmigosController {
     return service.save(amigos);
   }
   
-  @GetMapping(value = "/lista/{id}")
-  public List<Amigos> getAmigos(@PathVariable BigDecimal id) {
-    return service.findAllByIdUsuario(id);
+  @GetMapping(value = "/lista")
+  public List<Amigos> getAmigos(@RequestParam BigDecimal idUsuario, @RequestParam(required = false) Character aceito) {
+    return service.findAllByIdUsuarioAndAceito(idUsuario, aceito);
   }
   
   @PutMapping

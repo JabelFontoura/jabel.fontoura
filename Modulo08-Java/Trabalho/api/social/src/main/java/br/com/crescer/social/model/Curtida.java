@@ -7,11 +7,14 @@ import java.math.BigDecimal;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.SEQUENCE;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -31,6 +34,8 @@ public class Curtida implements Serializable {
   @Id
   @Basic(optional = false)
   @NotNull
+  @GeneratedValue(strategy = SEQUENCE, generator = "CURTIDA_SEQ")
+  @SequenceGenerator(name = "CURTIDA_SEQ", sequenceName = "CURTIDA_SEQ")
   @Column(name = "ID")
   private BigDecimal id;
   @JoinColumn(name = "ID_POST", referencedColumnName = "ID")

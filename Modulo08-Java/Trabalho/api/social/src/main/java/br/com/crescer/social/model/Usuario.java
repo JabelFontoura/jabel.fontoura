@@ -10,21 +10,21 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.SEQUENCE;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
-
- 
 @Entity
 @Table(name = "USUARIO")
 @XmlRootElement
@@ -43,7 +43,9 @@ public class Usuario implements Serializable {
   // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
   @Id
   @Basic(optional = true)
-  //@NotNull
+  @NotNull
+  @GeneratedValue(strategy = SEQUENCE, generator = "USUARIO_SEQ")
+  @SequenceGenerator(name = "USUARIO_SEQ", sequenceName = "USUARIO_SEQ")
   @Column(name = "ID")
   private BigDecimal id;
   @Size(max = 50)
@@ -51,7 +53,8 @@ public class Usuario implements Serializable {
   private String nome;
   // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
   @Size(max = 50)
-  @Column(name = "EMAIL")
+  @Column(name = "EMAIL", unique = true)
+  @Basic()
   private String email;
   @Size(max = 200)
   @Column(name = "SENHA")
@@ -70,8 +73,10 @@ public class Usuario implements Serializable {
   @JsonIgnore
   @OneToMany(mappedBy = "idAmigo")
   private Collection<Amigos> amigosCollection1;
+  @JsonIgnore
   @OneToMany(mappedBy = "idUsuario")
   private Collection<Post> postCollection;
+  @JsonIgnore
   @OneToMany(mappedBy = "idUsuario")
   private Collection<Comentario> comentarioCollection;
   @OneToMany(mappedBy = "idUsuario")

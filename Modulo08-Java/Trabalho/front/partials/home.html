@@ -21,27 +21,72 @@
       </div>
     </nav>
     <section class="col-md-6">
-      <div class="media">
+
+      <form class="form-horizontal form-post" novalidate ng-submit="postar(post)">
+        <h2>VOCÊ DISSE MEMES?</h2>
+        <div class="form-group">
+          <label for="texto" class="col-sm-2 control-label">Texto</label>
+          <div class="col-sm-10">
+            <textarea class="form-control" rows="5" name="texto" placeholder="Dank meme" required ng-model="post.texto"></textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="foto" class="col-sm-2 control-label">Foto</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" name="foto" placeholder="http://foto.jpg" required ng-model="post.foto">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-offset-2 col-md-10">
+            <button type="submit" class="btn btn-primary">Postar</button>
+          </div>
+        </div>
+      </form>
+
+      <div class="media" ng-repeat="post in posts">
         <div class="media-left">
           <a href="#">
-            <img class="media-object" src="https://placeholdit.imgix.net/~text?w=100&amp;h=100&amp;txtsize=22&amp;txt=%5Bimg%5D" alt="Generic placeholder image">
+            <img class="media-object img-post-user" ng-src="{{post.idUsuario.foto}}"  alt="Generic placeholder image">
           </a>
         </div>
+
         <div class="media-body">
-          <h4 class="media-heading">Some Person said</h4>
-          <p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong.</p>
-          <img src="../assets/images/login-background.jpg" class="img-responsive" alt="">
-          <p><a href="#">Replay</a> <a href="#">Share</a></p>
-          <p class="small">2 Comments</p>
-          <div class="media">
+          <h4 class="media-heading">{{post.idUsuario.nome}} disse</h4>
+          <p>{{post.texto}}</p>
+          <img ng-src="{{post.foto}}" class="img-responsive" alt="">
+          <p><a href="" ng-click="showComentarPost(post.id)">Comentar</a> <a href="#">Curtir</a></p>
+
+          <form class="form-horizontal form-post" novalidate ng-if="showComentar && postComentar == post.id" ng-submit="comentar(comentario, post.id)">
+            <div class="form-group">
+              <label for="texto-comentario" class="col-sm-2 control-label">Texto</label>
+              <div class="col-sm-10">
+                <textarea class="form-control" rows="5" name="texto" placeholder="Dank meme" required ng-model="comentario.texto"></textarea>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="foto" class="col-sm-2 control-label">Foto</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" name="foto-comentario" placeholder="http://foto.jpg" required ng-model="comentario.foto">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-md-offset-2 col-md-10">
+                <button type="submit" class="btn btn-primary">Postar</button>
+              </div>
+            </div>
+          </form>
+
+          <p class="small">{{post.qtoComentarios}} comentarios</p>
+          <div class="media" ng-repeat="comentario in post.comentarios">
             <div class="media-left">
               <a href="#">
-                <img class="media-object" src="https://placeholdit.imgix.net/~text?w=100&amp;h=100&amp;txtsize=22&amp;txt=%5Bimg%5D" alt="Generic placeholder image">
+                <img class="img-post-user" ng-src="{{comentario.idUsuario.foto}}" alt="Generic placeholder image">
               </a>
             </div>
             <div class="media-body">
-              <h4 class="media-heading">Some Person said</h4>
-              <p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong.</p>
+              <h4 class="media-heading">{{comentario.idUsuario.nome}}</h4>
+              <p>{{comentario.texto}}</p>
+              <img ng-src="{{comentario.foto}}" class="img-responsive" alt="">
             </div>
           </div>
         </div>

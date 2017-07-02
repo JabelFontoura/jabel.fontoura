@@ -15,4 +15,6 @@ public interface AmigosRepository extends CrudRepository<Amigos, BigDecimal>{
   
   List<Amigos> findAllByIdUsuario(Usuario idUsuario);
   
+  List<Amigos> findAllByIdUsuarioAndAceito(Usuario idUsuario, Character aceito);
+  
 }

@@ -5,11 +5,12 @@ angular.module('app').controller('UsuarioController', function ($scope, $locatio
   });
 
   $scope.criar = (usuario) => {
-    usuario.id = 0;
     usuarioService.create(usuario)
       .then(response => {
-        toastr.success('Usuario criado com sucesso');
-        $location.path('/');
+        $scope.logar(usuario);
+        usuarioService.getLogged()
+          .then(response => console.log(response))
+          .catch(error => console.log(error));
       })
       .catch(error => console.log());
   }
@@ -19,7 +20,7 @@ angular.module('app').controller('UsuarioController', function ($scope, $locatio
       .then(
         function (response) {
           $scope.logado = true;
-          toastr.success(`Bem vindo ${response.nome}`);
+          $location.path('/');
         },
         function (response) {
           $scope.logado = false;

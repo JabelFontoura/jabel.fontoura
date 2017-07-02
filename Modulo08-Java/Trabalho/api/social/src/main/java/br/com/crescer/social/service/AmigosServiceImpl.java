@@ -18,6 +18,15 @@ public class AmigosServiceImpl implements AmigosService {
   
   @Override
   public Amigos save(Amigos a) {
+    if(a != null) {
+      if(a.getAceito().equals('A')){
+        atualizarAmizade(a);
+      }else if(a.getAceito().equals('R')){
+        repositorio.delete(a);
+        return null;
+      }
+    }
+    
     return repositorio.save(a);
   }
 
@@ -32,6 +41,14 @@ public class AmigosServiceImpl implements AmigosService {
     usuario.setId(idUsuario);
     
     return repositorio.findAllByIdUsuario(usuario);
+  }
+  
+  @Override
+  public List<Amigos> findAllByIdUsuarioAndAceito(BigDecimal idUsuario, Character aceito) {
+    final Usuario usuario = new Usuario();
+    usuario.setId(idUsuario);
+    
+    return repositorio.findAllByIdUsuarioAndAceito(usuario, aceito);
   }
 
   @Override
@@ -51,7 +68,15 @@ public class AmigosServiceImpl implements AmigosService {
     
     return repositorio.countByIdUsuarioAndAceito(usuario, aceito);
   }
-
-
   
+  private void atualizarAmizade(Amigos amigos) {
+    Amigos amizadeInvertida = new Amigos();
+    
+    amizadeInvertida.setId(BigDecimal.ZERO);
+    amizadeInvertida.setIdUsuario(amigos.getIdAmigo());
+    amizadeInvertida.setIdAmigo(amigos.getIdUsuario());
+    amizadeInvertida.setAceito('A');
+    
+    repositorio.save(amizadeInvertida);
+  }
 }

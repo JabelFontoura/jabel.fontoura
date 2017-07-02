@@ -2,7 +2,7 @@ angular.module('app').config(($routeProvider) => {
 	$routeProvider
 	.when('/', {
 		templateUrl: 'partials/home.html',
-		controller: 'HomeController'
+		controller: 'HomeController',
 	})
 	.when('/amigo/:id', {
 		templateUrl: 'partials/home.html',

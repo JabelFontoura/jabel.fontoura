@@ -2,18 +2,22 @@ package br.com.crescer.social.model;
 
  // @author Jabel
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.SEQUENCE;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -37,6 +41,8 @@ public class Post implements Serializable {
   @Id
   @Basic(optional = false)
   @NotNull
+  @GeneratedValue(strategy = SEQUENCE, generator = "POST_SEQ")
+  @SequenceGenerator(name = "POST_SEQ", sequenceName = "POST_SEQ")
   @Column(name = "ID")
   private BigDecimal id;
   @Size(max = 400)
@@ -48,6 +54,7 @@ public class Post implements Serializable {
   @JoinColumn(name = "ID_USUARIO", referencedColumnName = "ID")
   @ManyToOne
   private Usuario idUsuario;
+  @JsonIgnore
   @OneToMany(mappedBy = "idPost")
   private Collection<Comentario> comentarioCollection;
   @OneToMany(mappedBy = "idPost")

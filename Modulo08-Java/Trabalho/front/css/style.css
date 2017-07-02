@@ -92,3 +92,11 @@ body {
   text-decoration: none;
   color: white;
 }
+
+.form-post .btn {
+  float: right;
+}
+
+.media .img-post-user {
+  width: 100px;
+}

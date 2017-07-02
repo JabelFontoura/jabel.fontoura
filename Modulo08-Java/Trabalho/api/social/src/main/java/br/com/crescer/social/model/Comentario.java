@@ -7,17 +7,18 @@ import java.math.BigDecimal;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.SEQUENCE;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-
-
  
 @Entity
 @Table(name = "COMENTARIO")
@@ -34,6 +35,8 @@ public class Comentario implements Serializable {
   @Id
   @Basic(optional = false)
   @NotNull
+  @GeneratedValue(strategy = SEQUENCE, generator = "COMENTARIO_SEQ")
+  @SequenceGenerator(name = "COMENTARIO_SEQ", sequenceName = "COMENTARIO_SEQ")
   @Column(name = "ID")
   private BigDecimal id;
   @Size(max = 400)
