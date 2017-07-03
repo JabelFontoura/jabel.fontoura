@@ -2,8 +2,6 @@ package br.com.crescer.social.controller;
 
  // @author Jabel
 import br.com.crescer.social.model.Curtida;
-import br.com.crescer.social.model.Post;
-import br.com.crescer.social.model.Usuario;
 import br.com.crescer.social.service.interfaces.CurtidaService;
 import java.math.BigDecimal;
 import java.util.List;

@@ -48,7 +48,7 @@ public class AmigosServiceImpl implements AmigosService {
     final Usuario usuario = new Usuario();
     usuario.setId(idUsuario);
     
-    return repositorio.findAllByIdUsuarioAndAceito(usuario, aceito);
+    return repositorio.findByIdAmigoAndAceito(usuario, aceito);
   }
 
   @Override
@@ -66,7 +66,7 @@ public class AmigosServiceImpl implements AmigosService {
     final Usuario usuario = new Usuario();
     usuario.setId(idUsuario);
     
-    return repositorio.countByIdUsuarioAndAceito(usuario, aceito);
+    return repositorio.countByIdAmigoAndAceito(usuario, aceito);
   }
   
   private void atualizarAmizade(Amigos amigos) {

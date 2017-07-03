@@ -16,6 +16,10 @@ angular.module('app').config(($routeProvider) => {
 		templateUrl: 'partials/cadastro.html',
 		controller: 'UsuarioController'
 	})
+	.when('/pessoas', {
+		templateUrl: 'partials/pessoas.html',
+		controller: 'PessoasController'
+	})
 	.when('/amigos', {
 		templateUrl: 'partials/amigos.html',
 		controller: 'AmigosController'

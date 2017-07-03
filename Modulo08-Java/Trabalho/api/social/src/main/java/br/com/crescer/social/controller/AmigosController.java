@@ -46,7 +46,7 @@ public class AmigosController {
   }
   
   @GetMapping(value = "/lista")
-  public List<Amigos> getAmigos(@RequestParam BigDecimal idUsuario, @RequestParam(required = false) Character aceito) {
+  public List<Amigos> getAmigos(@RequestParam BigDecimal idUsuario, @RequestParam Character aceito) {
     return service.findAllByIdUsuarioAndAceito(idUsuario, aceito);
   }
   

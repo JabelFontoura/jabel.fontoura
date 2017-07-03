@@ -32,10 +32,8 @@ angular.module('app').controller('HomeController', function ($scope, $location, 
       idPost: { id: idPost },
       idUsuario: { id: $scope.usuario.id }
     })
-      .then(response => loadPosts())
+      .then(response => console.log(response))
       .catch(error => console.log(error));
-
-    dados = {};
   }
 
   $scope.descurtir = (curtidas) => {
@@ -49,6 +47,22 @@ angular.module('app').controller('HomeController', function ($scope, $location, 
       .catch(error => console.log(error));
   }
 
+  $scope.aceitar = (solicitacao) => {
+    console.log(solicitacao);
+    solicitacao.aceito = 'A';
+    amigosService.create(solicitacao)
+      .then()
+      .catch(error => console.log(error));
+
+  }
+
+  $scope.rejeitar = (solicitacao) => {
+    solicitacao.aceito = 'R';
+    amigosService.create()
+      .then()
+      .catch(error => console.log(error));
+  }
+
   function init() {
     $scope.showComentar = false;
     $scope.postComentar = null;
@@ -59,6 +73,7 @@ angular.module('app').controller('HomeController', function ($scope, $location, 
 
         loadQtoSolicitacoes($scope.usuario.id, 'P');
         loadPosts($scope.usuario.id);
+        loadSolicitacoes($scope.usuario.id, 'P');
       })
       .catch(error => {
         console.log(error);
@@ -69,6 +84,12 @@ angular.module('app').controller('HomeController', function ($scope, $location, 
   function loadQtoSolicitacoes(id, aceito) {
     amigosService.countAceitos(id, aceito)
       .then(response => $scope.usuario.qtoSolicitacoes = response.data)
+      .catch(error => console.log(error));
+  }
+
+  function loadSolicitacoes(id, aceito) {
+    amigosService.findAllByIdUsuario(id, aceito)
+      .then(response => $scope.usuario.solicitacoes = response.data)
       .catch(error => console.log(error));
   }
 

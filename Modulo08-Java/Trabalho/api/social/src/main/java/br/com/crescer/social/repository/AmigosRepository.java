@@ -9,12 +9,12 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface AmigosRepository extends CrudRepository<Amigos, BigDecimal>{
   
-  Long countByIdUsuarioAndAceito(Usuario idUsuario, Character aceito);
+  Long countByIdAmigoAndAceito(Usuario idUsuario, Character aceito);
   
   Amigos findByIdUsuarioAndIdAmigo(Usuario idUsuario, Usuario idAmigo);
   
   List<Amigos> findAllByIdUsuario(Usuario idUsuario);
   
-  List<Amigos> findAllByIdUsuarioAndAceito(Usuario idUsuario, Character aceito);
+  List<Amigos> findByIdAmigoAndAceito(Usuario idUsuario, Character aceito);
   
 }

@@ -40,7 +40,6 @@ public class UsuarioController {
     hashMap.put("dados", u);
     
     return hashMap;
-
   }
 
   @GetMapping(value = "/{id}")
@@ -51,6 +50,11 @@ public class UsuarioController {
   @GetMapping
   public List<Usuario> get() {
     return service.findAll();
+  }
+  
+  @GetMapping(value = "/pessoas/{id}")
+  public List<Usuario> getNaoAmigos(@PathVariable BigDecimal id) {
+    return service.findByIdUsuarioNotIn(id);
   }
 
   @PostMapping

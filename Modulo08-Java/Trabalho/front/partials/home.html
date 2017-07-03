@@ -15,7 +15,8 @@
         </a>
         <nav class="nav-pills nav-stacked">
           <h4><a href="#">{{usuario.nome}}</a></h4>
-          <h4><a href="#!/amigos">Amigos</a></h4>
+          <h4><a href="#!/amigos">Seus Amigos</a></h4>
+          <h4><a href="#!/pessoas">Encontre novos amigos</a></h4>
           <h4><a href="#"> Solicitações ({{usuario.qtoSolicitacoes}}) </a></h4>
         </nav>
       </div>
@@ -97,10 +98,20 @@
         </div>
       </div>
     </section>
-    <aside class="col-md-3">
-      <img src="https://placeholdit.imgix.net/~text?w=300&amp;h=440&amp;txtsize=65&amp;txt=%5Bads%5D" class="img-responsive" alt="">
-      <br>
-      <img src="https://placeholdit.imgix.net/~text?w=300&amp;h=440&amp;txtsize=65&amp;txt=%5Bads%5D" class="img-responsive" alt="">
+    <aside class="col-md-3 pendentes">
+      <div class="solicitacoes">
+					<span class="bold">Solicitações de amizade</span>
+					<div class="solicitacao clearfix" ng-repeat="solicitacao in  usuario.solicitacoes">
+						<img class="user-pic-solic" ng-src="{{solicitacao.idUsuario.foto}}" alt="">
+						<div class="bold user-add">{{solicitacao.idUsuario.nome}}</div>
+						<button type="button" class="btn btn-success" ng-click="aceitar(solicitacao)">
+              <span class="glyphicon glyphicon-ok" ng-click="rejeitar(solicitacao)"></span>
+          </button>
+          <button type="button" class="btn btn-danger">
+              <span class="glyphicon glyphicon-remove"></span>
+          </button>
+					</div>
+				</div>
     </aside>
   </main>
   <hr>

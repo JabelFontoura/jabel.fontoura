@@ -6,7 +6,8 @@ angular.module('app').factory('usuarioService', function ($http) {
     findAll: listar,
     create: criar,
     getLogged: getLogged,
-    findById: buscarPorId
+    findById: buscarPorId,
+    findByNaoAmigo: listarPessoas
   }
 
   function getLogged() {
@@ -15,6 +16,10 @@ angular.module('app').factory('usuarioService', function ($http) {
 
   function listar() {
     return $http.get(url);
+  }
+
+  function listarPessoas(id) {
+    return $http.get(`${url}/pessoas/${id}`);
   }
 
   function buscarPorId(id) {

@@ -14,4 +14,6 @@ public interface UsuarioService {
   Usuario findById(BigDecimal id);
   
   Usuario findByEmail(String email);
+  
+  List<Usuario> findByIdUsuarioNotIn(BigDecimal id);
 }
