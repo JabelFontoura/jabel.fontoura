@@ -17,10 +17,12 @@
       </div>
     </form>
 
-    <section class="col-md-2">
+    <section class="col-md-2" ng-repeat="amigo in amigos | filter:buscaAmigos">
       <div class="media">
-        <img src="../assets/images/login-background.jpg" class="img-responsive" alt="">
-        <span>Amigo</span>
+        <a href="#!/amigo/{{amigo.idAmigo.id}}">
+          <img ng-src="{{amigo.idAmigo.foto}}" class="img-responsive" alt="">
+          <span>{{amigo.idAmigo.nome}}</span>
+        </a>
       </div>
     </section>
   </div>
