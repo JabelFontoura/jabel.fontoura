@@ -1,11 +1,11 @@
-angular.module('app').controller('HomeController', function ($scope, $location, authService, usuarioService, amigosService, postService, comentarioService, toastr, $localStorage) {
+angular.module('app').controller('HomeController', function ($scope, $location, authService, usuarioService, amigosService, postService, comentarioService, curtidaService, toastr, $localStorage) {
 
   init();
 
   $scope.postar = (post) => {
     post.idUsuario = { id: $scope.usuario.id };
     postService.create(post)
-      .then(response => init())
+      .then(response => loadPosts($scope.usuario.id))
       .catch(error => console.log(error));
 
     post = {};
@@ -16,7 +16,7 @@ angular.module('app').controller('HomeController', function ($scope, $location, 
     comentario.idPost = { id: idPost };
 
     comentarioService.create(comentario)
-      .then(response => init())
+      .then(response => loadPosts($scope.usuario.id))
       .catch(error => console.log(error));
 
     post = {};
@@ -25,6 +25,28 @@ angular.module('app').controller('HomeController', function ($scope, $location, 
   $scope.showComentarPost = (id) => {
     $scope.showComentar = true;
     $scope.postComentar = id;
+  }
+
+  $scope.curtir = (idPost) => {
+    curtidaService.create({
+      idPost: { id: idPost },
+      idUsuario: { id: $scope.usuario.id }
+    })
+      .then(response => loadPosts())
+      .catch(error => console.log(error));
+
+    dados = {};
+  }
+
+  $scope.descurtir = (curtidas) => {
+    let idCurtida;
+    curtidas.forEach(item => {
+      if(item.idUsuario.id === $scope.usuario.id) idCurtida = item.id;
+    });
+
+    curtidaService.delete(idCurtida)
+      .then(response => loadPosts())
+      .catch(error => console.log(error));
   }
 
   function init() {
@@ -56,15 +78,16 @@ angular.module('app').controller('HomeController', function ($scope, $location, 
         $scope.posts = response.data;
 
         $scope.posts.forEach(item => {
-          loadCountPost(item);
-          
+          loadCountCommentsPost(item);
+          loadCountLikesPost(item);
           loadPostComments(item);
+          loadLikedPosts(item);
         });
       })
       .catch(error => console.log(error));
   }
 
-  function loadCountPost(item) {
+  function loadCountCommentsPost(item) {
     comentarioService.countByIdPost(item.id)
       .then(response => item.qtoComentarios = response.data)
       .catch(error => console.log(error));
@@ -76,11 +99,19 @@ angular.module('app').controller('HomeController', function ($scope, $location, 
       .catch(error => console.log(error));
   }
 
-  function loadFriends(id) {
-    amigosService.findAllByIdUsuario(id)
-      .then(response => {
-
-      })
+  function loadCountLikesPost(item) {
+    curtidaService.countByIdPost(item.id)
+      .then(response => item.qtoCurtidas = response.data)
+      .catch(error => console.log(error));
   }
-
+  function loadLikedPosts(item) {
+    curtidaService.findByIdPost(item.id)
+      .then(response => {
+        item.curtidas = response.data;
+        item.curtidas.forEach(e => {
+          if(e.idUsuario.id === $scope.usuario.id) item.isLiked = true;
+        });
+      })
+      .catch(error => console.log(error));
+  }
 });

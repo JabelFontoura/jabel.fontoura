@@ -79,6 +79,7 @@ public class Usuario implements Serializable {
   @JsonIgnore
   @OneToMany(mappedBy = "idUsuario")
   private Collection<Comentario> comentarioCollection;
+  @JsonIgnore
   @OneToMany(mappedBy = "idUsuario")
   private Collection<Curtida> curtidaCollection;
 

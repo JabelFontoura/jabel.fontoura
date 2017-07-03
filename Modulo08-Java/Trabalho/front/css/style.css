@@ -100,3 +100,7 @@ body {
 .media .img-post-user {
   width: 100px;
 }
+
+.media .img-comment-user {
+  width: 60px;
+}

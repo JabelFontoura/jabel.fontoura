@@ -54,7 +54,11 @@
           <h4 class="media-heading">{{post.idUsuario.nome}} disse</h4>
           <p>{{post.texto}}</p>
           <img ng-src="{{post.foto}}" class="img-responsive" alt="">
-          <p><a href="" ng-click="showComentarPost(post.id)">Comentar</a> <a href="#">Curtir</a></p>
+          <p>
+            <a href="" ng-click="showComentarPost(post.id)">Comentar</a> 
+            <a href="#" ng-if="!post.isLiked" ng-click="curtir(post.id)">Curtir</a>
+            <a href="#" ng-if="post.isLiked" ng-click="descurtir(post.curtidas)">Descurtir</a>
+          </p>
 
           <form class="form-horizontal form-post" novalidate ng-if="showComentar && postComentar == post.id" ng-submit="comentar(comentario, post.id)">
             <div class="form-group">
@@ -77,10 +81,11 @@
           </form>
 
           <p class="small">{{post.qtoComentarios}} comentarios</p>
+          <p class="small">{{post.qtoCurtidas}} curtidas</p>
           <div class="media" ng-repeat="comentario in post.comentarios">
             <div class="media-left">
               <a href="#">
-                <img class="img-post-user" ng-src="{{comentario.idUsuario.foto}}" alt="Generic placeholder image">
+                <img class="img-comment-user" ng-src="{{comentario.idUsuario.foto}}" alt="Generic placeholder image">
               </a>
             </div>
             <div class="media-body">

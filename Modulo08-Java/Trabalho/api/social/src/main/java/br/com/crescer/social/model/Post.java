@@ -57,6 +57,7 @@ public class Post implements Serializable {
   @JsonIgnore
   @OneToMany(mappedBy = "idPost")
   private Collection<Comentario> comentarioCollection;
+  @JsonIgnore
   @OneToMany(mappedBy = "idPost")
   private Collection<Curtida> curtidaCollection;
 
