@@ -1,6 +1,6 @@
 angular.module('app').factory('usuarioService', function ($http) {
 
-  const url = 'http://localhost:9090/api/usuario';
+  const url = 'http://10.99.0.167:9090/api/usuario';
 
   return {
     findAll: listar,

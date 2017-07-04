@@ -1,6 +1,6 @@
 angular.module('app').factory('amigosService', function ($http) {
 
-  const url = 'http://localhost:9090/api/amigos';
+  const url = 'http://10.99.0.167:9090/api/amigos';
 
   return {
     create: criar,

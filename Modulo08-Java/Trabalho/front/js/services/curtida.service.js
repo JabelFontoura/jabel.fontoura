@@ -1,6 +1,6 @@
 angular.module('app').factory('curtidaService', function ($http) {
 
-  const url = 'http://localhost:9090/api/curtida';
+  const url = 'http://10.99.0.167:9090/api/curtida';
 
   return {
     findByIdPost: listarPorIdPost,

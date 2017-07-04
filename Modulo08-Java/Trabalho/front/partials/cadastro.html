@@ -9,19 +9,19 @@
   <div class="cadastro col-md-8 col-xs-12">
     <form class="form-horizontal" novalidate ng-submit="criar(usuario)">
       <div class="form-group">
-        <label for="nome" class="col-sm-2 control-label">Nome</label>
+        <label for="nome" class="col-sm-2 control-label">Nome *</label>
         <div class="col-sm-10">
-          <input type="nome" class="form-control" name="nome" placeholder="Nome" required ng-model="usuario.nome">
+          <input type="nome" class="form-control" maxlength="50" name="nome" placeholder="Nome" required ng-model="usuario.nome">
         </div>
       </div>
       <div class="form-group">
-        <label for="email" class="col-sm-2 control-label">Email</label>
+        <label for="email" class="col-sm-2 control-label">Email *</label>
         <div class="col-sm-10">
-          <input type="email" class="form-control" name="email" placeholder="Email" required ng-model="usuario.email">
+          <input type="email" class="form-control"  maxlength="50" name="email" placeholder="Email" required ng-model="usuario.email">
         </div>
       </div>
       <div class="form-group">
-        <label for="senha" class="col-sm-2 control-label">Senha</label>
+        <label for="senha" class="col-sm-2 control-label">Senha *</label>
         <div class="col-sm-10">
           <input type="password" class="form-control" name="senha" placeholder="Senha" required ng-model="usuario.senha">
         </div>

@@ -1,6 +1,6 @@
 angular.module('app').factory('comentarioService', function ($http) {
 
-  const url = 'http://localhost:9090/api/comentario';
+  const url = 'http://10.99.0.167:9090/api/comentario';
 
   return {
     findAll: listar,

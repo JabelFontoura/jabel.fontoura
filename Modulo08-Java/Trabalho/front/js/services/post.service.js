@@ -1,6 +1,6 @@
 angular.module('app').factory('postService', function ($http) {
 
-  const url = 'http://localhost:9090/api/post';
+  const url = 'http://10.99.0.167:9090/api/post';
 
   return {
     findAll: listar,
