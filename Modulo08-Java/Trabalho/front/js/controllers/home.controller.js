@@ -5,7 +5,7 @@ angular.module('app').controller('HomeController', function ($scope, $location, 
   $scope.postar = (post) => {
     post.idUsuario = { id: $scope.usuario.id };
     postService.create(post)
-      .then(response => loadPosts($scope.usuario.id))
+      .then(response => loadPosts($scope.usuario.id, $scope.pagina))
       .catch(error => console.log(error));
 
     post = {};
@@ -16,7 +16,7 @@ angular.module('app').controller('HomeController', function ($scope, $location, 
     comentario.idPost = { id: idPost };
 
     comentarioService.create(comentario)
-      .then(response => loadPosts($scope.usuario.id))
+      .then(response => loadPosts($scope.usuario.id, $scope.pagina))
       .catch(error => console.log(error));
 
     post = {};
@@ -32,7 +32,7 @@ angular.module('app').controller('HomeController', function ($scope, $location, 
       idPost: { id: idPost },
       idUsuario: { id: $scope.usuario.id }
     })
-      .then(response => console.log(response))
+      .then(response => loadPosts($scope.usuario.id, $scope.pagina))
       .catch(error => console.log(error));
   }
 
@@ -43,7 +43,7 @@ angular.module('app').controller('HomeController', function ($scope, $location, 
     });
 
     curtidaService.delete(idCurtida)
-      .then(response => loadPosts())
+      .then(response => loadPosts($scope.usuario.id, $scope.pagina))
       .catch(error => console.log(error));
   }
 
@@ -64,9 +64,14 @@ angular.module('app').controller('HomeController', function ($scope, $location, 
     location.reload();
   }
 
+  $scope.avancar = () => {
+    loadPosts($scope.usuario.id, ++$scope.pagina);
+  }
+
   function init() {
     $scope.showComentar = false;
     $scope.postComentar = null;
+    $scope.pagina = 0;
 
     usuarioService.getLogged()
       .then(response => {
@@ -74,7 +79,7 @@ angular.module('app').controller('HomeController', function ($scope, $location, 
         $scope.usuario.isInHome = true;
 
         loadQtoSolicitacoes($scope.usuario.id, 'P');
-        loadPosts($scope.usuario.id);
+        loadPosts($scope.usuario.id, $scope.pagina);
         loadSolicitacoes($scope.usuario.id, 'P');
       })
       .catch(error => {
@@ -95,10 +100,11 @@ angular.module('app').controller('HomeController', function ($scope, $location, 
       .catch(error => console.log(error));
   }
 
-  function loadPosts(id) {
-    postService.findAllByIdUsuario(id)
+  function loadPosts(id, pagina) {
+    postService.findAllByIdUsuario(id, pagina)
       .then(response => {
-        $scope.posts = response.data;
+        $scope.postsPages = response.data;
+        $scope.posts = $scope.postsPages.content;
 
         $scope.posts.forEach(item => {
           loadCountCommentsPost(item);

@@ -11,11 +11,14 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
  
@@ -40,8 +43,8 @@ public class PostController {
 //    return postService.findAllByIdUsuario(id);
 //  }
   
-  @GetMapping(value = "/lista/{id}")
-  public List<Post> getPostByIdUsuario(@PathVariable BigDecimal id) {
+  @GetMapping(value = "/lista")
+  public Page<Post> getPostByIdUsuario(@RequestParam BigDecimal id, @RequestParam Integer pagina) {
     List<Amigos> amigos = amigosSerivce.findAllByIdUsuario(id);
     List<Usuario> usuarios = new ArrayList<>();
     
@@ -51,8 +54,7 @@ public class PostController {
       usuarios.add(a.getIdAmigo());
     });
     
-    
-    return postService.findByIdUsuarioInOrderByIdDesc(usuarios);
+    return postService.findByIdUsuarioInOrderByIdDesc(usuarios, new PageRequest(pagina, 20));
   }
   
   @PostMapping

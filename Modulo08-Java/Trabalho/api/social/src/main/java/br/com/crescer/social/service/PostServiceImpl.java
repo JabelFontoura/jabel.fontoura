@@ -8,6 +8,8 @@ import br.com.crescer.social.service.interfaces.PostService;
 import java.math.BigDecimal;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -40,7 +42,7 @@ public class PostServiceImpl implements PostService {
   }
 
   @Override
-  public List<Post> findByIdUsuarioInOrderByIdDesc(List<Usuario> usuarios) {
-    return repositorio.findByIdUsuarioInOrderByIdDesc(usuarios);
+  public Page<Post> findByIdUsuarioInOrderByIdDesc(List<Usuario> usuarios, Pageable pageable) {
+    return repositorio.findByIdUsuarioInOrderByIdDesc(usuarios, pageable);
   }
 }

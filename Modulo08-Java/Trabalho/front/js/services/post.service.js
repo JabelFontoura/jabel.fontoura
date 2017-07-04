@@ -13,8 +13,8 @@ angular.module('app').factory('postService', function ($http) {
     return $http.get(url);
   }
 
-   function listarPorIdUsuario(id) {
-    return $http.get(`${url}/lista/${id}`);
+   function listarPorIdUsuario(id, pagina) {
+    return $http.get(`${url}/lista?id=${id}&pagina=${pagina}`);
   }
 
   function buscarPorId(id) {

@@ -5,6 +5,8 @@ import br.com.crescer.social.model.Post;
 import br.com.crescer.social.model.Usuario;
 import java.math.BigDecimal;
 import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
  
 public interface PostService {
   
@@ -16,5 +18,5 @@ public interface PostService {
 
   List<Post> findAllByIdUsuario(BigDecimal id);
   
-  List<Post> findByIdUsuarioInOrderByIdDesc(List<Usuario> usuarios);
+  Page<Post> findByIdUsuarioInOrderByIdDesc(List<Usuario> usuarios, Pageable pageable);
 }

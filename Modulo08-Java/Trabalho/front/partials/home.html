@@ -15,8 +15,8 @@
         </a>
         <nav class="nav-pills nav-stacked">
           <h4><a href="#">{{usuario.nome}}</a></h4>
-          <h4><a href="#!/amigos">Seus Amigos</a></h4>
-          <h4><a href="#!/pessoas">Encontre novos amigos</a></h4>
+          <h4 ng-if="usuario.isInHome"><a href="#!/amigos">Seus Amigos</a></h4>
+          <h4 ng-if="usuario.isInHome"><a href="#!/pessoas">Encontre novos amigos</a></h4>
           <h4><a href="#"> Solicitações ({{usuario.qtoSolicitacoes}}) </a></h4>
           <h4 ng-if="usuario.isInHome"><a href="#!/editar"> Editar perfil</a></h4>
           <h4 ng-if="usuario.isInHome"><a href="" ng-click="logout()">Logout</a></h4>
@@ -118,6 +118,9 @@
           </div>
         </div>
       </div>
+    </section>
+    <section class="col-md-6 col-xs-offset-3" ng-if="!postsPages.last">
+        <button class="btn btn-default extended" type="button" ng-click="avancar()">Veja mais</button>
     </section>
   </main>
   <hr>
