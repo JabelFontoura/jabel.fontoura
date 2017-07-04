@@ -53,7 +53,7 @@ angular.module('app').controller('HomeController', function ($scope, $location, 
     amigosService.create(solicitacao)
       .then()
       .catch(error => console.log(error));
-
+    location.reload();
   }
 
   $scope.rejeitar = (solicitacao) => {
@@ -61,6 +61,7 @@ angular.module('app').controller('HomeController', function ($scope, $location, 
     amigosService.create()
       .then()
       .catch(error => console.log(error));
+    location.reload();
   }
 
   function init() {
@@ -70,6 +71,7 @@ angular.module('app').controller('HomeController', function ($scope, $location, 
     usuarioService.getLogged()
       .then(response => {
         $scope.usuario = response.data.dados;
+        $scope.usuario.isInHome = true;
 
         loadQtoSolicitacoes($scope.usuario.id, 'P');
         loadPosts($scope.usuario.id);
@@ -88,7 +90,7 @@ angular.module('app').controller('HomeController', function ($scope, $location, 
   }
 
   function loadSolicitacoes(id, aceito) {
-    amigosService.findAllByIdUsuario(id, aceito)
+    amigosService.findAllByIdAmigo(id, aceito)
       .then(response => $scope.usuario.solicitacoes = response.data)
       .catch(error => console.log(error));
   }

@@ -42,7 +42,7 @@ public class Post implements Serializable {
   @Basic(optional = false)
   @NotNull
   @GeneratedValue(strategy = SEQUENCE, generator = "POST_SEQ")
-  @SequenceGenerator(name = "POST_SEQ", sequenceName = "POST_SEQ")
+  @SequenceGenerator(name = "POST_SEQ", sequenceName = "POST_SEQ", allocationSize = 1)
   @Column(name = "ID")
   private BigDecimal id;
   @Size(max = 400)

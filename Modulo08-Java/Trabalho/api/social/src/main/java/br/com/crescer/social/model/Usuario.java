@@ -45,7 +45,7 @@ public class Usuario implements Serializable {
   @Basic(optional = true)
   @NotNull
   @GeneratedValue(strategy = SEQUENCE, generator = "USUARIO_SEQ")
-  @SequenceGenerator(name = "USUARIO_SEQ", sequenceName = "USUARIO_SEQ")
+  @SequenceGenerator(name = "USUARIO_SEQ", sequenceName = "USUARIO_SEQ", allocationSize = 1)
   @Column(name = "ID")
   private BigDecimal id;
   @Size(max = 50)

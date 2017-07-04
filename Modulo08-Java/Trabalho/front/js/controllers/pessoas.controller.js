@@ -9,6 +9,8 @@ angular.module('app').controller('PessoasController', function ($scope, $locatio
       aceito: "P"
     }).then(response => console.log(response))
     .catch(error => console.log(error));
+
+    location.reload();
   }
 
   function init() {

@@ -18,9 +18,30 @@
           <h4><a href="#!/amigos">Seus Amigos</a></h4>
           <h4><a href="#!/pessoas">Encontre novos amigos</a></h4>
           <h4><a href="#"> Solicitações ({{usuario.qtoSolicitacoes}}) </a></h4>
+          <h4 ng-if="usuario.isInHome"><a href="#!/editar"> Editar perfil</a></h4>
+          <h4 ng-if="usuario.isInHome"><a href="" ng-click="logout()">Logout</a></h4>
         </nav>
       </div>
     </nav>
+
+     <aside class="col-md-3 col-xs-12 pendentes">
+      <div class="solicitacoes">
+					<span class="bold">Solicitações de amizade</span>
+          <div class="solicitacao clearfix" ng-if="usuario.solicitacoes.length === 0">
+            <span>Você não possui nenhuma solicitação pendente</span>
+          </div>
+					<div class="solicitacao clearfix" ng-repeat="solicitacao in  usuario.solicitacoes">
+						<img class="user-pic-solic" ng-src="{{solicitacao.idUsuario.foto}}" alt="">
+						<div class="bold user-add">{{solicitacao.idUsuario.nome}}</div>
+						<button type="button" class="btn btn-success" ng-click="aceitar(solicitacao)">
+              <span class="glyphicon glyphicon-ok" ng-click="rejeitar(solicitacao)"></span>
+          </button>
+          <button type="button" class="btn btn-danger">
+              <span class="glyphicon glyphicon-remove"></span>
+          </button>
+					</div>
+				</div>
+    </aside>
     <section class="col-md-6">
 
       <form class="form-horizontal form-post" novalidate ng-submit="postar(post)">
@@ -46,7 +67,7 @@
 
       <div class="media" ng-repeat="post in posts">
         <div class="media-left">
-          <a href="#">
+          <a ng-href="#!/amigo/{{post.idUsuario.id}}">
             <img class="media-object img-post-user" ng-src="{{post.idUsuario.foto}}"  alt="Generic placeholder image">
           </a>
         </div>
@@ -85,7 +106,7 @@
           <p class="small">{{post.qtoCurtidas}} curtidas</p>
           <div class="media" ng-repeat="comentario in post.comentarios">
             <div class="media-left">
-              <a href="#">
+              <a href="#!/amigo/{{comentario.idUsuario.id}}">
                 <img class="img-comment-user" ng-src="{{comentario.idUsuario.foto}}" alt="Generic placeholder image">
               </a>
             </div>
@@ -98,21 +119,6 @@
         </div>
       </div>
     </section>
-    <aside class="col-md-3 pendentes">
-      <div class="solicitacoes">
-					<span class="bold">Solicitações de amizade</span>
-					<div class="solicitacao clearfix" ng-repeat="solicitacao in  usuario.solicitacoes">
-						<img class="user-pic-solic" ng-src="{{solicitacao.idUsuario.foto}}" alt="">
-						<div class="bold user-add">{{solicitacao.idUsuario.nome}}</div>
-						<button type="button" class="btn btn-success" ng-click="aceitar(solicitacao)">
-              <span class="glyphicon glyphicon-ok" ng-click="rejeitar(solicitacao)"></span>
-          </button>
-          <button type="button" class="btn btn-danger">
-              <span class="glyphicon glyphicon-remove"></span>
-          </button>
-					</div>
-				</div>
-    </aside>
   </main>
   <hr>
   <footer class="row">
@@ -121,8 +127,6 @@
     </div>
     <div class="col-md-6">
       <ul class="nav nav-pills pull-right">
-        <li><a href="#">Section 1</a></li>
-        <li><a href="#">Section 2</a></li>
       </ul>
     </div>
   </footer>

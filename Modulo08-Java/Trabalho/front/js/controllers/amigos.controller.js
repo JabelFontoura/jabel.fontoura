@@ -24,7 +24,7 @@ angular
           amigosService
             .findAllByIdUsuario($scope.usuario.id, "A")
             .then(response => $scope.amigos = response.data)
-            .then(error => console.log(error));
+            .catch(error => console.log(error));
         })
         .catch(error => $location.path("/login"));
 

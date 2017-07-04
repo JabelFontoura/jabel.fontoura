@@ -63,7 +63,7 @@ body {
   opacity: 1;
   background-color: #374036;
   background-image: url('../assets/images/cadastro-background.png');
-  background-size: 80%;
+  background-position: left bottom;
 }
 
 .cadastro {
@@ -74,6 +74,15 @@ body {
   padding-right: 5%;
   border: 1px solid black;
   background-color: #f9f9ef;
+}
+
+@media screen and (max-width: 400px) {
+  .cadastro {
+    width: 100%;
+    height: 100vh;
+    padding-top: 4%;
+    padding-right: 5%;
+  }
 }
 
 .header {
@@ -106,7 +115,8 @@ body {
 }
 
 .pendentes {
-  height: 50vh;
+  height: 100%;
+  float: right;
 }
 
 .solicitacoes {

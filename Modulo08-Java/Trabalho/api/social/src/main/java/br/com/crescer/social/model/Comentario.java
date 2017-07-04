@@ -36,7 +36,7 @@ public class Comentario implements Serializable {
   @Basic(optional = false)
   @NotNull
   @GeneratedValue(strategy = SEQUENCE, generator = "COMENTARIO_SEQ")
-  @SequenceGenerator(name = "COMENTARIO_SEQ", sequenceName = "COMENTARIO_SEQ")
+  @SequenceGenerator(name = "COMENTARIO_SEQ", sequenceName = "COMENTARIO_SEQ", allocationSize = 1)
   @Column(name = "ID")
   private BigDecimal id;
   @Size(max = 400)

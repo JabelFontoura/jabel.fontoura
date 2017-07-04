@@ -48,6 +48,14 @@ public class AmigosServiceImpl implements AmigosService {
     final Usuario usuario = new Usuario();
     usuario.setId(idUsuario);
     
+    return repositorio.findByIdUsuarioAndAceito(usuario, aceito);
+  }
+  
+  @Override
+  public List<Amigos> findAllByIdAmigoAndAceito(BigDecimal idUsuario, Character aceito) {
+    final Usuario usuario = new Usuario();
+    usuario.setId(idUsuario);
+    
     return repositorio.findByIdAmigoAndAceito(usuario, aceito);
   }
 

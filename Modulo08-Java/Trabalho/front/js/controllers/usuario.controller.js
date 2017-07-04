@@ -1,16 +1,11 @@
 angular.module('app').controller('UsuarioController', function ($scope, $location, authService, usuarioService, toastr, $localStorage) {
 
-  $scope.$on('$locationChangeStart', function(event) {
     init();
-  });
 
   $scope.criar = (usuario) => {
     usuarioService.create(usuario)
       .then(response => {
         $scope.logar(usuario);
-        usuarioService.getLogged()
-          .then(response => console.log(response))
-          .catch(error => console.log(error));
       })
       .catch(error => console.log());
   }
@@ -35,6 +30,13 @@ angular.module('app').controller('UsuarioController', function ($scope, $locatio
   }
 
   function init() {
+  usuarioService.getLogged()
+    .then(response => {
+      $scope.usuario = response.data.dados;
+      $scope.usuario.dataNascimento = new Date($scope.usuario.dataNascimento);
+    })
+    .catch(error => console.log(error));
+
     if($localStorage.usuarioLogado === null) {
       $scope.logado = false;
       $location.path('/login');

@@ -35,7 +35,7 @@ public class Amigos implements Serializable {
   @Basic(optional = false)
   @NotNull
   @GeneratedValue(strategy = SEQUENCE, generator = "AMIGOS_SEQ")
-  @SequenceGenerator(name = "AMIGOS_SEQ", sequenceName = "AMIGOS_SEQ")
+  @SequenceGenerator(name = "AMIGOS_SEQ", sequenceName = "AMIGOS_SEQ", allocationSize = 1)
   @Column(name = "ID")
   private BigDecimal id;
   @Column(name = "ACEITO")
