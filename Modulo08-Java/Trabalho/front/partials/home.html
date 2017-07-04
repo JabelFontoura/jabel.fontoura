@@ -34,9 +34,9 @@
 						<img class="user-pic-solic" ng-src="{{solicitacao.idUsuario.foto}}" alt="">
 						<div class="bold user-add">{{solicitacao.idUsuario.nome}}</div>
 						<button type="button" class="btn btn-success" ng-click="aceitar(solicitacao)">
-              <span class="glyphicon glyphicon-ok" ng-click="rejeitar(solicitacao)"></span>
+              <span class="glyphicon glyphicon-ok"></span>
           </button>
-          <button type="button" class="btn btn-danger">
+          <button type="button" class="btn btn-danger" ng-click="rejeitar(solicitacao)">
               <span class="glyphicon glyphicon-remove"></span>
           </button>
 					</div>

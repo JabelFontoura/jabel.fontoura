@@ -58,10 +58,10 @@ angular.module('app').controller('HomeController', function ($scope, $location, 
 
   $scope.rejeitar = (solicitacao) => {
     solicitacao.aceito = 'R';
-    amigosService.create()
+    amigosService.create(solicitacao)
       .then()
       .catch(error => console.log(error));
-    location.reload();
+    // location.reload();
   }
 
   $scope.avancar = () => {

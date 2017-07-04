@@ -15,6 +15,11 @@ public class AmigosServiceImpl implements AmigosService {
 
   @Autowired
   private AmigosRepository repositorio;
+
+  @Override
+  public void delete(BigDecimal id) {
+    repositorio.delete(id);
+  }
   
   @Override
   public Amigos save(Amigos a) {

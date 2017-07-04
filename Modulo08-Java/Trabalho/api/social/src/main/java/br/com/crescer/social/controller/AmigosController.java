@@ -2,11 +2,11 @@ package br.com.crescer.social.controller;
 
  // @author jabel.fontoura
 import br.com.crescer.social.model.Amigos;
-import br.com.crescer.social.model.Usuario;
 import br.com.crescer.social.service.interfaces.AmigosService;
 import java.math.BigDecimal;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,6 +27,11 @@ public class AmigosController {
   @GetMapping(value = "/{id}")
   public Amigos get(@PathVariable BigDecimal id) {
     return service.findById(id);
+  }
+  
+  @DeleteMapping(value = "/{id}")
+  public void delete(@PathVariable BigDecimal id) {
+    service.delete(id);
   }
   
   @GetMapping

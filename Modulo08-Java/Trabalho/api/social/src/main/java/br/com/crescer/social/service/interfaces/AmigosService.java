@@ -10,6 +10,8 @@ public interface AmigosService {
 
   Amigos save(Amigos a);
 
+  void delete(BigDecimal id);
+  
   List<Amigos> findAll();
 
   Amigos findById(BigDecimal id);

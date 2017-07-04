@@ -4,9 +4,14 @@ angular.module('app').factory('amigosService', function ($http) {
 
   return {
     create: criar,
+    delete: deletar,
     countAceitos: countAceitos,
     findAllByIdUsuario: buscarPorIdUsuario,
     findAllByIdAmigo: buscarPorIdAmigo
+  }
+
+  function deletar(id) {
+    return $http.delete(`${url}/${id}`);
   }
 
   function criar(amizade) {
