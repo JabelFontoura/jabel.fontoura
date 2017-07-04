@@ -45,7 +45,13 @@ public class UsuarioServiceImpl implements UsuarioService {
   public List<Usuario> findByIdUsuarioNotIn(BigDecimal id) {
     List<BigDecimal> amigos = new ArrayList<>();
     amigos.add(id);
-    service.findAllByIdUsuario(id)
+    service.findAllByIdUsuarioAndAceito(id, 'A')
+            .stream()
+            .map(Amigos::getIdAmigo)
+            .map(Usuario::getId)
+            .forEach(amigos::add);
+    
+    service.findAllByIdUsuarioAndAceito(id, 'P')
             .stream()
             .map(Amigos::getIdAmigo)
             .map(Usuario::getId)

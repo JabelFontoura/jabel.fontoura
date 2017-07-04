@@ -61,7 +61,7 @@ angular.module('app').controller('HomeController', function ($scope, $location, 
     amigosService.create(solicitacao)
       .then()
       .catch(error => console.log(error));
-    // location.reload();
+    location.reload();
   }
 
   $scope.avancar = () => {
