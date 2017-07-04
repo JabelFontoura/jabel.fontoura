@@ -34,6 +34,7 @@ angular.module('app').controller('UsuarioController', function ($scope, $locatio
     .then(response => {
       $scope.usuario = response.data.dados;
       $scope.usuario.dataNascimento = new Date($scope.usuario.dataNascimento);
+      $scope.usuario.senha = '';
     })
     .catch(error => console.log(error));
 
