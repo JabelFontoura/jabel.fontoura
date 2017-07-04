@@ -68,6 +68,12 @@ angular.module('app').controller('HomeController', function ($scope, $location, 
     loadPosts($scope.usuario.id, ++$scope.pagina);
   }
 
+  $scope.logout = () => {
+    authService.logout();
+    $scope.logado = false;
+  }
+
+
   function init() {
     $scope.showComentar = false;
     $scope.postComentar = null;

@@ -7,7 +7,10 @@ angular.module('app').controller('UsuarioController', function ($scope, $locatio
       .then(response => {
         $scope.logar(usuario);
       })
-      .catch(error => console.log());
+      .catch(error => {
+        console.log();
+        toastr.error('Ocorreu um erro ao criar essa conta');
+    });
   }
 
   $scope.logar = function (usuario) {
@@ -24,19 +27,16 @@ angular.module('app').controller('UsuarioController', function ($scope, $locatio
         });
   };
 
-  $scope.logout = () => {
-    authService.logout();
-    $scope.logado = false;
-  }
-
   function init() {
-  usuarioService.getLogged()
-    .then(response => {
-      $scope.usuario = response.data.dados;
-      $scope.usuario.dataNascimento = new Date($scope.usuario.dataNascimento);
-      $scope.usuario.senha = '';
-    })
-    .catch(error => console.log(error));
+  if($location.path() !== '/login' && $location.path() !== '/cadastro') {
+    usuarioService.getLogged()
+      .then(response => {
+        $scope.usuario = response.data.dados;
+        $scope.usuario.dataNascimento = new Date($scope.usuario.dataNascimento);
+        $scope.usuario.senha = '';
+      })
+      .catch(error => console.log(error));
+  }
 
     if($localStorage.usuarioLogado === null) {
       $scope.logado = false;
