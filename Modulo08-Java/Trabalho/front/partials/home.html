@@ -44,7 +44,7 @@
     </aside>
     <section class="col-md-6">
 
-      <form class="form-horizontal form-post" novalidate ng-submit="postar(post)">
+      <form class="form-horizontal form-post" novalidate ng-submit="postar(post)" ng-if="usuario.isInHome">
         <h2>VOCÊ DISSE MEMES?</h2>
         <div class="form-group">
           <label for="texto" class="col-sm-2 control-label">Texto</label>
